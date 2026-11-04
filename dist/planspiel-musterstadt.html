@@ -5386,7 +5386,7 @@ function anfZeile(def) {
   const it0 = G && G.items.find(i => i.def.id === def.id);
   const lbl = st && !mehr ? statusText(it0) : "Alarmieren";
   const dis = !G || (st && !mehr);
-  return `<div class="anf"><span class="anf-n">${tzDef(def)}<span>${esc(def.name)}${def.info ? `<br><small class="note">${esc(def.info)}</small>` : ""}</span></span><button class="mini" type="button" data-anf="${def.id}" ${dis ? "disabled" : ""}>${lbl}</button></div>`;
+  return `<div class="anf"><span class="anf-n">${tzDef(def)}<span>${esc(def.name)}${def.info ? `<br><small class="note">${esc(def.info)}</small>` : ""}</span></span><span class="eta">${G ? "ca. " + eta(def) + " min" : ""}</span><button class="mini" type="button" data-anf="${def.id}" ${dis ? "disabled" : ""}>${lbl}</button></div>`;
 }
 function bindAnf(root) { root.querySelectorAll("[data-anf]").forEach(b => b.addEventListener("click", () => anfordern(b.dataset.anf))); }
 let offeneWache = null;
@@ -5395,7 +5395,7 @@ function oeffneWache(id) {
   if (has3D) K3.markiereWache(id);
   const art = { bf: "Berufsfeuerwehr", ff: "Freiwillige Feuerwehr", rd: "Rettungswache", thw: "Technisches Hilfswerk" }[w.art];
   let html = `<div class="eyebrow">${art} · ${w.art === "thw" ? "Ergänzung zur Lernunterlage" : "Wachbereich " + w.wb}</div><h2>${esc(w.name)}</h2><p class="note">${esc(w.rolle)}</p>`;
-  if (G) html += `<div class="grp"><div class="grp-h"><b>Alarmieren</b><span class="str"></span></div>${w.anf.map(a => anfZeile(ANF[a.id])).join("")}</div>`;
+  if (G) html += `<div class="grp"><div class="grp-h"><b>Alarmieren</b><span class="str">Anfahrt zur Einsatzstelle</span></div>${w.anf.map(a => anfZeile(ANF[a.id])).join("")}</div>`;
   w.gruppen.forEach(g => {
     html += `<div class="grp"><div class="grp-h"><b>${esc(g.t)}</b><span class="str">${esc(g.tot || "")}</span></div>` +
       g.v.map(v => `<div class="veh"><span class="veh-z">${v[0] === "Einsatzeinheit" ? tz("Rettungswesen_Einheiten/Einsatzeinheit") : tzTyp(v[0], w.art === "thw" ? { thw: true } : undefined)}</span><span class="veh-n">${esc(v[0])}${v[2] ? `<small>${esc(v[2])}</small>` : ""}</span><span class="str">${esc(v[1] || "")}</span></div>`).join("") + "</div>";
@@ -5412,7 +5412,7 @@ function oeffneUeber(id) {
   const def = ANF[id], n = G ? G.items.filter(i => i.def.id === id).length : 0, st = MS.staerke[id];
   const seite = { n: "Norden", s: "Süden", w: "Westen", o: "Osten" }[u.rand || "o"];
   let html = `<div class="eyebrow">Überörtliche Hilfe · Anfahrt aus dem ${seite}</div><h2>${esc(u.name)}</h2><p class="note">${esc(u.info)}</p>
-   <dl class="kv" style="margin-top:10px">${st ? `<dt>Stärke</dt><dd>${st[0] ? esc(st[0]) : (st[2] ? st[2] + " Funktionen" : "nicht angegeben")}</dd><dt>Fahrzeuge</dt><dd>${st[1] || ""}</dd>` : ""}<dt>Anforderung</dt><dd>${u.mehrfach ? "mehrfach möglich" : "einmalig"} über die Leitstelle</dd></dl>`;
+   <dl class="kv" style="margin-top:10px"><dt>Anfahrt</dt><dd>ca. ${u.eta} min ab Alarmierung</dd>${st ? `<dt>Stärke</dt><dd>${st[0] ? esc(st[0]) : (st[2] ? st[2] + " Funktionen" : "nicht angegeben")}</dd><dt>Fahrzeuge</dt><dd>${st[1] || ""}</dd>` : ""}<dt>Anforderung</dt><dd>${u.mehrfach ? "mehrfach möglich" : "einmalig"} über die Leitstelle</dd></dl>`;
   if (G) html += `<div class="actions"><button class="go" type="button" data-anf="${id}" ${n && !u.mehrfach ? "disabled" : ""}>${n ? (u.mehrfach ? "Weitere alarmieren (" + n + ")" : "alarmiert") : "Alarmieren"}</button></div>`;
   else html += `<p class="note">Im Einsatz kann die Einheit hier alarmiert werden.</p>`;
   drawerAuf(html); bindAnf(drawer); drawer.dataset.ue = id;
@@ -5550,7 +5550,7 @@ function anfordern(id, initial) {
   [def.id].concat(def.keys || []).forEach(k => G.keys.add(k));
   // Keine Dynamik: Fahrzeuge erscheinen nur, wenn sie zur Übergabe bereits vor Ort sind (lageFestlegen).
   if (def.art !== "c") G.log.push({ t: G.t, txt: (initial ? "Alarmierung: " : "Nachforderung: ") + def.name, done: false, prio: !initial, uid: it.uid, nach });
-  if (!initial && def.art !== "c") toast(def.name + " alarmiert" + (nach ? " (nach Abgabe)" : ""));
+  if (!initial && def.art !== "c") toast(def.name + " alarmiert, Anfahrt ca. " + e + " min" + (nach ? " (nach Abgabe)" : ""));
   refresh();
   return it;
 }
@@ -5819,7 +5819,7 @@ function chipsHTML() {
     const d = r.d, ext = d.art === "ext", n = G.items.filter(i => i.def.id === d.id).length, aktiv = ext ? G.keys.has(d.id) : n > 0, it0 = G.items.find(i => i.def.id === d.id);
     const st = aktiv ? (ext ? "informiert" : statusText(it0)) : "";
     const dis = aktiv && !d.mehrfach;
-    return `<button type="button" class="nchip ${aktiv ? "on" : ""} ${it0 && it0.initial ? "ini" : ""}" data-anf="${d.id}" ${dis ? "disabled" : ""} title="${esc(d.name + (d.info ? ": " + d.info : ""))}"><span class="nchip-z">${tzDef(d)}</span><span class="nchip-n">${esc(kurz(d).replace(" komplett", ""))}${st ? `<em>${st}${d.mehrfach && n > 1 ? " ×" + n : ""}</em>` : r.ort && d.art !== "ext" && r.ort !== kurz(d) ? `<small>${esc(r.ort)}</small>` : ""}</span></button>`;
+    return `<button type="button" class="nchip ${aktiv ? "on" : ""} ${it0 && it0.initial ? "ini" : ""}" data-anf="${d.id}" ${dis ? "disabled" : ""} title="${esc(d.name + (ext ? "" : ", Anfahrt ca. " + eta(d) + " min") + (d.info ? ": " + d.info : ""))}"><span class="nchip-z">${tzDef(d)}</span><span class="nchip-n">${esc(kurz(d).replace(" komplett", ""))}${st ? `<em>${st}${d.mehrfach && n > 1 ? " ×" + n : ""}</em>` : r.ort && d.art !== "ext" && r.ort !== kurz(d) ? `<small>${esc(r.ort)}</small>` : ""}</span></button>`;
   }).join("")}</div></div>`).join("");
 }
 function nachfHTML(lock) {
