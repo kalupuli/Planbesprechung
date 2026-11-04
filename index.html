@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Planbesprechung Musterstadt</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Roboto+Slab:wght@700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/spiel.css">
+</head>
+<body>
+<div class="login" id="login" lang="de">
+  <form class="login-karte" id="loginForm" autocomplete="off">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"></span><div><b>Planbesprechung Musterstadt</b><small>Verbandsführer · VAP 2.2</small></div></div>
+    <p class="login-text">Bitte melden Sie sich mit dem Passwort an.</p>
+    <label class="login-f"><span>Passwort</span><input id="loginPw" type="password" autocomplete="current-password" required autofocus></label>
+    <label class="login-c"><input type="checkbox" id="loginMerken"> Auf diesem Gerät angemeldet bleiben</label>
+    <button type="submit" class="go">Anmelden</button>
+    <p class="login-fehler" id="loginFehler" role="alert"></p>
+  </form>
+</div>
+
+<div class="app" id="app" data-mode="frei" lang="de">
+  <header class="bar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div><b>Planbesprechung Musterstadt</b><small>Verbandsführer · VAP 2.2</small></div>
+    </div>
+    <div class="bar-mid" id="barMid"></div>
+    <div class="bar-right">
+      <button class="ghost" type="button" id="btnDocs" title="Originalunterlagen als PDF">Unterlagen</button>
+      <button class="ghost" type="button" id="btnListe">Alle Szenarien</button>
+      <button class="go" type="button" id="btnZufall">Zufallsszenario</button>
+      <button class="ghost" type="button" id="btnTafel" hidden>Arbeitstafel</button>
+      <button class="ghost" type="button" id="btnEnde" hidden>Einsatz beenden</button>
+      <button class="ghost" type="button" id="btnLogout" hidden title="Abmelden">Abmelden</button>
+    </div>
+  </header>
+
+  <aside class="akte" id="akte" aria-label="Einsatzakte" hidden>
+    <button class="akte-grip" id="akteGrip" type="button" aria-expanded="true">Einsatzakte</button>
+    <div class="akte-head" id="akteHead"></div>
+    <nav class="steps" id="steps" aria-label="Ablauf"></nav>
+    <div class="akte-body" id="akteBody"></div>
+  </aside>
+
+  <main class="stage" id="stage" aria-label="Karte Musterstadt">
+    <img id="maptex" alt="" hidden>
+    <div class="hud hud-tl" id="hudTl">
+      <div class="legend"><span class="lg bf"></span>Feuer- und Rettungswache <span class="lg ff"></span>Freiwillige Feuerwehr <span class="lg rd"></span>Rettungswache <span class="lg thw"></span>THW</div>
+      <div class="legend hilfe">Ziehen verschiebt · rechte Maustaste oder zwei Finger drehen · Mausrad oder Spreizen zoomt</div>
+    </div>
+    <div class="hud hud-br" role="group" aria-label="Kartensteuerung">
+      <button type="button" data-cam="rotL" title="Drehen links" aria-label="Drehen links">⟲</button>
+      <button type="button" data-cam="rotR" title="Drehen rechts" aria-label="Drehen rechts">⟳</button>
+      <button type="button" data-cam="tilt" title="3D oder Draufsicht" aria-label="3D oder Draufsicht">2D</button>
+      <button type="button" data-cam="in" title="Vergrößern" aria-label="Vergrößern">+</button>
+      <button type="button" data-cam="out" title="Verkleinern" aria-label="Verkleinern">−</button>
+      <button type="button" data-cam="reset" title="Ansicht zurücksetzen" aria-label="Ansicht zurücksetzen">⌂</button>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+        <div class="stadt" id="stadtOv" hidden>
+      <div class="stadt-vp" id="stadtVp"><div class="stadt-in" id="stadtIn"><img id="stadtImg" src="assets/stadtkarte.svg" alt="Karte Musterstadt mit Übersicht der Wachen, Anhang I der Lernunterlage B2-211" draggable="false"><div class="stadt-marken" id="stadtMarken"></div></div></div>
+      <div class="stadt-ctl" role="group" aria-label="Stadtkarte">
+        <button type="button" id="stadtEst" title="Zur Einsatzstelle" aria-label="Zur Einsatzstelle">⌖</button>
+        <button type="button" id="stadtPlus" title="Vergrößern" aria-label="Vergrößern">+</button>
+        <button type="button" id="stadtMinus" title="Verkleinern" aria-label="Verkleinern">−</button>
+        <button type="button" id="stadtFit" title="Ganze Karte" aria-label="Ganze Karte">⌂</button>
+      </div>
+      <div class="stadt-q">Karte Musterstadt mit Übersicht der Wachen · IdF NRW, LU B2-211, Anhang I · <button type="button" class="link" data-doc="lernunterlage" data-seite="25">Original-PDF</button></div>
+    </div>
+    <button type="button" class="hud hud-tr" id="btnStadt" aria-pressed="false" title="Zwischen 3D-Karte und Originalstadtkarte wechseln">Stadtkarte</button>
+  </main>
+
+  <aside class="rail" id="rail" aria-label="Szenarien und überörtliche Einheiten"></aside>
+
+  <section class="drawer" id="drawer" hidden aria-label="Details"></section>
+</div>
+
+<div class="overlay" id="tafelOv" hidden lang="de">
+  <div class="ov-bar"><b>Taktische Arbeitstafel</b><span class="ov-hint">Führungsstufen B + C · wird im Einsatzverlauf fortgeschrieben</span><button type="button" class="ghost" data-doc="tafel">Original-Vorlage (PDF)</button><button type="button" class="ghost" id="tafelClose">Schließen</button></div>
+  <div class="ov-scroll"><div class="tafel" id="tafel"></div></div>
+</div>
+
+<div class="overlay" id="listeOv" hidden lang="de">
+  <div class="ov-bar"><b>Alle Szenarien</b><span class="ov-hint" id="lcount"></span><button type="button" class="ghost" id="listeClose">Schließen</button></div>
+  <div class="ov-scroll"><div class="liste">
+    <div class="lhead"><input id="lq" type="search" placeholder="Suche nach Titel, Ort oder Stichwort" autocomplete="off" aria-label="Szenarien durchsuchen"><div class="lfilter" id="lfilter" role="group" aria-label="Filter nach Art"></div></div>
+    <div class="lactions"><button type="button" class="go" id="lNeu">Neue Lage erstellen</button><button type="button" class="ghost" id="lImport">Lagen importieren</button><button type="button" class="ghost" id="lExport">Eigene exportieren</button><span class="note">Eigene Lagen werden privat gespeichert und als JSON-Datei ausgetauscht.</span></div>
+    <div class="lgrid" id="lgrid"></div>
+  </div></div>
+</div>
+
+<div class="overlay doc-ov" id="docOv" hidden lang="de">
+  <div class="ov-bar doc-bar">
+    <b>Unterlagen</b>
+    <div class="doc-tabs" id="docTabs" role="group" aria-label="Dokument wählen"></div>
+    <span class="ov-hint" id="docHint"></span>
+    <div class="doc-ctl" role="group" aria-label="Anzeige">
+      <button type="button" class="ghost" id="docPrev" title="Vorherige Seite" aria-label="Vorherige Seite">‹</button>
+      <span class="doc-anz" id="docAnz">–</span>
+      <button type="button" class="ghost" id="docNext" title="Nächste Seite" aria-label="Nächste Seite">›</button>
+      <button type="button" class="ghost" id="docMinus" title="Verkleinern" aria-label="Verkleinern">−</button>
+      <span class="doc-anz" id="docZoom">100 %</span>
+      <button type="button" class="ghost" id="docPlus" title="Vergrößern" aria-label="Vergrößern">+</button>
+      <button type="button" class="ghost" id="docFit" title="Seitenbreite">Seitenbreite</button>
+      <button type="button" class="go" id="docSave">PDF speichern</button>
+    </div>
+    <button type="button" class="ghost" id="docClose">Schließen</button>
+  </div>
+  <div class="doc-main"><nav class="doc-nav" id="docNav" aria-label="Kapitel"></nav><div class="doc-body" id="docBody"><div class="doc-seiten" id="docSeiten"></div></div></div>
+</div>
+
+<div class="overlay ed-ov" id="edOv" hidden lang="de">
+  <div class="ov-bar"><b>Lagen-Editor</b><span class="ed-titel" id="edTitel"></span><span class="ov-hint" id="edHinweis"></span>
+    <button type="button" class="ghost" id="edDel">Löschen</button><button type="button" class="ghost" id="edExport">Exportieren</button><button type="button" class="ghost" id="edTest">Testen</button><button type="button" class="go" id="edSave">Speichern</button><button type="button" class="ghost" id="edClose">Schließen</button></div>
+  <div class="ed-main"><nav class="ed-nav" id="edNav" aria-label="Abschnitte"></nav><div class="ed-body" id="edBody"></div></div>
+</div>
+
+<script src="js/login.js"></script>
+<script src="vendor/three.min.js"></script>
+<script src="vendor/OrbitControls.js"></script>
+<script src="vendor/CSS2DRenderer.js"></script>
+<script src="js/zeichen.js"></script>
+<script src="js/kartesvg.js"></script>
+<script src="js/daten.js"></script>
+<script src="js/szenarien.js"></script>
+<script src="js/karte3d.js"></script>
+<script src="js/spiel.js"></script>
+<script src="js/stadtkarte.js"></script>
+<script src="js/editor.js"></script>
+<script src="vendor/pdf.min.js"></script>
+<script src="vendor/pdf.worker.min.js"></script>
+<script src="js/unterlagen.js"></script>
+</body>
+</html>
