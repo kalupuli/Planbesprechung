@@ -668,7 +668,33 @@ body.gesperrt .app{visibility:hidden}
 .lz-werkzeuge button.on{background:var(--amber);border-color:var(--amber);color:#1b1206}
 .lz-main{flex:1;display:flex;min-height:0}
 .lz-flaeche{flex:1;display:flex;align-items:center;justify-content:center;padding:14px;min-width:0;overflow:hidden;touch-action:none}
-.lz-flaeche svg{width:100%;height:auto;max-height:100%;aspect-ratio:640/400;background:#fff;border-radius:6px;box-shadow:0 6px 24px rgba(0,0,0,.5);user-select:none}
+.lz-buehne{position:relative;width:min(100%,calc((100vh - 150px) * 1.6));aspect-ratio:640/400}
+.lz-svg{position:absolute;inset:0}
+.lz-svg>svg{display:block;width:100%;height:100%;background:#fff;border-radius:6px;box-shadow:0 6px 24px rgba(0,0,0,.5);user-select:none;-webkit-user-select:none}
+.lz-flaeche[data-werkzeug="stift"] .lz-svg,.lz-flaeche[data-werkzeug="linie"] .lz-svg,.lz-flaeche[data-werkzeug="pfeil"] .lz-svg,.lz-flaeche[data-werkzeug="kreis"] .lz-svg,.lz-flaeche[data-werkzeug="zeichen"] .lz-svg{cursor:crosshair}
+.lz-flaeche[data-werkzeug="text"] .lz-svg{cursor:text}
+.lz-el{cursor:move}
+.lz-el:hover>:not(:last-child){filter:drop-shadow(0 0 2px #f1a62b) drop-shadow(0 0 2px #f1a62b)}
+.lz-el.gewaehlt>:not(:last-child){filter:drop-shadow(0 0 2.5px #f1a62b)}
+.lz-flaeche[data-werkzeug="radierer"] .lz-svg{cursor:cell}
+.lz-flaeche[data-werkzeug="radierer"] .lz-el{cursor:pointer}
+.lz-flaeche[data-werkzeug="radierer"] .lz-el:hover>:not(:last-child){filter:drop-shadow(0 0 3px #ff2a2a) drop-shadow(0 0 3px #ff2a2a);opacity:.55}
+.lz-pop{position:absolute;z-index:3;display:flex;gap:4px;background:#141d24;border:1px solid var(--line);border-radius:8px;padding:4px;box-shadow:0 6px 18px rgba(0,0,0,.5);white-space:nowrap}
+.lz-pop[hidden],.lz-pop button[hidden]{display:none!important}
+.lz-pop button{background:var(--pult2);border:1px solid var(--line);border-radius:6px;padding:6px 11px;color:var(--ink);cursor:pointer;font-weight:600;font-size:13px}
+.lz-pop button:hover{border-color:var(--ink)}
+.lz-pop button.rot{background:#b3121f;border-color:#b3121f;color:#fff}
+.lz-inline{position:absolute;z-index:4;width:210px;padding:6px 8px;border:2px solid var(--amber);border-radius:6px;background:#fff;color:#111;font:700 14px Arial,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.lz-inline[hidden]{display:none}
+.lz-werkzeuge .ic{display:inline-block;width:1.1em;margin-right:5px;text-align:center;font-weight:700}
+.lz-liste{display:flex;flex-direction:column;gap:3px;max-height:30vh;overflow:auto}
+.lz-li{display:flex;align-items:stretch;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.lz-li.on{border-color:var(--amber)}
+.lz-lin{flex:1;min-width:0;text-align:left;background:none;border:0;color:inherit;padding:6px 8px;cursor:pointer;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lz-lin:hover{background:var(--pult2)}
+.lz-lix{background:none;border:0;border-left:1px solid var(--line);color:#ff7a7a;cursor:pointer;padding:0 11px;font-size:14px}
+.lz-lix:hover{background:#b3121f;color:#fff}
+.lz-ov .ov-bar button:disabled{opacity:.45;cursor:default}
 .lz-seite{width:300px;flex:none;overflow:auto;border-left:1px solid var(--line);padding:12px 14px;background:var(--pult)}
 .lz-grp{margin-bottom:14px}
 .lz-grp h5{margin:0 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--dim)}
