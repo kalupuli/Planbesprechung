@@ -548,7 +548,7 @@ function stepAlarm() {
 function infoBlocks() { return G.sz.info.map(b => `<div class="block"><h4>${esc(b.titel)}</h4>${b.titel === "Gefahrstoff" ? warnTafelHTML() : ""}<dl class="kv">${b.zeilen.map(z => `<dt>${esc(z[0])}</dt><dd>${esc(z[1])}</dd>`).join("")}</dl></div>`).join(""); }
 function warnTafelHTML() { const w = G.sz.lagekarte.find(i => i.t === "warn"); return w ? `<div style="margin-bottom:8px"><span class="warntafel"><span>${esc(w.oben)}</span><span>${esc(w.unten)}</span></span></div>` : ""; }
 function unterlagen(offen) {
-  return `<details class="block" ${offen ? "open" : ""}><summary>Unterlagen: Lagekarte, ${esc(G.sz.info.map(b => b.titel).join(", "))}</summary><div style="background:#fff;border-radius:6px;overflow:hidden;margin-top:8px">${svgLage(G.sz, true)}</div><div class="actions"><button class="alt" type="button" data-tafel>Taktische Arbeitstafel öffnen</button></div>${infoBlocks()}<div class="block"><h4>Originalunterlagen (PDF)</h4><div class="dok-links"><button class="alt" type="button" data-doc="lernunterlage" data-seite="25">Karte Musterstadt</button><button class="alt" type="button" data-doc="lernunterlage" data-seite="26">Fahrzeugübersicht</button><button class="alt" type="button" data-doc="lernunterlage" data-seite="14">AAO</button><button class="alt" type="button" data-doc="lernunterlage" data-seite="3">Lernunterlage gesamt</button><button class="alt" type="button" data-doc="tafel">Arbeitstafel (Vorlage)</button></div></div></details>`;
+  return `<details class="block" ${offen ? "open" : ""}><summary>Unterlagen: Lagekarte, ${esc(G.sz.info.map(b => b.titel).join(", "))}</summary><div style="background:#fff;border-radius:6px;overflow:hidden;margin-top:8px">${svgLage(G.sz, true)}</div><div class="actions"><button class="go" type="button" data-lzopen>Lagekarte ergänzen</button><button class="alt" type="button" data-tafel>Taktische Arbeitstafel öffnen</button></div>${infoBlocks()}<div class="block"><h4>Originalunterlagen (PDF)</h4><div class="dok-links"><button class="alt" type="button" data-doc="lernunterlage" data-seite="25">Karte Musterstadt</button><button class="alt" type="button" data-doc="lernunterlage" data-seite="26">Fahrzeugübersicht</button><button class="alt" type="button" data-doc="lernunterlage" data-seite="14">AAO</button><button class="alt" type="button" data-doc="lernunterlage" data-seite="3">Lernunterlage gesamt</button><button class="alt" type="button" data-doc="tafel">Arbeitstafel (Vorlage)</button></div></div></details>`;
 }
 function stepUebergabe() {
   const u = G.sz.uebergabe;
@@ -604,6 +604,7 @@ function stepAusarbeitung() {
     return x;
   }
   x += `<div class="cdbox ${lock ? "ab" : ""}"><span>Ausarbeitungszeit</span><b id="cd">${lock ? "abgegeben" : mmss(G.cd.dauer)}</b>${lock ? `<small>nach ${mmss(G.abgabe.dauer)} Minuten</small>` : `<button class="alt" type="button" id="abgabeBtn">Abgeben</button>`}</div>`;
+  x += `<div class="block lz-kurz"><div class="lz-mini">${svgLage(sz, true)}</div><div class="actions"><button class="alt" type="button" data-lzopen>Lagekarte ergänzen</button></div></div>`;
   sz.ausarbeitung.forEach((a, i) => {
     x += `<section class="block ab-${a.typ}"><h4>${i + 1}. ${esc(a.titel)}</h4><p class="task-q">${esc(a.frage)}</p>`;
     if (a.typ === "abschnitte") x += orgaHTML(lock);
@@ -883,7 +884,7 @@ function lageTZ(i) {
   if (/TLF/.test(t)) return "Feuerwehr_Fahrzeuge/TLF_4000";
   return "Feuerwehr_Fahrzeuge/Löschfahrzeug";
 }
-function svgLage(sz, grid) {
+function svgLage(sz, grid, ohneErgaenzung) {
   let s = `<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" font-family="Arial,Helvetica,sans-serif" role="img" aria-label="Lagekarte ${esc(sz.titel)}"><defs><pattern id="gr" width="29.1" height="29.1" patternUnits="userSpaceOnUse"><path d="M29.1 0H0V29.1" fill="none" stroke="#9a9a9a" stroke-width=".6"/></pattern><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#222"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1565c0"/></marker></defs><rect width="640" height="400" fill="#fff"/>${grid ? '<rect width="640" height="400" fill="url(#gr)"/>' : ""}`;
   sz.lagekarte.forEach(i => {
     if (i.t === "flaeche") { s += `<polygon points="${i.pts.map(p => p.join(",")).join(" ")}" fill="${i.f === "strasse" ? "#c9c9c9" : "#ebe6d6"}" stroke="#888" stroke-width="1"/>`; if (i.txt) { const cx = i.pts.reduce((a, p) => a + p[0], 0) / i.pts.length, cy = i.pts.reduce((a, p) => a + p[1], 0) / i.pts.length; s += `<text x="${cx}" y="${cy + 4}" text-anchor="middle" font-size="11" fill="#555" font-style="italic">${esc(i.txt)}</text>`; } }
@@ -914,6 +915,7 @@ function svgLage(sz, grid) {
     if (i.t === "schlauch") s += `<polyline points="${i.pts.map(p => p.join(",")).join(" ")}" fill="none" stroke="#1565c0" stroke-width="2.2"/>`;
     if (i.t === "ausgang") s += `<g transform="translate(${i.x},${i.y})"><rect x="-10" y="-8" width="20" height="16" fill="#1f8a4c"/><path d="M-4 0h8M1 -4l4 4-4 4" stroke="#fff" stroke-width="1.8" fill="none"/><text y="20" text-anchor="middle" font-size="9.5" fill="#1f6b3a">${esc(i.txt)}</text></g>`;
   });
+  if (!ohneErgaenzung && G && sz === G.sz && G.lk && G.lk.length && window.Lagezeichnen) s += window.Lagezeichnen.svg(G.lk);
   return s + "</svg>";
 }
 
@@ -992,5 +994,6 @@ function stadtMarken() {
 }
 function szAktualisieren() { if (!G) { karteSzenarien(); renderRail(); } if (!$("#listeOv").hidden) renderListe(); }
 const wachenPunkte = () => Object.values(WACHEN).map(w => ({ x: w.x, y: w.y, art: w.art, k: w.art === "ff" ? String(w.nr) : w.kurz, name: w.name }));
-window.__pms = { get G() { return G; }, starte, anfordern, ANF, svgLage, zufall, abgeben, stadtMarken, TYPEN, railGruppen, tzDef, kurz, toast, szAktualisieren, wachenPunkte };
+function lageGeaendert() { if (!G) return; if (!$("#tafelOv").hidden) renderTafel(); const b = $("#akteBody"), st = b.scrollTop; renderAkte(); b.scrollTop = st; }
+window.__pms = { tz, lageGeaendert, get G() { return G; }, starte, anfordern, ANF, svgLage, zufall, abgeben, stadtMarken, TYPEN, railGruppen, tzDef, kurz, toast, szAktualisieren, wachenPunkte };
 })();

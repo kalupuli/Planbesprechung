@@ -511,7 +511,10 @@ function gebaeudeMassstab() {
   if (Math.abs(f - letzteF) < 0.004) return; letzteF = f;
   Object.values(stationen).forEach(st => st.g.scale.setScalar(st.g.userData.basis * f));
 }
+// Kein Rendern, solange eine Vollbildansicht die Karte verdeckt oder die Anmeldung offen ist
+const verdeckt = () => document.hidden || document.body.classList.contains("gesperrt") || !!document.querySelector(".overlay:not([hidden])");
 function loop() {
+  if (verdeckt()) { clock.getDelta(); requestAnimationFrame(loop); return; }
   const dt = Math.min(0.05, clock.getDelta()), t = clock.elapsedTime;
   if (tweens.length) { const tw = tweens[0]; tw.t += dt / tw.d; tw.f(Math.min(1, tw.t)); if (tw.t >= 1) { tweens.shift(); detailPlanen(); } }
   else controls.update();

@@ -78,7 +78,7 @@
 </div>
 
 <div class="overlay" id="tafelOv" hidden lang="de">
-  <div class="ov-bar"><b>Taktische Arbeitstafel</b><span class="ov-hint">Führungsstufen B + C · wird im Einsatzverlauf fortgeschrieben</span><button type="button" class="ghost" data-doc="tafel">Original-Vorlage (PDF)</button><button type="button" class="ghost" id="tafelClose">Schließen</button></div>
+  <div class="ov-bar"><b>Taktische Arbeitstafel</b><span class="ov-hint">Führungsstufen B + C · wird im Einsatzverlauf fortgeschrieben</span><button type="button" class="go" data-lzopen>Lagekarte ergänzen</button><button type="button" class="ghost" data-doc="tafel">Original-Vorlage (PDF)</button><button type="button" class="ghost" id="tafelClose">Schließen</button></div>
   <div class="ov-scroll"><div class="tafel" id="tafel"></div></div>
 </div>
 
@@ -117,6 +117,13 @@
   <div class="ed-main"><nav class="ed-nav" id="edNav" aria-label="Abschnitte"></nav><div class="ed-body" id="edBody"></div></div>
 </div>
 
+<div class="overlay lz-ov" id="lzOv" hidden lang="de">
+  <div class="ov-bar"><b>Lagekarte ergänzen</b><span class="ov-hint" id="lzTitel"></span>
+    <button type="button" class="ghost" id="lzUndo">Rückgängig</button><button type="button" class="ghost" id="lzLeeren">Alle Ergänzungen entfernen</button><button type="button" class="ghost" id="lzSpeichern">Als SVG speichern</button><button type="button" class="go" id="lzClose">Fertig</button></div>
+  <div class="lz-werkzeuge" id="lzWerkzeuge" role="toolbar" aria-label="Werkzeuge"></div>
+  <div class="lz-main"><div class="lz-flaeche" id="lzFlaeche"></div><aside class="lz-seite" id="lzSeite"></aside></div>
+</div>
+
 <script src="js/login.js"></script>
 <script src="vendor/three.min.js"></script>
 <script src="vendor/OrbitControls.js"></script>
@@ -129,6 +136,7 @@
 <script src="js/spiel.js"></script>
 <script src="js/stadtkarte.js"></script>
 <script src="js/editor.js"></script>
+<script src="js/lagezeichnen.js"></script>
 <script src="vendor/pdf.min.js"></script>
 <script src="vendor/pdf.worker.min.js"></script>
 <script src="js/unterlagen.js"></script>

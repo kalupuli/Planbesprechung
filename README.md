@@ -20,6 +20,7 @@ Browserbasiertes Planspiel für Planbesprechungen im Sinne der Abschlussprüfung
 | `assets/stadtkarte.svg` | Originalkarte aus Anhang I der Lernunterlage (Seite 25) mit Beschriftung als Vektor für die 2D-Stadtkarte |
 | `js/stadtkarte.js` | Umschaltbare Stadtkarte mit Einsatzstelle |
 | `js/login.js` | Anmeldeschwelle mit Passwortprüfung |
+| `js/lagezeichnen.js` | Ergänzen der Lagekarte durch den Prüfling: Freihand, Linien, Pfeile, Kreise, Text und taktische Zeichen |
 | `js/editor.js` | Lagen-Editor: eigene Lagen anlegen, bearbeiten, speichern, exportieren und importieren |
 | `js/unterlagen.js` | Anzeige der Originalunterlagen mit Kapitelsprung, Seitenwechsel, Zoom und Speichern |
 | `vendor/pdf*.js` | pdf.js 3.11.174 (Mozilla, Apache 2.0) für die PDF-Anzeige |
@@ -46,6 +47,7 @@ Starten: `index.html` direkt im Browser öffnen oder über einen lokalen Server 
 - **Keine Spieldynamik:** Die Lage wird beim Start des Szenarios zum Zeitpunkt der Übergabe festgelegt und ändert sich danach nicht mehr. Kräfte sind vor Ort oder auf Anfahrt. Nur Kräfte vor Ort stehen als Fahrzeug an der Einsatzstelle.
 - **Nachalarmierung:** In der Ausarbeitung werden alle Stichworte und Einheiten nach Gruppen angezeigt und per Klick alarmiert, ebenso in der Leiste rechts. Alarmierte Kräfte werden als »alarmiert« geführt und treffen nie ein. Beim Antippen einer Wache oder einer überörtlichen Einheit wird die Anfahrtszeit zur Einsatzstelle in Minuten angezeigt, ebenso in der Meldung nach der Alarmierung und im Hinweis der Kacheln.
 - **Unterlagen:** Der Knopf »Unterlagen« in der Kopfleiste öffnet die Original-PDF der Lernunterlage und der Taktischen Arbeitstafel. Für die Lernunterlage steht ein Kapitelverzeichnis zur Verfügung. In der Übergabe führen Direktsprünge zur Karte, zur Fahrzeugübersicht und zur AAO. »PDF speichern« legt das Original als Datei ab.
+- **Lagekarte ergänzen:** In der Übergabe, in der Ausarbeitung und auf der Arbeitstafel öffnet »Lagekarte ergänzen« eine Zeichenfläche über der übergebenen Lagekarte. Werkzeuge: Auswählen und Verschieben, Stift (Freihand), Linie, Pfeil, Kreis, Text, taktisches Zeichen (alle Zeichen des Zeichensatzes mit Suche und Gruppen, Größe und Beschriftung) sowie Radierer. Farbe und Strichstärke sind wählbar, Rückgängig mit Strg+Z, Entf löscht das gewählte Element. Die Ergänzungen erscheinen in den Unterlagen und auf der Arbeitstafel und können als SVG gespeichert werden.
 - **Arbeitstafel:** Wird mit Eintreffen, Nachforderungen, Benachrichtigungen und der Führungsorganisation fortgeschrieben.
 
 ## Anmeldung
