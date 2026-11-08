@@ -512,7 +512,7 @@ function gebaeudeMassstab() {
   Object.values(stationen).forEach(st => st.g.scale.setScalar(st.g.userData.basis * f));
 }
 // Kein Rendern, solange eine Vollbildansicht die Karte verdeckt oder die Anmeldung offen ist
-const verdeckt = () => document.hidden || document.body.classList.contains("gesperrt") || !!document.querySelector(".overlay:not([hidden])");
+const verdeckt = () => document.hidden || document.body.classList.contains("gesperrt") || !!document.querySelector(".overlay:not([hidden]), #stage.lage-an, #stage.stadt-an");
 function loop() {
   if (verdeckt()) { clock.getDelta(); requestAnimationFrame(loop); return; }
   const dt = Math.min(0.05, clock.getDelta()), t = clock.elapsedTime;

@@ -733,6 +733,71 @@ body.gesperrt .app{visibility:hidden}
   .lz-kurz{flex-direction:column;align-items:stretch}.lz-mini{width:100%}
 }
 
+/* Einsatzdepesche (Alarmausdruck) */
+.depesche{background:#fbfaf4;color:#16191c;border-radius:4px;box-shadow:0 4px 16px rgba(0,0,0,.45);padding:14px 16px 10px;font-family:var(--mono);font-size:12.5px;line-height:1.4;margin-bottom:14px;background-image:repeating-linear-gradient(0deg,transparent 0 23px,rgba(0,0,0,.025) 23px 24px)}
+.depesche header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;border-bottom:2px solid #16191c;padding-bottom:7px}
+.depesche header b{display:block;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+.depesche header small{display:block;color:#555;font-size:11px}
+.dep-titel{text-align:right;font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase}
+.dep-alarm{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;padding:6px 0;border-bottom:1px dashed #9a9a9a;font-weight:600}
+.dep-stich{margin:8px 0;background:#16191c;color:#fbfaf4;font-size:19px;font-weight:700;letter-spacing:.05em;padding:6px 10px;text-align:center}
+.dep-tab{width:100%;border-collapse:collapse}
+.dep-tab th{text-align:left;vertical-align:top;width:110px;padding:2px 8px 2px 0;font-weight:600;text-transform:uppercase;font-size:11px;color:#444}
+.dep-tab td{padding:2px 0}
+.dep-h{margin:10px 0 4px;font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:.08em;border-bottom:1px solid #16191c}
+.dep-text{margin:0;white-space:pre-wrap}
+.dep-em{width:100%;border-collapse:collapse}
+.dep-em th{text-align:left;font-size:11px;color:#444;font-weight:600;border-bottom:1px dashed #9a9a9a;padding:2px 6px 2px 0}
+.dep-em td{padding:2px 6px 2px 0;border-bottom:1px dotted #d0d0d0}
+.dep-em td:last-child,.dep-em th:last-child{text-align:right;white-space:nowrap}
+.dep-em tr.dep-c td{font-weight:700}
+.dep-karte{position:relative;border:1px solid #16191c;line-height:0;overflow:hidden;filter:grayscale(.35) contrast(1.05)}
+.dep-karte img{width:100%;height:auto;display:block}
+.dep-ziel{position:absolute;left:50%;top:50%;width:26px;height:26px;margin:-13px 0 0 -13px;border:3px solid #c8102e;border-radius:50%;box-shadow:0 0 0 2px #fff}
+.dep-ziel::before,.dep-ziel::after{content:"";position:absolute;background:#c8102e;left:50%;top:-12px;width:2px;height:44px;margin-left:-1px}
+.dep-ziel::after{transform:rotate(90deg)}
+.dep-nord{position:absolute;right:6px;top:6px;line-height:1;font-weight:700;background:#fbfaf4;border:1px solid #16191c;padding:2px 5px;font-size:11px}
+.dep-mass{position:absolute;left:8px;bottom:6px;width:16.667%;line-height:1;font-size:10px;display:flex;flex-direction:column;gap:2px}
+.dep-mass i{display:block;width:100%;height:5px;border:1.5px solid #16191c;border-top:0;background:rgba(251,250,244,.7)}
+.dep-mass em{font-style:normal;background:#fbfaf4;align-self:flex-start;padding:1px 3px}
+.depesche footer{display:flex;justify-content:space-between;gap:8px;margin-top:8px;padding-top:5px;border-top:1px dashed #9a9a9a;color:#666;font-size:10.5px;flex-wrap:wrap}
+
+/* Taktische Arbeitstafel als Arbeitsfläche der Bühne */
+.lagestage{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;background:#2a3238}
+.lagestage[hidden]{display:none!important}
+.lagestage.voll{position:fixed;z-index:55}
+.ls-kopf{display:flex;align-items:center;gap:8px;padding:8px 12px;padding-right:300px;background:var(--pult);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.ls-kopf b{font-family:var(--display);text-transform:uppercase;letter-spacing:.05em;font-size:15px}
+.ls-kopf span{color:var(--dim);font-size:13px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ls-kopf button{padding:5px 10px;font-size:13px}
+.lagestage.voll .ls-kopf{padding-right:12px}
+.lagestage.voll~.ansicht,.stage:has(.lagestage.voll) .ansicht{display:none}
+.ls-host{flex:1;overflow:auto;padding:12px}
+.stage.lage-an .hud-br,.stage.lage-an .hud-tl,.stage.lage-an .labels{display:none}
+.ansicht{display:flex;padding:3px;gap:3px}
+.ansicht button{background:transparent;border:0;border-radius:4px;padding:5px 10px;font-weight:700;cursor:pointer;color:var(--ink);font-size:13px}
+.ansicht button[aria-pressed="true"]{background:var(--ink);color:var(--night)}
+.ansicht button[hidden]{display:none}
+.tf-sketch{min-height:0}
+.tf-sketch .lzx{width:100%;height:660px;display:flex;flex-direction:column;background:#f4f5f2}
+.tf-fo{padding:0 0 10px}
+.tf-fo .fo{font-size:13px}
+.orga-kurz{margin:4px 0 8px;padding-left:20px;font-size:14px}
+.lzx{display:flex;flex-direction:column;min-height:0;color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;font-size:14px;border-radius:4px;overflow:hidden}
+.lzx-bar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:space-between;padding:6px 8px;background:#1a2329;border-bottom:1px solid var(--line)}
+.lzx-bar .lz-werkzeuge{padding:0;border:0;background:none;gap:4px}
+.lzx-bar .lz-werkzeuge button{padding:5px 10px;font-size:13px}
+.lzx-akt{display:flex;flex-wrap:wrap;gap:4px}
+.lzx-akt button{background:var(--pult2);border:1px solid var(--line);border-radius:6px;padding:5px 10px;color:var(--ink);cursor:pointer;font-size:13px;font-weight:600}
+.lzx-akt button:disabled{opacity:.45;cursor:default}
+.lzx-akt button[aria-pressed="true"]{border-color:var(--amber);color:var(--amber)}
+.lzx-main{flex:1;display:flex;min-height:0}
+.lzx .lz-flaeche{padding:8px;background:#dfe3dc}
+.lzx .lz-buehne{width:auto;aspect-ratio:auto}
+.lzx .lz-seite{width:270px}
+.lzx.panel-zu .lz-seite{display:none}
+.lzx .lz-svg>svg{box-shadow:0 2px 10px rgba(0,0,0,.25)}
+
 </style>
 </head>
 <body>
@@ -796,17 +861,15 @@ body.gesperrt .app{visibility:hidden}
       </div>
       <div class="stadt-q">Karte Musterstadt mit Übersicht der Wachen · IdF NRW, LU B2-211, Anhang I · <button type="button" class="link" data-doc="lernunterlage" data-seite="25">Original-PDF</button></div>
     </div>
-    <button type="button" class="hud hud-tr" id="btnStadt" aria-pressed="false" title="Zwischen 3D-Karte und Originalstadtkarte wechseln">Stadtkarte</button>
+    <div class="lagestage" id="lageStage" hidden><div class="ls-kopf"><b>Taktische Arbeitstafel</b><span id="lsTitel"></span><button type="button" class="ghost" data-doc="tafel">Original-Vorlage (PDF)</button><button type="button" class="ghost" id="lsVoll" aria-pressed="false">Vollbild</button></div><div class="ls-host" id="lsHost"><div class="tafel" id="tafel"></div></div></div>
+    <div class="hud hud-tr ansicht" id="ansicht" role="group" aria-label="Ansicht">
+      <button type="button" data-ansicht="tafel" hidden>Arbeitstafel</button><button type="button" data-ansicht="3d" aria-pressed="true">3D-Karte</button><button type="button" data-ansicht="stadt">Stadtkarte</button>
+    </div>
   </main>
 
   <aside class="rail" id="rail" aria-label="Szenarien und überörtliche Einheiten"></aside>
 
   <section class="drawer" id="drawer" hidden aria-label="Details"></section>
-</div>
-
-<div class="overlay" id="tafelOv" hidden lang="de">
-  <div class="ov-bar"><b>Taktische Arbeitstafel</b><span class="ov-hint">Führungsstufen B + C · wird im Einsatzverlauf fortgeschrieben</span><button type="button" class="go" data-lzopen>Lagekarte ergänzen</button><button type="button" class="ghost" data-doc="tafel">Original-Vorlage (PDF)</button><button type="button" class="ghost" id="tafelClose">Schließen</button></div>
-  <div class="ov-scroll"><div class="tafel" id="tafel"></div></div>
 </div>
 
 <div class="overlay" id="listeOv" hidden lang="de">
@@ -842,13 +905,6 @@ body.gesperrt .app{visibility:hidden}
   <div class="ov-bar"><b>Lagen-Editor</b><span class="ed-titel" id="edTitel"></span><span class="ov-hint" id="edHinweis"></span>
     <button type="button" class="ghost" id="edDel">Löschen</button><button type="button" class="ghost" id="edExport">Exportieren</button><button type="button" class="ghost" id="edTest">Testen</button><button type="button" class="go" id="edSave">Speichern</button><button type="button" class="ghost" id="edClose">Schließen</button></div>
   <div class="ed-main"><nav class="ed-nav" id="edNav" aria-label="Abschnitte"></nav><div class="ed-body" id="edBody"></div></div>
-</div>
-
-<div class="overlay lz-ov" id="lzOv" hidden lang="de">
-  <div class="ov-bar"><b>Lagekarte ergänzen</b><span class="ov-hint" id="lzTitel"></span>
-    <button type="button" class="ghost" id="lzUndo">Rückgängig</button><button type="button" class="ghost" id="lzLeeren">Alle Ergänzungen entfernen</button><button type="button" class="ghost" id="lzSpeichern">Als SVG speichern</button><button type="button" class="go" id="lzClose">Fertig</button></div>
-  <div class="lz-werkzeuge" id="lzWerkzeuge" role="toolbar" aria-label="Werkzeuge"></div>
-  <div class="lz-main"><div class="lz-flaeche" id="lzFlaeche"></div><aside class="lz-seite" id="lzSeite"></aside></div>
 </div>
 
 <script>
@@ -5214,7 +5270,7 @@ function gebaeudeMassstab() {
   Object.values(stationen).forEach(st => st.g.scale.setScalar(st.g.userData.basis * f));
 }
 // Kein Rendern, solange eine Vollbildansicht die Karte verdeckt oder die Anmeldung offen ist
-const verdeckt = () => document.hidden || document.body.classList.contains("gesperrt") || !!document.querySelector(".overlay:not([hidden])");
+const verdeckt = () => document.hidden || document.body.classList.contains("gesperrt") || !!document.querySelector(".overlay:not([hidden]), #stage.lage-an, #stage.stadt-an");
 function loop() {
   if (verdeckt()) { clock.getDelta(); requestAnimationFrame(loop); return; }
   const dt = Math.min(0.05, clock.getDelta()), t = clock.elapsedTime;
@@ -5715,6 +5771,8 @@ function starte(id, zufallsStart) {
   lageFestlegen(G.cItem.arr); G.eingetroffen = true;
   G.log.push({ t: G.t, txt: "Übernahme der Einsatzleitung durch C-Dienst", done: true, prio: false });
   karteSzenarien(); if (has3D) K3.dimmeWachen(true);
+  if (window.Lagezeichnen) window.Lagezeichnen.neu();
+  if (window.Ansicht) window.Ansicht.setze("3d");
   renderRail(); renderBar(); renderAkte();
   if (has3D) { K3.uebersicht(0.7); setTimeout(() => { if (G && G.sz === sz) K3.fokus(sz.x, sz.y, { dist: 42, phi: 0.86, dauer: 2.2 }); }, 750); }
   toast("Alarm: " + sz.stichwort);
@@ -5724,10 +5782,15 @@ function beende() {
   G = null; szAuswahl = null;
   $("#app").dataset.mode = "frei"; $("#app").dataset.breit = ""; $("#akte").hidden = true;
   schliesseDrawer(); karteSzenarien(); ueSync(); if (has3D) { K3.dimmeWachen(false); K3.uebersicht(1.2); }
+  if (window.Ansicht) window.Ansicht.setze("3d");
   renderRail(); renderBar();
 }
 $("#btnEnde").addEventListener("click", beende);
-function geheZu(n) { G.step = n; G.maxStep = Math.max(G.maxStep, n); renderAkte(); $("#akteBody").scrollTop = 0; renderBar(); }
+function geheZu(n) {
+  G.step = n; G.maxStep = Math.max(G.maxStep, n); renderAkte(); $("#akteBody").scrollTop = 0; renderBar();
+  // Ab der Übernahme der Einsatzleitung steht die Lagekarte im Mittelpunkt, die 3D-Karte bleibt umschaltbar
+  if (n >= 1 && !G.lageAuto && window.Ansicht) { G.lageAuto = true; window.Ansicht.setze("tafel"); }
+}
 
 function renderBar() {
   const B = $("#barMid");
@@ -5743,7 +5806,7 @@ function refreshLight() {
   if (!G) return;
   const k = $("#kraefte"); if (k) k.innerHTML = kraefteListe();
   const n = $("#nachfListe"); if (n) n.innerHTML = nachfListe();
-  if (!$("#tafelOv").hidden) renderTafel();
+  if (tafelOffen()) renderTafel();
 }
 function statusText(i) { return i.da ? "vor Ort" : i.initial ? "auf Anfahrt" : "alarmiert"; }
 function kraefteListe() {
@@ -5761,6 +5824,7 @@ function nachfListe() {
 
 /* ───────── Einsatzakte ───────── */
 function renderAkte() {
+  if (G) { const l = orgaGesperrt(); if (G._orgaLock !== l) { G._orgaLock = l; if (tafelOffen()) setTimeout(() => { if (G && tafelOffen()) renderTafel(); }, 0); } }
   const sz = G.sz;
   $("#akteHead").innerHTML = `<div class="eyebrow">${G.zufall ? "Zufallsszenario" : sz.beispiel ? "Beispielszenario" : "Szenario"} · ${esc(sz.zeit)} ${esc(sz.t0)} Uhr</div><h2>${esc(sz.titel)}</h2><div class="meta">${esc(sz.ort.adresse)} · ${esc(sz.stichwort)}</div>`;
   $("#steps").innerHTML = STEPS.map((s, i) => `<button type="button" data-st="${i}" ${i === G.step ? 'aria-current="step"' : ""} class="${i < G.maxStep ? "ok" : ""}" ${i > G.maxStep ? "disabled" : ""}>${i + 1} ${esc(s)}</button>`).join("");
@@ -5768,14 +5832,51 @@ function renderAkte() {
   const cur = $("#steps [aria-current]"); if (cur) cur.scrollIntoView({ block: "nearest", inline: "center" });
   const B = $("#akteBody");
   B.innerHTML = [stepAlarm, stepUebergabe, stepErkundung, stepAusarbeitung, stepKommission, stepPresse, stepAuswertung][G.step]();
-  $("#app").dataset.breit = G.step === 3 && G.cd.start ? "1" : "";
+  $("#app").dataset.breit = "";
   bindAkte();
+}
+/* Einsatzdepesche der Leitstelle für den C-Dienst (Alarmausdruck) */
+function planquadrat(x, y) { return "ABCDEFGHIJKL"[Math.max(0, Math.min(11, Math.floor(x / 100 * 12)))] + " " + (Math.max(0, Math.min(13, Math.floor(y / 100 * 14))) + 1); }
+function depKarte(x, y) {
+  if (!window.KARTE_SVG) return "";
+  const w = 388 * 0.125, h = w * 0.62, cx = 54 + x / 100 * 388, cy = 156 + y / 100 * 462;
+  const kopf = window.KARTE_SVG.match(/^<svg[^>]*>/)[0].replace(/width="[^"]*"/, 'width="620"').replace(/height="[^"]*"/, 'height="384"').replace(/viewBox="[^"]*"/, `viewBox="${(cx - w / 2).toFixed(2)} ${(cy - h / 2).toFixed(2)} ${w.toFixed(2)} ${h.toFixed(2)}"`);
+  const src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(kopf + window.KARTE_SVG.slice(window.KARTE_SVG.indexOf(">") + 1));
+  return `<div class="dep-karte"><img src="${src}" alt="Kartenausschnitt Einsatzort"><span class="dep-ziel"></span><span class="dep-nord">N</span><span class="dep-mass"><i></i><em>500 m</em></span></div>`;
+}
+function depescheHTML(sz) {
+  const d = new Date(sz.datum + "T12:00:00"), dat = d.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" });
+  const nr = sz.datum.replace(/-/g, "").slice(2) + "-" + sz.t0.replace(":", "") + "-" + String((sz.id.length * 37 + sz.titel.length * 11) % 900 + 100);
+  const zeile = (k, v, cls) => `<tr class="${cls || ""}"><th>${k}</th><td>${v}</td></tr>`;
+  const einheiten = G.items.filter(i => i.initial || i.def.art === "c").map(i => {
+    const d0 = i.def, w = WACHEN[d0.wache];
+    const ort = d0.art === "ext" ? "Information" : d0.art === "ue" ? "überörtlich" : w ? w.kurz : "";
+    const t = d0.art === "c" ? sz.cAlarm : 0;
+    return `<tr${d0.art === "c" ? ' class="dep-c"' : ""}><td>${esc(d0.name)}</td><td>${esc(ort)}</td><td>${uhr(t)}</td></tr>`;
+  }).join("");
+  return `<article class="depesche" aria-label="Einsatzdepesche">
+    <header><div><b>Leitstelle Musterstadt</b><small>Feuerwehr und Rettungsdienst</small></div><div class="dep-titel">Einsatzdepesche<small>Nr. ${esc(nr)}</small></div></header>
+    <div class="dep-alarm"><span>Alarmierung C-Dienst</span><span>${esc(sz.zeit)}, ${dat} · ${uhr(sz.cAlarm)} Uhr</span><span>DTG ${dtg(sz.cAlarm)}</span></div>
+    <div class="dep-stich">${esc(sz.stichwort)}</div>
+    <table class="dep-tab">
+      ${zeile("Einsatzort", `<b>${esc(sz.ort.adresse)}</b>`)}
+      ${zeile("Lage", esc(sz.ort.detail))}
+      ${zeile("Wachbezirk", esc(sz.ort.wb))}
+      ${zeile("Planquadrat", esc(planquadrat(sz.x, sz.y)) + " · Karte Musterstadt")}
+      ${zeile("Meldender", esc(sz.meldender))}
+      ${zeile("Eingang", esc(sz.t0) + " Uhr")}
+      ${zeile("Wetter", esc(sz.wetter))}
+    </table>
+    <div class="dep-h">Sachverhalt</div><p class="dep-text">${esc(sz.meldung)}</p>
+    <div class="dep-h">Alarmierte Einsatzmittel</div>
+    <table class="dep-em"><thead><tr><th>Einsatzmittel</th><th>Standort</th><th>Alarm</th></tr></thead><tbody>${einheiten}</tbody></table>
+    <div class="dep-h">Lageplan</div>${depKarte(sz.x, sz.y)}
+    <footer><span>Ausdruck ${uhr(sz.cAlarm)} Uhr</span><span>Rückmeldung über Leitstelle Musterstadt</span><span>Seite 1/1</span></footer>
+  </article>`;
 }
 function stepAlarm() {
   const sz = G.sz;
-  let x = `<div class="funk"><span class="von">Leitstelle Musterstadt · ${dtg(sz.cAlarm)}</span>${esc(sz.meldung)}</div>
-  <dl class="kv block"><dt>Einsatzort</dt><dd>${esc(sz.ort.adresse)}<br><span class="note">${esc(sz.ort.detail)} · ${esc(sz.ort.wb)}</span></dd><dt>Alarmzeit</dt><dd>${esc(sz.zeit)}, ${esc(sz.t0)} Uhr</dd><dt>Stichwort</dt><dd>${esc(sz.stichwort)}</dd><dt>Wetter</dt><dd>${esc(sz.wetter)}</dd></dl>
-  <div class="block"><h4>Alarmierte Kräfte</h4><div id="kraefte">${kraefteListe()}</div></div>`;
+  let x = depescheHTML(sz);
   x += `<div class="actions"><button class="go" type="button" data-go="1">Zur Übergabe</button><button class="alt" type="button" data-fokus>Einsatzstelle zeigen</button></div>`;
   return x;
 }
@@ -5838,10 +5939,9 @@ function stepAusarbeitung() {
     return x;
   }
   x += `<div class="cdbox ${lock ? "ab" : ""}"><span>Ausarbeitungszeit</span><b id="cd">${lock ? "abgegeben" : mmss(G.cd.dauer)}</b>${lock ? `<small>nach ${mmss(G.abgabe.dauer)} Minuten</small>` : `<button class="alt" type="button" id="abgabeBtn">Abgeben</button>`}</div>`;
-  x += `<div class="block lz-kurz"><div class="lz-mini">${svgLage(sz, true)}</div><div class="actions"><button class="alt" type="button" data-lzopen>Lagekarte ergänzen</button></div></div>`;
   sz.ausarbeitung.forEach((a, i) => {
     x += `<section class="block ab-${a.typ}"><h4>${i + 1}. ${esc(a.titel)}</h4><p class="task-q">${esc(a.frage)}</p>`;
-    if (a.typ === "abschnitte") x += orgaHTML(lock);
+    if (a.typ === "abschnitte") x += `<p class="hint">Die Führungsorganisation wird direkt in der Taktischen Arbeitstafel eingetragen.</p><div id="orgaKurz">${orgaKurz()}</div><div class="actions"><button class="go" type="button" data-zurtafel>Zur Arbeitstafel</button></div>`;
     if (a.typ === "text") x += `<textarea id="ta-${a.id}" ${lock ? "readonly" : ""} placeholder="Stichpunkte">${esc(G.ans[a.id] || "")}</textarea>`;
     if (a.typ === "nachforderung") x += nachfHTML(lock);
     x += "</section>";
@@ -5857,6 +5957,11 @@ function abgeben(auto) {
   toast(auto ? "Zeit abgelaufen. Die Ausarbeitung ist gesperrt." : "Ausarbeitung abgegeben");
   if (G.step === 3) renderAkte(); renderBar();
 }
+function orgaKurz() {
+  const z = G.orga.filter(r => r.ea || r.eal);
+  return z.length ? `<ol class="orga-kurz">${z.map(r => `<li><b>${esc(r.ea || "ohne Bezeichnung")}</b>${r.eal ? " · " + esc(r.eal) : ""}${r.rg ? " · " + esc(r.rg) : ""}</li>`).join("")}</ol>` : '<p class="note">Noch keine Einsatzabschnitte eingetragen.</p>';
+}
+const orgaGesperrt = () => !G || !!G.abgabe || !G.cd.start;
 function orgaHTML(lock) {
   const ro = lock ? "readonly" : "";
   const fld = (attr, wert, lbl, cls) => `<label class="${cls || ""}"><span>${lbl}</span><input ${attr} ${ro} value="${esc(wert || "")}" autocomplete="off" aria-label="${lbl}"></label>`;
@@ -6044,7 +6149,7 @@ function bindAkte() {
   const B = $("#akteBody");
   B.querySelectorAll("[data-go]").forEach(b => b.addEventListener("click", () => geheZu(+b.dataset.go)));
   B.querySelectorAll("[data-tafel]").forEach(b => b.addEventListener("click", oeffneTafel));
-  B.querySelectorAll("[data-fokus]").forEach(b => b.addEventListener("click", () => fokus(G.sz.x, G.sz.y, { dist: 26, phi: 0.95 })));
+  B.querySelectorAll("[data-fokus]").forEach(b => b.addEventListener("click", () => { if (window.Ansicht) window.Ansicht.setze("3d"); fokus(G.sz.x, G.sz.y, { dist: 26, phi: 0.95 }); }));
   B.querySelectorAll("textarea[id^=ta-]").forEach(ta => ta.addEventListener("input", () => {
     G.ans[ta.id.slice(3)] = ta.value;
     if (ta.id === "ta-presse") { const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; $("#pwc").textContent = `${w} Wörter, gesprochen etwa ${Math.round(w / 2.2)} Sekunden`; }
@@ -6061,16 +6166,7 @@ function bindAkte() {
     const best = store.get("pms_best", {}), s = summe(); if (best[G.sz.id] == null || s.pr > best[G.sz.id]) { best[G.sz.id] = s.pr; store.set("pms_best", best); }
   }));
   B.querySelectorAll("[data-mx]").forEach(c => c.addEventListener("change", () => { c.checked ? G.mx.add(c.dataset.mx) : G.mx.delete(c.dataset.mx); }));
-  B.querySelectorAll("[data-or]").forEach(s => s.addEventListener("input", () => {
-    G.orga[+s.dataset.or][s.dataset.f] = s.value;
-    if (!$("#tafelOv").hidden) renderTafel();
-  }));
-  B.querySelectorAll("[data-fo]").forEach(s => s.addEventListener("input", () => { G.fo[s.dataset.fo] = s.value; if (!$("#tafelOv").hidden) renderTafel(); }));
-  B.querySelectorAll("[data-uea]").forEach(s => s.addEventListener("input", () => { const [i, j] = s.dataset.uea.split(":").map(Number); G.orga[i].uea[j] = s.value; }));
-  B.querySelectorAll("[data-ueaadd]").forEach(b => b.addEventListener("click", () => { G.orga[+b.dataset.ueaadd].uea.push(""); renderAkte(); }));
-  B.querySelectorAll("[data-ueadel]").forEach(b => b.addEventListener("click", () => { const [i, j] = b.dataset.ueadel.split(":").map(Number); G.orga[i].uea.splice(j, 1); renderAkte(); }));
-  B.querySelectorAll("[data-ordel]").forEach(b => b.addEventListener("click", () => { G.orga.splice(+b.dataset.ordel, 1); renderAkte(); }));
-  const oa = B.querySelector("#orAdd"); if (oa) oa.addEventListener("click", () => { G.orga.push({ ea: "", eal: "", rg: "", frn: "", auftrag: "", uea: [] }); renderAkte(); });
+  B.querySelectorAll("[data-zurtafel]").forEach(b => b.addEventListener("click", () => window.Ansicht && window.Ansicht.setze("tafel")));
   B.querySelectorAll("[data-anf]").forEach(b => b.addEventListener("click", () => { anfordern(b.dataset.anf); renderAkte(); }));
   B.querySelectorAll("[data-lz]").forEach(b => b.addEventListener("click", plusLZ));
   const ps = B.querySelector("#pStart"); if (ps) ps.addEventListener("click", () => { G.presseStart = performance.now(); });
@@ -6167,6 +6263,28 @@ function kraefteSumme() {
   });
   return { f, u, m, g, fz, offen };
 }
+function tafelOrgaDaten() {
+  const brRows = orgaZeilen().filter(r => kanon(r.ea) === "Bereitstellungsraum");
+  const br = [0, 1].map(k => brRows[k] ? { eal: brRows[k].eal, rg: brRows[k].rg } : null);
+  const ea = orgaZeilen().filter(r => kanon(r.ea) !== "Bereitstellungsraum").slice(0, 5); while (ea.length < 5) ea.push(null);
+  return { br, ea };
+}
+function tafelBaum() {
+  const { br, ea } = tafelOrgaDaten();
+  const W = 300, colX = i => 30 + i * 60;
+  let tree = `<svg viewBox="0 0 ${W} 210" font-family="Arial"><line x1="150" y1="40" x2="150" y2="95" stroke="#000" stroke-width="2"/><line x1="30" y1="95" x2="270" y2="95" stroke="#000" stroke-width="1.5"/>`;
+  tree += `<circle cx="40" cy="32" r="18" fill="#fff" stroke="#000" stroke-width="1.5"/><path d="M22 26a18 18 0 0 1 36 0" fill="#000"/><text x="40" y="37" text-anchor="middle" font-size="12" font-weight="700">LtS</text><line x1="58" y1="32" x2="118" y2="32" stroke="#000" stroke-width="1.5" stroke-dasharray="4 2"/>`;
+  tree += `<rect x="118" y="18" width="64" height="26" fill="#fff" stroke="#e3061b" stroke-width="3"/><text x="124" y="35" font-size="13" font-weight="700">E</text><text x="150" y="54" text-anchor="middle" font-size="8">C-Dienst · MUS_90</text>`;
+  [0, 1].forEach(k => { const x = 222 + k * 50; const b = br[k]; tree += `<line x1="182" y1="32" x2="${x - 16}" y2="32" stroke="#000" stroke-width="1.2" stroke-dasharray="4 2"/><circle cx="${x}" cy="32" r="16" fill="#fff" stroke="#000" stroke-width="1.5"/><text x="${x}" y="30" text-anchor="middle" font-size="9">BR-</text><text x="${x}" y="40" text-anchor="middle" font-size="9">${k + 1}</text>${b ? `<text x="${x}" y="60" text-anchor="middle" font-size="7.5">${esc(b.rg || "")}</text>` : ""}`; });
+  for (let k = 0; k < 5; k++) { const x = colX(k), r = ea[k]; tree += `<line x1="${x}" y1="95" x2="${x}" y2="108" stroke="#000" stroke-width="1.5"/><rect x="${x - 26}" y="108" width="52" height="22" fill="#fff" stroke="#000" stroke-width="1.5"/><text x="${x}" y="124" text-anchor="middle" font-size="12">A ${RUFRANG[k]}</text>`;
+    if (r) tree += `<text x="${x}" y="143" text-anchor="middle" font-size="7.2" font-weight="700">${esc(r.ea.split(" ")[0].slice(0, 15))}</text><text x="${x}" y="154" text-anchor="middle" font-size="7">${esc((r.eal || "").slice(0, 16))}</text><text x="${x}" y="165" text-anchor="middle" font-size="7">K: ${esc(r.rg || "")}</text>`; }
+  tree += "</svg>";
+  return tree;
+}
+function tafelAbs() {
+  const { ea } = tafelOrgaDaten();
+  return [0, 1, 2, 3, 4].map(k => { const r = ea[k]; return `<div class="tf-abs"><div class="h"><div class="rom"><span>A ${RUFRANG[k]}</span></div><dl><dt>Befehlsstelle</dt><dd></dd><dt>Leiter/Führer</dt><dd>${esc(r ? r.eal : "")}</dd><dt>Kommunikation</dt><dd>${esc(r ? r.rg : "")}</dd><dt>Auftrag</dt><dd>${esc(r ? r.ea : "")}</dd><dt>Einsatzbeginn</dt><dd>${r && G.orgaZeit != null ? dtg(G.orgaZeit) : ""}</dd></dl></div><div class="k">${r ? "Kräfteübersicht: __/__/__/__" : ""}</div></div>`; }).join("");
+}
 function renderTafel() {
   const sz = G.sz, T = $("#tafel");
   const units = G.items.filter(i => !i.def.ziel);
@@ -6180,40 +6298,43 @@ function renderTafel() {
   }).join("");
   const ks = kraefteSumme();
   const nachf = G.log.filter(l => /^Nachforderung/.test(l.txt));
-  const brRows = orgaZeilen().filter(r => kanon(r.ea) === "Bereitstellungsraum");
-  const br = [0, 1].map(k => brRows[k] ? { eal: brRows[k].eal, rg: brRows[k].rg } : null);
-  const ea = orgaZeilen().filter(r => kanon(r.ea) !== "Bereitstellungsraum").slice(0, 5); while (ea.length < 5) ea.push(null);
   const stellen = [["ORDN", "Ordnungsamt"], ["UWB", "Untere Wasserbehörde"], ["STADTW", "Stadtwerke"], ["ENERG", "Energieversorger"], ["POL", "Polizei"]].concat(MS.extern.filter(e => !["ORDN", "UWB", "STADTW", "ENERG", "POL"].includes(e.id) && G.keys.has(e.id)).map(e => [e.id, e.name])).slice(0, 9);
-  // Organigramm
-  const W = 300, colX = i => 30 + i * 60;
-  let tree = `<svg viewBox="0 0 ${W} 210" font-family="Arial"><line x1="150" y1="40" x2="150" y2="95" stroke="#000" stroke-width="2"/><line x1="30" y1="95" x2="270" y2="95" stroke="#000" stroke-width="1.5"/>`;
-  tree += `<circle cx="40" cy="32" r="18" fill="#fff" stroke="#000" stroke-width="1.5"/><path d="M22 26a18 18 0 0 1 36 0" fill="#000"/><text x="40" y="37" text-anchor="middle" font-size="12" font-weight="700">LtS</text><line x1="58" y1="32" x2="118" y2="32" stroke="#000" stroke-width="1.5" stroke-dasharray="4 2"/>`;
-  tree += `<rect x="118" y="18" width="64" height="26" fill="#fff" stroke="#e3061b" stroke-width="3"/><text x="124" y="35" font-size="13" font-weight="700">E</text><text x="150" y="54" text-anchor="middle" font-size="8">C-Dienst · MUS_90</text>`;
-  [0, 1].forEach(k => { const x = 222 + k * 50; const b = br[k]; tree += `<line x1="182" y1="32" x2="${x - 16}" y2="32" stroke="#000" stroke-width="1.2" stroke-dasharray="4 2"/><circle cx="${x}" cy="32" r="16" fill="#fff" stroke="#000" stroke-width="1.5"/><text x="${x}" y="30" text-anchor="middle" font-size="9">BR-</text><text x="${x}" y="40" text-anchor="middle" font-size="9">${k + 1}</text>${b ? `<text x="${x}" y="60" text-anchor="middle" font-size="7.5">${esc(b.rg || "")}</text>` : ""}`; });
-  for (let k = 0; k < 5; k++) { const x = colX(k), r = ea[k]; tree += `<line x1="${x}" y1="95" x2="${x}" y2="108" stroke="#000" stroke-width="1.5"/><rect x="${x - 26}" y="108" width="52" height="22" fill="#fff" stroke="#000" stroke-width="1.5"/><text x="${x}" y="124" text-anchor="middle" font-size="12">A ${RUFRANG[k]}</text>`;
-    if (r) tree += `<text x="${x}" y="143" text-anchor="middle" font-size="7.2" font-weight="700">${esc(r.ea.split(" ")[0].slice(0, 15))}</text><text x="${x}" y="154" text-anchor="middle" font-size="7">${esc((r.eal || "").slice(0, 16))}</text><text x="${x}" y="165" text-anchor="middle" font-size="7">K: ${esc(r.rg || "")}</text>`; }
-  tree += "</svg>";
   const rm = G.log.slice().reverse().slice(0, 14);
   while (rm.length < 9) rm.push(null);
-  const abs = [0, 1, 2, 3, 4].map(k => { const r = ea[k]; return `<div class="tf-abs"><div class="h"><div class="rom"><span>A ${RUFRANG[k]}</span></div><dl><dt>Befehlsstelle</dt><dd></dd><dt>Leiter/Führer</dt><dd>${esc(r ? r.eal : "")}</dd><dt>Kommunikation</dt><dd>${esc(r ? r.rg : "")}</dd><dt>Auftrag</dt><dd>${esc(r ? r.ea : "")}</dd><dt>Einsatzbeginn</dt><dd>${r && G.orgaZeit != null ? dtg(G.orgaZeit) : ""}</dd></dl></div><div class="k">${r ? "Kräfteübersicht: __/__/__/__" : ""}</div></div>`; }).join("");
   T.innerHTML = `<div class="tf-head"><div class="t"><span>Taktische Arbeitstafel für die Führungsstufen B + C</span><small>nach Vorlage IdF NRW · Planbesprechung Musterstadt · ${TZ_QUELLE}</small></div>
    <div class="tf-fields"><label>Einsatzstichwort:<span>${esc(sz.stichwort)}</span></label><label>Einsatzort:<span>${esc(sz.ort.adresse)}</span></label><label>Meldender:<span>${esc(sz.meldender || "")}</span></label><label>Objektnr.:<span></span></label><label>Datum-Uhrzeitgruppe:<span>${dtg(G.t)}</span></label></div></div>
-   <div class="tf-main"><section class="tf-sec tf-lage"><h5>Lagebild (Ordnung des Raumes / Einsatzkräfte)</h5><div class="tf-ring">${kk}<div class="tf-sketch">${svgLage(sz, true)}</div></div>${units.length > 34 ? `<p style="padding:0 40px 10px;font-size:11px">+ ${units.length - 34} weitere Einsatzmittel</p>` : ""}</section>
+   <div class="tf-main"><section class="tf-sec tf-lage"><h5>Lagebild (Ordnung des Raumes / Einsatzkräfte)</h5><div class="tf-ring">${kk}<div class="tf-sketch" id="tfSketch"></div></div>${units.length > 34 ? `<p style="padding:0 40px 10px;font-size:11px">+ ${units.length - 34} weitere Einsatzmittel</p>` : ""}</section>
    <div class="tf-right">
     <section class="tf-sec tf-own"><h5>Eigene Lage/Nachforderung</h5><div class="row"><div class="zz">${tz("Führungsstellen/EL", { w: 62, h: 62 })}</div>
      <dl><dt>Befehlsstelle:</dt><dd>ELW 1 C-Dienst</dd><dt>Kommunikation:</dt><dd>MUS_90</dd><dt>Auftrag:</dt><dd>Einsatzleitung</dd></dl>
      <dl><dt>Einsatzbeginn:</dt><dd>${dtg(0)}</dd><dt>Kräfteübersicht:</dt><dd>${ks.f}/${ks.u}/${ks.m}/<b>${ks.g}</b>${ks.offen ? " + " + ks.offen : ""}</dd><dt>Fahrzeuge:</dt><dd>${ks.fz}</dd></dl></div>
      <div class="tf-nachf">${nachf.length ? nachf.map(l => `<div><span>${esc(l.txt.replace("Nachforderung: ", ""))}</span><span>${dtg(l.t)}${l.done ? " ✓" : ""}</span></div>`).join("") : '<div><span>Keine Nachforderungen</span></div>'}</div></section>
-    <section class="tf-sec tf-org"><h5>Organisation / Kommunikation</h5><div class="tf-orggrid"><div class="tf-stellen">${stellen.map(s => `<div><span>${esc(s[1])}</span><i>${G.keys.has(s[0]) ? "✓" : ""}</i></div>`).join("")}</div><div class="tf-tree">${tree}</div></div></section>
+    <section class="tf-sec tf-org"><h5>Organisation / Kommunikation</h5><div class="tf-orggrid"><div class="tf-stellen">${stellen.map(s => `<div><span>${esc(s[1])}</span><i>${G.keys.has(s[0]) ? "✓" : ""}</i></div>`).join("")}</div><div class="tf-tree">${tafelBaum()}</div></div></section>
     <section class="tf-sec tf-rm"><h5>Rückmeldung / Benachrichtigungen / Notizen</h5>${rm.map(l => l ? `<div class="r"><span class="c ${l.prio ? "h" : ""}"></span><span class="b">${l.done ? "✓" : ""}</span><span>${esc(l.txt)}</span><span class="d">${dtg(l.t)}</span></div>` : '<div class="r"><span class="c"></span><span class="b"></span><span></span><span class="d"></span></div>').join("")}</section>
    </div></div>
-   <div class="tf-ab">${abs}</div>`;
+   <section class="tf-sec tf-fo"><h5>Führungsorganisation nach FwDV 100${orgaGesperrt() ? (G.abgabe ? " · abgegeben" : " · Eingabe ab Start der Ausarbeitung") : ""}</h5>${orgaHTML(orgaGesperrt())}</section>
+   <div class="tf-ab">${tafelAbs()}</div>`;
+  if (!orgaGesperrt()) bindOrga(T);
+  if (window.Lagezeichnen) window.Lagezeichnen.montiere($("#tfSketch"), { kompakt: true });
 }
-function tafelZoom() { const T = $("#tafel"); const w = $("#tafelOv").clientWidth - 32; T.style.zoom = Math.max(0.55, Math.min(1, w / 1480)).toFixed(3); }
-function oeffneTafel() { if (!G) return; renderTafel(); $("#tafelOv").hidden = false; tafelZoom(); }
+function tafelOffen() { return !!G && !!window.Ansicht && window.Ansicht.modus() === "tafel"; }
+function tafelZoom() { const T = $("#tafel"), h = $("#lsHost"); if (!h.clientWidth) return; T.style.zoom = Math.max(0.3, Math.min(1, (h.clientWidth - 24) / 1480)).toFixed(3); }
+if (window.ResizeObserver) new ResizeObserver(() => { if (tafelOffen()) tafelZoom(); }).observe($("#lsHost"));
+function oeffneTafel() { if (!G || !window.Ansicht) return; window.Ansicht.setze("tafel"); }
+// Eingaben der Führungsorganisation in der Tafel: Werte sofort übernehmen, nur die abhängigen Teile neu zeichnen
+function bindOrga(T) {
+  const teile = () => { const a = T.querySelector(".tf-ab"), t = T.querySelector(".tf-tree"); if (a) a.innerHTML = tafelAbs(); if (t) t.innerHTML = tafelBaum(); const k = $("#orgaKurz"); if (k) k.innerHTML = orgaKurz(); };
+  const neu = () => { const h = $("#lsHost"), st = h.scrollTop; renderTafel(); h.scrollTop = st; refreshLight(); };
+  T.querySelectorAll("[data-or]").forEach(el => el.addEventListener("input", () => { G.orga[+el.dataset.or][el.dataset.f] = el.value; teile(); }));
+  T.querySelectorAll("[data-fo]").forEach(el => el.addEventListener("input", () => { G.fo[el.dataset.fo] = el.value; }));
+  T.querySelectorAll("[data-uea]").forEach(el => el.addEventListener("input", () => { const [i, j] = el.dataset.uea.split(":").map(Number); G.orga[i].uea[j] = el.value; }));
+  T.querySelectorAll("[data-ueaadd]").forEach(b => b.addEventListener("click", () => { G.orga[+b.dataset.ueaadd].uea.push(""); neu(); }));
+  T.querySelectorAll("[data-ueadel]").forEach(b => b.addEventListener("click", () => { const [i, j] = b.dataset.ueadel.split(":").map(Number); G.orga[i].uea.splice(j, 1); neu(); }));
+  T.querySelectorAll("[data-ordel]").forEach(b => b.addEventListener("click", () => { G.orga.splice(+b.dataset.ordel, 1); neu(); }));
+  const oa = T.querySelector("#orAdd"); if (oa) oa.addEventListener("click", () => { G.orga.push({ ea: "", eal: "", rg: "", frn: "", auftrag: "", uea: [] }); neu(); });
+}
 $("#btnTafel").addEventListener("click", oeffneTafel);
-$("#tafelClose").addEventListener("click", () => { $("#tafelOv").hidden = true; });
-document.addEventListener("keydown", e => { if (e.key === "Escape") { if (!$("#tafelOv").hidden) $("#tafelOv").hidden = true; else schliesseDrawer(); } });
+document.addEventListener("keydown", e => { if (e.key === "Escape") { if (window.Ansicht && window.Ansicht.voll()) $("#lsVoll").click(); else schliesseDrawer(); } });
 
 /* ───────── Start ───────── */
 document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#listeOv").hidden) $("#listeOv").hidden = true; });
@@ -6228,8 +6349,8 @@ function stadtMarken() {
 }
 function szAktualisieren() { if (!G) { karteSzenarien(); renderRail(); } if (!$("#listeOv").hidden) renderListe(); }
 const wachenPunkte = () => Object.values(WACHEN).map(w => ({ x: w.x, y: w.y, art: w.art, k: w.art === "ff" ? String(w.nr) : w.kurz, name: w.name }));
-function lageGeaendert() { if (!G) return; if (!$("#tafelOv").hidden) renderTafel(); const b = $("#akteBody"), st = b.scrollTop; renderAkte(); b.scrollTop = st; }
-window.__pms = { tz, lageGeaendert, get G() { return G; }, starte, anfordern, ANF, svgLage, zufall, abgeben, stadtMarken, TYPEN, railGruppen, tzDef, kurz, toast, szAktualisieren, wachenPunkte };
+function lageGeaendert(ausEditor) { if (!G) return; if (tafelOffen() && !ausEditor) renderTafel(); const b = $("#akteBody"), st = b.scrollTop; renderAkte(); b.scrollTop = st; }
+window.__pms = { tz, lageGeaendert, renderTafel: () => { if (G) { renderTafel(); tafelZoom(); } }, tafelZoom, get G() { return G; }, starte, anfordern, ANF, svgLage, zufall, abgeben, stadtMarken, TYPEN, railGruppen, tzDef, kurz, toast, szAktualisieren, wachenPunkte };
 })();
 
 </script>
@@ -6242,7 +6363,7 @@ window.__pms = { tz, lageGeaendert, get G() { return G; }, starte, anfordern, AN
 const $ = s => document.querySelector(s);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const umr = (x, y) => ({ x: (54 + x / 100 * 388 - 40) / 520 * 100, y: (156 + y / 100 * 462 - 92) / 638 * 100 });
-const stage = $("#stage"), ov = $("#stadtOv"), vp = $("#stadtVp"), inn = $("#stadtIn"), img = $("#stadtImg"), marken = $("#stadtMarken"), btn = $("#btnStadt");
+const stage = $("#stage"), ov = $("#stadtOv"), vp = $("#stadtVp"), inn = $("#stadtIn"), img = $("#stadtImg"), marken = $("#stadtMarken");
 let s = 1, tx = 0, ty = 0, s0 = 1, iw = 2527, ih = 3101, timer = 0;
 const zeiger = new Map(); let pinch = null;
 
@@ -6280,19 +6401,18 @@ function zeichneMarken() {
 }
 
 function zeige() {
-  ov.hidden = false; stage.classList.add("stadt-an"); btn.textContent = "3D-Karte"; btn.setAttribute("aria-pressed", "true");
+  ov.hidden = false; stage.classList.add("stadt-an");
   einpassen(); zeichneMarken();
   clearInterval(timer); timer = setInterval(zeichneMarken, 700);
 }
 function verstecke() {
-  ov.hidden = true; stage.classList.remove("stadt-an"); btn.textContent = "Stadtkarte"; btn.setAttribute("aria-pressed", "false");
+  ov.hidden = true; stage.classList.remove("stadt-an");
   clearInterval(timer);
 }
 const offen = () => !ov.hidden;
 
 img.addEventListener("load", () => { iw = img.naturalWidth || iw; ih = img.naturalHeight || ih; inn.style.width = iw + "px"; inn.style.height = ih + "px"; if (offen()) einpassen(); });
 inn.style.width = iw + "px"; inn.style.height = ih + "px";
-btn.addEventListener("click", () => offen() ? verstecke() : zeige());
 $("#stadtPlus").addEventListener("click", () => zoomUm(1.4, vp.clientWidth / 2, vp.clientHeight / 2));
 $("#stadtMinus").addEventListener("click", () => zoomUm(1 / 1.4, vp.clientWidth / 2, vp.clientHeight / 2));
 $("#stadtFit").addEventListener("click", einpassen);
@@ -6329,6 +6449,27 @@ document.addEventListener("keydown", e => {
 });
 
 window.Stadtkarte = { zeige, verstecke, offen, zentriere };
+
+/* Ansicht der Bühne: Taktische Arbeitstafel (ab Übernahme der Einsatzleitung, mit Lagebild und Führungsorganisation), 3D-Karte oder Originalstadtkarte */
+const lageStage = $("#lageStage"), gruppe = $("#ansicht");
+let modus = "3d";
+function setzeAnsicht(m) {
+  const P = window.__pms, G = P && P.G;
+  if (m === "tafel" && !G) m = "3d";
+  modus = m;
+  if (m === "stadt") zeige(); else verstecke();
+  lageStage.hidden = m !== "tafel"; stage.classList.toggle("lage-an", m === "tafel");
+  if (m !== "tafel") { lageStage.classList.remove("voll"); $("#lsVoll").setAttribute("aria-pressed", "false"); }
+  if (m === "tafel") { $("#lsTitel").textContent = G.sz.titel; P.renderTafel(); }
+  syncAnsicht();
+}
+function syncAnsicht() {
+  const G = window.__pms && window.__pms.G;
+  gruppe.querySelectorAll("[data-ansicht]").forEach(b => { b.setAttribute("aria-pressed", b.dataset.ansicht === modus ? "true" : "false"); if (b.dataset.ansicht === "tafel") b.hidden = !G; });
+}
+gruppe.addEventListener("click", e => { const b = e.target.closest("[data-ansicht]"); if (b) setzeAnsicht(b.dataset.ansicht); });
+$("#lsVoll").addEventListener("click", () => { const an = !lageStage.classList.contains("voll"); lageStage.classList.toggle("voll", an); $("#lsVoll").setAttribute("aria-pressed", an ? "true" : "false"); $("#lsVoll").textContent = an ? "Vollbild beenden" : "Vollbild"; window.__pms.tafelZoom(); });
+window.Ansicht = { setze: setzeAnsicht, modus: () => modus, sync: syncAnsicht, voll: () => lageStage.classList.contains("voll") };
 })();
 
 </script>
@@ -6891,10 +7032,16 @@ const GRUPPEN = [
   ["Personen", ["Personen"]], ["Fahrzeuge allgemein", ["Fahrzeuge"]], ["Sonstiges", ["Sonstiges"]]
 ];
 const NAMEN = { pfad: "Freihandlinie", linie: "Linie", pfeil: "Pfeil", kreis: "Kreis", text: "Text", zeichen: "Zeichen" };
-const ov = $("#lzOv"), flaeche = $("#lzFlaeche"), seite = $("#lzSeite");
-flaeche.innerHTML = `<div class="lz-buehne" id="lzBuehne"><div class="lz-svg" id="lzSvg"></div>
+// Der Editor wird einmal aufgebaut und je nach Ansicht in die Bühne (Lagekarte) oder in die Arbeitstafel eingehängt
+const park = document.getElementById("lzPark") || document.body.appendChild(Object.assign(document.createElement("div"), { id: "lzPark", hidden: true }));
+const ed = document.createElement("div"); ed.className = "lzx"; ed.id = "lzEditor";
+ed.innerHTML = `<div class="lzx-bar"><div class="lz-werkzeuge" id="lzWerkzeuge" role="toolbar" aria-label="Werkzeuge"></div>
+  <div class="lzx-akt"><button type="button" id="lzUndo" title="Rückgängig (Strg+Z)">↶ Rückgängig</button><button type="button" id="lzLeeren">Alle Ergänzungen entfernen</button><button type="button" id="lzSpeichern" title="Lagekarte als SVG speichern">SVG speichern</button><button type="button" id="lzPanel" aria-pressed="true">Zeichen &amp; Farben</button></div></div>
+  <div class="lzx-main"><div class="lz-flaeche" id="lzFlaeche"><div class="lz-buehne" id="lzBuehne"><div class="lz-svg" id="lzSvg"></div>
   <div class="lz-pop" id="lzPop" hidden><button type="button" data-pop="del" class="rot">Löschen</button><button type="button" data-pop="dup">Duplizieren</button><button type="button" data-pop="txt">Beschriften</button></div>
-  <input class="lz-inline" id="lzInline" hidden maxlength="60" placeholder="Text eingeben, Enter"></div>`;
+  <input class="lz-inline" id="lzInline" hidden maxlength="60" placeholder="Text eingeben, Enter"></div></div><aside class="lz-seite" id="lzSeite"></aside></div>`;
+park.appendChild(ed);
+const flaeche = ed.querySelector("#lzFlaeche"), seite = ed.querySelector("#lzSeite");
 const buehne = $("#lzBuehne"), svgBox = $("#lzSvg"), pop = $("#lzPop"), inline = $("#lzInline");
 let werkzeug = "wahl", farbe = FARBEN[0][0], breite = BREITEN[1][0], zeichen = "Feuerwehr_Einheiten/Löschzug", gruppe = "Feuerwehr", suche = "", groesse = 40;
 let wahl = -1, aktiv = null, zieh = null, radiert = false, start = null, verlauf = [], inlineZiel = null;
@@ -6976,7 +7123,8 @@ function zeichneMarke() {
   pop.style.left = Math.max(4, Math.min(rb.width - pop.offsetWidth - 4, px - pop.offsetWidth / 2)) + "px";
   pop.style.top = (py - pop.offsetHeight - 4 < 0 ? r.top - rb.top + (b[3] + 10) * sy : py - pop.offsetHeight - 4) + "px";
 }
-function alles() { zeichneEigene(); zeichneVorschau(); renderLeiste(); renderSeite(); }
+let meldT = 0, stand = "";
+function alles() { zeichneEigene(); zeichneVorschau(); renderLeiste(); renderSeite(); const n = JSON.stringify(items()); if (n !== stand) { stand = n; clearTimeout(meldT); meldT = setTimeout(() => P.lageGeaendert(true), 400); } }
 
 /* ───────── Seitenleiste ───────── */
 function zeichenListe() {
@@ -7020,7 +7168,7 @@ function renderLeiste() {
   flaeche.dataset.werkzeug = werkzeug;
 }
 $("#lzWerkzeuge").addEventListener("click", e => { const b = e.target.closest("[data-lzt]"); if (b) setzeWerkzeug(b.dataset.lzt); });
-function setzeWerkzeug(w) { werkzeug = w; if (w !== "wahl" && w !== "zeichen") wahl = -1; inlineAus(); zeichneEigene(); renderLeiste(); renderSeite(); }
+function setzeWerkzeug(w) { werkzeug = w; if (w === "zeichen") panel(true); if (w !== "wahl" && w !== "zeichen") wahl = -1; inlineAus(); zeichneEigene(); renderLeiste(); renderSeite(); }
 
 /* ───────── Bearbeiten ───────── */
 function sichern() { verlauf.push(JSON.stringify(items())); if (verlauf.length > 80) verlauf.shift(); $("#lzUndo").disabled = false; }
@@ -7135,27 +7283,39 @@ $("#lzSpeichern").addEventListener("click", async () => {
   if (dl) { try { await dl.save({ filename: name, data: blob }); return; } catch (e) { if (e && e.code !== "unavailable") { P.toast("Speichern nicht möglich"); return; } } }
   const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
 });
-function schliesse() { inlineFertig(); ov.hidden = true; aktiv = null; zieh = null; start = null; P.lageGeaendert(); }
-$("#lzClose").addEventListener("click", schliesse);
+const sichtbar = () => ed.isConnected && ed.parentNode !== park && ed.offsetParent !== null;
 document.addEventListener("keydown", e => {
-  if (ov.hidden) return;
+  if (!sichtbar()) return;
   const tipp = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
-  if (e.key === "Escape") { e.stopImmediatePropagation(); if (wahl >= 0) { wahl = -1; alles(); } else schliesse(); return; }
+  if (e.key === "Escape" && wahl >= 0 && !tipp) { e.stopImmediatePropagation(); wahl = -1; alles(); return; }
   if (tipp) return;
   if ((e.key === "Delete" || e.key === "Backspace") && wahl >= 0) { e.preventDefault(); loesche(wahl); }
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") { e.preventDefault(); $("#lzUndo").click(); }
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "d" && wahl >= 0) { e.preventDefault(); dupliziere(wahl); }
 }, true);
-window.addEventListener("resize", () => { if (!ov.hidden) zeichneMarke(); });
-document.addEventListener("click", e => { if (e.target.closest("[data-lzopen]")) oeffne(); });
-
-function oeffne() {
-  if (!P.G) return;
-  wahl = -1; aktiv = null; zieh = null; start = null; inlineAus(); ov.hidden = false;
-  $("#lzTitel").textContent = P.G.sz.titel;
-  grundkarte(); alles();
+// Bühne im Seitenverhältnis 16:10 in den verfügbaren Platz einpassen
+function einpassen() {
+  const b = $("#lzBuehne"), w = flaeche.clientWidth - 16, h = flaeche.clientHeight - 16;
+  if (w <= 0 || h <= 0) return;
+  const bw = Math.min(w, h * 1.6); b.style.width = Math.floor(bw) + "px"; b.style.height = Math.floor(bw / 1.6) + "px";
+  zeichneMarke();
 }
-window.Lagezeichnen = { svg, oeffne };
+if (window.ResizeObserver) new ResizeObserver(einpassen).observe(flaeche);
+window.addEventListener("resize", () => { if (sichtbar()) einpassen(); });
+function panel(an) { ed.classList.toggle("panel-zu", !an); $("#lzPanel").setAttribute("aria-pressed", an ? "true" : "false"); setTimeout(einpassen, 0); }
+$("#lzPanel").addEventListener("click", () => panel(ed.classList.contains("panel-zu")));
+document.addEventListener("click", e => { if (e.target.closest("[data-lzopen]") && window.Ansicht) window.Ansicht.setze("tafel"); });
+
+function montiere(host, o) {
+  if (!P.G || !host) return;
+  inlineFertig(); wahl = -1; aktiv = null; zieh = null; start = null;
+  host.appendChild(ed); ed.classList.toggle("kompakt", !!(o && o.kompakt));
+  panel(!(o && o.kompakt) && host.clientWidth > 900);
+  grundkarte(); stand = JSON.stringify(items()); alles(); einpassen();
+}
+function parke() { inlineFertig(); start = null; aktiv = null; zieh = null; if (ed.parentNode !== park) park.appendChild(ed); }
+function neu() { verlauf = []; wahl = -1; if (ed.parentNode !== park && P.G) { grundkarte(); alles(); } }
+window.Lagezeichnen = { svg, montiere, parke, neu, host: () => ed.parentNode === park ? null : ed.parentNode };
 })();
 
 </script>

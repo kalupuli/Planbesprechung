@@ -33,10 +33,16 @@ const GRUPPEN = [
   ["Personen", ["Personen"]], ["Fahrzeuge allgemein", ["Fahrzeuge"]], ["Sonstiges", ["Sonstiges"]]
 ];
 const NAMEN = { pfad: "Freihandlinie", linie: "Linie", pfeil: "Pfeil", kreis: "Kreis", text: "Text", zeichen: "Zeichen" };
-const ov = $("#lzOv"), flaeche = $("#lzFlaeche"), seite = $("#lzSeite");
-flaeche.innerHTML = `<div class="lz-buehne" id="lzBuehne"><div class="lz-svg" id="lzSvg"></div>
+// Der Editor wird einmal aufgebaut und je nach Ansicht in die Bühne (Lagekarte) oder in die Arbeitstafel eingehängt
+const park = document.getElementById("lzPark") || document.body.appendChild(Object.assign(document.createElement("div"), { id: "lzPark", hidden: true }));
+const ed = document.createElement("div"); ed.className = "lzx"; ed.id = "lzEditor";
+ed.innerHTML = `<div class="lzx-bar"><div class="lz-werkzeuge" id="lzWerkzeuge" role="toolbar" aria-label="Werkzeuge"></div>
+  <div class="lzx-akt"><button type="button" id="lzUndo" title="Rückgängig (Strg+Z)">↶ Rückgängig</button><button type="button" id="lzLeeren">Alle Ergänzungen entfernen</button><button type="button" id="lzSpeichern" title="Lagekarte als SVG speichern">SVG speichern</button><button type="button" id="lzPanel" aria-pressed="true">Zeichen &amp; Farben</button></div></div>
+  <div class="lzx-main"><div class="lz-flaeche" id="lzFlaeche"><div class="lz-buehne" id="lzBuehne"><div class="lz-svg" id="lzSvg"></div>
   <div class="lz-pop" id="lzPop" hidden><button type="button" data-pop="del" class="rot">Löschen</button><button type="button" data-pop="dup">Duplizieren</button><button type="button" data-pop="txt">Beschriften</button></div>
-  <input class="lz-inline" id="lzInline" hidden maxlength="60" placeholder="Text eingeben, Enter"></div>`;
+  <input class="lz-inline" id="lzInline" hidden maxlength="60" placeholder="Text eingeben, Enter"></div></div><aside class="lz-seite" id="lzSeite"></aside></div>`;
+park.appendChild(ed);
+const flaeche = ed.querySelector("#lzFlaeche"), seite = ed.querySelector("#lzSeite");
 const buehne = $("#lzBuehne"), svgBox = $("#lzSvg"), pop = $("#lzPop"), inline = $("#lzInline");
 let werkzeug = "wahl", farbe = FARBEN[0][0], breite = BREITEN[1][0], zeichen = "Feuerwehr_Einheiten/Löschzug", gruppe = "Feuerwehr", suche = "", groesse = 40;
 let wahl = -1, aktiv = null, zieh = null, radiert = false, start = null, verlauf = [], inlineZiel = null;
@@ -118,7 +124,8 @@ function zeichneMarke() {
   pop.style.left = Math.max(4, Math.min(rb.width - pop.offsetWidth - 4, px - pop.offsetWidth / 2)) + "px";
   pop.style.top = (py - pop.offsetHeight - 4 < 0 ? r.top - rb.top + (b[3] + 10) * sy : py - pop.offsetHeight - 4) + "px";
 }
-function alles() { zeichneEigene(); zeichneVorschau(); renderLeiste(); renderSeite(); }
+let meldT = 0, stand = "";
+function alles() { zeichneEigene(); zeichneVorschau(); renderLeiste(); renderSeite(); const n = JSON.stringify(items()); if (n !== stand) { stand = n; clearTimeout(meldT); meldT = setTimeout(() => P.lageGeaendert(true), 400); } }
 
 /* ───────── Seitenleiste ───────── */
 function zeichenListe() {
@@ -162,7 +169,7 @@ function renderLeiste() {
   flaeche.dataset.werkzeug = werkzeug;
 }
 $("#lzWerkzeuge").addEventListener("click", e => { const b = e.target.closest("[data-lzt]"); if (b) setzeWerkzeug(b.dataset.lzt); });
-function setzeWerkzeug(w) { werkzeug = w; if (w !== "wahl" && w !== "zeichen") wahl = -1; inlineAus(); zeichneEigene(); renderLeiste(); renderSeite(); }
+function setzeWerkzeug(w) { werkzeug = w; if (w === "zeichen") panel(true); if (w !== "wahl" && w !== "zeichen") wahl = -1; inlineAus(); zeichneEigene(); renderLeiste(); renderSeite(); }
 
 /* ───────── Bearbeiten ───────── */
 function sichern() { verlauf.push(JSON.stringify(items())); if (verlauf.length > 80) verlauf.shift(); $("#lzUndo").disabled = false; }
@@ -277,25 +284,37 @@ $("#lzSpeichern").addEventListener("click", async () => {
   if (dl) { try { await dl.save({ filename: name, data: blob }); return; } catch (e) { if (e && e.code !== "unavailable") { P.toast("Speichern nicht möglich"); return; } } }
   const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
 });
-function schliesse() { inlineFertig(); ov.hidden = true; aktiv = null; zieh = null; start = null; P.lageGeaendert(); }
-$("#lzClose").addEventListener("click", schliesse);
+const sichtbar = () => ed.isConnected && ed.parentNode !== park && ed.offsetParent !== null;
 document.addEventListener("keydown", e => {
-  if (ov.hidden) return;
+  if (!sichtbar()) return;
   const tipp = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
-  if (e.key === "Escape") { e.stopImmediatePropagation(); if (wahl >= 0) { wahl = -1; alles(); } else schliesse(); return; }
+  if (e.key === "Escape" && wahl >= 0 && !tipp) { e.stopImmediatePropagation(); wahl = -1; alles(); return; }
   if (tipp) return;
   if ((e.key === "Delete" || e.key === "Backspace") && wahl >= 0) { e.preventDefault(); loesche(wahl); }
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") { e.preventDefault(); $("#lzUndo").click(); }
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "d" && wahl >= 0) { e.preventDefault(); dupliziere(wahl); }
 }, true);
-window.addEventListener("resize", () => { if (!ov.hidden) zeichneMarke(); });
-document.addEventListener("click", e => { if (e.target.closest("[data-lzopen]")) oeffne(); });
-
-function oeffne() {
-  if (!P.G) return;
-  wahl = -1; aktiv = null; zieh = null; start = null; inlineAus(); ov.hidden = false;
-  $("#lzTitel").textContent = P.G.sz.titel;
-  grundkarte(); alles();
+// Bühne im Seitenverhältnis 16:10 in den verfügbaren Platz einpassen
+function einpassen() {
+  const b = $("#lzBuehne"), w = flaeche.clientWidth - 16, h = flaeche.clientHeight - 16;
+  if (w <= 0 || h <= 0) return;
+  const bw = Math.min(w, h * 1.6); b.style.width = Math.floor(bw) + "px"; b.style.height = Math.floor(bw / 1.6) + "px";
+  zeichneMarke();
 }
-window.Lagezeichnen = { svg, oeffne };
+if (window.ResizeObserver) new ResizeObserver(einpassen).observe(flaeche);
+window.addEventListener("resize", () => { if (sichtbar()) einpassen(); });
+function panel(an) { ed.classList.toggle("panel-zu", !an); $("#lzPanel").setAttribute("aria-pressed", an ? "true" : "false"); setTimeout(einpassen, 0); }
+$("#lzPanel").addEventListener("click", () => panel(ed.classList.contains("panel-zu")));
+document.addEventListener("click", e => { if (e.target.closest("[data-lzopen]") && window.Ansicht) window.Ansicht.setze("tafel"); });
+
+function montiere(host, o) {
+  if (!P.G || !host) return;
+  inlineFertig(); wahl = -1; aktiv = null; zieh = null; start = null;
+  host.appendChild(ed); ed.classList.toggle("kompakt", !!(o && o.kompakt));
+  panel(!(o && o.kompakt) && host.clientWidth > 900);
+  grundkarte(); stand = JSON.stringify(items()); alles(); einpassen();
+}
+function parke() { inlineFertig(); start = null; aktiv = null; zieh = null; if (ed.parentNode !== park) park.appendChild(ed); }
+function neu() { verlauf = []; wahl = -1; if (ed.parentNode !== park && P.G) { grundkarte(); alles(); } }
+window.Lagezeichnen = { svg, montiere, parke, neu, host: () => ed.parentNode === park ? null : ed.parentNode };
 })();

@@ -481,6 +481,8 @@ function starte(id, zufallsStart) {
   lageFestlegen(G.cItem.arr); G.eingetroffen = true;
   G.log.push({ t: G.t, txt: "Übernahme der Einsatzleitung durch C-Dienst", done: true, prio: false });
   karteSzenarien(); if (has3D) K3.dimmeWachen(true);
+  if (window.Lagezeichnen) window.Lagezeichnen.neu();
+  if (window.Ansicht) window.Ansicht.setze("3d");
   renderRail(); renderBar(); renderAkte();
   if (has3D) { K3.uebersicht(0.7); setTimeout(() => { if (G && G.sz === sz) K3.fokus(sz.x, sz.y, { dist: 42, phi: 0.86, dauer: 2.2 }); }, 750); }
   toast("Alarm: " + sz.stichwort);
@@ -490,10 +492,15 @@ function beende() {
   G = null; szAuswahl = null;
   $("#app").dataset.mode = "frei"; $("#app").dataset.breit = ""; $("#akte").hidden = true;
   schliesseDrawer(); karteSzenarien(); ueSync(); if (has3D) { K3.dimmeWachen(false); K3.uebersicht(1.2); }
+  if (window.Ansicht) window.Ansicht.setze("3d");
   renderRail(); renderBar();
 }
 $("#btnEnde").addEventListener("click", beende);
-function geheZu(n) { G.step = n; G.maxStep = Math.max(G.maxStep, n); renderAkte(); $("#akteBody").scrollTop = 0; renderBar(); }
+function geheZu(n) {
+  G.step = n; G.maxStep = Math.max(G.maxStep, n); renderAkte(); $("#akteBody").scrollTop = 0; renderBar();
+  // Ab der Übernahme der Einsatzleitung steht die Lagekarte im Mittelpunkt, die 3D-Karte bleibt umschaltbar
+  if (n >= 1 && !G.lageAuto && window.Ansicht) { G.lageAuto = true; window.Ansicht.setze("tafel"); }
+}
 
 function renderBar() {
   const B = $("#barMid");
@@ -509,7 +516,7 @@ function refreshLight() {
   if (!G) return;
   const k = $("#kraefte"); if (k) k.innerHTML = kraefteListe();
   const n = $("#nachfListe"); if (n) n.innerHTML = nachfListe();
-  if (!$("#tafelOv").hidden) renderTafel();
+  if (tafelOffen()) renderTafel();
 }
 function statusText(i) { return i.da ? "vor Ort" : i.initial ? "auf Anfahrt" : "alarmiert"; }
 function kraefteListe() {
@@ -527,6 +534,7 @@ function nachfListe() {
 
 /* ───────── Einsatzakte ───────── */
 function renderAkte() {
+  if (G) { const l = orgaGesperrt(); if (G._orgaLock !== l) { G._orgaLock = l; if (tafelOffen()) setTimeout(() => { if (G && tafelOffen()) renderTafel(); }, 0); } }
   const sz = G.sz;
   $("#akteHead").innerHTML = `<div class="eyebrow">${G.zufall ? "Zufallsszenario" : sz.beispiel ? "Beispielszenario" : "Szenario"} · ${esc(sz.zeit)} ${esc(sz.t0)} Uhr</div><h2>${esc(sz.titel)}</h2><div class="meta">${esc(sz.ort.adresse)} · ${esc(sz.stichwort)}</div>`;
   $("#steps").innerHTML = STEPS.map((s, i) => `<button type="button" data-st="${i}" ${i === G.step ? 'aria-current="step"' : ""} class="${i < G.maxStep ? "ok" : ""}" ${i > G.maxStep ? "disabled" : ""}>${i + 1} ${esc(s)}</button>`).join("");
@@ -534,14 +542,51 @@ function renderAkte() {
   const cur = $("#steps [aria-current]"); if (cur) cur.scrollIntoView({ block: "nearest", inline: "center" });
   const B = $("#akteBody");
   B.innerHTML = [stepAlarm, stepUebergabe, stepErkundung, stepAusarbeitung, stepKommission, stepPresse, stepAuswertung][G.step]();
-  $("#app").dataset.breit = G.step === 3 && G.cd.start ? "1" : "";
+  $("#app").dataset.breit = "";
   bindAkte();
+}
+/* Einsatzdepesche der Leitstelle für den C-Dienst (Alarmausdruck) */
+function planquadrat(x, y) { return "ABCDEFGHIJKL"[Math.max(0, Math.min(11, Math.floor(x / 100 * 12)))] + " " + (Math.max(0, Math.min(13, Math.floor(y / 100 * 14))) + 1); }
+function depKarte(x, y) {
+  if (!window.KARTE_SVG) return "";
+  const w = 388 * 0.125, h = w * 0.62, cx = 54 + x / 100 * 388, cy = 156 + y / 100 * 462;
+  const kopf = window.KARTE_SVG.match(/^<svg[^>]*>/)[0].replace(/width="[^"]*"/, 'width="620"').replace(/height="[^"]*"/, 'height="384"').replace(/viewBox="[^"]*"/, `viewBox="${(cx - w / 2).toFixed(2)} ${(cy - h / 2).toFixed(2)} ${w.toFixed(2)} ${h.toFixed(2)}"`);
+  const src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(kopf + window.KARTE_SVG.slice(window.KARTE_SVG.indexOf(">") + 1));
+  return `<div class="dep-karte"><img src="${src}" alt="Kartenausschnitt Einsatzort"><span class="dep-ziel"></span><span class="dep-nord">N</span><span class="dep-mass"><i></i><em>500 m</em></span></div>`;
+}
+function depescheHTML(sz) {
+  const d = new Date(sz.datum + "T12:00:00"), dat = d.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" });
+  const nr = sz.datum.replace(/-/g, "").slice(2) + "-" + sz.t0.replace(":", "") + "-" + String((sz.id.length * 37 + sz.titel.length * 11) % 900 + 100);
+  const zeile = (k, v, cls) => `<tr class="${cls || ""}"><th>${k}</th><td>${v}</td></tr>`;
+  const einheiten = G.items.filter(i => i.initial || i.def.art === "c").map(i => {
+    const d0 = i.def, w = WACHEN[d0.wache];
+    const ort = d0.art === "ext" ? "Information" : d0.art === "ue" ? "überörtlich" : w ? w.kurz : "";
+    const t = d0.art === "c" ? sz.cAlarm : 0;
+    return `<tr${d0.art === "c" ? ' class="dep-c"' : ""}><td>${esc(d0.name)}</td><td>${esc(ort)}</td><td>${uhr(t)}</td></tr>`;
+  }).join("");
+  return `<article class="depesche" aria-label="Einsatzdepesche">
+    <header><div><b>Leitstelle Musterstadt</b><small>Feuerwehr und Rettungsdienst</small></div><div class="dep-titel">Einsatzdepesche<small>Nr. ${esc(nr)}</small></div></header>
+    <div class="dep-alarm"><span>Alarmierung C-Dienst</span><span>${esc(sz.zeit)}, ${dat} · ${uhr(sz.cAlarm)} Uhr</span><span>DTG ${dtg(sz.cAlarm)}</span></div>
+    <div class="dep-stich">${esc(sz.stichwort)}</div>
+    <table class="dep-tab">
+      ${zeile("Einsatzort", `<b>${esc(sz.ort.adresse)}</b>`)}
+      ${zeile("Lage", esc(sz.ort.detail))}
+      ${zeile("Wachbezirk", esc(sz.ort.wb))}
+      ${zeile("Planquadrat", esc(planquadrat(sz.x, sz.y)) + " · Karte Musterstadt")}
+      ${zeile("Meldender", esc(sz.meldender))}
+      ${zeile("Eingang", esc(sz.t0) + " Uhr")}
+      ${zeile("Wetter", esc(sz.wetter))}
+    </table>
+    <div class="dep-h">Sachverhalt</div><p class="dep-text">${esc(sz.meldung)}</p>
+    <div class="dep-h">Alarmierte Einsatzmittel</div>
+    <table class="dep-em"><thead><tr><th>Einsatzmittel</th><th>Standort</th><th>Alarm</th></tr></thead><tbody>${einheiten}</tbody></table>
+    <div class="dep-h">Lageplan</div>${depKarte(sz.x, sz.y)}
+    <footer><span>Ausdruck ${uhr(sz.cAlarm)} Uhr</span><span>Rückmeldung über Leitstelle Musterstadt</span><span>Seite 1/1</span></footer>
+  </article>`;
 }
 function stepAlarm() {
   const sz = G.sz;
-  let x = `<div class="funk"><span class="von">Leitstelle Musterstadt · ${dtg(sz.cAlarm)}</span>${esc(sz.meldung)}</div>
-  <dl class="kv block"><dt>Einsatzort</dt><dd>${esc(sz.ort.adresse)}<br><span class="note">${esc(sz.ort.detail)} · ${esc(sz.ort.wb)}</span></dd><dt>Alarmzeit</dt><dd>${esc(sz.zeit)}, ${esc(sz.t0)} Uhr</dd><dt>Stichwort</dt><dd>${esc(sz.stichwort)}</dd><dt>Wetter</dt><dd>${esc(sz.wetter)}</dd></dl>
-  <div class="block"><h4>Alarmierte Kräfte</h4><div id="kraefte">${kraefteListe()}</div></div>`;
+  let x = depescheHTML(sz);
   x += `<div class="actions"><button class="go" type="button" data-go="1">Zur Übergabe</button><button class="alt" type="button" data-fokus>Einsatzstelle zeigen</button></div>`;
   return x;
 }
@@ -604,10 +649,9 @@ function stepAusarbeitung() {
     return x;
   }
   x += `<div class="cdbox ${lock ? "ab" : ""}"><span>Ausarbeitungszeit</span><b id="cd">${lock ? "abgegeben" : mmss(G.cd.dauer)}</b>${lock ? `<small>nach ${mmss(G.abgabe.dauer)} Minuten</small>` : `<button class="alt" type="button" id="abgabeBtn">Abgeben</button>`}</div>`;
-  x += `<div class="block lz-kurz"><div class="lz-mini">${svgLage(sz, true)}</div><div class="actions"><button class="alt" type="button" data-lzopen>Lagekarte ergänzen</button></div></div>`;
   sz.ausarbeitung.forEach((a, i) => {
     x += `<section class="block ab-${a.typ}"><h4>${i + 1}. ${esc(a.titel)}</h4><p class="task-q">${esc(a.frage)}</p>`;
-    if (a.typ === "abschnitte") x += orgaHTML(lock);
+    if (a.typ === "abschnitte") x += `<p class="hint">Die Führungsorganisation wird direkt in der Taktischen Arbeitstafel eingetragen.</p><div id="orgaKurz">${orgaKurz()}</div><div class="actions"><button class="go" type="button" data-zurtafel>Zur Arbeitstafel</button></div>`;
     if (a.typ === "text") x += `<textarea id="ta-${a.id}" ${lock ? "readonly" : ""} placeholder="Stichpunkte">${esc(G.ans[a.id] || "")}</textarea>`;
     if (a.typ === "nachforderung") x += nachfHTML(lock);
     x += "</section>";
@@ -623,6 +667,11 @@ function abgeben(auto) {
   toast(auto ? "Zeit abgelaufen. Die Ausarbeitung ist gesperrt." : "Ausarbeitung abgegeben");
   if (G.step === 3) renderAkte(); renderBar();
 }
+function orgaKurz() {
+  const z = G.orga.filter(r => r.ea || r.eal);
+  return z.length ? `<ol class="orga-kurz">${z.map(r => `<li><b>${esc(r.ea || "ohne Bezeichnung")}</b>${r.eal ? " · " + esc(r.eal) : ""}${r.rg ? " · " + esc(r.rg) : ""}</li>`).join("")}</ol>` : '<p class="note">Noch keine Einsatzabschnitte eingetragen.</p>';
+}
+const orgaGesperrt = () => !G || !!G.abgabe || !G.cd.start;
 function orgaHTML(lock) {
   const ro = lock ? "readonly" : "";
   const fld = (attr, wert, lbl, cls) => `<label class="${cls || ""}"><span>${lbl}</span><input ${attr} ${ro} value="${esc(wert || "")}" autocomplete="off" aria-label="${lbl}"></label>`;
@@ -810,7 +859,7 @@ function bindAkte() {
   const B = $("#akteBody");
   B.querySelectorAll("[data-go]").forEach(b => b.addEventListener("click", () => geheZu(+b.dataset.go)));
   B.querySelectorAll("[data-tafel]").forEach(b => b.addEventListener("click", oeffneTafel));
-  B.querySelectorAll("[data-fokus]").forEach(b => b.addEventListener("click", () => fokus(G.sz.x, G.sz.y, { dist: 26, phi: 0.95 })));
+  B.querySelectorAll("[data-fokus]").forEach(b => b.addEventListener("click", () => { if (window.Ansicht) window.Ansicht.setze("3d"); fokus(G.sz.x, G.sz.y, { dist: 26, phi: 0.95 }); }));
   B.querySelectorAll("textarea[id^=ta-]").forEach(ta => ta.addEventListener("input", () => {
     G.ans[ta.id.slice(3)] = ta.value;
     if (ta.id === "ta-presse") { const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; $("#pwc").textContent = `${w} Wörter, gesprochen etwa ${Math.round(w / 2.2)} Sekunden`; }
@@ -827,16 +876,7 @@ function bindAkte() {
     const best = store.get("pms_best", {}), s = summe(); if (best[G.sz.id] == null || s.pr > best[G.sz.id]) { best[G.sz.id] = s.pr; store.set("pms_best", best); }
   }));
   B.querySelectorAll("[data-mx]").forEach(c => c.addEventListener("change", () => { c.checked ? G.mx.add(c.dataset.mx) : G.mx.delete(c.dataset.mx); }));
-  B.querySelectorAll("[data-or]").forEach(s => s.addEventListener("input", () => {
-    G.orga[+s.dataset.or][s.dataset.f] = s.value;
-    if (!$("#tafelOv").hidden) renderTafel();
-  }));
-  B.querySelectorAll("[data-fo]").forEach(s => s.addEventListener("input", () => { G.fo[s.dataset.fo] = s.value; if (!$("#tafelOv").hidden) renderTafel(); }));
-  B.querySelectorAll("[data-uea]").forEach(s => s.addEventListener("input", () => { const [i, j] = s.dataset.uea.split(":").map(Number); G.orga[i].uea[j] = s.value; }));
-  B.querySelectorAll("[data-ueaadd]").forEach(b => b.addEventListener("click", () => { G.orga[+b.dataset.ueaadd].uea.push(""); renderAkte(); }));
-  B.querySelectorAll("[data-ueadel]").forEach(b => b.addEventListener("click", () => { const [i, j] = b.dataset.ueadel.split(":").map(Number); G.orga[i].uea.splice(j, 1); renderAkte(); }));
-  B.querySelectorAll("[data-ordel]").forEach(b => b.addEventListener("click", () => { G.orga.splice(+b.dataset.ordel, 1); renderAkte(); }));
-  const oa = B.querySelector("#orAdd"); if (oa) oa.addEventListener("click", () => { G.orga.push({ ea: "", eal: "", rg: "", frn: "", auftrag: "", uea: [] }); renderAkte(); });
+  B.querySelectorAll("[data-zurtafel]").forEach(b => b.addEventListener("click", () => window.Ansicht && window.Ansicht.setze("tafel")));
   B.querySelectorAll("[data-anf]").forEach(b => b.addEventListener("click", () => { anfordern(b.dataset.anf); renderAkte(); }));
   B.querySelectorAll("[data-lz]").forEach(b => b.addEventListener("click", plusLZ));
   const ps = B.querySelector("#pStart"); if (ps) ps.addEventListener("click", () => { G.presseStart = performance.now(); });
@@ -933,6 +973,28 @@ function kraefteSumme() {
   });
   return { f, u, m, g, fz, offen };
 }
+function tafelOrgaDaten() {
+  const brRows = orgaZeilen().filter(r => kanon(r.ea) === "Bereitstellungsraum");
+  const br = [0, 1].map(k => brRows[k] ? { eal: brRows[k].eal, rg: brRows[k].rg } : null);
+  const ea = orgaZeilen().filter(r => kanon(r.ea) !== "Bereitstellungsraum").slice(0, 5); while (ea.length < 5) ea.push(null);
+  return { br, ea };
+}
+function tafelBaum() {
+  const { br, ea } = tafelOrgaDaten();
+  const W = 300, colX = i => 30 + i * 60;
+  let tree = `<svg viewBox="0 0 ${W} 210" font-family="Arial"><line x1="150" y1="40" x2="150" y2="95" stroke="#000" stroke-width="2"/><line x1="30" y1="95" x2="270" y2="95" stroke="#000" stroke-width="1.5"/>`;
+  tree += `<circle cx="40" cy="32" r="18" fill="#fff" stroke="#000" stroke-width="1.5"/><path d="M22 26a18 18 0 0 1 36 0" fill="#000"/><text x="40" y="37" text-anchor="middle" font-size="12" font-weight="700">LtS</text><line x1="58" y1="32" x2="118" y2="32" stroke="#000" stroke-width="1.5" stroke-dasharray="4 2"/>`;
+  tree += `<rect x="118" y="18" width="64" height="26" fill="#fff" stroke="#e3061b" stroke-width="3"/><text x="124" y="35" font-size="13" font-weight="700">E</text><text x="150" y="54" text-anchor="middle" font-size="8">C-Dienst · MUS_90</text>`;
+  [0, 1].forEach(k => { const x = 222 + k * 50; const b = br[k]; tree += `<line x1="182" y1="32" x2="${x - 16}" y2="32" stroke="#000" stroke-width="1.2" stroke-dasharray="4 2"/><circle cx="${x}" cy="32" r="16" fill="#fff" stroke="#000" stroke-width="1.5"/><text x="${x}" y="30" text-anchor="middle" font-size="9">BR-</text><text x="${x}" y="40" text-anchor="middle" font-size="9">${k + 1}</text>${b ? `<text x="${x}" y="60" text-anchor="middle" font-size="7.5">${esc(b.rg || "")}</text>` : ""}`; });
+  for (let k = 0; k < 5; k++) { const x = colX(k), r = ea[k]; tree += `<line x1="${x}" y1="95" x2="${x}" y2="108" stroke="#000" stroke-width="1.5"/><rect x="${x - 26}" y="108" width="52" height="22" fill="#fff" stroke="#000" stroke-width="1.5"/><text x="${x}" y="124" text-anchor="middle" font-size="12">A ${RUFRANG[k]}</text>`;
+    if (r) tree += `<text x="${x}" y="143" text-anchor="middle" font-size="7.2" font-weight="700">${esc(r.ea.split(" ")[0].slice(0, 15))}</text><text x="${x}" y="154" text-anchor="middle" font-size="7">${esc((r.eal || "").slice(0, 16))}</text><text x="${x}" y="165" text-anchor="middle" font-size="7">K: ${esc(r.rg || "")}</text>`; }
+  tree += "</svg>";
+  return tree;
+}
+function tafelAbs() {
+  const { ea } = tafelOrgaDaten();
+  return [0, 1, 2, 3, 4].map(k => { const r = ea[k]; return `<div class="tf-abs"><div class="h"><div class="rom"><span>A ${RUFRANG[k]}</span></div><dl><dt>Befehlsstelle</dt><dd></dd><dt>Leiter/Führer</dt><dd>${esc(r ? r.eal : "")}</dd><dt>Kommunikation</dt><dd>${esc(r ? r.rg : "")}</dd><dt>Auftrag</dt><dd>${esc(r ? r.ea : "")}</dd><dt>Einsatzbeginn</dt><dd>${r && G.orgaZeit != null ? dtg(G.orgaZeit) : ""}</dd></dl></div><div class="k">${r ? "Kräfteübersicht: __/__/__/__" : ""}</div></div>`; }).join("");
+}
 function renderTafel() {
   const sz = G.sz, T = $("#tafel");
   const units = G.items.filter(i => !i.def.ziel);
@@ -946,40 +1008,43 @@ function renderTafel() {
   }).join("");
   const ks = kraefteSumme();
   const nachf = G.log.filter(l => /^Nachforderung/.test(l.txt));
-  const brRows = orgaZeilen().filter(r => kanon(r.ea) === "Bereitstellungsraum");
-  const br = [0, 1].map(k => brRows[k] ? { eal: brRows[k].eal, rg: brRows[k].rg } : null);
-  const ea = orgaZeilen().filter(r => kanon(r.ea) !== "Bereitstellungsraum").slice(0, 5); while (ea.length < 5) ea.push(null);
   const stellen = [["ORDN", "Ordnungsamt"], ["UWB", "Untere Wasserbehörde"], ["STADTW", "Stadtwerke"], ["ENERG", "Energieversorger"], ["POL", "Polizei"]].concat(MS.extern.filter(e => !["ORDN", "UWB", "STADTW", "ENERG", "POL"].includes(e.id) && G.keys.has(e.id)).map(e => [e.id, e.name])).slice(0, 9);
-  // Organigramm
-  const W = 300, colX = i => 30 + i * 60;
-  let tree = `<svg viewBox="0 0 ${W} 210" font-family="Arial"><line x1="150" y1="40" x2="150" y2="95" stroke="#000" stroke-width="2"/><line x1="30" y1="95" x2="270" y2="95" stroke="#000" stroke-width="1.5"/>`;
-  tree += `<circle cx="40" cy="32" r="18" fill="#fff" stroke="#000" stroke-width="1.5"/><path d="M22 26a18 18 0 0 1 36 0" fill="#000"/><text x="40" y="37" text-anchor="middle" font-size="12" font-weight="700">LtS</text><line x1="58" y1="32" x2="118" y2="32" stroke="#000" stroke-width="1.5" stroke-dasharray="4 2"/>`;
-  tree += `<rect x="118" y="18" width="64" height="26" fill="#fff" stroke="#e3061b" stroke-width="3"/><text x="124" y="35" font-size="13" font-weight="700">E</text><text x="150" y="54" text-anchor="middle" font-size="8">C-Dienst · MUS_90</text>`;
-  [0, 1].forEach(k => { const x = 222 + k * 50; const b = br[k]; tree += `<line x1="182" y1="32" x2="${x - 16}" y2="32" stroke="#000" stroke-width="1.2" stroke-dasharray="4 2"/><circle cx="${x}" cy="32" r="16" fill="#fff" stroke="#000" stroke-width="1.5"/><text x="${x}" y="30" text-anchor="middle" font-size="9">BR-</text><text x="${x}" y="40" text-anchor="middle" font-size="9">${k + 1}</text>${b ? `<text x="${x}" y="60" text-anchor="middle" font-size="7.5">${esc(b.rg || "")}</text>` : ""}`; });
-  for (let k = 0; k < 5; k++) { const x = colX(k), r = ea[k]; tree += `<line x1="${x}" y1="95" x2="${x}" y2="108" stroke="#000" stroke-width="1.5"/><rect x="${x - 26}" y="108" width="52" height="22" fill="#fff" stroke="#000" stroke-width="1.5"/><text x="${x}" y="124" text-anchor="middle" font-size="12">A ${RUFRANG[k]}</text>`;
-    if (r) tree += `<text x="${x}" y="143" text-anchor="middle" font-size="7.2" font-weight="700">${esc(r.ea.split(" ")[0].slice(0, 15))}</text><text x="${x}" y="154" text-anchor="middle" font-size="7">${esc((r.eal || "").slice(0, 16))}</text><text x="${x}" y="165" text-anchor="middle" font-size="7">K: ${esc(r.rg || "")}</text>`; }
-  tree += "</svg>";
   const rm = G.log.slice().reverse().slice(0, 14);
   while (rm.length < 9) rm.push(null);
-  const abs = [0, 1, 2, 3, 4].map(k => { const r = ea[k]; return `<div class="tf-abs"><div class="h"><div class="rom"><span>A ${RUFRANG[k]}</span></div><dl><dt>Befehlsstelle</dt><dd></dd><dt>Leiter/Führer</dt><dd>${esc(r ? r.eal : "")}</dd><dt>Kommunikation</dt><dd>${esc(r ? r.rg : "")}</dd><dt>Auftrag</dt><dd>${esc(r ? r.ea : "")}</dd><dt>Einsatzbeginn</dt><dd>${r && G.orgaZeit != null ? dtg(G.orgaZeit) : ""}</dd></dl></div><div class="k">${r ? "Kräfteübersicht: __/__/__/__" : ""}</div></div>`; }).join("");
   T.innerHTML = `<div class="tf-head"><div class="t"><span>Taktische Arbeitstafel für die Führungsstufen B + C</span><small>nach Vorlage IdF NRW · Planbesprechung Musterstadt · ${TZ_QUELLE}</small></div>
    <div class="tf-fields"><label>Einsatzstichwort:<span>${esc(sz.stichwort)}</span></label><label>Einsatzort:<span>${esc(sz.ort.adresse)}</span></label><label>Meldender:<span>${esc(sz.meldender || "")}</span></label><label>Objektnr.:<span></span></label><label>Datum-Uhrzeitgruppe:<span>${dtg(G.t)}</span></label></div></div>
-   <div class="tf-main"><section class="tf-sec tf-lage"><h5>Lagebild (Ordnung des Raumes / Einsatzkräfte)</h5><div class="tf-ring">${kk}<div class="tf-sketch">${svgLage(sz, true)}</div></div>${units.length > 34 ? `<p style="padding:0 40px 10px;font-size:11px">+ ${units.length - 34} weitere Einsatzmittel</p>` : ""}</section>
+   <div class="tf-main"><section class="tf-sec tf-lage"><h5>Lagebild (Ordnung des Raumes / Einsatzkräfte)</h5><div class="tf-ring">${kk}<div class="tf-sketch" id="tfSketch"></div></div>${units.length > 34 ? `<p style="padding:0 40px 10px;font-size:11px">+ ${units.length - 34} weitere Einsatzmittel</p>` : ""}</section>
    <div class="tf-right">
     <section class="tf-sec tf-own"><h5>Eigene Lage/Nachforderung</h5><div class="row"><div class="zz">${tz("Führungsstellen/EL", { w: 62, h: 62 })}</div>
      <dl><dt>Befehlsstelle:</dt><dd>ELW 1 C-Dienst</dd><dt>Kommunikation:</dt><dd>MUS_90</dd><dt>Auftrag:</dt><dd>Einsatzleitung</dd></dl>
      <dl><dt>Einsatzbeginn:</dt><dd>${dtg(0)}</dd><dt>Kräfteübersicht:</dt><dd>${ks.f}/${ks.u}/${ks.m}/<b>${ks.g}</b>${ks.offen ? " + " + ks.offen : ""}</dd><dt>Fahrzeuge:</dt><dd>${ks.fz}</dd></dl></div>
      <div class="tf-nachf">${nachf.length ? nachf.map(l => `<div><span>${esc(l.txt.replace("Nachforderung: ", ""))}</span><span>${dtg(l.t)}${l.done ? " ✓" : ""}</span></div>`).join("") : '<div><span>Keine Nachforderungen</span></div>'}</div></section>
-    <section class="tf-sec tf-org"><h5>Organisation / Kommunikation</h5><div class="tf-orggrid"><div class="tf-stellen">${stellen.map(s => `<div><span>${esc(s[1])}</span><i>${G.keys.has(s[0]) ? "✓" : ""}</i></div>`).join("")}</div><div class="tf-tree">${tree}</div></div></section>
+    <section class="tf-sec tf-org"><h5>Organisation / Kommunikation</h5><div class="tf-orggrid"><div class="tf-stellen">${stellen.map(s => `<div><span>${esc(s[1])}</span><i>${G.keys.has(s[0]) ? "✓" : ""}</i></div>`).join("")}</div><div class="tf-tree">${tafelBaum()}</div></div></section>
     <section class="tf-sec tf-rm"><h5>Rückmeldung / Benachrichtigungen / Notizen</h5>${rm.map(l => l ? `<div class="r"><span class="c ${l.prio ? "h" : ""}"></span><span class="b">${l.done ? "✓" : ""}</span><span>${esc(l.txt)}</span><span class="d">${dtg(l.t)}</span></div>` : '<div class="r"><span class="c"></span><span class="b"></span><span></span><span class="d"></span></div>').join("")}</section>
    </div></div>
-   <div class="tf-ab">${abs}</div>`;
+   <section class="tf-sec tf-fo"><h5>Führungsorganisation nach FwDV 100${orgaGesperrt() ? (G.abgabe ? " · abgegeben" : " · Eingabe ab Start der Ausarbeitung") : ""}</h5>${orgaHTML(orgaGesperrt())}</section>
+   <div class="tf-ab">${tafelAbs()}</div>`;
+  if (!orgaGesperrt()) bindOrga(T);
+  if (window.Lagezeichnen) window.Lagezeichnen.montiere($("#tfSketch"), { kompakt: true });
 }
-function tafelZoom() { const T = $("#tafel"); const w = $("#tafelOv").clientWidth - 32; T.style.zoom = Math.max(0.55, Math.min(1, w / 1480)).toFixed(3); }
-function oeffneTafel() { if (!G) return; renderTafel(); $("#tafelOv").hidden = false; tafelZoom(); }
+function tafelOffen() { return !!G && !!window.Ansicht && window.Ansicht.modus() === "tafel"; }
+function tafelZoom() { const T = $("#tafel"), h = $("#lsHost"); if (!h.clientWidth) return; T.style.zoom = Math.max(0.3, Math.min(1, (h.clientWidth - 24) / 1480)).toFixed(3); }
+if (window.ResizeObserver) new ResizeObserver(() => { if (tafelOffen()) tafelZoom(); }).observe($("#lsHost"));
+function oeffneTafel() { if (!G || !window.Ansicht) return; window.Ansicht.setze("tafel"); }
+// Eingaben der Führungsorganisation in der Tafel: Werte sofort übernehmen, nur die abhängigen Teile neu zeichnen
+function bindOrga(T) {
+  const teile = () => { const a = T.querySelector(".tf-ab"), t = T.querySelector(".tf-tree"); if (a) a.innerHTML = tafelAbs(); if (t) t.innerHTML = tafelBaum(); const k = $("#orgaKurz"); if (k) k.innerHTML = orgaKurz(); };
+  const neu = () => { const h = $("#lsHost"), st = h.scrollTop; renderTafel(); h.scrollTop = st; refreshLight(); };
+  T.querySelectorAll("[data-or]").forEach(el => el.addEventListener("input", () => { G.orga[+el.dataset.or][el.dataset.f] = el.value; teile(); }));
+  T.querySelectorAll("[data-fo]").forEach(el => el.addEventListener("input", () => { G.fo[el.dataset.fo] = el.value; }));
+  T.querySelectorAll("[data-uea]").forEach(el => el.addEventListener("input", () => { const [i, j] = el.dataset.uea.split(":").map(Number); G.orga[i].uea[j] = el.value; }));
+  T.querySelectorAll("[data-ueaadd]").forEach(b => b.addEventListener("click", () => { G.orga[+b.dataset.ueaadd].uea.push(""); neu(); }));
+  T.querySelectorAll("[data-ueadel]").forEach(b => b.addEventListener("click", () => { const [i, j] = b.dataset.ueadel.split(":").map(Number); G.orga[i].uea.splice(j, 1); neu(); }));
+  T.querySelectorAll("[data-ordel]").forEach(b => b.addEventListener("click", () => { G.orga.splice(+b.dataset.ordel, 1); neu(); }));
+  const oa = T.querySelector("#orAdd"); if (oa) oa.addEventListener("click", () => { G.orga.push({ ea: "", eal: "", rg: "", frn: "", auftrag: "", uea: [] }); neu(); });
+}
 $("#btnTafel").addEventListener("click", oeffneTafel);
-$("#tafelClose").addEventListener("click", () => { $("#tafelOv").hidden = true; });
-document.addEventListener("keydown", e => { if (e.key === "Escape") { if (!$("#tafelOv").hidden) $("#tafelOv").hidden = true; else schliesseDrawer(); } });
+document.addEventListener("keydown", e => { if (e.key === "Escape") { if (window.Ansicht && window.Ansicht.voll()) $("#lsVoll").click(); else schliesseDrawer(); } });
 
 /* ───────── Start ───────── */
 document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#listeOv").hidden) $("#listeOv").hidden = true; });
@@ -994,6 +1059,6 @@ function stadtMarken() {
 }
 function szAktualisieren() { if (!G) { karteSzenarien(); renderRail(); } if (!$("#listeOv").hidden) renderListe(); }
 const wachenPunkte = () => Object.values(WACHEN).map(w => ({ x: w.x, y: w.y, art: w.art, k: w.art === "ff" ? String(w.nr) : w.kurz, name: w.name }));
-function lageGeaendert() { if (!G) return; if (!$("#tafelOv").hidden) renderTafel(); const b = $("#akteBody"), st = b.scrollTop; renderAkte(); b.scrollTop = st; }
-window.__pms = { tz, lageGeaendert, get G() { return G; }, starte, anfordern, ANF, svgLage, zufall, abgeben, stadtMarken, TYPEN, railGruppen, tzDef, kurz, toast, szAktualisieren, wachenPunkte };
+function lageGeaendert(ausEditor) { if (!G) return; if (tafelOffen() && !ausEditor) renderTafel(); const b = $("#akteBody"), st = b.scrollTop; renderAkte(); b.scrollTop = st; }
+window.__pms = { tz, lageGeaendert, renderTafel: () => { if (G) { renderTafel(); tafelZoom(); } }, tafelZoom, get G() { return G; }, starte, anfordern, ANF, svgLage, zufall, abgeben, stadtMarken, TYPEN, railGruppen, tzDef, kurz, toast, szAktualisieren, wachenPunkte };
 })();

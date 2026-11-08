@@ -69,17 +69,15 @@
       </div>
       <div class="stadt-q">Karte Musterstadt mit Übersicht der Wachen · IdF NRW, LU B2-211, Anhang I · <button type="button" class="link" data-doc="lernunterlage" data-seite="25">Original-PDF</button></div>
     </div>
-    <button type="button" class="hud hud-tr" id="btnStadt" aria-pressed="false" title="Zwischen 3D-Karte und Originalstadtkarte wechseln">Stadtkarte</button>
+    <div class="lagestage" id="lageStage" hidden><div class="ls-kopf"><b>Taktische Arbeitstafel</b><span id="lsTitel"></span><button type="button" class="ghost" data-doc="tafel">Original-Vorlage (PDF)</button><button type="button" class="ghost" id="lsVoll" aria-pressed="false">Vollbild</button></div><div class="ls-host" id="lsHost"><div class="tafel" id="tafel"></div></div></div>
+    <div class="hud hud-tr ansicht" id="ansicht" role="group" aria-label="Ansicht">
+      <button type="button" data-ansicht="tafel" hidden>Arbeitstafel</button><button type="button" data-ansicht="3d" aria-pressed="true">3D-Karte</button><button type="button" data-ansicht="stadt">Stadtkarte</button>
+    </div>
   </main>
 
   <aside class="rail" id="rail" aria-label="Szenarien und überörtliche Einheiten"></aside>
 
   <section class="drawer" id="drawer" hidden aria-label="Details"></section>
-</div>
-
-<div class="overlay" id="tafelOv" hidden lang="de">
-  <div class="ov-bar"><b>Taktische Arbeitstafel</b><span class="ov-hint">Führungsstufen B + C · wird im Einsatzverlauf fortgeschrieben</span><button type="button" class="go" data-lzopen>Lagekarte ergänzen</button><button type="button" class="ghost" data-doc="tafel">Original-Vorlage (PDF)</button><button type="button" class="ghost" id="tafelClose">Schließen</button></div>
-  <div class="ov-scroll"><div class="tafel" id="tafel"></div></div>
 </div>
 
 <div class="overlay" id="listeOv" hidden lang="de">
@@ -115,13 +113,6 @@
   <div class="ov-bar"><b>Lagen-Editor</b><span class="ed-titel" id="edTitel"></span><span class="ov-hint" id="edHinweis"></span>
     <button type="button" class="ghost" id="edDel">Löschen</button><button type="button" class="ghost" id="edExport">Exportieren</button><button type="button" class="ghost" id="edTest">Testen</button><button type="button" class="go" id="edSave">Speichern</button><button type="button" class="ghost" id="edClose">Schließen</button></div>
   <div class="ed-main"><nav class="ed-nav" id="edNav" aria-label="Abschnitte"></nav><div class="ed-body" id="edBody"></div></div>
-</div>
-
-<div class="overlay lz-ov" id="lzOv" hidden lang="de">
-  <div class="ov-bar"><b>Lagekarte ergänzen</b><span class="ov-hint" id="lzTitel"></span>
-    <button type="button" class="ghost" id="lzUndo">Rückgängig</button><button type="button" class="ghost" id="lzLeeren">Alle Ergänzungen entfernen</button><button type="button" class="ghost" id="lzSpeichern">Als SVG speichern</button><button type="button" class="go" id="lzClose">Fertig</button></div>
-  <div class="lz-werkzeuge" id="lzWerkzeuge" role="toolbar" aria-label="Werkzeuge"></div>
-  <div class="lz-main"><div class="lz-flaeche" id="lzFlaeche"></div><aside class="lz-seite" id="lzSeite"></aside></div>
 </div>
 
 <script src="js/login.js"></script>

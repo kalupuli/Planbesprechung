@@ -6,7 +6,7 @@
 const $ = s => document.querySelector(s);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const umr = (x, y) => ({ x: (54 + x / 100 * 388 - 40) / 520 * 100, y: (156 + y / 100 * 462 - 92) / 638 * 100 });
-const stage = $("#stage"), ov = $("#stadtOv"), vp = $("#stadtVp"), inn = $("#stadtIn"), img = $("#stadtImg"), marken = $("#stadtMarken"), btn = $("#btnStadt");
+const stage = $("#stage"), ov = $("#stadtOv"), vp = $("#stadtVp"), inn = $("#stadtIn"), img = $("#stadtImg"), marken = $("#stadtMarken");
 let s = 1, tx = 0, ty = 0, s0 = 1, iw = 2527, ih = 3101, timer = 0;
 const zeiger = new Map(); let pinch = null;
 
@@ -44,19 +44,18 @@ function zeichneMarken() {
 }
 
 function zeige() {
-  ov.hidden = false; stage.classList.add("stadt-an"); btn.textContent = "3D-Karte"; btn.setAttribute("aria-pressed", "true");
+  ov.hidden = false; stage.classList.add("stadt-an");
   einpassen(); zeichneMarken();
   clearInterval(timer); timer = setInterval(zeichneMarken, 700);
 }
 function verstecke() {
-  ov.hidden = true; stage.classList.remove("stadt-an"); btn.textContent = "Stadtkarte"; btn.setAttribute("aria-pressed", "false");
+  ov.hidden = true; stage.classList.remove("stadt-an");
   clearInterval(timer);
 }
 const offen = () => !ov.hidden;
 
 img.addEventListener("load", () => { iw = img.naturalWidth || iw; ih = img.naturalHeight || ih; inn.style.width = iw + "px"; inn.style.height = ih + "px"; if (offen()) einpassen(); });
 inn.style.width = iw + "px"; inn.style.height = ih + "px";
-btn.addEventListener("click", () => offen() ? verstecke() : zeige());
 $("#stadtPlus").addEventListener("click", () => zoomUm(1.4, vp.clientWidth / 2, vp.clientHeight / 2));
 $("#stadtMinus").addEventListener("click", () => zoomUm(1 / 1.4, vp.clientWidth / 2, vp.clientHeight / 2));
 $("#stadtFit").addEventListener("click", einpassen);
@@ -93,4 +92,25 @@ document.addEventListener("keydown", e => {
 });
 
 window.Stadtkarte = { zeige, verstecke, offen, zentriere };
+
+/* Ansicht der Bühne: Taktische Arbeitstafel (ab Übernahme der Einsatzleitung, mit Lagebild und Führungsorganisation), 3D-Karte oder Originalstadtkarte */
+const lageStage = $("#lageStage"), gruppe = $("#ansicht");
+let modus = "3d";
+function setzeAnsicht(m) {
+  const P = window.__pms, G = P && P.G;
+  if (m === "tafel" && !G) m = "3d";
+  modus = m;
+  if (m === "stadt") zeige(); else verstecke();
+  lageStage.hidden = m !== "tafel"; stage.classList.toggle("lage-an", m === "tafel");
+  if (m !== "tafel") { lageStage.classList.remove("voll"); $("#lsVoll").setAttribute("aria-pressed", "false"); }
+  if (m === "tafel") { $("#lsTitel").textContent = G.sz.titel; P.renderTafel(); }
+  syncAnsicht();
+}
+function syncAnsicht() {
+  const G = window.__pms && window.__pms.G;
+  gruppe.querySelectorAll("[data-ansicht]").forEach(b => { b.setAttribute("aria-pressed", b.dataset.ansicht === modus ? "true" : "false"); if (b.dataset.ansicht === "tafel") b.hidden = !G; });
+}
+gruppe.addEventListener("click", e => { const b = e.target.closest("[data-ansicht]"); if (b) setzeAnsicht(b.dataset.ansicht); });
+$("#lsVoll").addEventListener("click", () => { const an = !lageStage.classList.contains("voll"); lageStage.classList.toggle("voll", an); $("#lsVoll").setAttribute("aria-pressed", an ? "true" : "false"); $("#lsVoll").textContent = an ? "Vollbild beenden" : "Vollbild"; window.__pms.tafelZoom(); });
+window.Ansicht = { setze: setzeAnsicht, modus: () => modus, sync: syncAnsicht, voll: () => lageStage.classList.contains("voll") };
 })();
