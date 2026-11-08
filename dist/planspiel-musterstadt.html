@@ -797,6 +797,13 @@ body.gesperrt .app{visibility:hidden}
 .lzx .lz-seite{width:270px}
 .lzx.panel-zu .lz-seite{display:none}
 .lzx .lz-svg>svg{box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.ls-host{touch-action:pan-x pan-y}
+.ls-zoom{display:inline-flex;align-items:center;gap:2px;background:var(--pult2);border:1px solid var(--line);border-radius:7px;padding:2px}
+.ls-zoom button{background:none;border:0;color:var(--ink);cursor:pointer;font-weight:700;padding:4px 9px;border-radius:5px;font-size:14px}
+.ls-zoom button:hover{background:var(--night)}
+#lsZoomTxt{font-family:var(--mono);font-size:12px;min-width:58px;white-space:nowrap}
+#lsGanz{font-size:12.5px}
+.stage.voll-an{z-index:59}
 
 </style>
 </head>
@@ -861,7 +868,7 @@ body.gesperrt .app{visibility:hidden}
       </div>
       <div class="stadt-q">Karte Musterstadt mit Übersicht der Wachen · IdF NRW, LU B2-211, Anhang I · <button type="button" class="link" data-doc="lernunterlage" data-seite="25">Original-PDF</button></div>
     </div>
-    <div class="lagestage" id="lageStage" hidden><div class="ls-kopf"><b>Taktische Arbeitstafel</b><span id="lsTitel"></span><button type="button" class="ghost" data-doc="tafel">Original-Vorlage (PDF)</button><button type="button" class="ghost" id="lsVoll" aria-pressed="false">Vollbild</button></div><div class="ls-host" id="lsHost"><div class="tafel" id="tafel"></div></div></div>
+    <div class="lagestage" id="lageStage" hidden><div class="ls-kopf"><b>Taktische Arbeitstafel</b><span id="lsTitel"></span><button type="button" class="ghost" data-doc="tafel">Original-Vorlage (PDF)</button><span class="ls-zoom" role="group" aria-label="Zoom der Arbeitstafel"><button type="button" id="lsMinus" title="Verkleinern (−)" aria-label="Verkleinern">−</button><button type="button" id="lsZoomTxt" title="Auf Breite einpassen (0)">100 %</button><button type="button" id="lsPlus" title="Vergrößern (+)" aria-label="Vergrößern">+</button><button type="button" id="lsGanz" title="Ganze Tafel anzeigen">Ganze Tafel</button></span><button type="button" class="ghost" id="lsVoll" aria-pressed="false">Vollbild</button></div><div class="ls-host" id="lsHost"><div class="tafel" id="tafel"></div></div></div>
     <div class="hud hud-tr ansicht" id="ansicht" role="group" aria-label="Ansicht">
       <button type="button" data-ansicht="tafel" hidden>Arbeitstafel</button><button type="button" data-ansicht="3d" aria-pressed="true">3D-Karte</button><button type="button" data-ansicht="stadt">Stadtkarte</button>
     </div>
@@ -6318,7 +6325,47 @@ function renderTafel() {
   if (window.Lagezeichnen) window.Lagezeichnen.montiere($("#tfSketch"), { kompakt: true });
 }
 function tafelOffen() { return !!G && !!window.Ansicht && window.Ansicht.modus() === "tafel"; }
-function tafelZoom() { const T = $("#tafel"), h = $("#lsHost"); if (!h.clientWidth) return; T.style.zoom = Math.max(0.3, Math.min(1, (h.clientWidth - 24) / 1480)).toFixed(3); }
+/* Zoom der Arbeitstafel: automatisch auf Breite eingepasst, bis der Nutzer selbst zoomt
+   (Knöpfe, Strg + Mausrad, zwei Finger, Tasten + − 0) */
+let tafelZ = null;
+const ZMIN = 0.25, ZMAX = 3;
+function zAktuell() { return parseFloat($("#tafel").style.zoom) || 1; }
+function zSetzen(z) { $("#tafel").style.zoom = z.toFixed(3); $("#lsZoomTxt").textContent = Math.round(z * 100) + " %"; }
+function tafelZoom() { const h = $("#lsHost"); if (!h.clientWidth) return; zSetzen(tafelZ != null ? tafelZ : Math.max(ZMIN, Math.min(1.4, (h.clientWidth - 24) / 1480))); }
+function tafelZoomUm(f, cx, cy) {
+  const h = $("#lsHost"), alt = zAktuell(), neu = Math.max(ZMIN, Math.min(ZMAX, alt * f));
+  if (cx == null) { cx = h.clientWidth / 2; cy = h.clientHeight / 2; }
+  const ix = (h.scrollLeft + cx) / alt, iy = (h.scrollTop + cy) / alt;
+  tafelZ = neu; zSetzen(neu);
+  h.scrollLeft = ix * neu - cx; h.scrollTop = iy * neu - cy;
+}
+function tafelGanz() {
+  const h = $("#lsHost"), T = $("#tafel"), hoehe = T.getBoundingClientRect().height / zAktuell();
+  tafelZ = Math.max(ZMIN, Math.min((h.clientWidth - 24) / 1480, (h.clientHeight - 24) / hoehe)); zSetzen(tafelZ); h.scrollTop = 0; h.scrollLeft = 0;
+}
+$("#lsPlus").addEventListener("click", () => tafelZoomUm(1.25));
+$("#lsMinus").addEventListener("click", () => tafelZoomUm(1 / 1.25));
+$("#lsZoomTxt").addEventListener("click", () => { tafelZ = null; tafelZoom(); });
+$("#lsGanz").addEventListener("click", tafelGanz);
+$("#lsHost").addEventListener("wheel", e => {
+  if (!e.ctrlKey && !e.metaKey) return;
+  e.preventDefault(); const r = $("#lsHost").getBoundingClientRect();
+  tafelZoomUm(Math.exp(-e.deltaY * (e.deltaMode === 1 ? 0.05 : 0.002)), e.clientX - r.left, e.clientY - r.top);
+}, { passive: false });
+let pinch = null;
+$("#lsHost").addEventListener("touchstart", e => { if (e.touches.length === 2) { const [a, b] = e.touches; pinch = { d: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY) }; } }, { passive: true });
+$("#lsHost").addEventListener("touchmove", e => {
+  if (!pinch || e.touches.length !== 2) return; e.preventDefault();
+  const [a, b] = e.touches, d = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY), r = $("#lsHost").getBoundingClientRect();
+  tafelZoomUm(d / pinch.d, (a.clientX + b.clientX) / 2 - r.left, (a.clientY + b.clientY) / 2 - r.top); pinch.d = d;
+}, { passive: false });
+$("#lsHost").addEventListener("touchend", e => { if (e.touches.length < 2) pinch = null; });
+document.addEventListener("keydown", e => {
+  if (!tafelOffen() || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.key === "+" || e.key === "=") { e.preventDefault(); tafelZoomUm(1.25); }
+  else if (e.key === "-") { e.preventDefault(); tafelZoomUm(1 / 1.25); }
+  else if (e.key === "0") { e.preventDefault(); tafelZ = null; tafelZoom(); }
+});
 if (window.ResizeObserver) new ResizeObserver(() => { if (tafelOffen()) tafelZoom(); }).observe($("#lsHost"));
 function oeffneTafel() { if (!G || !window.Ansicht) return; window.Ansicht.setze("tafel"); }
 // Eingaben der Führungsorganisation in der Tafel: Werte sofort übernehmen, nur die abhängigen Teile neu zeichnen
@@ -6459,7 +6506,7 @@ function setzeAnsicht(m) {
   modus = m;
   if (m === "stadt") zeige(); else verstecke();
   lageStage.hidden = m !== "tafel"; stage.classList.toggle("lage-an", m === "tafel");
-  if (m !== "tafel") { lageStage.classList.remove("voll"); $("#lsVoll").setAttribute("aria-pressed", "false"); }
+  if (m !== "tafel") { lageStage.classList.remove("voll"); stage.classList.remove("voll-an"); $("#lsVoll").textContent = "Vollbild"; $("#lsVoll").setAttribute("aria-pressed", "false"); }
   if (m === "tafel") { $("#lsTitel").textContent = G.sz.titel; P.renderTafel(); }
   syncAnsicht();
 }
@@ -6468,7 +6515,7 @@ function syncAnsicht() {
   gruppe.querySelectorAll("[data-ansicht]").forEach(b => { b.setAttribute("aria-pressed", b.dataset.ansicht === modus ? "true" : "false"); if (b.dataset.ansicht === "tafel") b.hidden = !G; });
 }
 gruppe.addEventListener("click", e => { const b = e.target.closest("[data-ansicht]"); if (b) setzeAnsicht(b.dataset.ansicht); });
-$("#lsVoll").addEventListener("click", () => { const an = !lageStage.classList.contains("voll"); lageStage.classList.toggle("voll", an); $("#lsVoll").setAttribute("aria-pressed", an ? "true" : "false"); $("#lsVoll").textContent = an ? "Vollbild beenden" : "Vollbild"; window.__pms.tafelZoom(); });
+$("#lsVoll").addEventListener("click", () => { const an = !lageStage.classList.contains("voll"); lageStage.classList.toggle("voll", an); stage.classList.toggle("voll-an", an); $("#lsVoll").setAttribute("aria-pressed", an ? "true" : "false"); $("#lsVoll").textContent = an ? "Vollbild beenden" : "Vollbild"; window.__pms.tafelZoom(); });
 window.Ansicht = { setze: setzeAnsicht, modus: () => modus, sync: syncAnsicht, voll: () => lageStage.classList.contains("voll") };
 })();
 
@@ -7116,12 +7163,12 @@ function zeichneMarke() {
   const b = box(i);
   g.innerHTML = `<rect x="${b[0] - 6}" y="${b[1] - 6}" width="${b[2] - b[0] + 12}" height="${b[3] - b[1] + 12}" rx="4" fill="rgba(241,166,43,.08)" stroke="#f1a62b" stroke-width="1.8" stroke-dasharray="6 4"/>`;
   // Kontextleiste oberhalb des gewählten Elements
-  const r = svgBox.querySelector("svg").getBoundingClientRect(), rb = buehne.getBoundingClientRect(), sx = r.width / 640, sy = r.height / 400;
+  const bw = buehne.clientWidth, bh = buehne.clientHeight, sx = bw / 640, sy = bh / 400;
   pop.hidden = false;
   pop.querySelector('[data-pop="txt"]').hidden = !(i.t === "zeichen" || i.t === "text");
-  const px = r.left - rb.left + (b[0] + b[2]) / 2 * sx, py = r.top - rb.top + (b[1] - 8) * sy;
-  pop.style.left = Math.max(4, Math.min(rb.width - pop.offsetWidth - 4, px - pop.offsetWidth / 2)) + "px";
-  pop.style.top = (py - pop.offsetHeight - 4 < 0 ? r.top - rb.top + (b[3] + 10) * sy : py - pop.offsetHeight - 4) + "px";
+  const px = (b[0] + b[2]) / 2 * sx, py = (b[1] - 8) * sy;
+  pop.style.left = Math.max(4, Math.min(bw - pop.offsetWidth - 4, px - pop.offsetWidth / 2)) + "px";
+  pop.style.top = (py - pop.offsetHeight - 4 < 0 ? (b[3] + 10) * sy : py - pop.offsetHeight - 4) + "px";
 }
 let meldT = 0, stand = "";
 function alles() { zeichneEigene(); zeichneVorschau(); renderLeiste(); renderSeite(); const n = JSON.stringify(items()); if (n !== stand) { stand = n; clearTimeout(meldT); meldT = setTimeout(() => P.lageGeaendert(true), 400); } }
@@ -7184,11 +7231,11 @@ pop.addEventListener("click", e => {
 
 /* Texteingabe direkt in der Karte */
 function inlineAn(x, y, ziel, wert) {
-  const r = svgBox.querySelector("svg").getBoundingClientRect(), rb = buehne.getBoundingClientRect();
+  const bw = buehne.clientWidth, bh = buehne.clientHeight;
   inlineZiel = { x, y, k: ziel };
   inline.hidden = false; inline.value = wert || "";
-  inline.style.left = Math.min(rb.width - 220, Math.max(0, r.left - rb.left + x / 640 * r.width)) + "px";
-  inline.style.top = Math.max(0, r.top - rb.top + y / 400 * r.height - 30) + "px";
+  inline.style.left = Math.min(bw - 220, Math.max(0, x / 640 * bw)) + "px";
+  inline.style.top = Math.max(0, y / 400 * bh - 30) + "px";
   inline.focus(); inline.select();
   setTimeout(() => { if (document.activeElement !== inline) { inline.focus(); } }, 0);
 }
@@ -7207,8 +7254,10 @@ inline.addEventListener("pointerdown", e => e.stopPropagation());
 /* ───────── Zeigereingabe auf der Karte ───────── */
 function koord(e) { const r = svgBox.querySelector("svg").getBoundingClientRect(); return [Math.max(0, Math.min(640, (e.clientX - r.left) / r.width * 640)), Math.max(0, Math.min(400, (e.clientY - r.top) / r.height * 400))]; }
 function elementAn(e) { const el = (e.target.closest && e.target.closest(".lz-el")) || (document.elementFromPoint(e.clientX, e.clientY) || { closest: () => null }).closest(".lz-el"); return el ? +el.dataset.i : -1; }
+const finger = new Set();
 svgBox.addEventListener("pointerdown", e => {
   if (!P.G || e.button > 0) return;
+  if (e.pointerType === "touch") { finger.add(e.pointerId); if (finger.size > 1) { aktiv = null; zieh = null; start = null; zeichneVorschau(); return; } }
   if (!inline.hidden) { inlineFertig(); return; }
   e.preventDefault(); svgBox.setPointerCapture(e.pointerId);
   const [x, y] = koord(e), k = elementAn(e);
@@ -7241,6 +7290,7 @@ svgBox.addEventListener("pointermove", e => {
   else { aktiv.x2 = x; aktiv.y2 = y; }
   zeichneVorschau();
 });
+["pointerup", "pointercancel"].forEach(t => svgBox.addEventListener(t, e => finger.delete(e.pointerId)));
 function loslassen() {
   const s = start; start = null;
   if (!s) return;

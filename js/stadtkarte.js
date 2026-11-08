@@ -102,7 +102,7 @@ function setzeAnsicht(m) {
   modus = m;
   if (m === "stadt") zeige(); else verstecke();
   lageStage.hidden = m !== "tafel"; stage.classList.toggle("lage-an", m === "tafel");
-  if (m !== "tafel") { lageStage.classList.remove("voll"); $("#lsVoll").setAttribute("aria-pressed", "false"); }
+  if (m !== "tafel") { lageStage.classList.remove("voll"); stage.classList.remove("voll-an"); $("#lsVoll").textContent = "Vollbild"; $("#lsVoll").setAttribute("aria-pressed", "false"); }
   if (m === "tafel") { $("#lsTitel").textContent = G.sz.titel; P.renderTafel(); }
   syncAnsicht();
 }
@@ -111,6 +111,6 @@ function syncAnsicht() {
   gruppe.querySelectorAll("[data-ansicht]").forEach(b => { b.setAttribute("aria-pressed", b.dataset.ansicht === modus ? "true" : "false"); if (b.dataset.ansicht === "tafel") b.hidden = !G; });
 }
 gruppe.addEventListener("click", e => { const b = e.target.closest("[data-ansicht]"); if (b) setzeAnsicht(b.dataset.ansicht); });
-$("#lsVoll").addEventListener("click", () => { const an = !lageStage.classList.contains("voll"); lageStage.classList.toggle("voll", an); $("#lsVoll").setAttribute("aria-pressed", an ? "true" : "false"); $("#lsVoll").textContent = an ? "Vollbild beenden" : "Vollbild"; window.__pms.tafelZoom(); });
+$("#lsVoll").addEventListener("click", () => { const an = !lageStage.classList.contains("voll"); lageStage.classList.toggle("voll", an); stage.classList.toggle("voll-an", an); $("#lsVoll").setAttribute("aria-pressed", an ? "true" : "false"); $("#lsVoll").textContent = an ? "Vollbild beenden" : "Vollbild"; window.__pms.tafelZoom(); });
 window.Ansicht = { setze: setzeAnsicht, modus: () => modus, sync: syncAnsicht, voll: () => lageStage.classList.contains("voll") };
 })();

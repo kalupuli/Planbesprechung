@@ -1028,7 +1028,47 @@ function renderTafel() {
   if (window.Lagezeichnen) window.Lagezeichnen.montiere($("#tfSketch"), { kompakt: true });
 }
 function tafelOffen() { return !!G && !!window.Ansicht && window.Ansicht.modus() === "tafel"; }
-function tafelZoom() { const T = $("#tafel"), h = $("#lsHost"); if (!h.clientWidth) return; T.style.zoom = Math.max(0.3, Math.min(1, (h.clientWidth - 24) / 1480)).toFixed(3); }
+/* Zoom der Arbeitstafel: automatisch auf Breite eingepasst, bis der Nutzer selbst zoomt
+   (Knöpfe, Strg + Mausrad, zwei Finger, Tasten + − 0) */
+let tafelZ = null;
+const ZMIN = 0.25, ZMAX = 3;
+function zAktuell() { return parseFloat($("#tafel").style.zoom) || 1; }
+function zSetzen(z) { $("#tafel").style.zoom = z.toFixed(3); $("#lsZoomTxt").textContent = Math.round(z * 100) + " %"; }
+function tafelZoom() { const h = $("#lsHost"); if (!h.clientWidth) return; zSetzen(tafelZ != null ? tafelZ : Math.max(ZMIN, Math.min(1.4, (h.clientWidth - 24) / 1480))); }
+function tafelZoomUm(f, cx, cy) {
+  const h = $("#lsHost"), alt = zAktuell(), neu = Math.max(ZMIN, Math.min(ZMAX, alt * f));
+  if (cx == null) { cx = h.clientWidth / 2; cy = h.clientHeight / 2; }
+  const ix = (h.scrollLeft + cx) / alt, iy = (h.scrollTop + cy) / alt;
+  tafelZ = neu; zSetzen(neu);
+  h.scrollLeft = ix * neu - cx; h.scrollTop = iy * neu - cy;
+}
+function tafelGanz() {
+  const h = $("#lsHost"), T = $("#tafel"), hoehe = T.getBoundingClientRect().height / zAktuell();
+  tafelZ = Math.max(ZMIN, Math.min((h.clientWidth - 24) / 1480, (h.clientHeight - 24) / hoehe)); zSetzen(tafelZ); h.scrollTop = 0; h.scrollLeft = 0;
+}
+$("#lsPlus").addEventListener("click", () => tafelZoomUm(1.25));
+$("#lsMinus").addEventListener("click", () => tafelZoomUm(1 / 1.25));
+$("#lsZoomTxt").addEventListener("click", () => { tafelZ = null; tafelZoom(); });
+$("#lsGanz").addEventListener("click", tafelGanz);
+$("#lsHost").addEventListener("wheel", e => {
+  if (!e.ctrlKey && !e.metaKey) return;
+  e.preventDefault(); const r = $("#lsHost").getBoundingClientRect();
+  tafelZoomUm(Math.exp(-e.deltaY * (e.deltaMode === 1 ? 0.05 : 0.002)), e.clientX - r.left, e.clientY - r.top);
+}, { passive: false });
+let pinch = null;
+$("#lsHost").addEventListener("touchstart", e => { if (e.touches.length === 2) { const [a, b] = e.touches; pinch = { d: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY) }; } }, { passive: true });
+$("#lsHost").addEventListener("touchmove", e => {
+  if (!pinch || e.touches.length !== 2) return; e.preventDefault();
+  const [a, b] = e.touches, d = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY), r = $("#lsHost").getBoundingClientRect();
+  tafelZoomUm(d / pinch.d, (a.clientX + b.clientX) / 2 - r.left, (a.clientY + b.clientY) / 2 - r.top); pinch.d = d;
+}, { passive: false });
+$("#lsHost").addEventListener("touchend", e => { if (e.touches.length < 2) pinch = null; });
+document.addEventListener("keydown", e => {
+  if (!tafelOffen() || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.key === "+" || e.key === "=") { e.preventDefault(); tafelZoomUm(1.25); }
+  else if (e.key === "-") { e.preventDefault(); tafelZoomUm(1 / 1.25); }
+  else if (e.key === "0") { e.preventDefault(); tafelZ = null; tafelZoom(); }
+});
 if (window.ResizeObserver) new ResizeObserver(() => { if (tafelOffen()) tafelZoom(); }).observe($("#lsHost"));
 function oeffneTafel() { if (!G || !window.Ansicht) return; window.Ansicht.setze("tafel"); }
 // Eingaben der Führungsorganisation in der Tafel: Werte sofort übernehmen, nur die abhängigen Teile neu zeichnen

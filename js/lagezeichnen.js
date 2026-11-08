@@ -117,12 +117,12 @@ function zeichneMarke() {
   const b = box(i);
   g.innerHTML = `<rect x="${b[0] - 6}" y="${b[1] - 6}" width="${b[2] - b[0] + 12}" height="${b[3] - b[1] + 12}" rx="4" fill="rgba(241,166,43,.08)" stroke="#f1a62b" stroke-width="1.8" stroke-dasharray="6 4"/>`;
   // Kontextleiste oberhalb des gewählten Elements
-  const r = svgBox.querySelector("svg").getBoundingClientRect(), rb = buehne.getBoundingClientRect(), sx = r.width / 640, sy = r.height / 400;
+  const bw = buehne.clientWidth, bh = buehne.clientHeight, sx = bw / 640, sy = bh / 400;
   pop.hidden = false;
   pop.querySelector('[data-pop="txt"]').hidden = !(i.t === "zeichen" || i.t === "text");
-  const px = r.left - rb.left + (b[0] + b[2]) / 2 * sx, py = r.top - rb.top + (b[1] - 8) * sy;
-  pop.style.left = Math.max(4, Math.min(rb.width - pop.offsetWidth - 4, px - pop.offsetWidth / 2)) + "px";
-  pop.style.top = (py - pop.offsetHeight - 4 < 0 ? r.top - rb.top + (b[3] + 10) * sy : py - pop.offsetHeight - 4) + "px";
+  const px = (b[0] + b[2]) / 2 * sx, py = (b[1] - 8) * sy;
+  pop.style.left = Math.max(4, Math.min(bw - pop.offsetWidth - 4, px - pop.offsetWidth / 2)) + "px";
+  pop.style.top = (py - pop.offsetHeight - 4 < 0 ? (b[3] + 10) * sy : py - pop.offsetHeight - 4) + "px";
 }
 let meldT = 0, stand = "";
 function alles() { zeichneEigene(); zeichneVorschau(); renderLeiste(); renderSeite(); const n = JSON.stringify(items()); if (n !== stand) { stand = n; clearTimeout(meldT); meldT = setTimeout(() => P.lageGeaendert(true), 400); } }
@@ -185,11 +185,11 @@ pop.addEventListener("click", e => {
 
 /* Texteingabe direkt in der Karte */
 function inlineAn(x, y, ziel, wert) {
-  const r = svgBox.querySelector("svg").getBoundingClientRect(), rb = buehne.getBoundingClientRect();
+  const bw = buehne.clientWidth, bh = buehne.clientHeight;
   inlineZiel = { x, y, k: ziel };
   inline.hidden = false; inline.value = wert || "";
-  inline.style.left = Math.min(rb.width - 220, Math.max(0, r.left - rb.left + x / 640 * r.width)) + "px";
-  inline.style.top = Math.max(0, r.top - rb.top + y / 400 * r.height - 30) + "px";
+  inline.style.left = Math.min(bw - 220, Math.max(0, x / 640 * bw)) + "px";
+  inline.style.top = Math.max(0, y / 400 * bh - 30) + "px";
   inline.focus(); inline.select();
   setTimeout(() => { if (document.activeElement !== inline) { inline.focus(); } }, 0);
 }
@@ -208,8 +208,10 @@ inline.addEventListener("pointerdown", e => e.stopPropagation());
 /* ───────── Zeigereingabe auf der Karte ───────── */
 function koord(e) { const r = svgBox.querySelector("svg").getBoundingClientRect(); return [Math.max(0, Math.min(640, (e.clientX - r.left) / r.width * 640)), Math.max(0, Math.min(400, (e.clientY - r.top) / r.height * 400))]; }
 function elementAn(e) { const el = (e.target.closest && e.target.closest(".lz-el")) || (document.elementFromPoint(e.clientX, e.clientY) || { closest: () => null }).closest(".lz-el"); return el ? +el.dataset.i : -1; }
+const finger = new Set();
 svgBox.addEventListener("pointerdown", e => {
   if (!P.G || e.button > 0) return;
+  if (e.pointerType === "touch") { finger.add(e.pointerId); if (finger.size > 1) { aktiv = null; zieh = null; start = null; zeichneVorschau(); return; } }
   if (!inline.hidden) { inlineFertig(); return; }
   e.preventDefault(); svgBox.setPointerCapture(e.pointerId);
   const [x, y] = koord(e), k = elementAn(e);
@@ -242,6 +244,7 @@ svgBox.addEventListener("pointermove", e => {
   else { aktiv.x2 = x; aktiv.y2 = y; }
   zeichneVorschau();
 });
+["pointerup", "pointercancel"].forEach(t => svgBox.addEventListener(t, e => finger.delete(e.pointerId)));
 function loslassen() {
   const s = start; start = null;
   if (!s) return;

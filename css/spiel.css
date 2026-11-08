@@ -788,3 +788,10 @@ body.gesperrt .app{visibility:hidden}
 .lzx .lz-seite{width:270px}
 .lzx.panel-zu .lz-seite{display:none}
 .lzx .lz-svg>svg{box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.ls-host{touch-action:pan-x pan-y}
+.ls-zoom{display:inline-flex;align-items:center;gap:2px;background:var(--pult2);border:1px solid var(--line);border-radius:7px;padding:2px}
+.ls-zoom button{background:none;border:0;color:var(--ink);cursor:pointer;font-weight:700;padding:4px 9px;border-radius:5px;font-size:14px}
+.ls-zoom button:hover{background:var(--night)}
+#lsZoomTxt{font-family:var(--mono);font-size:12px;min-width:58px;white-space:nowrap}
+#lsGanz{font-size:12.5px}
+.stage.voll-an{z-index:59}
