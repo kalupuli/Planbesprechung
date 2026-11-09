@@ -1,0 +1,683 @@
+{
+  "format": "planbesprechung-musterstadt/lagen",
+  "version": 1,
+  "erstellt": "2026-11-09T09:00:00Z",
+  "lagen": [
+    {
+      "id": "eigen-bs-tankschiff-hafen",
+      "titel": "Tankschiff Schwefelsäure Stadthafen",
+      "typ": "abc",
+      "x": 43.8,
+      "y": 49.6,
+      "ort": {
+        "adresse": "Stadthafen, Kai 3, Hafenweg 20",
+        "detail": "Hafenbecken südwestlich der Innenstadt",
+        "wb": "Wachbezirk 1, Ausrückebereich FRW 1"
+      },
+      "datum": "2026-06-28",
+      "t0": "05:52",
+      "meldender": "Hafenmeister",
+      "wetter": "17 °C, trocken, Wind aus Nordwest mit 3 m/s",
+      "stichwort": "ABC 2 Wasser · erhöht auf ABC 3",
+      "meldung": "Leitstelle Musterstadt für C-Dienst. Einsatz ABC 3, Tankschiff mit Schwefelsäure im Stadthafen, Kai 3, Hafenweg 20. Das Schiff hat beim Löschen der Ladung starke Schlagseite bekommen und liegt mit der Bordwand auf dem Kai. Ladung tritt aus. Zwei Besatzungsmitglieder sind verletzt. Der B-Dienst 1 hat um 06:01 Uhr auf ABC 3 erhöht. Alarmiert sind Löschzug 1, Löschzug 22, ABC-Zug und GW-Öl. Sie werden zur Übernahme der Einsatzleitung angefordert.",
+      "alarmiert": [
+        "LZ1",
+        "FF22",
+        "ABCZ",
+        "GWOEL"
+      ],
+      "cAlarm": 9,
+      "uebergabe": {
+        "von": "B-Dienst 1, Zugführer Löschzug 1",
+        "text": [
+          "Herr Verbandsführer, B-Dienst 1. Wir sind um 05:59 Uhr eingetroffen.",
+          "Das Tankmotorschiff hat etwa 950 Tonnen Schwefelsäure geladen. Beim Löschen der Ladung ist das Schiff nach Angaben des Kapitäns durch einen Fehler beim Ballasten auf die Seite gekippt und liegt mit etwa 50 Grad Schlagseite an der Kaimauer.",
+          "Aus einer Entlüftung und einem gerissenen Schlauch der Löschleitung tritt Schwefelsäure auf den Kai und in das Hafenbecken aus. Über dem Kai bildet sich ein weißer Nebel. Im Hafenbecken wird eine Verfärbung des Wassers festgestellt.",
+          "Von fünf Besatzungsmitgliedern sind vier an Land. Zwei davon haben Verätzungen an Armen und Beinen und werden in einer Halle am Kai 2 notdürftig gespült. Der Maschinist befindet sich noch an Bord im Maschinenraum und gibt über Funk an, dass Wasser eindringt.",
+          "Der Löschzug 1 hat einen Gefahrenbereich von 50 Metern festgelegt und den Kai abgesperrt. Ein Trupp in Chemikalienschutzanzügen bereitet den Weg an Bord vor. Der LZ 22 ist eingetroffen und steht am Hafenweg, der ABC-Zug und der GW-Öl sind auf Anfahrt.",
+          "Am Kai 4 liegt ein Fahrgastschiff mit etwa 30 Personen an Bord, welche in einer Hotelnutzung übernachten. Offen sind die Rettung des Maschinisten, die Dekontamination, die Messungen und die Gewässerbelastung. Ich bitte um Übernahme."
+        ]
+      },
+      "info": [
+        {
+          "titel": "Schiff",
+          "zeilen": [
+            [
+              "Typ",
+              "Tankmotorschiff, 85 m, Doppelhülle, sechs Ladetanks"
+            ],
+            [
+              "Ladung",
+              "Etwa 950 t Schwefelsäure 96 %"
+            ],
+            [
+              "Lage",
+              "Etwa 50 Grad Schlagseite zur Kaimauer, Maschinenraum mit Wassereinbruch"
+            ],
+            [
+              "Besatzung",
+              "Fünf Personen, Kapitän an Land"
+            ]
+          ]
+        },
+        {
+          "titel": "Gefahrstoff",
+          "zeilen": [
+            [
+              "Stoff",
+              "Schwefelsäure, UN 1830"
+            ],
+            [
+              "Kennzeichnung",
+              "Gefahrnummer 80, ätzend"
+            ],
+            [
+              "Eigenschaften",
+              "Stark ätzend, stark wasseranziehend, heftige Reaktion mit Wasser unter Wärmeentwicklung"
+            ],
+            [
+              "Nebel",
+              "Säurenebel bei Kontakt mit Feuchtigkeit, Reizung der Atemwege"
+            ],
+            [
+              "Metalle",
+              "Wasserstoffbildung bei Kontakt mit unedlen Metallen"
+            ]
+          ]
+        },
+        {
+          "titel": "Vorlage",
+          "zeilen": [
+            [
+              "Quelle",
+              "BRANDSchutz 2004, Heft 11, S. 788"
+            ],
+            [
+              "Ereignis",
+              "Havarie des Tankmotorschiffs ENA 2 mit Schwefelsäure im Hamburger Hafen am 28. Juni 2004"
+            ],
+            [
+              "Übertragung",
+              "Schiff und Ablauf wurden in den Stadthafen von Musterstadt übertragen und frei ausgestaltet."
+            ]
+          ]
+        }
+      ],
+      "lagekarte": [
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              0,
+              0
+            ],
+            [
+              640,
+              0
+            ],
+            [
+              640,
+              160
+            ],
+            [
+              0,
+              160
+            ]
+          ],
+          "f": "flaeche",
+          "txt": "Hafenbecken"
+        },
+        {
+          "t": "linie",
+          "pts": [
+            [
+              0,
+              160
+            ],
+            [
+              640,
+              160
+            ]
+          ],
+          "s": "wasser",
+          "txt": "Kaimauer"
+        },
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              0,
+              330
+            ],
+            [
+              640,
+              330
+            ],
+            [
+              640,
+              370
+            ],
+            [
+              0,
+              370
+            ]
+          ],
+          "f": "strasse",
+          "txt": "Hafenweg"
+        },
+        {
+          "t": "fz",
+          "x": 260,
+          "y": 130,
+          "txt": "TMS Säure",
+          "org": "zivil",
+          "w": 150
+        },
+        {
+          "t": "warn",
+          "x": 350,
+          "y": 105,
+          "oben": "80",
+          "unten": "1830"
+        },
+        {
+          "t": "wolke",
+          "x": 300,
+          "y": 190
+        },
+        {
+          "t": "zone",
+          "kind": "gefahr",
+          "cx": 260,
+          "cy": 150,
+          "r": 90,
+          "txt": "Gefahrenbereich 50 m"
+        },
+        {
+          "t": "fz",
+          "x": 520,
+          "y": 130,
+          "txt": "Fahrgastschiff",
+          "org": "zivil",
+          "w": 110
+        },
+        {
+          "t": "gebaeude",
+          "x": 20,
+          "y": 200,
+          "w": 110,
+          "h": 80,
+          "txt": "Halle Kai 2"
+        },
+        {
+          "t": "personen",
+          "x": 75,
+          "y": 240,
+          "txt": "2 Verletzte"
+        },
+        {
+          "t": "fz",
+          "x": 420,
+          "y": 250,
+          "txt": "HLF 20-1",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 470,
+          "y": 250,
+          "txt": "HLF 20-2",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 300,
+          "y": 350,
+          "txt": "LZ 22",
+          "org": "fw",
+          "w": 56
+        },
+        {
+          "t": "el",
+          "x": 560,
+          "y": 350,
+          "txt": "B 1"
+        },
+        {
+          "t": "fz",
+          "x": 160,
+          "y": 350,
+          "txt": "RTW",
+          "org": "rd"
+        },
+        {
+          "t": "tz",
+          "z": "Gefahren/Akute_Gefahr_durch_gefährliche_Stoffe",
+          "x": 200,
+          "y": 70,
+          "s": 30,
+          "txt": "H₂SO₄"
+        },
+        {
+          "t": "wind",
+          "x": 590,
+          "y": 220,
+          "dir": 135,
+          "txt": "NW 3 m/s"
+        },
+        {
+          "t": "offen",
+          "x": 220,
+          "y": 270,
+          "txt": "Dekon"
+        },
+        {
+          "t": "offen",
+          "x": 40,
+          "y": 350,
+          "txt": "Bereitstellungsraum"
+        },
+        {
+          "t": "offen",
+          "x": 120,
+          "y": 60,
+          "txt": "Gewässerschutz"
+        },
+        {
+          "t": "offen",
+          "x": 600,
+          "y": 60,
+          "txt": "Räumung?"
+        }
+      ],
+      "nachfragen": [
+        {
+          "f": "Wo genau befindet sich der Maschinist?",
+          "a": "Im Maschinenraum am Heck. Der Zugang erfolgt über einen Niedergang auf dem Achterdeck, welches durch die Schlagseite stark geneigt ist. Er hat Wasser bis zu den Knien.",
+          "wichtig": true
+        },
+        {
+          "f": "Wie viel Säure tritt aus?",
+          "a": "Aus der Entlüftung von Tank 3 tritt stoßweise Säure aus, aus dem gerissenen Schlauch läuft ein armdicker Strahl. Die Menge ist nicht abschätzbar.",
+          "wichtig": true
+        },
+        {
+          "f": "Droht das Schiff zu kentern oder zu sinken?",
+          "a": "Der Kapitän befürchtet ein weiteres Krängen, wenn Wasser in den Maschinenraum läuft. Ein Kentern kann er nicht ausschließen.",
+          "wichtig": true
+        },
+        {
+          "f": "Wie sind die zwei Verletzten versorgt?",
+          "a": "Sie werden mit Wasser aus einem Schlauch in der Halle gespült. Kleidung wurde nur teilweise entfernt. Der Notarzt ist eingetroffen.",
+          "wichtig": true
+        },
+        {
+          "f": "Ist das Fahrgastschiff gefährdet?",
+          "a": "Es liegt etwa 120 Meter entfernt. Der Säurenebel zieht derzeit nach Südost über den Hafenweg und nicht zum Fahrgastschiff.",
+          "wichtig": true
+        },
+        {
+          "f": "Gibt es Messwerte?",
+          "a": "Am Rand des Gefahrenbereichs zeigt das pH-Papier im Wasser einen Wert von 2. In der Luft wurde bisher nicht gemessen.",
+          "wichtig": true
+        },
+        {
+          "f": "Ist die Wasserschutzpolizei informiert?",
+          "a": "Ja, ein Boot ist auf dem Weg."
+        },
+        {
+          "f": "Gibt es Neutralisationsmittel vor Ort?",
+          "a": "Der Kai hat keine Bevorratung. Bei einem Baustoffhändler im Hafen lagert Kalk in größerer Menge."
+        },
+        {
+          "f": "Ist die Reederei erreichbar?",
+          "a": "Der Kapitän hat die Reederei informiert, ein Bergungsunternehmen wird angefragt."
+        },
+        {
+          "f": "Sind Einsatzkräfte verletzt?",
+          "a": "Nein."
+        }
+      ],
+      "ausarbeitung": [
+        {
+          "id": "orga",
+          "typ": "abschnitte",
+          "titel": "Führungsorganisation und Abschnittsbildung",
+          "frage": "Skizzieren Sie die Führungsorganisation mit Abschnitten, Abschnittsleitern und Rufgruppen.",
+          "soll": [
+            "Gefahrenabwehr ABC",
+            "Dekontamination",
+            "Medizinische Rettung",
+            "Umwelt- und Gewässerschutz",
+            "Bereitstellungsraum"
+          ],
+          "kann": [
+            "Messen und Warnen",
+            "Menschenrettung und Evakuierung",
+            "Absperrung und Verkehr"
+          ],
+          "hinweis": "Die Rettung des Maschinisten erfolgt im Abschnitt Gefahrenabwehr ABC. Der Gewässerschutz erfordert die Zusammenarbeit mit Wasserschutzpolizei und Wasserbehörde."
+        },
+        {
+          "id": "massnahmen",
+          "typ": "text",
+          "titel": "Weitere Maßnahmen",
+          "frage": "Legen Sie die weiteren Maßnahmen und Einsatzschwerpunkte in der Reihenfolge fest.",
+          "kriterien": [
+            [
+              "Rettung des Maschinisten unter Chemikalienschutz mit Absturzsicherung",
+              2
+            ],
+            [
+              "Dekontamination und Notfalldekon der Verletzten",
+              2
+            ],
+            [
+              "Kein direktes Wasser auf die konzentrierte Säure, Säurenebel mit Sprühstrahl niederschlagen",
+              2
+            ],
+            [
+              "Messungen in Luft und Wasser, Warnbereich festlegen",
+              1
+            ],
+            [
+              "Rückhaltung am Kai, Neutralisation mit Kalk in Abstimmung mit der Wasserbehörde",
+              1
+            ],
+            [
+              "Fahrgastschiff vorsorglich räumen oder verholen",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lage",
+          "typ": "text",
+          "titel": "Lagemeldung",
+          "frage": "Formulieren Sie Ihre Lagemeldung an die Leitstelle.",
+          "kriterien": [
+            [
+              "Übernahme der Einsatzleitung durch den C-Dienst mit Uhrzeit",
+              1
+            ],
+            [
+              "Lage: Tankschiff mit 950 t Schwefelsäure in Schlagseite, Austritt in Hafenbecken",
+              1
+            ],
+            [
+              "Personen: Maschinist an Bord, zwei Verletzte mit Verätzungen",
+              1
+            ],
+            [
+              "Maßnahmen: Menschenrettung, Dekon, Absperrung",
+              1
+            ],
+            [
+              "Konkrete Nachforderungen benannt",
+              2
+            ],
+            [
+              "Nächste Lagemeldung terminiert",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "nachf",
+          "typ": "nachforderung",
+          "titel": "Nachalarmierung",
+          "frage": "Alarmieren Sie über Karte, Leiste und Stichworte alle erforderlichen Kräfte nach und informieren Sie die erforderlichen Stellen.",
+          "soll": [
+            {
+              "t": "key",
+              "any": [
+                "PDEKON"
+              ],
+              "pts": 2,
+              "label": "P-Dekon",
+              "warum": "Dekontamination der Trupps unter Chemikalienschutz."
+            },
+            {
+              "t": "key",
+              "any": [
+                "VDEKON"
+              ],
+              "pts": 1,
+              "label": "V-Dekon",
+              "warum": "Verätzte Besatzungsmitglieder."
+            },
+            {
+              "t": "key",
+              "any": [
+                "MESS"
+              ],
+              "pts": 2,
+              "label": "Messzug",
+              "warum": "Säurenebel in Richtung Wohnbebauung."
+            },
+            {
+              "t": "key",
+              "any": [
+                "TUIS"
+              ],
+              "pts": 2,
+              "label": "TUIS Fachberatung",
+              "warum": "Umpumpen, Neutralisation und Bergung."
+            },
+            {
+              "t": "key",
+              "any": [
+                "UWB"
+              ],
+              "pts": 2,
+              "label": "Untere Wasserbehörde",
+              "warum": "Säureeintrag in das Hafenbecken."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ABBOOT"
+              ],
+              "pts": 1,
+              "label": "AB-Boot",
+              "warum": "Erkundung und Arbeiten von der Wasserseite."
+            },
+            {
+              "t": "key",
+              "any": [
+                "THWFB"
+              ],
+              "pts": 1,
+              "label": "Fachberater THW",
+              "warum": "Stabilisierung und Bergung des Schiffs."
+            },
+            {
+              "t": "key",
+              "any": [
+                "WARN"
+              ],
+              "pts": 1,
+              "label": "Warnung der Bevölkerung",
+              "warum": "Säurenebel über dem Hafenweg."
+            },
+            {
+              "t": "key",
+              "any": [
+                "POL"
+              ],
+              "pts": 1,
+              "label": "Polizei und Wasserschutzpolizei",
+              "warum": "Sperrung des Hafenbeckens."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ELW2"
+              ],
+              "pts": 1,
+              "label": "ELW 2 mit Führungsunterstützung",
+              "warum": "Langwieriger ABC-Einsatz mit mehreren Stellen."
+            },
+            {
+              "t": "key",
+              "any": [
+                "WB1",
+                "WACHE1"
+              ],
+              "pts": 1,
+              "label": "Wachbesetzung FRW 1",
+              "warum": "Löschzug 1 ist langfristig gebunden."
+            }
+          ],
+          "kann": [
+            "ATF",
+            "Bezirksregierung informieren",
+            "GW-Atemschutz",
+            "Pressesprecher"
+          ]
+        }
+      ],
+      "kommission": [
+        {
+          "id": "gefahren",
+          "typ": "matrix",
+          "titel": "Gefahren",
+          "frage": "Die Kommission fragt: Welche Gefahren sehen Sie an dieser Einsatzstelle und für wen?",
+          "soll": [
+            "Chemische Stoffe:Menschen",
+            "Chemische Stoffe:Mannschaft",
+            "Chemische Stoffe:Umwelt",
+            "Chemische Stoffe:Gerät",
+            "Atemgifte:Menschen",
+            "Atemgifte:Mannschaft",
+            "Einsturz:Mannschaft",
+            "Explosion:Mannschaft"
+          ],
+          "hinweis": "Unter Einsturz fällt das weitere Krängen oder Kentern des Schiffs. Die Explosionsgefahr ergibt sich aus der Wasserstoffbildung bei Kontakt der Säure mit Metall."
+        },
+        {
+          "id": "begruendung",
+          "typ": "text",
+          "titel": "Begründung",
+          "frage": "Die Kommission fragt: Begründen Sie Ihre Abschnittsbildung und die räumliche Lage der Abschnitte.",
+          "kriterien": [
+            [
+              "Gefahrenabwehr ABC am Schiff mit Menschenrettung",
+              2
+            ],
+            [
+              "Dekon an der Grenze des Gefahrenbereichs windaufwärts",
+              1
+            ],
+            [
+              "Gewässerschutz als eigener Abschnitt mit Wasserseite",
+              1
+            ],
+            [
+              "Bereitstellungsraum windaufwärts am Hafenweg",
+              1
+            ],
+            [
+              "Führungsspanne eingehalten",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "befehl",
+          "typ": "text",
+          "titel": "Befehl",
+          "frage": "Die Kommission fordert: Erteilen Sie dem Abschnittsleiter Gefahrenabwehr ABC Ihren Befehl.",
+          "kriterien": [
+            [
+              "Lage: Schiff in Schlagseite, Säureaustritt, Maschinist im Maschinenraum",
+              1
+            ],
+            [
+              "Auftrag: Rettung des Maschinisten",
+              2
+            ],
+            [
+              "Schutzausrüstung Form 3, Absturzsicherung, Sicherheitstrupp",
+              2
+            ],
+            [
+              "Kein Wasserstrahl auf konzentrierte Säure",
+              1
+            ],
+            [
+              "Übergabe an die Dekon",
+              1
+            ],
+            [
+              "Verbindung über MUS_30, Rückmeldung nach Rettung",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lageaenderung",
+          "typ": "text",
+          "titel": "Lageänderung",
+          "frage": "06:40 Uhr: Das Schiff krängt weiter auf etwa 70 Grad. Der Trupp ist gerade am Niedergang zum Maschinenraum. Wie reagieren Sie?",
+          "kriterien": [
+            [
+              "Abwägung Rettung gegen Eigengefährdung, Rückzug bei Kentergefahr",
+              2
+            ],
+            [
+              "Sicherung der Einsatzkräfte, Rettung von der Wasserseite prüfen",
+              1
+            ],
+            [
+              "Gefahrenbereich am Kai erweitern",
+              1
+            ],
+            [
+              "Bergungsunternehmen und THW drängen",
+              1
+            ],
+            [
+              "Rückmeldung an die Leitstelle",
+              1
+            ]
+          ]
+        }
+      ],
+      "presse": {
+        "id": "presse",
+        "typ": "text",
+        "titel": "O-Ton Pressekonferenz",
+        "anlass": "08:00 Uhr, Anwohner und Medien fragen nach Gefahren durch den weißen Nebel.",
+        "frage": "Geben Sie einen O-Ton von etwa 60 Sekunden ab.",
+        "sekunden": 60,
+        "kriterien": [
+          [
+            "Vorstellung mit Name und Funktion",
+            1
+          ],
+          [
+            "Gesicherte Fakten zum Schiff und zur Ladung",
+            1
+          ],
+          [
+            "Klare Verhaltenshinweise für Anwohner im Hafenbereich",
+            2
+          ],
+          [
+            "Keine Spekulation zu Umweltfolgen",
+            1
+          ],
+          [
+            "Keine Angaben zur Schuldfrage",
+            1
+          ],
+          [
+            "Hinweis auf die nächste Information",
+            1
+          ]
+        ]
+      }
+    }
+  ]
+}

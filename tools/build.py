@@ -17,6 +17,15 @@ daten = {d: base64.b64encode((root / "assets" / f).read_bytes()).decode() for d,
 html = html.replace('<script src="js/unterlagen.js"></script>',
                     "<script>window.UNTERLAGEN_DATEN = " + json.dumps(daten) + ";</script>\n" + '<script src="js/unterlagen.js"></script>')
 
+# Ablageordner lagen/: Inhaltsverzeichnis aktualisieren und alle Lagen einbetten
+import sys
+sys.path.insert(0, str(root / "tools"))
+from lagen_index import schreibe
+ordner = [{"datei": n, "inhalt": json.loads((root / "lagen" / n).read_text(encoding="utf-8"))} for n in schreibe(root)]
+html = html.replace('<script src="js/ordner.js"></script>',
+                    "<script>window.ORDNER_LAGEN = " + json.dumps(ordner, ensure_ascii=False).replace("</", "<\\/") + ";</script>\n" + '<script src="js/ordner.js"></script>')
+print("Ablageordner:", len(ordner), "Dateien eingebettet")
+
 img2 = base64.b64encode((root / "assets/stadtkarte.svg").read_bytes()).decode()
 html = html.replace('src="assets/stadtkarte.svg"', 'src="data:image/svg+xml;base64,' + img2 + '"')
 

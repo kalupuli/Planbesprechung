@@ -576,6 +576,8 @@ svg.tz{display:block;flex:none}
 /* Lagen-Editor */
 .lactions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:4px 0 14px}
 .lactions .note{flex:1;min-width:200px}
+.lordner{margin:-6px 0 14px}
+.lordner.warn{color:var(--warn,#e0a030)}
 .lc-ed{margin-top:6px;gap:6px}
 .overlay.drop{outline:3px dashed var(--amber);outline-offset:-10px}
 .rlagen{display:flex;gap:6px;margin:0 0 8px}

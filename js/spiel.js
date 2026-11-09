@@ -259,7 +259,7 @@ function oeffneUeber(id) {
 function vorschau(id, zufall) {
   const sz = SZ.find(s => s.id === id); const best = store.get("pms_best", {});
   szAuswahl = id; karteSzenarien(); if (!G) renderRail();
-  drawerAuf(`<div class="eyebrow">${zufall ? "Zufallsszenario" : sz.beispiel ? "Beispielszenario" : sz.eigen ? "Eigene Lage" : "Szenario"} · ${esc(TYPEN[sz.typ] || "")}</div><h2>${esc(sz.titel)}</h2>
+  drawerAuf(`<div class="eyebrow">${zufall ? "Zufallsszenario" : sz.beispiel ? "Beispielszenario" : sz.eigen ? "Eigene Lage" : sz.ordner ? "Lage aus Ablageordner" : "Szenario"} · ${esc(TYPEN[sz.typ] || "")}</div><h2>${esc(sz.titel)}</h2>
    <dl class="kv" style="margin-top:10px"><dt>Einsatzort</dt><dd>${esc(sz.ort.adresse)}<br><span class="note">${esc(sz.ort.detail)} · ${esc(sz.ort.wb)}</span></dd><dt>Alarmzeit</dt><dd>${esc(sz.zeit)}, ${esc(sz.t0)} Uhr</dd><dt>Stichwort</dt><dd>${esc(sz.stichwort)}</dd><dt>Wetter</dt><dd>${esc(sz.wetter)}</dd>${best[id] != null ? `<dt>Bestwert</dt><dd>${best[id]} %</dd>` : ""}</dl>
    <p class="note">Ablauf: Alarm, Übergabe, Erkundung mit Nachfragen, 4 Minuten Ausarbeitung, Rückfragen der Kommission, O-Ton in der Pressekonferenz.</p>
    <div class="actions"><button class="go" type="button" id="startBtn">Planbesprechung starten</button>${sz.eigen ? '<button class="alt" type="button" id="edBtn">Bearbeiten</button>' : '<button class="alt" type="button" id="edBtn">Als Vorlage kopieren</button>'}</div>`);
@@ -280,7 +280,7 @@ function renderListe() {
   $("#lfilter").querySelectorAll("[data-lf]").forEach(b => b.addEventListener("click", () => { listeFilter = b.dataset.lf; renderListe(); }));
   const list = SZ.filter(s => (listeFilter === "alle" || s.typ === listeFilter) && (!q || (s.titel + " " + s.ort.adresse + " " + s.stichwort + " " + s.ort.wb).toLowerCase().includes(q)));
   $("#lcount").textContent = list.length + " von " + SZ.length + " Szenarien";
-  $("#lgrid").innerHTML = list.length ? list.map(s => `<article class="lcard"><div class="lc-top"><span class="ico">${ICONS[s.typ] || ""}</span><div><div class="eyebrow">${esc(TYPEN[s.typ] || "")}${s.beispiel ? " · Beispiel" : ""}${s.eigen ? " · Eigene Lage" : ""}</div><h3>${esc(s.titel)}</h3></div>${best[s.id] != null ? `<span class="best">${best[s.id]} %</span>` : ""}</div>
+  $("#lgrid").innerHTML = list.length ? list.map(s => `<article class="lcard"><div class="lc-top"><span class="ico">${ICONS[s.typ] || ""}</span><div><div class="eyebrow">${esc(TYPEN[s.typ] || "")}${s.beispiel ? " · Beispiel" : ""}${s.eigen ? " · Eigene Lage" : ""}${s.ordner ? " · Ablageordner" : ""}</div><h3>${esc(s.titel)}</h3></div>${best[s.id] != null ? `<span class="best">${best[s.id]} %</span>` : ""}</div>
     <dl class="kv"><dt>Einsatzort</dt><dd>${esc(s.ort.adresse)}</dd><dt>Bereich</dt><dd>${esc(s.ort.wb)}</dd><dt>Alarm</dt><dd>${esc(s.zeit)}, ${esc(s.t0)} Uhr</dd><dt>Stichwort</dt><dd>${esc(s.stichwort)}</dd></dl>
     <div class="actions"><button class="alt" type="button" data-lk="${s.id}">Auf der Karte</button><button class="go" type="button" data-ls="${s.id}">Starten</button></div>
     <div class="actions lc-ed">${s.eigen ? `<button class="mini sec" type="button" data-led="${s.id}">Bearbeiten</button><button class="mini sec" type="button" data-lex="${s.id}">Exportieren</button>` : `<button class="mini sec" type="button" data-lvo="${s.id}">Als Vorlage kopieren</button>`}</div></article>`).join("") : '<p class="note">Kein Szenario passt zur Suche.</p>';
@@ -289,6 +289,7 @@ function renderListe() {
   $("#lgrid").querySelectorAll("[data-led]").forEach(b => b.addEventListener("click", () => window.Editor.bearbeiten(b.dataset.led)));
   $("#lgrid").querySelectorAll("[data-lex]").forEach(b => b.addEventListener("click", () => window.Editor.exportiere([b.dataset.lex])));
   $("#lgrid").querySelectorAll("[data-lvo]").forEach(b => b.addEventListener("click", () => window.Editor.vorlage(b.dataset.lvo)));
+  if (window.Ordner) window.Ordner.zeigeStatus();
   const eig = SZ.filter(s => s.eigen).length; $("#lExport").disabled = !eig; $("#lExport").textContent = "Eigene exportieren" + (eig ? " (" + eig + ")" : "");
 }
 $("#lq").addEventListener("input", renderListe);

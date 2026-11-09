@@ -1,0 +1,664 @@
+{
+  "format": "planbesprechung-musterstadt/lagen",
+  "version": 1,
+  "erstellt": "2026-11-09T09:00:00Z",
+  "lagen": [
+    {
+      "id": "eigen-bs-tornado-sued",
+      "titel": "Tornado Ortsteil Süd",
+      "typ": "th",
+      "x": 55.4,
+      "y": 69.4,
+      "ort": {
+        "adresse": "Schwerpunkt Baustelle Neubaugebiet, Lerchenweg / Südallee",
+        "detail": "Schadensschneise über den Ortsteil Süd von Südwest nach Nordost",
+        "wb": "Wachbezirk 3, Ausrückebereich LZ 31"
+      },
+      "datum": "2026-03-27",
+      "t0": "17:12",
+      "meldender": "Über 80 Notrufe innerhalb von 10 Minuten",
+      "wetter": "11 °C, Gewitterfront abgezogen, Regen, Wind aus Südwest mit 8 m/s, Böen",
+      "stichwort": "TH Unwetter · Ausnahmezustand Leitstelle",
+      "meldung": "Leitstelle Musterstadt für C-Dienst. Unwetterlage mit Tornado über den Ortsteil Süd. Schwerpunkt ist die Baustelle im Neubaugebiet Lerchenweg Ecke Südallee, dort ist ein Turmdrehkran auf einen Rohbau gestürzt, der Kranführer ist vermutlich eingeschlossen. Zahlreiche Dachschäden, umgestürzte Bäume und blockierte Straßen im gesamten Ortsteil. Die Leitstelle hat den Ausnahmezustand ausgerufen. Alarmiert sind Gruppe FRW 3, Löschzug 31, Löschgruppe 32 und der Rüstwagen. Sie werden zur Übernahme der Einsatzleitung im Ortsteil Süd angefordert.",
+      "alarmiert": [
+        "GR3",
+        "FF31",
+        "FF32",
+        "RW1"
+      ],
+      "cAlarm": 12,
+      "uebergabe": {
+        "von": "B-Dienst 2, Zugführer LZ 31",
+        "text": [
+          "Herr Verbandsführer, B-Dienst 2. Wir sind um 17:24 Uhr am Schwerpunkt eingetroffen.",
+          "Ein Tornado hat gegen 17:10 Uhr den Ortsteil Süd in einer Schneise von etwa 2 Kilometern Länge und 200 Metern Breite überquert. Auf der Baustelle Lerchenweg ist ein Turmdrehkran umgestürzt und liegt auf einem dreigeschossigen Rohbau. Die Kabine hängt in etwa 12 Metern Höhe am Rohbau, der Kranführer gibt keine Antwort.",
+          "Laut Polier waren zum Zeitpunkt des Unwetters noch sechs Arbeiter auf der Baustelle. Vier haben sich im Container gesammelt, ein Arbeiter liegt mit Beinverletzung unter einem Gerüstteil, von einem weiteren fehlt jede Spur.",
+          "Neben der Baustelle wurde in der Südallee das Dach eines Mehrfamilienhauses mit zwölf Wohnungen abgedeckt. In der Schneise liegen zahlreiche Bäume auf Fahrbahnen und Fahrzeugen. Eine Mittelspannungsleitung am Ortsrand ist gerissen.",
+          "Die Gruppe FRW 3 sichert den Kran und bereitet die Rettung des Kranführers mit der Drehleiter vor, die Leiter erreicht die Kabine aber nicht ohne Weiteres. Der LZ 31 rettet den verletzten Arbeiter unter dem Gerüst. Die LG 32 arbeitet in der Südallee. Der Rüstwagen ist eingetroffen.",
+          "Bei der Leitstelle stehen derzeit über 60 offene Einsätze im Ortsteil Süd in der Warteschlange. Offen sind die Rettung des Kranführers, die Suche nach dem vermissten Arbeiter, die Lage in der Südallee und die Abarbeitung der Kleineinsätze. Ich bitte um Übernahme."
+        ]
+      },
+      "info": [
+        {
+          "titel": "Schwerpunkt Baustelle",
+          "zeilen": [
+            [
+              "Kran",
+              "Obendreher, Hakenhöhe 42 m, Ausleger 50 m, auf Rohbau gestürzt"
+            ],
+            [
+              "Rohbau",
+              "Dreigeschossig, Decken in Stahlbeton, Dach offen"
+            ],
+            [
+              "Personen",
+              "Kranführer in der Kabine, ein Verletzter unter Gerüstteil, ein Vermisster, vier Unverletzte"
+            ]
+          ]
+        },
+        {
+          "titel": "Schadensgebiet",
+          "zeilen": [
+            [
+              "Schneise",
+              "Etwa 2 km lang und 200 m breit, Südwest nach Nordost"
+            ],
+            [
+              "Gebäude",
+              "Dachschäden an über 40 Gebäuden, ein Mehrfamilienhaus abgedeckt"
+            ],
+            [
+              "Infrastruktur",
+              "Mittelspannungsleitung gerissen, mehrere Straßen durch Bäume gesperrt"
+            ],
+            [
+              "Leitstelle",
+              "Über 60 offene Einsätze, Ausnahmezustand"
+            ]
+          ]
+        },
+        {
+          "titel": "Vorlage",
+          "zeilen": [
+            [
+              "Quelle",
+              "BRANDSchutz 2006, Heft 11, S. 801"
+            ],
+            [
+              "Ereignis",
+              "Tornado über Hamburg am 27. März 2006"
+            ],
+            [
+              "Übertragung",
+              "Schadensbild und Schwerpunkt wurden auf den Ortsteil Süd von Musterstadt übertragen und frei ausgestaltet."
+            ]
+          ]
+        }
+      ],
+      "lagekarte": [
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              0,
+              330
+            ],
+            [
+              640,
+              330
+            ],
+            [
+              640,
+              370
+            ],
+            [
+              0,
+              370
+            ]
+          ],
+          "f": "strasse",
+          "txt": "Südallee"
+        },
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              260,
+              0
+            ],
+            [
+              300,
+              0
+            ],
+            [
+              300,
+              330
+            ],
+            [
+              260,
+              330
+            ]
+          ],
+          "f": "strasse",
+          "txt": "Lerchenweg"
+        },
+        {
+          "t": "gebaeude",
+          "x": 60,
+          "y": 120,
+          "w": 160,
+          "h": 110,
+          "txt": "Rohbau"
+        },
+        {
+          "t": "linie",
+          "pts": [
+            [
+              40,
+              40
+            ],
+            [
+              220,
+              180
+            ]
+          ],
+          "s": "mittel",
+          "txt": "Kranausleger"
+        },
+        {
+          "t": "zone",
+          "kind": "gefahr",
+          "cx": 140,
+          "cy": 150,
+          "r": 110,
+          "txt": "Kippbereich"
+        },
+        {
+          "t": "personen",
+          "x": 190,
+          "y": 150,
+          "txt": "Kabine 12 m"
+        },
+        {
+          "t": "gebaeude",
+          "x": 340,
+          "y": 220,
+          "w": 150,
+          "h": 90,
+          "txt": "MFH abgedeckt"
+        },
+        {
+          "t": "fz",
+          "x": 240,
+          "y": 250,
+          "txt": "DLK",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 240,
+          "y": 300,
+          "txt": "HLF 20",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 330,
+          "y": 350,
+          "txt": "LZ 31",
+          "org": "fw",
+          "w": 56
+        },
+        {
+          "t": "fz",
+          "x": 520,
+          "y": 350,
+          "txt": "LG 32",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 330,
+          "y": 120,
+          "txt": "RW",
+          "org": "fw"
+        },
+        {
+          "t": "el",
+          "x": 400,
+          "y": 120,
+          "txt": "B 2"
+        },
+        {
+          "t": "fz",
+          "x": 330,
+          "y": 60,
+          "txt": "RTW",
+          "org": "rd"
+        },
+        {
+          "t": "tz",
+          "z": "Gefahren/Gefahr_durch_elektrischen_Strom",
+          "x": 590,
+          "y": 80,
+          "s": 30,
+          "txt": "Leitung gerissen"
+        },
+        {
+          "t": "pfeil",
+          "x1": 20,
+          "y1": 390,
+          "x2": 620,
+          "y2": 10,
+          "txt": "Schneise"
+        },
+        {
+          "t": "wind",
+          "x": 560,
+          "y": 160,
+          "dir": 45,
+          "txt": "SW 8 m/s Böen"
+        },
+        {
+          "t": "offen",
+          "x": 60,
+          "y": 280,
+          "txt": "Vermisster"
+        },
+        {
+          "t": "offen",
+          "x": 470,
+          "y": 60,
+          "txt": "Kleineinsätze"
+        },
+        {
+          "t": "offen",
+          "x": 120,
+          "y": 390,
+          "txt": "Bereitstellungsraum"
+        },
+        {
+          "t": "offen",
+          "x": 560,
+          "y": 260,
+          "txt": "Betreuung MFH"
+        }
+      ],
+      "nachfragen": [
+        {
+          "f": "Ist der Kran stabil?",
+          "a": "Der Kran liegt mit dem Turm auf der Deckenkante des Rohbaus. Der Statiker der Baufirma ist unterwegs. Bei weiteren Böen ist ein Nachrutschen nicht auszuschließen.",
+          "wichtig": true
+        },
+        {
+          "f": "Ist der Kranführer erreichbar?",
+          "a": "Er reagiert nicht auf Rufe. Durch die Scheibe ist eine Person zu erkennen, welche sich nicht bewegt.",
+          "wichtig": true
+        },
+        {
+          "f": "Wo könnte der vermisste Arbeiter sein?",
+          "a": "Laut Polier hat er zuletzt auf der Westseite des Rohbaus Schalung gestellt. Dort liegt jetzt der Kranausleger.",
+          "wichtig": true
+        },
+        {
+          "f": "Wie ist die Lage im abgedeckten Mehrfamilienhaus?",
+          "a": "Das Dach ist vollständig abgedeckt, Regen dringt in das 3. OG. Die Bewohner stehen vor dem Haus. Eine Bewohnerin ist leicht verletzt.",
+          "wichtig": true
+        },
+        {
+          "f": "Welche Straßen sind gesperrt?",
+          "a": "Südallee ab Lerchenweg Richtung Osten und mehrere Wohnstraßen durch Bäume blockiert. Die Zufahrt über den Lerchenweg von Norden ist frei.",
+          "wichtig": true
+        },
+        {
+          "f": "Ist der Energieversorger informiert?",
+          "a": "Die Leitstelle hat die Störung gemeldet. Ob die gerissene Leitung abgeschaltet ist, ist unbekannt.",
+          "wichtig": true
+        },
+        {
+          "f": "Kommen weitere Unwetter?",
+          "a": "Der Deutsche Wetterdienst meldet für die nächsten zwei Stunden weitere Böen bis 70 km/h, aber keine weiteren Gewitterzellen."
+        },
+        {
+          "f": "Wie viele Einsätze liegen bei der Leitstelle?",
+          "a": "Über 60 Einsätze im Ortsteil Süd, überwiegend Bäume auf Fahrbahn, Dachschäden und Wasser im Keller. Weitere Notrufe gehen ein."
+        },
+        {
+          "f": "Gibt es weitere Verletzte?",
+          "a": "Bislang sind drei Leichtverletzte aus der Südallee und der Verletzte auf der Baustelle bekannt."
+        },
+        {
+          "f": "Sind Einsatzkräfte verletzt?",
+          "a": "Nein."
+        }
+      ],
+      "ausarbeitung": [
+        {
+          "id": "orga",
+          "typ": "abschnitte",
+          "titel": "Führungsorganisation und Abschnittsbildung",
+          "frage": "Skizzieren Sie die Führungsorganisation mit Abschnitten, Abschnittsleitern und Rufgruppen.",
+          "soll": [
+            "Technische Rettung",
+            "Menschenrettung und Evakuierung",
+            "Medizinische Rettung",
+            "Bereitstellungsraum"
+          ],
+          "kann": [
+            "Betreuung",
+            "Logistik und Atemschutz",
+            "Absperrung und Verkehr"
+          ],
+          "hinweis": "Die Vielzahl der Kleineinsätze sollte in einem eigenen Abschnitt oder durch eine Abschnittsführungsstelle abgearbeitet werden, damit der Schwerpunkt Baustelle nicht überlastet wird."
+        },
+        {
+          "id": "massnahmen",
+          "typ": "text",
+          "titel": "Weitere Maßnahmen",
+          "frage": "Legen Sie die weiteren Maßnahmen und Einsatzschwerpunkte in der Reihenfolge fest.",
+          "kriterien": [
+            [
+              "Rettung des Kranführers mit Höhenrettung oder Hubrettungsfahrzeug unter Sicherung des Krans",
+              2
+            ],
+            [
+              "Suche nach dem vermissten Arbeiter unter dem Ausleger",
+              2
+            ],
+            [
+              "Absperrung des Kippbereichs",
+              1
+            ],
+            [
+              "Abschaltung der Mittelspannungsleitung durch den Energieversorger",
+              1
+            ],
+            [
+              "Sicherung und Notabdeckung des Mehrfamilienhauses, Unterbringung",
+              1
+            ],
+            [
+              "Priorisierung und Abarbeitung der Kleineinsätze über eine Abschnittsführungsstelle",
+              2
+            ]
+          ]
+        },
+        {
+          "id": "lage",
+          "typ": "text",
+          "titel": "Lagemeldung",
+          "frage": "Formulieren Sie Ihre Lagemeldung an die Leitstelle.",
+          "kriterien": [
+            [
+              "Übernahme der Einsatzleitung durch den C-Dienst mit Uhrzeit",
+              1
+            ],
+            [
+              "Lage: Tornado mit Schadensschneise, Kran auf Rohbau gestürzt",
+              1
+            ],
+            [
+              "Personen: Kranführer eingeschlossen, ein Vermisster, vier Verletzte",
+              1
+            ],
+            [
+              "Maßnahmen: Rettung Kranführer, Suche, Absperrung",
+              1
+            ],
+            [
+              "Konkrete Nachforderungen benannt",
+              2
+            ],
+            [
+              "Nächste Lagemeldung terminiert",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "nachf",
+          "typ": "nachforderung",
+          "titel": "Nachalarmierung",
+          "frage": "Alarmieren Sie über Karte, Leiste und Stichworte alle erforderlichen Kräfte nach und informieren Sie die erforderlichen Stellen.",
+          "soll": [
+            {
+              "t": "key",
+              "any": [
+                "GWH"
+              ],
+              "pts": 2,
+              "label": "GW-Höhenrettung",
+              "warum": "Rettung des Kranführers aus der Kabine in 12 Metern Höhe."
+            },
+            {
+              "t": "typ",
+              "typ": "DLA (K) 23/12",
+              "min": 2,
+              "pts": 1,
+              "label": "Zweites Hubrettungsfahrzeug",
+              "warum": "Anfahren der Kabine von einer zweiten Seite."
+            },
+            {
+              "t": "key",
+              "any": [
+                "KW1"
+              ],
+              "pts": 1,
+              "label": "Kranwagen",
+              "warum": "Sicherung und Anheben des Auslegers."
+            },
+            {
+              "t": "key",
+              "any": [
+                "THWFB"
+              ],
+              "pts": 1,
+              "label": "Fachberater THW",
+              "warum": "Bewertung der Kranstatik und Bergung."
+            },
+            {
+              "t": "key",
+              "any": [
+                "THWTZ1",
+                "THWTZ2"
+              ],
+              "pts": 2,
+              "label": "THW Technischer Zug",
+              "warum": "Räumen von Straßen, Notabdeckung von Dächern."
+            },
+            {
+              "t": "key",
+              "any": [
+                "THWO"
+              ],
+              "pts": 1,
+              "label": "THW FGr Ortung",
+              "warum": "Ortung des vermissten Arbeiters."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ENERG"
+              ],
+              "pts": 2,
+              "label": "Energieversorger",
+              "warum": "Abschaltung der gerissenen Mittelspannungsleitung."
+            },
+            {
+              "t": "lz",
+              "min": 4,
+              "pts": 2,
+              "label": "Weitere Löschzüge",
+              "warum": "Abarbeitung der über 60 Kleineinsätze."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ELW2"
+              ],
+              "pts": 1,
+              "label": "ELW 2 mit Führungsunterstützung",
+              "warum": "Flächenlage mit Schwerpunkt und vielen Einzelstellen."
+            },
+            {
+              "t": "key",
+              "any": [
+                "UNTER"
+              ],
+              "pts": 1,
+              "label": "Ersatzunterbringung",
+              "warum": "Bewohner des abgedeckten Mehrfamilienhauses."
+            },
+            {
+              "t": "key",
+              "any": [
+                "DDIENST"
+              ],
+              "pts": 1,
+              "label": "D-Dienst informieren",
+              "warum": "Flächenlage mit Ausnahmezustand der Leitstelle."
+            }
+          ],
+          "kann": [
+            "SEG-Betreuung",
+            "Wachbesetzung FRW 1",
+            "Ordnungsamt",
+            "Pressesprecher"
+          ]
+        }
+      ],
+      "kommission": [
+        {
+          "id": "gefahren",
+          "typ": "matrix",
+          "titel": "Gefahren",
+          "frage": "Die Kommission fragt: Welche Gefahren sehen Sie an dieser Einsatzstelle und für wen?",
+          "soll": [
+            "Einsturz:Menschen",
+            "Einsturz:Mannschaft",
+            "Elektrizität:Menschen",
+            "Elektrizität:Mannschaft",
+            "Erkrankung/Verletzung:Menschen",
+            "Ausbreitung:Sachwerte",
+            "Angstreaktion:Menschen"
+          ],
+          "hinweis": "Unter Einsturz fallen der Kran, lose Dachteile und umsturzgefährdete Bäume. Unter Ausbreitung fallen eindringendes Regenwasser und Folgeschäden."
+        },
+        {
+          "id": "begruendung",
+          "typ": "text",
+          "titel": "Begründung",
+          "frage": "Die Kommission fragt: Begründen Sie Ihre Abschnittsbildung und die räumliche Lage der Abschnitte.",
+          "kriterien": [
+            [
+              "Schwerpunkt Baustelle als eigener Abschnitt Technische Rettung",
+              2
+            ],
+            [
+              "Kleineinsätze räumlich gegliedert und getrennt vom Schwerpunkt",
+              2
+            ],
+            [
+              "Bereitstellungsraum an einer freien Zufahrt von Norden",
+              1
+            ],
+            [
+              "Führungsspanne eingehalten",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "befehl",
+          "typ": "text",
+          "titel": "Befehl",
+          "frage": "Die Kommission fordert: Erteilen Sie dem Abschnittsleiter Technische Rettung Baustelle Ihren Befehl.",
+          "kriterien": [
+            [
+              "Lage: Kran auf Rohbau, Kranführer in 12 Metern Höhe, ein Vermisster",
+              1
+            ],
+            [
+              "Auftrag: Rettung des Kranführers und Suche nach dem Vermissten",
+              2
+            ],
+            [
+              "Sicherheit: Kippbereich, Böen, Sicherung des Krans",
+              2
+            ],
+            [
+              "Einsatz von Höhenrettung und Hubrettungsfahrzeug",
+              1
+            ],
+            [
+              "Verbindung über MUS_20, Rückmeldung nach Rettung",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lageaenderung",
+          "typ": "text",
+          "titel": "Lageänderung",
+          "frage": "18:05 Uhr: Eine Böe bewegt den Kranturm sichtbar. Die Höhenretter sind gerade an der Kabine angekommen. Wie reagieren Sie?",
+          "kriterien": [
+            [
+              "Sofortige Bewertung der Standsicherheit, Abbruch bei akuter Gefahr",
+              2
+            ],
+            [
+              "Rückzug aller Kräfte aus dem Kippbereich mit Ausnahme der Höhenretter",
+              1
+            ],
+            [
+              "Beschleunigte Rettung oder Sicherung der Höhenretter",
+              1
+            ],
+            [
+              "Kranwagen zur Sicherung einsetzen",
+              1
+            ],
+            [
+              "Rückmeldung an die Leitstelle",
+              1
+            ]
+          ]
+        }
+      ],
+      "presse": {
+        "id": "presse",
+        "typ": "text",
+        "titel": "O-Ton Pressekonferenz",
+        "anlass": "19:00 Uhr, regionale Fernsehsender berichten live aus dem Ortsteil Süd.",
+        "frage": "Geben Sie einen O-Ton von etwa 60 Sekunden ab.",
+        "sekunden": 60,
+        "kriterien": [
+          [
+            "Vorstellung mit Name und Funktion",
+            1
+          ],
+          [
+            "Überblick über Schadenslage und Verletzte",
+            1
+          ],
+          [
+            "Keine Angaben zu Namen oder Zustand des Kranführers",
+            2
+          ],
+          [
+            "Bitte um Notrufe nur bei Gefahr für Leib und Leben",
+            2
+          ],
+          [
+            "Verhaltenshinweise: Bäume und Leitungen meiden",
+            1
+          ],
+          [
+            "Hinweis auf die nächste Information",
+            1
+          ]
+        ]
+      }
+    }
+  ]
+}

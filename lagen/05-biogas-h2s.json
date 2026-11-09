@@ -1,0 +1,688 @@
+{
+  "format": "planbesprechung-musterstadt/lagen",
+  "version": 1,
+  "erstellt": "2026-11-09T09:00:00Z",
+  "lagen": [
+    {
+      "id": "eigen-bs-biogas-h2s",
+      "titel": "Schwefelwasserstoff Biogasanlage",
+      "typ": "abc",
+      "x": 73.2,
+      "y": 26.4,
+      "ort": {
+        "adresse": "Biogasanlage Hof Brockmann, Bauerschaft Ost 14",
+        "detail": "Außenbereich Nordost, Zufahrt über Kreisstraße",
+        "wb": "Wachbezirk 2, Ausrückebereich LZ 25"
+      },
+      "datum": "2026-11-10",
+      "t0": "10:24",
+      "meldender": "Landwirt über Notruf",
+      "wetter": "4 °C, Nebel, nahezu windstill, Wind aus Süd unter 1 m/s",
+      "stichwort": "ABC 2 · erhöht auf ABC 3 und MANV 10",
+      "meldung": "Leitstelle Musterstadt für C-Dienst. Einsatz ABC 3 mit Menschenleben in Gefahr, zusätzlich MANV 10, Biogasanlage Hof Brockmann, Bauerschaft Ost 14. Beim Entladen eines Tankwagens in die Annahmegrube sind mehrere Personen bewusstlos zusammengebrochen. Verdacht auf Schwefelwasserstoff. Der B-Dienst 2 hat um 10:36 Uhr auf ABC 3 und MANV 10 erhöht. Alarmiert sind Löschzug 25, Löschgruppe 18, Löschgruppe 19, ABC-Zug und die Einsatzmittelkette MANV 10. Sie werden zur Übernahme der Einsatzleitung angefordert.",
+      "alarmiert": [
+        "FF25",
+        "FF18",
+        "FF19",
+        "ABCZ",
+        "MANV10"
+      ],
+      "cAlarm": 11,
+      "uebergabe": {
+        "von": "B-Dienst 2, Zugführer LZ 25",
+        "text": [
+          "Herr Verbandsführer, B-Dienst 2. Wir sind um 10:35 Uhr eingetroffen.",
+          "Ein Tankwagen hat flüssige Speisereste und Schlachtabfälle in die Annahmegrube der Biogasanlage entladen. Dabei ist es zu einer starken Gasfreisetzung gekommen. Der Fahrer, der Landwirt und zwei Mitarbeiter sind in der Annahmehalle zusammengebrochen.",
+          "Der erste Angriffstrupp des LZ 25 hat unter Atemschutz zwei Personen aus der Halle gerettet. Beide sind nicht ansprechbar und werden vom Notarzt reanimiert. Zwei weitere Personen liegen noch in der Halle in der Nähe der Grube. Ein Ersthelfer, welcher ohne Schutz in die Halle gelaufen ist, klagt über Atemnot und Augenreizung.",
+          "Das Gaswarngerät des LZ 25 ist am Hallentor über den Messbereich gegangen. Die Annahmehalle ist geschlossen und hat nur ein Tor. Der Tankwagen steht mit laufender Pumpe vor der Grube.",
+          "Bei Nebel und Windstille sammelt sich das Gas in der Senke zum Wohnhaus. Im Wohnhaus befinden sich die Ehefrau des Landwirts und zwei Kinder, im Stall stehen etwa 180 Rinder.",
+          "Die LG 18 ist eingetroffen und steht an der Hofzufahrt. Die LG 19 und der ABC-Zug sind auf Anfahrt. Offen sind die Rettung der zwei Personen aus der Halle, die Dekontamination, die Messungen in der Umgebung und die Räumung des Wohnhauses. Ich bitte um Übernahme."
+        ]
+      },
+      "info": [
+        {
+          "titel": "Anlage",
+          "zeilen": [
+            [
+              "Betrieb",
+              "Biogasanlage mit Annahmehalle, zwei Fermentern, Gärrestlager und BHKW"
+            ],
+            [
+              "Annahmehalle",
+              "Geschlossene Halle 20 x 15 m, ein Rolltor, keine Zwangslüftung"
+            ],
+            [
+              "Annahmegrube",
+              "Unterflur, 120 m³, Rührwerk"
+            ],
+            [
+              "Tankwagen",
+              "Saugwagen 25 m³ mit flüssigen Speiseresten und Schlachtabfällen"
+            ]
+          ]
+        },
+        {
+          "titel": "Gefahrstoff",
+          "zeilen": [
+            [
+              "Stoff",
+              "Schwefelwasserstoff H₂S, UN 1053"
+            ],
+            [
+              "Kennzeichnung",
+              "Gefahrnummer 263, entzündbar und sehr giftig"
+            ],
+            [
+              "Eigenschaften",
+              "Schwerer als Luft, Geruch nach faulen Eiern, ab etwa 100 ppm betäubt der Geruchssinn"
+            ],
+            [
+              "Wirkung",
+              "Ab etwa 500 ppm Bewusstlosigkeit und Atemstillstand innerhalb von Minuten"
+            ],
+            [
+              "Explosionsbereich",
+              "Etwa 4 bis 46 Vol.-%"
+            ]
+          ]
+        },
+        {
+          "titel": "Vorlage",
+          "zeilen": [
+            [
+              "Quelle",
+              "BRANDSchutz 2006, Heft 1, S. 43"
+            ],
+            [
+              "Ereignis",
+              "Schwefelwasserstofffreisetzung an einer Biogasanlage in Rhadereistedt im November 2005"
+            ],
+            [
+              "Übertragung",
+              "Anlage, Betroffene und Ablauf wurden auf den Außenbereich Nordost von Musterstadt übertragen und frei ausgestaltet."
+            ]
+          ]
+        }
+      ],
+      "lagekarte": [
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              0,
+              350
+            ],
+            [
+              640,
+              350
+            ],
+            [
+              640,
+              390
+            ],
+            [
+              0,
+              390
+            ]
+          ],
+          "f": "strasse",
+          "txt": "Kreisstraße"
+        },
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              480,
+              160
+            ],
+            [
+              520,
+              160
+            ],
+            [
+              520,
+              350
+            ],
+            [
+              480,
+              350
+            ]
+          ],
+          "f": "strasse",
+          "txt": "Hofzufahrt"
+        },
+        {
+          "t": "gebaeude",
+          "x": 200,
+          "y": 160,
+          "w": 110,
+          "h": 80,
+          "txt": "Annahmehalle"
+        },
+        {
+          "t": "gebaeude",
+          "x": 60,
+          "y": 40,
+          "w": 90,
+          "h": 90,
+          "txt": "Fermenter 1"
+        },
+        {
+          "t": "gebaeude",
+          "x": 180,
+          "y": 40,
+          "w": 90,
+          "h": 90,
+          "txt": "Fermenter 2"
+        },
+        {
+          "t": "gebaeude",
+          "x": 360,
+          "y": 40,
+          "w": 160,
+          "h": 70,
+          "txt": "Stall"
+        },
+        {
+          "t": "gebaeude",
+          "x": 60,
+          "y": 250,
+          "w": 90,
+          "h": 60,
+          "txt": "Wohnhaus"
+        },
+        {
+          "t": "fz",
+          "x": 330,
+          "y": 200,
+          "txt": "Saugwagen",
+          "org": "zivil",
+          "w": 60
+        },
+        {
+          "t": "warn",
+          "x": 340,
+          "y": 175,
+          "oben": "263",
+          "unten": "1053"
+        },
+        {
+          "t": "zone",
+          "kind": "gefahr",
+          "cx": 255,
+          "cy": 200,
+          "r": 90,
+          "txt": "Gefahrenbereich"
+        },
+        {
+          "t": "wolke",
+          "x": 160,
+          "y": 250
+        },
+        {
+          "t": "fz",
+          "x": 440,
+          "y": 230,
+          "txt": "HLF 20",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 440,
+          "y": 280,
+          "txt": "LF 20",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 500,
+          "y": 370,
+          "txt": "LG 18",
+          "org": "fw"
+        },
+        {
+          "t": "el",
+          "x": 580,
+          "y": 370,
+          "txt": "B 2"
+        },
+        {
+          "t": "fz",
+          "x": 380,
+          "y": 320,
+          "txt": "NEF",
+          "org": "rd"
+        },
+        {
+          "t": "fz",
+          "x": 320,
+          "y": 320,
+          "txt": "RTW",
+          "org": "rd"
+        },
+        {
+          "t": "personen",
+          "x": 260,
+          "y": 220,
+          "txt": "2 Personen"
+        },
+        {
+          "t": "tz",
+          "z": "Gefahren/Akute_Gefahr_durch_Gas",
+          "x": 230,
+          "y": 140,
+          "s": 30,
+          "txt": "H₂S"
+        },
+        {
+          "t": "wind",
+          "x": 580,
+          "y": 40,
+          "dir": 0,
+          "txt": "S < 1 m/s"
+        },
+        {
+          "t": "offen",
+          "x": 400,
+          "y": 140,
+          "txt": "Dekon"
+        },
+        {
+          "t": "offen",
+          "x": 40,
+          "y": 330,
+          "txt": "Räumung"
+        },
+        {
+          "t": "offen",
+          "x": 600,
+          "y": 300,
+          "txt": "Bereitstellungsraum"
+        }
+      ],
+      "nachfragen": [
+        {
+          "f": "Wo genau liegen die zwei Personen in der Halle?",
+          "a": "Etwa fünf Meter hinter dem Tor neben der Grube. Der Trupp konnte sie wegen der Atemschutzzeit nicht mehr mitnehmen.",
+          "wichtig": true
+        },
+        {
+          "f": "Welche Konzentration wurde gemessen?",
+          "a": "Das Gaswarngerät zeigt am Tor über 100 ppm und damit das Ende des Messbereichs. Im Bereich des Wohnhauses werden 15 ppm gemessen.",
+          "wichtig": true
+        },
+        {
+          "f": "Läuft die Pumpe des Tankwagens noch?",
+          "a": "Ja. Der Fahrer ist einer der Bewusstlosen, ein Abschalten ist bislang nicht erfolgt.",
+          "wichtig": true
+        },
+        {
+          "f": "Sind die Personen im Wohnhaus informiert?",
+          "a": "Die Ehefrau steht mit den Kindern am Fenster im Erdgeschoss. Der Wohnhauskeller hat einen Lichtschacht zur Hofseite.",
+          "wichtig": true
+        },
+        {
+          "f": "Wie viele Patienten gibt es?",
+          "a": "Zwei Personen unter Reanimation, ein Ersthelfer mit Atemnot. Zwei Personen liegen noch in der Halle.",
+          "wichtig": true
+        },
+        {
+          "f": "Gibt es Zündquellen?",
+          "a": "Das BHKW läuft etwa 60 Meter entfernt. Der Landwirt hat einen Notschalter für die gesamte Anlage im Büro neben dem Stall.",
+          "wichtig": true
+        },
+        {
+          "f": "Was befindet sich in der Ladung?",
+          "a": "Laut Lieferschein flüssige Speisereste und Schlachtabfälle. Eine Analyse liegt nicht vor."
+        },
+        {
+          "f": "Ist der Betreiber erreichbar?",
+          "a": "Der Landwirt ist einer der Betroffenen. Der Sohn ist telefonisch erreichbar und auf dem Weg."
+        },
+        {
+          "f": "Sind die Tiere im Stall gefährdet?",
+          "a": "Der Stall liegt oberhalb der Halle auf der windabgewandten Seite. Ob Gas eindringt, ist unklar."
+        },
+        {
+          "f": "Sind Einsatzkräfte betroffen?",
+          "a": "Nein, beide Trupps haben unter umluftunabhängigem Atemschutz gearbeitet."
+        }
+      ],
+      "ausarbeitung": [
+        {
+          "id": "orga",
+          "typ": "abschnitte",
+          "titel": "Führungsorganisation und Abschnittsbildung",
+          "frage": "Skizzieren Sie die Führungsorganisation mit Abschnitten, Abschnittsleitern und Rufgruppen.",
+          "soll": [
+            "Gefahrenabwehr ABC",
+            "Medizinische Rettung",
+            "Dekontamination",
+            "Messen und Warnen",
+            "Bereitstellungsraum"
+          ],
+          "kann": [
+            "Menschenrettung und Evakuierung",
+            "Betreuung",
+            "Logistik und Atemschutz"
+          ],
+          "hinweis": "Die Menschenrettung aus der Halle erfolgt im Abschnitt Gefahrenabwehr ABC. Die Räumung des Wohnhauses kann dort oder in einem eigenen Abschnitt erfolgen."
+        },
+        {
+          "id": "massnahmen",
+          "typ": "text",
+          "titel": "Weitere Maßnahmen",
+          "frage": "Legen Sie die weiteren Maßnahmen und Einsatzschwerpunkte in der Reihenfolge fest.",
+          "kriterien": [
+            [
+              "Sofortige Rettung der zwei Personen aus der Halle unter umluftunabhängigem Atemschutz",
+              2
+            ],
+            [
+              "Abschalten der Pumpe und der Anlage, Zündquellen ausschalten",
+              2
+            ],
+            [
+              "Räumung des Wohnhauses entgegen der Ausbreitung",
+              2
+            ],
+            [
+              "Dekontamination von Patienten und Einsatzkräften",
+              1
+            ],
+            [
+              "Messungen in Senken, Keller und Stall",
+              1
+            ],
+            [
+              "Verdünnung mit Wassernebel oder Lüftung mit Ex-Schutz",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lage",
+          "typ": "text",
+          "titel": "Lagemeldung",
+          "frage": "Formulieren Sie Ihre Lagemeldung an die Leitstelle.",
+          "kriterien": [
+            [
+              "Übernahme der Einsatzleitung durch den C-Dienst mit Uhrzeit",
+              1
+            ],
+            [
+              "Lage: Schwefelwasserstofffreisetzung in der Annahmehalle",
+              1
+            ],
+            [
+              "Personen: zwei unter Reanimation, zwei noch in der Halle, ein Ersthelfer",
+              1
+            ],
+            [
+              "Maßnahmen: Menschenrettung, Räumung, Messungen",
+              1
+            ],
+            [
+              "Konkrete Nachforderungen benannt",
+              2
+            ],
+            [
+              "Nächste Lagemeldung terminiert",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "nachf",
+          "typ": "nachforderung",
+          "titel": "Nachalarmierung",
+          "frage": "Alarmieren Sie über Karte, Leiste und Stichworte alle erforderlichen Kräfte nach und informieren Sie die erforderlichen Stellen.",
+          "soll": [
+            {
+              "t": "key",
+              "any": [
+                "MESS"
+              ],
+              "pts": 2,
+              "label": "Messzug",
+              "warum": "Ausbreitung bei Nebel und Windstille in Senken und zum Wohnhaus."
+            },
+            {
+              "t": "key",
+              "any": [
+                "PDEKON"
+              ],
+              "pts": 2,
+              "label": "P-Dekon",
+              "warum": "Dekontamination der Einsatzkräfte."
+            },
+            {
+              "t": "key",
+              "any": [
+                "VDEKON"
+              ],
+              "pts": 1,
+              "label": "V-Dekon",
+              "warum": "Kontaminierte Patienten vor dem Transport."
+            },
+            {
+              "t": "key",
+              "any": [
+                "MANV20"
+              ],
+              "pts": 1,
+              "label": "Erhöhung auf MANV 20",
+              "warum": "Weitere Betroffene im Wohnhaus und unter den Ersthelfern möglich."
+            },
+            {
+              "t": "key",
+              "any": [
+                "RTH"
+              ],
+              "pts": 1,
+              "label": "RTH",
+              "warum": "Abgelegene Einsatzstelle, kritische Patienten."
+            },
+            {
+              "t": "key",
+              "any": [
+                "TUIS"
+              ],
+              "pts": 1,
+              "label": "TUIS Fachberatung",
+              "warum": "Beurteilung der Ladung und der Gasbildung."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ATF"
+              ],
+              "pts": 1,
+              "label": "Analytische Task Force",
+              "warum": "Analyse der Gasbestandteile."
+            },
+            {
+              "t": "key",
+              "any": [
+                "WARN"
+              ],
+              "pts": 1,
+              "label": "Warnung der Bevölkerung",
+              "warum": "Benachbarte Höfe in der Senke."
+            },
+            {
+              "t": "key",
+              "any": [
+                "GWA"
+              ],
+              "pts": 1,
+              "label": "GW-Atemschutz",
+              "warum": "Hoher Atemschutzbedarf."
+            },
+            {
+              "t": "key",
+              "any": [
+                "POL"
+              ],
+              "pts": 1,
+              "label": "Polizei",
+              "warum": "Absperrung und Ermittlungen."
+            },
+            {
+              "t": "key",
+              "any": [
+                "PSNV"
+              ],
+              "pts": 1,
+              "label": "PSNV",
+              "warum": "Familie des Landwirts und Ersthelfer."
+            }
+          ],
+          "kann": [
+            "Bezirksregierung informieren",
+            "Veterinäramt über Ordnungsamt",
+            "Untere Wasserbehörde",
+            "Pressesprecher"
+          ]
+        }
+      ],
+      "kommission": [
+        {
+          "id": "gefahren",
+          "typ": "matrix",
+          "titel": "Gefahren",
+          "frage": "Die Kommission fragt: Welche Gefahren sehen Sie an dieser Einsatzstelle und für wen?",
+          "soll": [
+            "Atemgifte:Menschen",
+            "Atemgifte:Tiere",
+            "Atemgifte:Mannschaft",
+            "Chemische Stoffe:Menschen",
+            "Chemische Stoffe:Mannschaft",
+            "Explosion:Menschen",
+            "Explosion:Mannschaft",
+            "Erkrankung/Verletzung:Menschen"
+          ],
+          "hinweis": "Schwefelwasserstoff betäubt den Geruchssinn. Die Explosionsgefahr besteht im Bereich der Grube und der Halle."
+        },
+        {
+          "id": "begruendung",
+          "typ": "text",
+          "titel": "Begründung",
+          "frage": "Die Kommission fragt: Begründen Sie Ihre Abschnittsbildung und die räumliche Lage der Abschnitte.",
+          "kriterien": [
+            [
+              "Gefahrenabwehr ABC mit Menschenrettung im Gefahrenbereich",
+              2
+            ],
+            [
+              "Dekon an der Grenze des Gefahrenbereichs auf der windzugewandten Seite",
+              1
+            ],
+            [
+              "Medizinische Rettung außerhalb des Gefahrenbereichs an der Hofzufahrt",
+              1
+            ],
+            [
+              "Bereitstellungsraum an der Kreisstraße oberhalb der Senke",
+              1
+            ],
+            [
+              "Führungsspanne eingehalten",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "befehl",
+          "typ": "text",
+          "titel": "Befehl",
+          "frage": "Die Kommission fordert: Erteilen Sie dem Abschnittsleiter Gefahrenabwehr ABC Ihren Befehl.",
+          "kriterien": [
+            [
+              "Lage: H₂S in der Halle über Messbereich, zwei Personen neben der Grube",
+              1
+            ],
+            [
+              "Auftrag: sofortige Rettung der Personen, Abschalten der Pumpe",
+              2
+            ],
+            [
+              "Schutzausrüstung: umluftunabhängiger Atemschutz, Ex-geschützte Geräte",
+              2
+            ],
+            [
+              "Übergabe der Geretteten an die Dekon und den Rettungsdienst",
+              1
+            ],
+            [
+              "Verbindung über MUS_30, Rückmeldung nach Rettung",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lageaenderung",
+          "typ": "text",
+          "titel": "Lageänderung",
+          "frage": "11:10 Uhr: Im Stall fallen mehrere Rinder um. Der Sohn des Landwirts ist eingetroffen und will in den Stall laufen. Wie reagieren Sie?",
+          "kriterien": [
+            [
+              "Betreten des Stalls ohne Atemschutz unterbinden, Sohn betreuen",
+              2
+            ],
+            [
+              "Messungen im Stall veranlassen, Gefahrenbereich erweitern",
+              1
+            ],
+            [
+              "Lüftung des Stalls nur unter Schutz und Ex-Schutz",
+              1
+            ],
+            [
+              "Veterinärdienst informieren",
+              1
+            ],
+            [
+              "Rückmeldung an die Leitstelle",
+              1
+            ]
+          ]
+        }
+      ],
+      "presse": {
+        "id": "presse",
+        "typ": "text",
+        "titel": "O-Ton Pressekonferenz",
+        "anlass": "12:00 Uhr, die Lokalzeitung und ein Radiosender stehen an der Kreisstraße.",
+        "frage": "Geben Sie einen O-Ton von etwa 60 Sekunden ab.",
+        "sekunden": 60,
+        "kriterien": [
+          [
+            "Vorstellung mit Name und Funktion",
+            1
+          ],
+          [
+            "Gesicherte Fakten ohne Spekulation",
+            1
+          ],
+          [
+            "Keine Angaben zum Zustand einzelner Betroffener",
+            2
+          ],
+          [
+            "Keine Schuldzuweisung an Betreiber oder Lieferanten",
+            1
+          ],
+          [
+            "Entwarnung oder Verhaltenshinweis für Anwohner",
+            2
+          ],
+          [
+            "Hinweis auf die nächste Information",
+            1
+          ]
+        ]
+      }
+    }
+  ]
+}

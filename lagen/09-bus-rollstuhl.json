@@ -1,0 +1,644 @@
+{
+  "format": "planbesprechung-musterstadt/lagen",
+  "version": 1,
+  "erstellt": "2026-11-09T09:00:00Z",
+  "lagen": [
+    {
+      "id": "eigen-bs-bus-rollstuhl",
+      "titel": "Busbrand mit gehbehinderten Fahrgästen",
+      "typ": "th",
+      "x": 19.6,
+      "y": 64.8,
+      "ort": {
+        "adresse": "Autobahn Richtung West, km 12,8",
+        "detail": "Zwischen Autobahnkreuz Süd und Anschlussstelle Westhofen",
+        "wb": "Wachbezirk 2, Ausrückebereich LG 28"
+      },
+      "datum": "2026-07-03",
+      "t0": "16:40",
+      "meldender": "Busfahrer und Verkehrsteilnehmer",
+      "wetter": "31 °C, sonnig, Wind aus Ost mit 2 m/s",
+      "stichwort": "TH Bus · erhöht auf TH 3 und MANV 20",
+      "meldung": "Leitstelle Musterstadt für C-Dienst. Einsatz TH 3 mit Menschenleben in Gefahr, zusätzlich MANV 20, Verkehrsunfall Bus mit Brand auf der Autobahn Richtung West, km 12,8. Ein Bus mit gehbehinderten Fahrgästen und Rollstuhlfahrern ist auf einen Lkw aufgefahren, der Motorraum brennt. Mehrere Fahrgäste können das Fahrzeug nicht selbstständig verlassen. Der B-Dienst 2 hat um 16:49 Uhr auf TH 3 und MANV 20 erhöht. Alarmiert sind Löschgruppe 28, Löschzug 22, Gruppe FRW 3, Rüstwagen und die Einsatzmittelkette MANV 20. Sie werden zur Übernahme der Einsatzleitung angefordert.",
+      "alarmiert": [
+        "FF28",
+        "FF22",
+        "GR3",
+        "RW1",
+        "MANV20"
+      ],
+      "cAlarm": 10,
+      "uebergabe": {
+        "von": "B-Dienst 2, Gruppenführer LG 28",
+        "text": [
+          "Herr Verbandsführer, B-Dienst 2. Wir sind um 16:48 Uhr eingetroffen.",
+          "Ein Reisebus einer Behinderteneinrichtung mit 32 Fahrgästen und sechs Betreuern ist am Stauende auf einen Lkw aufgefahren. Der Bus hat eine Hebebühne am Heck und sechs Rollstuhlplätze. Die Front des Busses ist bis zur ersten Sitzreihe eingedrückt, der Fahrer ist eingeklemmt.",
+          "Im Heck hat der Motorraum Feuer gefangen. Die LG 28 hat den Brand mit einem Schaumrohr niedergeschlagen, es kommt aber immer wieder zu Rückzündungen. Rauch ist in den Fahrgastraum gezogen.",
+          "Die Betreuer haben mit Ersthelfern begonnen, gehfähige Fahrgäste über die Mitteltür auf den Standstreifen zu bringen. Etwa 15 Personen sind draußen. Im Bus befinden sich noch etwa 17 Fahrgäste, darunter sechs Rollstuhlfahrer, welche festgeschnallt sind, und mehrere Fahrgäste mit geistiger Behinderung, welche sich nicht ansprechen lassen.",
+          "Der Lkw-Fahrer ist unverletzt. Der Lkw hat Paletten mit Getränken geladen. Bei 31 Grad stehen die geretteten Fahrgäste ohne Schatten auf dem Asphalt, mehrere sind sichtlich erschöpft.",
+          "Der Löschzug 22 ist eingetroffen und steht hinter dem Bus, die Gruppe FRW 3 und der Rüstwagen sind auf Anfahrt. Offen sind die Räumung des Busses, die Rettung des Fahrers, die Sichtung und Betreuung der Fahrgäste und der Hitzeschutz. Ich bitte um Übernahme."
+        ]
+      },
+      "info": [
+        {
+          "titel": "Fahrzeug",
+          "zeilen": [
+            [
+              "Typ",
+              "Reisebus mit Hebebühne am Heck, sechs Rollstuhlplätze"
+            ],
+            [
+              "Antrieb",
+              "Diesel, Motor im Heck"
+            ],
+            [
+              "Zugänge",
+              "Vordertür blockiert, Mitteltür offen, Hebebühne durch Brand nicht nutzbar"
+            ]
+          ]
+        },
+        {
+          "titel": "Fahrgäste",
+          "zeilen": [
+            [
+              "Anzahl",
+              "32 Fahrgäste und sechs Betreuer"
+            ],
+            [
+              "Besonderheiten",
+              "Sechs Rollstuhlfahrer, mehrere Fahrgäste mit geistiger Behinderung, zwei mit Epilepsie"
+            ],
+            [
+              "Einrichtung",
+              "Wohnheim für Menschen mit Behinderung, Rückfahrt vom Ausflug"
+            ],
+            [
+              "Listen",
+              "Teilnehmerliste mit Medikation bei der Gruppenleitung"
+            ]
+          ]
+        },
+        {
+          "titel": "Vorlage",
+          "zeilen": [
+            [
+              "Quelle",
+              "BRANDSchutz 2006, Heft 12, S. 876"
+            ],
+            [
+              "Ereignis",
+              "Einsatzbericht zu einem Busunfall mit gehbehinderten Fahrgästen auf der Bundesautobahn 99"
+            ],
+            [
+              "Übertragung",
+              "Für diese Lage wurde nur der Eintrag im Jahresinhaltsverzeichnis geprüft. Ablauf und Personenzahlen sind für Musterstadt frei ausgestaltet."
+            ]
+          ]
+        }
+      ],
+      "lagekarte": [
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              0,
+              120
+            ],
+            [
+              640,
+              120
+            ],
+            [
+              640,
+              200
+            ],
+            [
+              0,
+              200
+            ]
+          ],
+          "f": "strasse",
+          "txt": "Richtung West"
+        },
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              0,
+              230
+            ],
+            [
+              640,
+              230
+            ],
+            [
+              640,
+              300
+            ],
+            [
+              0,
+              300
+            ]
+          ],
+          "f": "strasse",
+          "txt": "Richtung Ost"
+        },
+        {
+          "t": "linie",
+          "pts": [
+            [
+              0,
+              215
+            ],
+            [
+              640,
+              215
+            ]
+          ],
+          "s": "mittel",
+          "txt": "Mittelschutzplanke"
+        },
+        {
+          "t": "fz",
+          "x": 200,
+          "y": 160,
+          "txt": "Lkw",
+          "org": "zivil",
+          "w": 100
+        },
+        {
+          "t": "fz",
+          "x": 320,
+          "y": 160,
+          "txt": "Bus",
+          "org": "zivil",
+          "w": 120
+        },
+        {
+          "t": "brand",
+          "x": 375,
+          "y": 155,
+          "txt": "Motor"
+        },
+        {
+          "t": "personen",
+          "x": 300,
+          "y": 130,
+          "txt": "ca. 17 im Bus"
+        },
+        {
+          "t": "personen",
+          "x": 320,
+          "y": 100,
+          "txt": "ca. 15 Standstreifen"
+        },
+        {
+          "t": "fz",
+          "x": 450,
+          "y": 160,
+          "txt": "LF 20",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 520,
+          "y": 160,
+          "txt": "LZ 22",
+          "org": "fw",
+          "w": 56
+        },
+        {
+          "t": "el",
+          "x": 600,
+          "y": 160,
+          "txt": "B 2"
+        },
+        {
+          "t": "fz",
+          "x": 120,
+          "y": 100,
+          "txt": "RTW",
+          "org": "rd"
+        },
+        {
+          "t": "fz",
+          "x": 60,
+          "y": 100,
+          "txt": "NEF",
+          "org": "rd"
+        },
+        {
+          "t": "pfeil",
+          "x1": 620,
+          "y1": 190,
+          "x2": 540,
+          "y2": 190,
+          "txt": "Fahrtrichtung West"
+        },
+        {
+          "t": "wind",
+          "x": 580,
+          "y": 40,
+          "dir": 270,
+          "txt": "O 2 m/s"
+        },
+        {
+          "t": "offen",
+          "x": 120,
+          "y": 360,
+          "txt": "Patientenablage"
+        },
+        {
+          "t": "offen",
+          "x": 320,
+          "y": 360,
+          "txt": "Betreuung Schatten"
+        },
+        {
+          "t": "offen",
+          "x": 520,
+          "y": 360,
+          "txt": "Bereitstellungsraum"
+        },
+        {
+          "t": "offen",
+          "x": 130,
+          "y": 160,
+          "txt": "Fahrer eingeklemmt"
+        }
+      ],
+      "nachfragen": [
+        {
+          "f": "Wie viele Personen sind noch im Bus?",
+          "a": "Etwa 17 Fahrgäste, davon sechs Rollstuhlfahrer an ihren Plätzen im hinteren Drittel. Zwei Betreuer sind noch im Bus und versuchen, Fahrgäste zu beruhigen.",
+          "wichtig": true
+        },
+        {
+          "f": "Wie ist der Zustand des Fahrers?",
+          "a": "Er ist ansprechbar, beide Beine sind im Fußraum eingeklemmt. Der Notarzt ist bei ihm.",
+          "wichtig": true
+        },
+        {
+          "f": "Ist der Brand unter Kontrolle?",
+          "a": "Das Schaumrohr hält den Brand nieder, er zündet aber aus dem Motorraum immer wieder durch. Die Heckscheibe ist gesprungen.",
+          "wichtig": true
+        },
+        {
+          "f": "Können die Rollstühle über die Mitteltür?",
+          "a": "Die Mitteltür ist zu schmal für die Elektrorollstühle. Die Fahrgäste müssen herausgetragen werden.",
+          "wichtig": true
+        },
+        {
+          "f": "Gibt es eine Liste der Fahrgäste?",
+          "a": "Die Gruppenleiterin hat eine Teilnehmerliste mit Medikation und Hinweisen zu jeder Person.",
+          "wichtig": true
+        },
+        {
+          "f": "Wie ist die Lage auf dem Standstreifen?",
+          "a": "Etwa 15 Fahrgäste stehen oder sitzen in der Sonne. Ein Fahrgast hat einen Krampfanfall, ein weiterer ist weggelaufen und wird von einem Betreuer gesucht.",
+          "wichtig": true
+        },
+        {
+          "f": "Ist die Gegenfahrbahn gesperrt?",
+          "a": "Nein. Die Polizei hat bislang nur die Richtungsfahrbahn West gesperrt."
+        },
+        {
+          "f": "Läuft Kraftstoff aus?",
+          "a": "Unter dem Bus hat sich eine Dieselpfütze gebildet, welche mit Schaum abgedeckt ist."
+        },
+        {
+          "f": "Gibt es Schatten in der Nähe?",
+          "a": "Etwa 150 Meter hinter der Einsatzstelle liegt eine Brücke über die Autobahn."
+        },
+        {
+          "f": "Sind Einsatzkräfte verletzt?",
+          "a": "Nein."
+        }
+      ],
+      "ausarbeitung": [
+        {
+          "id": "orga",
+          "typ": "abschnitte",
+          "titel": "Führungsorganisation und Abschnittsbildung",
+          "frage": "Skizzieren Sie die Führungsorganisation mit Abschnitten, Abschnittsleitern und Rufgruppen.",
+          "soll": [
+            "Menschenrettung und Evakuierung",
+            "Technische Rettung",
+            "Brandbekämpfung",
+            "Medizinische Rettung",
+            "Betreuung"
+          ],
+          "kann": [
+            "Bereitstellungsraum",
+            "Absperrung und Verkehr"
+          ],
+          "hinweis": "Die Räumung des Busses und die Rettung des Fahrers laufen parallel an unterschiedlichen Stellen. Die Betreuung von Menschen mit Behinderung erfordert die Einbindung der Betreuer der Einrichtung."
+        },
+        {
+          "id": "massnahmen",
+          "typ": "text",
+          "titel": "Weitere Maßnahmen",
+          "frage": "Legen Sie die weiteren Maßnahmen und Einsatzschwerpunkte in der Reihenfolge fest.",
+          "kriterien": [
+            [
+              "Sofortige Räumung des Busses unter Schutz des Löschangriffs, Rollstuhlfahrer heraustragen",
+              2
+            ],
+            [
+              "Brandbekämpfung im Motorraum mit Schaum und Sicherung gegen Rückzündung",
+              2
+            ],
+            [
+              "Rettung des eingeklemmten Fahrers",
+              1
+            ],
+            [
+              "Sichtung aller Fahrgäste mit der Teilnehmerliste, Einbindung der Betreuer",
+              2
+            ],
+            [
+              "Hitzeschutz und Betreuung im Schatten unter der Brücke",
+              1
+            ],
+            [
+              "Suche nach dem weggelaufenen Fahrgast",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lage",
+          "typ": "text",
+          "titel": "Lagemeldung",
+          "frage": "Formulieren Sie Ihre Lagemeldung an die Leitstelle.",
+          "kriterien": [
+            [
+              "Übernahme der Einsatzleitung durch den C-Dienst mit Uhrzeit",
+              1
+            ],
+            [
+              "Lage: Bus auf Lkw aufgefahren, Motorbrand mit Rückzündung",
+              1
+            ],
+            [
+              "Personen: 38 Insassen, 17 noch im Bus, Fahrer eingeklemmt, ein Vermisster",
+              1
+            ],
+            [
+              "Maßnahmen: Räumung, Brandbekämpfung, Technische Rettung",
+              1
+            ],
+            [
+              "Konkrete Nachforderungen benannt",
+              2
+            ],
+            [
+              "Nächste Lagemeldung terminiert",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "nachf",
+          "typ": "nachforderung",
+          "titel": "Nachalarmierung",
+          "frage": "Alarmieren Sie über Karte, Leiste und Stichworte alle erforderlichen Kräfte nach und informieren Sie die erforderlichen Stellen.",
+          "soll": [
+            {
+              "t": "key",
+              "any": [
+                "MANV50"
+              ],
+              "pts": 2,
+              "label": "Erhöhung auf MANV 50",
+              "warum": "38 Betroffene mit erhöhtem Versorgungsbedarf, Rauchgas und Hitze."
+            },
+            {
+              "t": "key",
+              "any": [
+                "SEGBT"
+              ],
+              "pts": 2,
+              "label": "Betreuung",
+              "warum": "Menschen mit Behinderung bei 31 Grad."
+            },
+            {
+              "t": "key",
+              "any": [
+                "BUS"
+              ],
+              "pts": 2,
+              "label": "Busse der Verkehrsbetriebe",
+              "warum": "Klimatisierter Aufenthalt, Niederflurbusse für Rollstühle."
+            },
+            {
+              "t": "key",
+              "any": [
+                "HEIM"
+              ],
+              "pts": 2,
+              "label": "Einrichtungsleitung",
+              "warum": "Betreuungspersonal, Medikation, Rücktransport."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ABSOLM"
+              ],
+              "pts": 1,
+              "label": "AB-Sonderlöschmittel",
+              "warum": "Schaummittelreserve bei wiederholter Rückzündung."
+            },
+            {
+              "t": "key",
+              "any": [
+                "POL"
+              ],
+              "pts": 1,
+              "label": "Polizei",
+              "warum": "Sperrung der Gegenfahrbahn und Suche nach dem weggelaufenen Fahrgast."
+            },
+            {
+              "t": "key",
+              "any": [
+                "AUTOB"
+              ],
+              "pts": 1,
+              "label": "Autobahn GmbH",
+              "warum": "Sperrung und Umleitung."
+            },
+            {
+              "t": "key",
+              "any": [
+                "PSNV"
+              ],
+              "pts": 1,
+              "label": "PSNV",
+              "warum": "Betroffene Fahrgäste und Betreuer."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ELW2"
+              ],
+              "pts": 1,
+              "label": "ELW 2 mit Führungsunterstützung",
+              "warum": "MANV 50 mit mehreren Abschnitten."
+            },
+            {
+              "t": "key",
+              "any": [
+                "RTH"
+              ],
+              "pts": 1,
+              "label": "RTH",
+              "warum": "Zuführung eines Notarztes für den Fahrer."
+            }
+          ],
+          "kann": [
+            "GW-Öl",
+            "KH Vorwarnung",
+            "Pressesprecher",
+            "D-Dienst informieren"
+          ]
+        }
+      ],
+      "kommission": [
+        {
+          "id": "gefahren",
+          "typ": "matrix",
+          "titel": "Gefahren",
+          "frage": "Die Kommission fragt: Welche Gefahren sehen Sie an dieser Einsatzstelle und für wen?",
+          "soll": [
+            "Atemgifte:Menschen",
+            "Atemgifte:Mannschaft",
+            "Ausbreitung:Menschen",
+            "Angstreaktion:Menschen",
+            "Erkrankung/Verletzung:Menschen",
+            "Erkrankung/Verletzung:Mannschaft",
+            "Ausbreitung:Umwelt"
+          ],
+          "hinweis": "Die Angstreaktion ist bei Menschen mit geistiger Behinderung besonders ausgeprägt. Hitze gefährdet Betroffene und Einsatzkräfte unter Atemschutz."
+        },
+        {
+          "id": "begruendung",
+          "typ": "text",
+          "titel": "Begründung",
+          "frage": "Die Kommission fragt: Begründen Sie Ihre Abschnittsbildung und die räumliche Lage der Abschnitte.",
+          "kriterien": [
+            [
+              "Räumung und Fahrerrettung getrennt geführt",
+              2
+            ],
+            [
+              "Brandbekämpfung als Schutz der Räumung",
+              1
+            ],
+            [
+              "Betreuung im Schatten unter der Brücke, getrennt von der Patientenablage",
+              1
+            ],
+            [
+              "Bereitstellungsraum auf der gesperrten Fahrbahn hinter der Einsatzstelle",
+              1
+            ],
+            [
+              "Führungsspanne eingehalten",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "befehl",
+          "typ": "text",
+          "titel": "Befehl",
+          "frage": "Die Kommission fordert: Erteilen Sie dem Abschnittsleiter Menschenrettung Bus Ihren Befehl.",
+          "kriterien": [
+            [
+              "Lage: 17 Fahrgäste im Bus, sechs Rollstuhlfahrer, Rauch im Fahrgastraum",
+              1
+            ],
+            [
+              "Auftrag: vollständige Räumung des Busses",
+              2
+            ],
+            [
+              "Mittel: Atemschutz, Fluchthauben, Tragetücher, Betreuer einbinden",
+              1
+            ],
+            [
+              "Übergabe an die Sichtung mit Abgleich der Teilnehmerliste",
+              1
+            ],
+            [
+              "Verbindung über MUS_20, Rückmeldung nach Räumung",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lageaenderung",
+          "typ": "text",
+          "titel": "Lageänderung",
+          "frage": "17:15 Uhr: Der Brand greift auf den Fahrgastraum über. Im Bus befinden sich noch zwei Rollstuhlfahrer und ein Trupp. Wie reagieren Sie?",
+          "kriterien": [
+            [
+              "Massiver Löschangriff zum Schutz der Rettung",
+              2
+            ],
+            [
+              "Sofortige Rettung der letzten Personen, Rückzug danach",
+              2
+            ],
+            [
+              "Sicherheitstrupp bereitstellen",
+              1
+            ],
+            [
+              "Abstand der Patientenablage überprüfen",
+              1
+            ],
+            [
+              "Rückmeldung an die Leitstelle",
+              1
+            ]
+          ]
+        }
+      ],
+      "presse": {
+        "id": "presse",
+        "typ": "text",
+        "titel": "O-Ton Pressekonferenz",
+        "anlass": "18:30 Uhr, ein Fernsehteam steht an der Brücke und filmt die Einsatzstelle.",
+        "frage": "Geben Sie einen O-Ton von etwa 60 Sekunden ab.",
+        "sekunden": 60,
+        "kriterien": [
+          [
+            "Vorstellung mit Name und Funktion",
+            1
+          ],
+          [
+            "Gesicherte Fakten zu Unfall und Verletzten",
+            1
+          ],
+          [
+            "Keine Angaben zu Behinderungen einzelner Fahrgäste",
+            2
+          ],
+          [
+            "Bitte, keine Bilder von Betroffenen zu veröffentlichen",
+            1
+          ],
+          [
+            "Hinweis auf Kontakt für Angehörige über die Einrichtung",
+            1
+          ],
+          [
+            "Hinweis auf Sperrung und die nächste Information",
+            1
+          ]
+        ]
+      }
+    }
+  ]
+}

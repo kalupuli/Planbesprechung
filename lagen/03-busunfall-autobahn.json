@@ -1,0 +1,685 @@
+{
+  "format": "planbesprechung-musterstadt/lagen",
+  "version": 1,
+  "erstellt": "2026-11-09T09:00:00Z",
+  "lagen": [
+    {
+      "id": "eigen-bs-busunfall-autobahn",
+      "titel": "Busunfall Autobahn West",
+      "typ": "th",
+      "x": 24.8,
+      "y": 50.2,
+      "ort": {
+        "adresse": "Autobahn Richtung Süd, km 41,3",
+        "detail": "Zwischen Anschlussstelle Musterstadt-West und Autobahnkreuz Süd",
+        "wb": "Wachbezirk 1, Ausrückebereich LG 14"
+      },
+      "datum": "2026-02-11",
+      "t0": "06:35",
+      "meldender": "Mehrere Notrufe von Verkehrsteilnehmern",
+      "wetter": "-2 °C, Glätte, leichter Schneefall, Wind aus Nordost mit 3 m/s",
+      "stichwort": "TH Bus · erhöht auf TH 3 und MANV 20",
+      "meldung": "Leitstelle Musterstadt für C-Dienst. Einsatz TH 3 mit Menschenleben in Gefahr, zusätzlich MANV 20, Verkehrsunfall Reisebus auf der Autobahn Richtung Süd, km 41,3. Der Reisebus ist von der Fahrbahn abgekommen, die Böschung hinabgestürzt und liegt auf der Seite. Etwa 45 Insassen, mehrere Personen eingeklemmt. Der B-Dienst 1 hat um 06:44 Uhr auf TH 3 und MANV 20 erhöht. Alarmiert sind Löschgruppe 14, Löschgruppe 15, Löschzug 1, Rüstwagen und die Einsatzmittelkette MANV 20. Sie werden zur Übernahme der Einsatzleitung angefordert.",
+      "alarmiert": [
+        "FF14",
+        "FF15",
+        "LZ1",
+        "RW1",
+        "MANV20"
+      ],
+      "cAlarm": 9,
+      "uebergabe": {
+        "von": "B-Dienst 1, Gruppenführer LG 14",
+        "text": [
+          "Herr Verbandsführer, B-Dienst 1. Wir sind um 06:43 Uhr eingetroffen.",
+          "Ein Reisebus mit einer Reisegruppe auf dem Weg zum Flughafen ist bei Glätte nach rechts von der Fahrbahn abgekommen, etwa vier Meter die Böschung hinabgestürzt und liegt auf der rechten Seite im Graben. An Bord waren laut Fahrer 46 Personen.",
+          "Etwa 25 Insassen haben den Bus über die Dachluken und die zerstörte Frontscheibe verlassen und stehen auf dem Standstreifen. Im Bus befinden sich noch etwa 20 Personen, davon sind mindestens vier unter der Seitenwand eingeklemmt. Der Fahrer ist leicht verletzt.",
+          "Die LG 14 hat den Bus gegen Umkippen gesichert und den Brandschutz sichergestellt. Erste Patienten werden durch den Rettungsdienst an der Leitplanke gesichtet. Die ersten Sichtungsergebnisse lauten zwei rot, fünf gelb und zwölf grün, weitere sind noch nicht gesichtet.",
+          "Die Polizei hat die Richtungsfahrbahn Süd gesperrt, auf der Gegenfahrbahn bildet sich ein Rückstau durch Schaulustige. Der Löschzug 1 und der Rüstwagen sind eingetroffen und stehen auf der Fahrbahn, die LG 15 ist auf Anfahrt.",
+          "Offen sind die Rettung der Eingeklemmten, die Betreuung der unverletzten Insassen bei Minusgraden, die Struktur der Patientenablage und der Bereitstellungsraum. Ich bitte um Übernahme."
+        ]
+      },
+      "info": [
+        {
+          "titel": "Fahrzeug",
+          "zeilen": [
+            [
+              "Typ",
+              "Reisebus Doppelachse, 13,7 m, 49 Sitzplätze"
+            ],
+            [
+              "Lage",
+              "Rechte Seite im Graben, Dach zur Fahrbahn, Neigung zur Böschung"
+            ],
+            [
+              "Antrieb",
+              "Diesel, Tank 400 l, Druckluftanlage, Batterien im Heck"
+            ],
+            [
+              "Zugänge",
+              "Dachluken, Frontscheibe zerstört, Türen auf der Unterseite"
+            ]
+          ]
+        },
+        {
+          "titel": "Insassen",
+          "zeilen": [
+            [
+              "Anzahl",
+              "46 Personen laut Fahrer, Passagierliste beim Reiseleiter"
+            ],
+            [
+              "Gruppe",
+              "Vereinsreise, überwiegend Senioren"
+            ],
+            [
+              "Sichtung",
+              "Bisher 2 rot, 5 gelb, 12 grün, Rest ungesichtet"
+            ]
+          ]
+        },
+        {
+          "titel": "Vorlage",
+          "zeilen": [
+            [
+              "Quelle",
+              "BRANDSchutz 2006, Heft 7, S. 492"
+            ],
+            [
+              "Ereignis",
+              "Busunfall auf der Bundesautobahn 4 bei Kerpen im Februar 2006"
+            ],
+            [
+              "Übertragung",
+              "Unfallstelle, Insassen und Witterung wurden auf die Autobahn im Westen von Musterstadt übertragen und frei ausgestaltet."
+            ]
+          ]
+        }
+      ],
+      "lagekarte": [
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              0,
+              60
+            ],
+            [
+              640,
+              60
+            ],
+            [
+              640,
+              120
+            ],
+            [
+              0,
+              120
+            ]
+          ],
+          "f": "strasse",
+          "txt": "Richtung Nord"
+        },
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              0,
+              140
+            ],
+            [
+              640,
+              140
+            ],
+            [
+              640,
+              200
+            ],
+            [
+              0,
+              200
+            ]
+          ],
+          "f": "strasse",
+          "txt": "Richtung Süd"
+        },
+        {
+          "t": "linie",
+          "pts": [
+            [
+              0,
+              130
+            ],
+            [
+              640,
+              130
+            ]
+          ],
+          "s": "mittel"
+        },
+        {
+          "t": "linie",
+          "pts": [
+            [
+              0,
+              215
+            ],
+            [
+              640,
+              215
+            ]
+          ],
+          "s": "mittel",
+          "txt": "Leitplanke"
+        },
+        {
+          "t": "linie",
+          "pts": [
+            [
+              0,
+              290
+            ],
+            [
+              640,
+              290
+            ]
+          ],
+          "s": "wasser",
+          "txt": "Graben"
+        },
+        {
+          "t": "fz",
+          "x": 330,
+          "y": 260,
+          "txt": "Reisebus",
+          "org": "zivil",
+          "w": 110
+        },
+        {
+          "t": "personen",
+          "x": 210,
+          "y": 230,
+          "txt": "ca. 20 eingeschl."
+        },
+        {
+          "t": "fz",
+          "x": 300,
+          "y": 175,
+          "txt": "HLF 20-1",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 360,
+          "y": 175,
+          "txt": "RW",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 430,
+          "y": 175,
+          "txt": "LG 14",
+          "org": "fw"
+        },
+        {
+          "t": "el",
+          "x": 520,
+          "y": 175,
+          "txt": "B 1"
+        },
+        {
+          "t": "fz",
+          "x": 160,
+          "y": 175,
+          "txt": "RTW",
+          "org": "rd"
+        },
+        {
+          "t": "fz",
+          "x": 100,
+          "y": 175,
+          "txt": "NEF",
+          "org": "rd"
+        },
+        {
+          "t": "personen",
+          "x": 470,
+          "y": 230,
+          "txt": "ca. 25 Gehfähige"
+        },
+        {
+          "t": "fz",
+          "x": 600,
+          "y": 175,
+          "txt": "Polizei",
+          "org": "pol"
+        },
+        {
+          "t": "pfeil",
+          "x1": 20,
+          "y1": 170,
+          "x2": 90,
+          "y2": 170,
+          "txt": "Fahrtrichtung Süd"
+        },
+        {
+          "t": "wind",
+          "x": 580,
+          "y": 30,
+          "dir": 225,
+          "txt": "NO 3 m/s"
+        },
+        {
+          "t": "offen",
+          "x": 120,
+          "y": 340,
+          "txt": "Patientenablage"
+        },
+        {
+          "t": "offen",
+          "x": 470,
+          "y": 340,
+          "txt": "Betreuung"
+        },
+        {
+          "t": "offen",
+          "x": 40,
+          "y": 90,
+          "txt": "Bereitstellungsraum"
+        },
+        {
+          "t": "offen",
+          "x": 300,
+          "y": 340,
+          "txt": "Hubschrauberlandeplatz"
+        }
+      ],
+      "nachfragen": [
+        {
+          "f": "Wie viele Personen sind eingeklemmt?",
+          "a": "Mindestens vier Personen liegen unter der Seitenwand im Bereich der Sitzreihen 6 bis 9. Zwei davon sind ansprechbar, zwei reagieren nicht.",
+          "wichtig": true
+        },
+        {
+          "f": "Wie ist der Bus gesichert?",
+          "a": "Der Bus ist mit Ketten an der Leitplanke und mit Unterbauholz gegen Abrutschen gesichert. Für ein Anheben der Seite reicht das Gerät vor Ort nicht aus.",
+          "wichtig": true
+        },
+        {
+          "f": "Wo halten sich die Gehfähigen auf?",
+          "a": "Auf dem Standstreifen hinter der Leitplanke bei Schneefall und minus zwei Grad. Mehrere Senioren frieren stark, einige setzen sich auf den Boden.",
+          "wichtig": true
+        },
+        {
+          "f": "Wie viele Patienten sind bislang gesichtet?",
+          "a": "Zwei rot, fünf gelb und zwölf grün. Die Insassen im Bus und ein Teil der Gruppe auf dem Standstreifen sind noch nicht gesichtet.",
+          "wichtig": true
+        },
+        {
+          "f": "Gibt es eine Passagierliste?",
+          "a": "Der Reiseleiter hat eine Liste mit 44 Namen. Zusammen mit Fahrer und Reiseleiter ergeben sich 46 Personen.",
+          "wichtig": true
+        },
+        {
+          "f": "Läuft Kraftstoff aus?",
+          "a": "Aus dem Bereich des Tanks tropft Diesel in den Graben. Die Menge ist gering, der Graben führt Wasser.",
+          "wichtig": true
+        },
+        {
+          "f": "Kann ein Hubschrauber landen?",
+          "a": "Die gesperrte Richtungsfahrbahn ist frei von Hindernissen, Oberleitungen gibt es nicht."
+        },
+        {
+          "f": "Ist die Gegenfahrbahn frei?",
+          "a": "Ja, aber durch Schaulustige ist der Verkehr stark verlangsamt, die Polizei hat noch keine Sperrung veranlasst."
+        },
+        {
+          "f": "Wie ist die Zufahrt zur Einsatzstelle?",
+          "a": "Über die gesperrte Richtungsfahrbahn Süd ab der Anschlussstelle West. Die Rettungsgasse ist frei."
+        },
+        {
+          "f": "Sind Einsatzkräfte verletzt?",
+          "a": "Ein Feuerwehrmann ist auf der Böschung ausgerutscht und hat sich leicht am Knie verletzt."
+        }
+      ],
+      "ausarbeitung": [
+        {
+          "id": "orga",
+          "typ": "abschnitte",
+          "titel": "Führungsorganisation und Abschnittsbildung",
+          "frage": "Skizzieren Sie die Führungsorganisation mit Abschnitten, Abschnittsleitern und Rufgruppen.",
+          "soll": [
+            "Technische Rettung",
+            "Medizinische Rettung",
+            "Betreuung",
+            "Bereitstellungsraum"
+          ],
+          "kann": [
+            "Absperrung und Verkehr",
+            "Brandbekämpfung",
+            "Umwelt- und Gewässerschutz"
+          ],
+          "hinweis": "Die Betreuung der etwa 25 unverletzten Senioren bei Minusgraden ist als eigener Abschnitt zu führen. Die Medizinische Rettung führt der OrgL RD gemeinsam mit dem LNA."
+        },
+        {
+          "id": "massnahmen",
+          "typ": "text",
+          "titel": "Weitere Maßnahmen",
+          "frage": "Legen Sie die weiteren Maßnahmen und Einsatzschwerpunkte in der Reihenfolge fest.",
+          "kriterien": [
+            [
+              "Sichtung aller Insassen und Strukturierung der Patientenablage",
+              2
+            ],
+            [
+              "Patientenorientierte Rettung der Eingeklemmten, Anheben oder Öffnen der Seitenwand",
+              2
+            ],
+            [
+              "Sicherung des Busses gegen Abrutschen, Brandschutz",
+              1
+            ],
+            [
+              "Witterungsschutz und Betreuung der Gehfähigen, Busse zum Aufwärmen",
+              2
+            ],
+            [
+              "Registrierung aller Insassen mit der Passagierliste",
+              1
+            ],
+            [
+              "Hubschrauberlandeplatz auf der gesperrten Fahrbahn",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lage",
+          "typ": "text",
+          "titel": "Lagemeldung",
+          "frage": "Formulieren Sie Ihre Lagemeldung an die Leitstelle.",
+          "kriterien": [
+            [
+              "Übernahme der Einsatzleitung durch den C-Dienst mit Uhrzeit",
+              1
+            ],
+            [
+              "Lage: Reisebus auf der Seite im Graben, 46 Insassen",
+              1
+            ],
+            [
+              "Personen: mindestens vier Eingeklemmte, bisher 2 rot, 5 gelb, 12 grün",
+              1
+            ],
+            [
+              "Maßnahmen: Sichtung, Technische Rettung, Betreuung",
+              1
+            ],
+            [
+              "Konkrete Nachforderungen benannt",
+              2
+            ],
+            [
+              "Nächste Lagemeldung terminiert",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "nachf",
+          "typ": "nachforderung",
+          "titel": "Nachalarmierung",
+          "frage": "Alarmieren Sie über Karte, Leiste und Stichworte alle erforderlichen Kräfte nach und informieren Sie die erforderlichen Stellen.",
+          "soll": [
+            {
+              "t": "key",
+              "any": [
+                "MANV50"
+              ],
+              "pts": 3,
+              "label": "Erhöhung auf MANV 50",
+              "warum": "46 Betroffene, davon ein großer Teil ungesichtet und durch Kälte gefährdet."
+            },
+            {
+              "t": "key",
+              "any": [
+                "KW1"
+              ],
+              "pts": 2,
+              "label": "Kranwagen",
+              "warum": "Anheben des Busses zur Rettung der Eingeklemmten."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ABRUEST"
+              ],
+              "pts": 1,
+              "label": "AB-Rüst",
+              "warum": "Zusätzliches Rettungs- und Abstützgerät."
+            },
+            {
+              "t": "key",
+              "any": [
+                "BUS"
+              ],
+              "pts": 2,
+              "label": "Busse der Verkehrsbetriebe",
+              "warum": "Witterungsschutz für die Gehfähigen."
+            },
+            {
+              "t": "key",
+              "any": [
+                "SEGBT"
+              ],
+              "pts": 2,
+              "label": "Betreuung",
+              "warum": "Unverletzte Senioren bei Minusgraden."
+            },
+            {
+              "t": "key",
+              "any": [
+                "RTH"
+              ],
+              "pts": 1,
+              "label": "RTH",
+              "warum": "Schnelle Zuführung von Notärzten und Transport der rot gesichteten Patienten."
+            },
+            {
+              "t": "key",
+              "any": [
+                "AUTOB"
+              ],
+              "pts": 1,
+              "label": "Autobahn GmbH",
+              "warum": "Sperrung, Streudienst und Umleitung."
+            },
+            {
+              "t": "key",
+              "any": [
+                "KH"
+              ],
+              "pts": 1,
+              "label": "Krankenhäuser vorwarnen",
+              "warum": "Viele Patienten in kurzer Zeit."
+            },
+            {
+              "t": "key",
+              "any": [
+                "PSNV"
+              ],
+              "pts": 1,
+              "label": "PSNV",
+              "warum": "Betreuung der Reisegruppe und Angehörigen."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ELW2"
+              ],
+              "pts": 1,
+              "label": "ELW 2 mit Führungsunterstützung",
+              "warum": "MANV 50 mit mehreren Abschnitten."
+            },
+            {
+              "t": "key",
+              "any": [
+                "WB1",
+                "WACHE1"
+              ],
+              "pts": 1,
+              "label": "Wachbesetzung FRW 1",
+              "warum": "Löschzug 1 ist langfristig gebunden."
+            }
+          ],
+          "kann": [
+            "GW-Öl für auslaufenden Diesel",
+            "Untere Wasserbehörde",
+            "Pressesprecher",
+            "D-Dienst informieren"
+          ]
+        }
+      ],
+      "kommission": [
+        {
+          "id": "gefahren",
+          "typ": "matrix",
+          "titel": "Gefahren",
+          "frage": "Die Kommission fragt: Welche Gefahren sehen Sie an dieser Einsatzstelle und für wen?",
+          "soll": [
+            "Erkrankung/Verletzung:Menschen",
+            "Erkrankung/Verletzung:Mannschaft",
+            "Angstreaktion:Menschen",
+            "Einsturz:Menschen",
+            "Einsturz:Mannschaft",
+            "Ausbreitung:Umwelt"
+          ],
+          "hinweis": "Unter Einsturz fällt hier das Abrutschen oder Umkippen des Busses. Die Kälte führt bei den Betroffenen zu Unterkühlung, bei den Einsatzkräften besteht Sturzgefahr durch Glätte und Verkehr."
+        },
+        {
+          "id": "begruendung",
+          "typ": "text",
+          "titel": "Begründung",
+          "frage": "Die Kommission fragt: Begründen Sie Ihre Abschnittsbildung und die räumliche Lage der Abschnitte.",
+          "kriterien": [
+            [
+              "Technische Rettung am Bus als Schwerpunkt",
+              2
+            ],
+            [
+              "Medizinische Rettung auf der gesperrten Fahrbahn mit kurzen Wegen",
+              1
+            ],
+            [
+              "Betreuung getrennt von der Patientenablage, in Bussen oder Fahrzeugen",
+              1
+            ],
+            [
+              "Bereitstellungsraum an der Anschlussstelle West",
+              1
+            ],
+            [
+              "Führungsspanne eingehalten",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "befehl",
+          "typ": "text",
+          "titel": "Befehl",
+          "frage": "Die Kommission fordert: Erteilen Sie dem Abschnittsleiter Technische Rettung Ihren Befehl.",
+          "kriterien": [
+            [
+              "Lage: Bus auf der Seite, vier Eingeklemmte unter der Seitenwand",
+              1
+            ],
+            [
+              "Auftrag: patientenorientierte Rettung in Absprache mit dem Notarzt",
+              2
+            ],
+            [
+              "Sicherung gegen Abrutschen und Brandschutz",
+              1
+            ],
+            [
+              "Einsatz des Kranwagens vorbereiten",
+              1
+            ],
+            [
+              "Übergabe an die Patientenablage",
+              1
+            ],
+            [
+              "Verbindung über MUS_20, Rückmeldung nach jeder Rettung",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lageaenderung",
+          "typ": "text",
+          "titel": "Lageänderung",
+          "frage": "07:20 Uhr: Auf der Gegenfahrbahn fährt ein Pkw auf ein Stauende auf. Zwei Personen sind eingeklemmt, ein Fahrzeug brennt. Wie reagieren Sie?",
+          "kriterien": [
+            [
+              "Eigenen Unterabschnitt oder neuen Einsatzabschnitt bilden",
+              2
+            ],
+            [
+              "Kräfte aus dem Bereitstellungsraum zuweisen",
+              1
+            ],
+            [
+              "Sperrung der Gegenfahrbahn veranlassen",
+              1
+            ],
+            [
+              "Patienten in die MANV-Struktur aufnehmen",
+              1
+            ],
+            [
+              "Rückmeldung und Nachforderung an die Leitstelle",
+              1
+            ]
+          ]
+        }
+      ],
+      "presse": {
+        "id": "presse",
+        "typ": "text",
+        "titel": "O-Ton Pressekonferenz",
+        "anlass": "08:30 Uhr, mehrere Medien stehen an der Anschlussstelle West und bitten um ein Statement.",
+        "frage": "Geben Sie einen O-Ton von etwa 60 Sekunden ab.",
+        "sekunden": 60,
+        "kriterien": [
+          [
+            "Vorstellung mit Name und Funktion",
+            1
+          ],
+          [
+            "Gesicherte Fakten zu Unfall und Patientenzahl",
+            1
+          ],
+          [
+            "Keine Angaben zur Unfallursache",
+            1
+          ],
+          [
+            "Keine Namen und Herkunft einzelner Insassen",
+            2
+          ],
+          [
+            "Hinweis auf Infotelefon für Angehörige",
+            2
+          ],
+          [
+            "Hinweis auf Sperrung und Umleitung",
+            1
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,652 @@
+{
+  "format": "planbesprechung-musterstadt/lagen",
+  "version": 1,
+  "erstellt": "2026-11-09T09:00:00Z",
+  "lagen": [
+    {
+      "id": "eigen-bs-silobrand-kanalhafen",
+      "titel": "Silobrand Kanalhafen",
+      "typ": "brand",
+      "x": 57.6,
+      "y": 46.4,
+      "ort": {
+        "adresse": "Getreidesilo Agrarhandel, Kanalstraße 40",
+        "detail": "Kanalhafen Ost, Silozelle an der Kaikante",
+        "wb": "Wachbezirk 2, Ausrückebereich FRW 2"
+      },
+      "datum": "2026-10-14",
+      "t0": "21:05",
+      "meldender": "Schichtleiter Agrarhandel",
+      "wetter": "8 °C, trocken, Wind aus Südwest mit 4 m/s",
+      "stichwort": "F 2 Silo · erhöht auf F 3",
+      "meldung": "Leitstelle Musterstadt für C-Dienst. Einsatz F 3, Brand in einer Silozelle des Agrarhandels, Kanalstraße 40, Kanalhafen Ost. Rauch tritt aus der Siloabdeckung, starker Brandgeruch. Die Zelle ist mit Weizen gefüllt. Der B-Dienst 2 hat um 21:14 Uhr auf F 3 erhöht. Alarmiert sind Löschzug 2, Löschzug 24, Löschzug 23 und TLF 4000 der FRW 2. Sie werden zur Übernahme der Einsatzleitung angefordert.",
+      "alarmiert": [
+        "LZ2",
+        "FF24",
+        "FF23",
+        "TLF2"
+      ],
+      "cAlarm": 10,
+      "uebergabe": {
+        "von": "B-Dienst 2, Zugführer Löschzug 2",
+        "text": [
+          "Herr Verbandsführer, B-Dienst 2. Wir sind um 21:12 Uhr eingetroffen.",
+          "Das Silo besteht aus zwölf Zellen in Stahlbeton mit je etwa 40 Metern Höhe und einem Elevatorturm. Rauch tritt aus der Abdeckung der Zelle 7 aus. In der Zelle lagern etwa 1.800 Tonnen Weizen. Laut Schichtleiter wurde der Weizen vor drei Tagen mit erhöhter Feuchte eingelagert.",
+          "Die Temperaturfühler der Zelle 7 zeigen in etwa 15 Metern Höhe über 120 Grad. Im Elevatorturm ist leichter Brandgeruch wahrnehmbar, der Staubfilter der Abluftanlage ist abgeschaltet. Die Nachbarzellen 6 und 8 zeigen noch normale Temperaturen.",
+          "Ein Trupp unter Atemschutz hat im Elevatorturm erkundet und den Bereich wieder verlassen, weil in der Zellenabdeckung Glut sichtbar war und Staub in der Luft lag. Ein Wasserangriff wurde nicht vorgenommen. Die Mitarbeiter haben das Gelände verlassen und sammeln sich am Tor.",
+          "Ein Binnenschiff liegt an der Kaikante zur Beladung mit Weizen aus der Zelle 8. Die Drehleiter steht an der Ostseite in Bereitschaft. Der Löschzug 24 ist eingetroffen, der Löschzug 23 und das TLF 4000 sind auf Anfahrt.",
+          "Offen sind die Gefahrenbewertung zur Staubexplosion, die Inertisierung der Zelle, der Schutz der Nachbarzellen und das Binnenschiff. Ich bitte um Übernahme."
+        ]
+      },
+      "info": [
+        {
+          "titel": "Objekt",
+          "zeilen": [
+            [
+              "Nutzung",
+              "Getreidesilo mit zwölf Zellen, Elevatorturm, Schiffsbeladung"
+            ],
+            [
+              "Bauweise",
+              "Stahlbetonzellen, Höhe etwa 40 m, Durchmesser etwa 8 m"
+            ],
+            [
+              "Zelle 7",
+              "Etwa 1.800 t Weizen, eingelagert mit erhöhter Feuchte"
+            ],
+            [
+              "Technik",
+              "Temperaturmessung je Zelle, Abluftanlage mit Staubfilter, Zellen mit Entnahmeschieber am Boden"
+            ],
+            [
+              "Betreiber",
+              "Agrarhandel, Betriebsleiter in Rufbereitschaft"
+            ]
+          ]
+        },
+        {
+          "titel": "Besondere Gefahren",
+          "zeilen": [
+            [
+              "Glimmbrand",
+              "Selbstentzündung durch biologische Erwärmung, Glutnester im Schüttgut"
+            ],
+            [
+              "Staubexplosion",
+              "Aufwirbeln von Getreidestaub durch Wasserstrahl, Entnahme oder Lufteintrag"
+            ],
+            [
+              "Brandgase",
+              "Kohlenmonoxid und Pyrolysegase in der Zelle, Explosionsgefahr"
+            ],
+            [
+              "Inertisierung",
+              "Einleiten von Stickstoff von unten, Sauerstoffgehalt unter 8 Vol.-%, Dauer mehrere Tage"
+            ]
+          ]
+        },
+        {
+          "titel": "Vorlage",
+          "zeilen": [
+            [
+              "Quelle",
+              "BRANDSchutz 2004, Heft 10, S. 714"
+            ],
+            [
+              "Ereignis",
+              "Einsatzbericht zur Brandbekämpfung in einem Getreidesilo durch Inertisierung"
+            ],
+            [
+              "Übertragung",
+              "Für diese Lage wurde nur der Eintrag im Jahresinhaltsverzeichnis geprüft. Objekt und Ablauf sind für den Kanalhafen von Musterstadt frei ausgestaltet."
+            ]
+          ]
+        }
+      ],
+      "lagekarte": [
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              0,
+              0
+            ],
+            [
+              640,
+              0
+            ],
+            [
+              640,
+              90
+            ],
+            [
+              0,
+              90
+            ]
+          ],
+          "f": "flaeche",
+          "txt": "Kanal"
+        },
+        {
+          "t": "linie",
+          "pts": [
+            [
+              0,
+              90
+            ],
+            [
+              640,
+              90
+            ]
+          ],
+          "s": "wasser",
+          "txt": "Kaikante"
+        },
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              0,
+              340
+            ],
+            [
+              640,
+              340
+            ],
+            [
+              640,
+              380
+            ],
+            [
+              0,
+              380
+            ]
+          ],
+          "f": "strasse",
+          "txt": "Kanalstraße"
+        },
+        {
+          "t": "fz",
+          "x": 300,
+          "y": 60,
+          "txt": "Binnenschiff",
+          "org": "zivil",
+          "w": 150
+        },
+        {
+          "t": "gebaeude",
+          "x": 140,
+          "y": 120,
+          "w": 300,
+          "h": 110,
+          "txt": "Silozellen 1 bis 12"
+        },
+        {
+          "t": "gebaeude",
+          "x": 440,
+          "y": 110,
+          "w": 60,
+          "h": 130,
+          "txt": "Elevator"
+        },
+        {
+          "t": "brand",
+          "x": 330,
+          "y": 170,
+          "txt": "Zelle 7"
+        },
+        {
+          "t": "rauch",
+          "x": 350,
+          "y": 120
+        },
+        {
+          "t": "tz",
+          "z": "Gefahren/Gefahr_durch_Explosion",
+          "x": 470,
+          "y": 260,
+          "s": 30,
+          "txt": "Staub"
+        },
+        {
+          "t": "zone",
+          "kind": "gefahr",
+          "cx": 330,
+          "cy": 175,
+          "r": 120,
+          "txt": "Gefahrenbereich"
+        },
+        {
+          "t": "fz",
+          "x": 540,
+          "y": 200,
+          "txt": "DLK",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 540,
+          "y": 290,
+          "txt": "HLF 20-1",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 480,
+          "y": 360,
+          "txt": "HLF 20-2",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 300,
+          "y": 360,
+          "txt": "LZ 24",
+          "org": "fw",
+          "w": 56
+        },
+        {
+          "t": "el",
+          "x": 600,
+          "y": 360,
+          "txt": "B 2"
+        },
+        {
+          "t": "hydrant",
+          "x": 120,
+          "y": 360
+        },
+        {
+          "t": "personen",
+          "x": 60,
+          "y": 300,
+          "txt": "Mitarbeiter Tor"
+        },
+        {
+          "t": "wind",
+          "x": 580,
+          "y": 140,
+          "dir": 45,
+          "txt": "SW 4 m/s"
+        },
+        {
+          "t": "offen",
+          "x": 60,
+          "y": 180,
+          "txt": "Stickstoff"
+        },
+        {
+          "t": "offen",
+          "x": 200,
+          "y": 290,
+          "txt": "Bereitstellungsraum"
+        },
+        {
+          "t": "offen",
+          "x": 600,
+          "y": 40,
+          "txt": "Schiff verholen?"
+        }
+      ],
+      "nachfragen": [
+        {
+          "f": "Wie hoch ist die Temperatur in der Zelle?",
+          "a": "Die Fühler zeigen in 15 Metern Höhe 128 Grad und steigend. Oberhalb von 25 Metern liegt die Temperatur bei 60 Grad.",
+          "wichtig": true
+        },
+        {
+          "f": "Ist Staub im Elevatorturm aufgewirbelt?",
+          "a": "Der Trupp hat Staubschwaden im Lichtkegel gesehen. Die Förderbänder wurden mit Auslösen des Alarms gestoppt.",
+          "wichtig": true
+        },
+        {
+          "f": "Kann die Zelle entleert werden?",
+          "a": "Über den Entnahmeschieber am Boden ist eine Entleerung möglich. Der Betriebsleiter rät davon ab, weil dabei Luft nachströmt und Glut in die Förderanlage gelangt.",
+          "wichtig": true
+        },
+        {
+          "f": "Gibt es Anschlüsse für eine Inertisierung?",
+          "a": "Die Zelle hat am Fuß zwei Belüftungsstutzen DN 100. Einen festen Stickstoffanschluss gibt es nicht.",
+          "wichtig": true
+        },
+        {
+          "f": "Wie verhält sich das Binnenschiff?",
+          "a": "Der Schiffsführer will die Beladung abbrechen und ablegen. Die Ladeluken sind offen, etwa 600 Tonnen Weizen sind an Bord.",
+          "wichtig": true
+        },
+        {
+          "f": "Wurde CO gemessen?",
+          "a": "Am Austritt der Abdeckung zeigt das Mehrgasmessgerät über 500 ppm Kohlenmonoxid.",
+          "wichtig": true
+        },
+        {
+          "f": "Wo ist der Betriebsleiter?",
+          "a": "Er ist eingetroffen und steht am Tor. Er hat Zugriff auf die Leitwarte und die Temperaturkurven."
+        },
+        {
+          "f": "Wie ist die Wasserversorgung?",
+          "a": "Hydranten an der Kanalstraße und Wasserentnahme aus dem Kanal möglich."
+        },
+        {
+          "f": "Gibt es Firmen für Stickstoff in der Nähe?",
+          "a": "Ein Gaselieferant im Industriegebiet Nord kann laut Betriebsleiter Flüssigstickstoff mit Verdampfer liefern. Die Vorlaufzeit ist unbekannt."
+        },
+        {
+          "f": "Sind Einsatzkräfte verletzt?",
+          "a": "Nein."
+        }
+      ],
+      "ausarbeitung": [
+        {
+          "id": "orga",
+          "typ": "abschnitte",
+          "titel": "Führungsorganisation und Abschnittsbildung",
+          "frage": "Skizzieren Sie die Führungsorganisation mit Abschnitten, Abschnittsleitern und Rufgruppen.",
+          "soll": [
+            "Brandbekämpfung",
+            "Messen und Warnen",
+            "Bereitstellungsraum"
+          ],
+          "kann": [
+            "Logistik und Atemschutz",
+            "Wasserversorgung",
+            "Absperrung und Verkehr"
+          ],
+          "hinweis": "Die Inertisierung kann innerhalb der Brandbekämpfung oder als eigener Abschnitt mit Unterstützung des Betreibers geführt werden. Der Einsatz dauert erfahrungsgemäß mehrere Tage."
+        },
+        {
+          "id": "massnahmen",
+          "typ": "text",
+          "titel": "Weitere Maßnahmen",
+          "frage": "Legen Sie die weiteren Maßnahmen und Einsatzschwerpunkte in der Reihenfolge fest.",
+          "kriterien": [
+            [
+              "Kein Wasserstrahl in die Zelle, kein Aufwirbeln von Staub, keine Entleerung ohne Fachberatung",
+              2
+            ],
+            [
+              "Zündquellen ausschalten, Elevatorturm räumen, Gefahrenbereich festlegen",
+              2
+            ],
+            [
+              "Inertisierung mit Stickstoff über die Belüftungsstutzen von unten",
+              2
+            ],
+            [
+              "Fortlaufende Messung von Temperatur, CO und Sauerstoff",
+              1
+            ],
+            [
+              "Überwachung der Nachbarzellen",
+              1
+            ],
+            [
+              "Binnenschiff in Abstimmung schließen und verholen",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lage",
+          "typ": "text",
+          "titel": "Lagemeldung",
+          "frage": "Formulieren Sie Ihre Lagemeldung an die Leitstelle.",
+          "kriterien": [
+            [
+              "Übernahme der Einsatzleitung durch den C-Dienst mit Uhrzeit",
+              1
+            ],
+            [
+              "Lage: Glimmbrand in Silozelle 7, 1.800 t Weizen, Staubexplosionsgefahr",
+              1
+            ],
+            [
+              "Personen: keine Verletzten, Mitarbeiter am Tor",
+              1
+            ],
+            [
+              "Maßnahmen: Gefahrenbereich, keine Wasserabgabe, Vorbereitung Inertisierung",
+              1
+            ],
+            [
+              "Konkrete Nachforderungen benannt",
+              2
+            ],
+            [
+              "Nächste Lagemeldung terminiert",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "nachf",
+          "typ": "nachforderung",
+          "titel": "Nachalarmierung",
+          "frage": "Alarmieren Sie über Karte, Leiste und Stichworte alle erforderlichen Kräfte nach und informieren Sie die erforderlichen Stellen.",
+          "soll": [
+            {
+              "t": "key",
+              "any": [
+                "TUIS"
+              ],
+              "pts": 2,
+              "label": "TUIS Fachberatung",
+              "warum": "Bereitstellung von Stickstoff mit Verdampfer."
+            },
+            {
+              "t": "key",
+              "any": [
+                "MESS"
+              ],
+              "pts": 2,
+              "label": "Messzug",
+              "warum": "Messungen von CO und Sauerstoff an der Zelle und in der Umgebung."
+            },
+            {
+              "t": "key",
+              "any": [
+                "GWA"
+              ],
+              "pts": 1,
+              "label": "GW-Atemschutz",
+              "warum": "Langwieriger Einsatz mit Atemschutz."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ELW2"
+              ],
+              "pts": 1,
+              "label": "ELW 2 mit Führungsunterstützung",
+              "warum": "Einsatz über mehrere Tage."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ABKUECHE",
+                "ABTANK"
+              ],
+              "pts": 1,
+              "label": "Verpflegung",
+              "warum": "Lange Einsatzdauer."
+            },
+            {
+              "t": "key",
+              "any": [
+                "THWFB"
+              ],
+              "pts": 1,
+              "label": "Fachberater THW",
+              "warum": "Statik der Zelle bei Erwärmung, Unterstützung bei Entleerung."
+            },
+            {
+              "t": "key",
+              "any": [
+                "POL"
+              ],
+              "pts": 1,
+              "label": "Polizei und Wasserschutzpolizei",
+              "warum": "Absperrung von Kanalstraße und Kai."
+            },
+            {
+              "t": "key",
+              "any": [
+                "WB2",
+                "WACHE2"
+              ],
+              "pts": 1,
+              "label": "Wachbesetzung FRW 2",
+              "warum": "Löschzug 2 ist langfristig gebunden."
+            },
+            {
+              "t": "key",
+              "any": [
+                "DDIENST"
+              ],
+              "pts": 1,
+              "label": "D-Dienst informieren",
+              "warum": "Langwieriger Sondereinsatz."
+            }
+          ],
+          "kann": [
+            "GW-Höhenrettung zur Sicherung auf dem Silodach",
+            "ATF",
+            "Untere Wasserbehörde",
+            "Pressesprecher"
+          ]
+        }
+      ],
+      "kommission": [
+        {
+          "id": "gefahren",
+          "typ": "matrix",
+          "titel": "Gefahren",
+          "frage": "Die Kommission fragt: Welche Gefahren sehen Sie an dieser Einsatzstelle und für wen?",
+          "soll": [
+            "Explosion:Mannschaft",
+            "Explosion:Menschen",
+            "Explosion:Sachwerte",
+            "Atemgifte:Mannschaft",
+            "Ausbreitung:Sachwerte",
+            "Einsturz:Mannschaft"
+          ],
+          "hinweis": "Die Explosionsgefahr ergibt sich aus Getreidestaub und Pyrolysegasen. Die Einsturzgefahr betrifft Hohlräume und Brückenbildung im Schüttgut sowie die Zellenstatik."
+        },
+        {
+          "id": "begruendung",
+          "typ": "text",
+          "titel": "Begründung",
+          "frage": "Die Kommission fragt: Begründen Sie Ihre Abschnittsbildung und die räumliche Lage der Abschnitte.",
+          "kriterien": [
+            [
+              "Brandbekämpfung mit Inertisierung am Zellenfuß außerhalb des Explosionsbereichs der Abdeckung",
+              2
+            ],
+            [
+              "Messen als eigener Abschnitt wegen fortlaufender Überwachung",
+              1
+            ],
+            [
+              "Bereitstellungsraum an der Kanalstraße außerhalb des Gefahrenbereichs",
+              1
+            ],
+            [
+              "Führungsspanne eingehalten",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "befehl",
+          "typ": "text",
+          "titel": "Befehl",
+          "frage": "Die Kommission fordert: Erteilen Sie dem Abschnittsleiter Brandbekämpfung Ihren Befehl.",
+          "kriterien": [
+            [
+              "Lage: Glimmbrand Zelle 7, Temperatur steigend, CO über 500 ppm",
+              1
+            ],
+            [
+              "Auftrag: Inertisierung über die Belüftungsstutzen vorbereiten und durchführen",
+              2
+            ],
+            [
+              "Sicherheit: keine Wasserabgabe in die Zelle, Ex-Schutz, kein Aufwirbeln",
+              2
+            ],
+            [
+              "Zusammenarbeit mit dem Betriebsleiter und dem Gaselieferanten",
+              1
+            ],
+            [
+              "Verbindung über MUS_20, Rückmeldung zu Temperaturverlauf",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lageaenderung",
+          "typ": "text",
+          "titel": "Lageänderung",
+          "frage": "23:30 Uhr: Die Temperatur in Zelle 8 steigt auf 70 Grad. Der Stickstoff trifft frühestens in drei Stunden ein. Wie reagieren Sie?",
+          "kriterien": [
+            [
+              "Zelle 8 als mögliches zweites Brandobjekt behandeln, Messungen verdichten",
+              2
+            ],
+            [
+              "Alternative Inertgase oder Lieferanten prüfen lassen",
+              1
+            ],
+            [
+              "Gefahrenbereich überprüfen",
+              1
+            ],
+            [
+              "Keine Entleerung ohne fachliche Bewertung",
+              1
+            ],
+            [
+              "Rückmeldung an die Leitstelle",
+              1
+            ]
+          ]
+        }
+      ],
+      "presse": {
+        "id": "presse",
+        "typ": "text",
+        "titel": "O-Ton Pressekonferenz",
+        "anlass": "Am nächsten Morgen, 08:00 Uhr, fragen Medien, warum die Feuerwehr den Brand nicht löscht.",
+        "frage": "Geben Sie einen O-Ton von etwa 60 Sekunden ab.",
+        "sekunden": 60,
+        "kriterien": [
+          [
+            "Vorstellung mit Name und Funktion",
+            1
+          ],
+          [
+            "Verständliche Erklärung, warum kein Wasser eingesetzt wird",
+            2
+          ],
+          [
+            "Hinweis auf die voraussichtlich lange Einsatzdauer",
+            1
+          ],
+          [
+            "Keine Gefahr für die Bevölkerung behaupten, ohne Messwerte",
+            1
+          ],
+          [
+            "Hinweis auf Geruchsbelästigung und Verhalten",
+            1
+          ],
+          [
+            "Hinweis auf die nächste Information",
+            1
+          ]
+        ]
+      }
+    }
+  ]
+}

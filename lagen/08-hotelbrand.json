@@ -1,0 +1,672 @@
+{
+  "format": "planbesprechung-musterstadt/lagen",
+  "version": 1,
+  "erstellt": "2026-11-09T09:00:00Z",
+  "lagen": [
+    {
+      "id": "eigen-bs-hotelbrand",
+      "titel": "Hotelbrand Altstadt",
+      "typ": "brand",
+      "x": 45.4,
+      "y": 42.4,
+      "ort": {
+        "adresse": "Hotel Zur Sonne, Domgasse 11",
+        "detail": "Altstadt nördlich des Domplatzes, Fachwerkbebauung",
+        "wb": "Wachbezirk 1, Ausrückebereich FRW 1"
+      },
+      "datum": "2026-12-15",
+      "t0": "03:14",
+      "meldender": "Nachtportier und Hotelgäste",
+      "wetter": "-4 °C, klar, Wind aus Ost mit 2 m/s",
+      "stichwort": "F 3 Y · erhöht auf F 4 und MANV 10",
+      "meldung": "Leitstelle Musterstadt für C-Dienst. Einsatz F 4 mit Menschenleben in Gefahr, zusätzlich MANV 10, Brand im Hotel Zur Sonne, Domgasse 11, Altstadt. Brand im Erdgeschoss mit Rauchausbreitung über das Treppenhaus, mehrere Gäste an Fenstern. Der B-Dienst 1 hat um 03:22 Uhr auf F 4 und MANV 10 erhöht. Alarmiert sind Löschzug 1, Löschzug 2, Löschzug 13 und die Einsatzmittelkette MANV 10. Sie werden zur Übernahme der Einsatzleitung angefordert.",
+      "alarmiert": [
+        "LZ1",
+        "LZ2",
+        "FF13",
+        "MANV10"
+      ],
+      "cAlarm": 8,
+      "uebergabe": {
+        "von": "B-Dienst 1, Zugführer Löschzug 1",
+        "text": [
+          "Herr Verbandsführer, B-Dienst 1. Wir sind um 03:20 Uhr eingetroffen.",
+          "Das Hotel Zur Sonne ist ein viergeschossiges Fachwerkgebäude mit ausgebautem Dachgeschoss und einem Anbau aus den 1970er Jahren. Laut Belegungsliste sind 38 Gäste in 22 Zimmern untergebracht, darunter eine Busreisegruppe aus dem Ausland.",
+          "Der Brand ist im Frühstücksraum im Erdgeschoss ausgebrochen. Rauch ist über das offene Holztreppenhaus bis ins Dachgeschoss gezogen, das Treppenhaus ist nicht mehr begehbar. Im Erdgeschoss sind Flammen im Frühstücksraum und im Foyer sichtbar.",
+          "An den Fenstern zur Domgasse stehen etwa zwölf Gäste und rufen um Hilfe. Die DLK des Löschzugs 1 rettet an der Domgasse, die Steckleiter wird an der Hofseite eingesetzt. Bisher sind sechs Personen gerettet, eine Frau ist aus dem 1. OG gesprungen und schwer verletzt.",
+          "Ein Angriffstrupp geht mit C-Rohr über den Haupteingang gegen den Brand im Erdgeschoss vor. Die Domgasse ist nur 5 Meter breit, eine zweite Drehleiter kann dort nicht aufgestellt werden. Der Anbau ist über einen Flur mit dem Altbau verbunden, eine Brandschutztür ist vorhanden.",
+          "Der Löschzug 2 ist eingetroffen und steht am Domplatz, der Löschzug 13 ist auf Anfahrt. Offen sind die Rettung der Gäste im Dachgeschoss und auf der Hofseite, die Verständigung mit der ausländischen Reisegruppe, die Betreuung bei Minusgraden und der Schutz der Nachbargebäude. Ich bitte um Übernahme."
+        ]
+      },
+      "info": [
+        {
+          "titel": "Objekt",
+          "zeilen": [
+            [
+              "Nutzung",
+              "Hotel mit 22 Zimmern, Frühstücksraum, Foyer und Weinstube"
+            ],
+            [
+              "Bauweise",
+              "Fachwerk 18. Jahrhundert, Holzbalkendecken, offenes Holztreppenhaus, Anbau in Massivbauweise"
+            ],
+            [
+              "Rettungswege",
+              "Treppenhaus Altbau, Außentreppe am Anbau Hofseite, Anleiterbarkeit Domgasse nur eingeschränkt"
+            ],
+            [
+              "Technik",
+              "Rauchwarnmelder in den Zimmern, keine BMA"
+            ],
+            [
+              "Nachbarbebauung",
+              "Geschlossene Fachwerkbebauung, Brandwände nicht durchgängig"
+            ]
+          ]
+        },
+        {
+          "titel": "Belegung",
+          "zeilen": [
+            [
+              "Gäste",
+              "38 Personen in 22 Zimmern"
+            ],
+            [
+              "Reisegruppe",
+              "18 Personen, spricht überwiegend Polnisch, Reiseleiterin spricht Deutsch"
+            ],
+            [
+              "Personal",
+              "Ein Nachtportier"
+            ]
+          ]
+        },
+        {
+          "titel": "Vorlage",
+          "zeilen": [
+            [
+              "Quelle",
+              "BRANDSchutz 2004, Heft 4, S. 265"
+            ],
+            [
+              "Ereignis",
+              "Brand im Hotel »Sonne« in Bad Wimpfen am 15. Dezember 2003"
+            ],
+            [
+              "Übertragung",
+              "Objekt, Belegung und Ablauf wurden in die Altstadt von Musterstadt übertragen und frei ausgestaltet."
+            ]
+          ]
+        }
+      ],
+      "lagekarte": [
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              0,
+              280
+            ],
+            [
+              640,
+              280
+            ],
+            [
+              640,
+              320
+            ],
+            [
+              0,
+              320
+            ]
+          ],
+          "f": "strasse",
+          "txt": "Domgasse"
+        },
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              460,
+              320
+            ],
+            [
+              640,
+              320
+            ],
+            [
+              640,
+              400
+            ],
+            [
+              460,
+              400
+            ]
+          ],
+          "f": "flaeche",
+          "txt": "Domplatz"
+        },
+        {
+          "t": "gebaeude",
+          "x": 150,
+          "y": 150,
+          "w": 170,
+          "h": 130,
+          "txt": "Hotel Altbau"
+        },
+        {
+          "t": "gebaeude",
+          "x": 150,
+          "y": 40,
+          "w": 120,
+          "h": 110,
+          "txt": "Anbau"
+        },
+        {
+          "t": "gebaeude",
+          "x": 40,
+          "y": 150,
+          "w": 110,
+          "h": 130,
+          "txt": "Nachbar"
+        },
+        {
+          "t": "gebaeude",
+          "x": 320,
+          "y": 150,
+          "w": 110,
+          "h": 130,
+          "txt": "Nachbar"
+        },
+        {
+          "t": "brand",
+          "x": 230,
+          "y": 250,
+          "txt": "EG"
+        },
+        {
+          "t": "rauch",
+          "x": 240,
+          "y": 190
+        },
+        {
+          "t": "personen",
+          "x": 270,
+          "y": 300,
+          "txt": "Gäste Fenster"
+        },
+        {
+          "t": "fz",
+          "x": 200,
+          "y": 300,
+          "txt": "DLK",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 380,
+          "y": 300,
+          "txt": "HLF 20-1",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 430,
+          "y": 300,
+          "txt": "HLF 20-2",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 520,
+          "y": 350,
+          "txt": "LZ 2",
+          "org": "fw",
+          "w": 56
+        },
+        {
+          "t": "el",
+          "x": 600,
+          "y": 350,
+          "txt": "B 1"
+        },
+        {
+          "t": "fz",
+          "x": 520,
+          "y": 385,
+          "txt": "NEF",
+          "org": "rd"
+        },
+        {
+          "t": "fz",
+          "x": 580,
+          "y": 385,
+          "txt": "RTW",
+          "org": "rd"
+        },
+        {
+          "t": "personen",
+          "x": 300,
+          "y": 20,
+          "txt": "Gäste Hofseite"
+        },
+        {
+          "t": "linie",
+          "pts": [
+            [
+              150,
+              150
+            ],
+            [
+              270,
+              150
+            ]
+          ],
+          "s": "brandwand",
+          "txt": "T30"
+        },
+        {
+          "t": "wind",
+          "x": 580,
+          "y": 60,
+          "dir": 270,
+          "txt": "O 2 m/s"
+        },
+        {
+          "t": "offen",
+          "x": 60,
+          "y": 60,
+          "txt": "Hofzufahrt?"
+        },
+        {
+          "t": "offen",
+          "x": 400,
+          "y": 60,
+          "txt": "Betreuung"
+        },
+        {
+          "t": "offen",
+          "x": 60,
+          "y": 360,
+          "txt": "Bereitstellungsraum"
+        },
+        {
+          "t": "offen",
+          "x": 330,
+          "y": 360,
+          "txt": "Patientenablage"
+        }
+      ],
+      "nachfragen": [
+        {
+          "f": "Wie viele Gäste sind noch im Gebäude?",
+          "a": "Laut Belegungsliste 38 Gäste. Sechs sind gerettet, etwa acht sind über die Außentreppe am Anbau geflüchtet, eine Person ist gesprungen. Damit sind noch etwa 23 Gäste unklar.",
+          "wichtig": true
+        },
+        {
+          "f": "Wer befindet sich im Dachgeschoss?",
+          "a": "Im Dachgeschoss liegen vier Zimmer mit Gästen der Reisegruppe. An den Dachfenstern zur Hofseite wurden Taschenlampen gesehen.",
+          "wichtig": true
+        },
+        {
+          "f": "Ist die Hofseite anfahrbar?",
+          "a": "Über eine Toreinfahrt der Nachbarnummer 13 ist die Hofseite für ein Hubrettungsfahrzeug mit 2,8 Metern Durchfahrtshöhe erreichbar. Die DLK passt nicht hindurch.",
+          "wichtig": true
+        },
+        {
+          "f": "Hält die Brandschutztür zum Anbau?",
+          "a": "Die Tür ist geschlossen. Im Anbau ist der Flur leicht verraucht, die Gäste dort haben ihre Zimmer verlassen.",
+          "wichtig": true
+        },
+        {
+          "f": "Wie viele Patienten gibt es?",
+          "a": "Eine schwer verletzte Person nach Sprung, vier Gäste mit Rauchgasverdacht. Weitere sind nicht gesichtet.",
+          "wichtig": true
+        },
+        {
+          "f": "Wie ist die Kommunikation mit der Reisegruppe?",
+          "a": "Die Reiseleiterin ist gerettet und steht am Domplatz. Sie kennt die Zimmerbelegung ihrer Gruppe.",
+          "wichtig": true
+        },
+        {
+          "f": "Greift der Brand auf Nachbargebäude über?",
+          "a": "Bisher nicht. Der Dachraum ist über die Traufe mit beiden Nachbargebäuden verbunden."
+        },
+        {
+          "f": "Wo können die Gäste warm untergebracht werden?",
+          "a": "Gegenüber am Domplatz liegt das Gemeindehaus des Doms, der Küster hat einen Schlüssel."
+        },
+        {
+          "f": "Wie ist die Wasserversorgung?",
+          "a": "Hydranten am Domplatz und in der Domgasse mit ausreichender Leistung."
+        },
+        {
+          "f": "Sind Einsatzkräfte verletzt?",
+          "a": "Nein."
+        }
+      ],
+      "ausarbeitung": [
+        {
+          "id": "orga",
+          "typ": "abschnitte",
+          "titel": "Führungsorganisation und Abschnittsbildung",
+          "frage": "Skizzieren Sie die Führungsorganisation mit Abschnitten, Abschnittsleitern und Rufgruppen.",
+          "soll": [
+            "Menschenrettung und Evakuierung",
+            "Brandbekämpfung",
+            "Medizinische Rettung",
+            "Betreuung",
+            "Bereitstellungsraum"
+          ],
+          "kann": [
+            "Logistik und Atemschutz",
+            "Wasserversorgung"
+          ],
+          "hinweis": "Die Menschenrettung kann nach Domgasse und Hofseite in zwei Abschnitte geteilt werden. Die Betreuung von über 30 Gästen bei Minusgraden ist ein eigener Abschnitt."
+        },
+        {
+          "id": "massnahmen",
+          "typ": "text",
+          "titel": "Weitere Maßnahmen",
+          "frage": "Legen Sie die weiteren Maßnahmen und Einsatzschwerpunkte in der Reihenfolge fest.",
+          "kriterien": [
+            [
+              "Menschenrettung über Leitern an Domgasse und Hofseite, Rettung aus dem Dachgeschoss priorisiert",
+              2
+            ],
+            [
+              "Innenangriff zur Sicherung der Rettungswege, Treppenhaus rauchfrei machen",
+              2
+            ],
+            [
+              "Abgleich der geretteten Gäste mit der Belegungsliste über die Reiseleiterin",
+              2
+            ],
+            [
+              "Kontrolle aller Zimmer, durchsuchte Räume kennzeichnen",
+              1
+            ],
+            [
+              "Schutz der Nachbargebäude, Kontrolle der Dachräume",
+              1
+            ],
+            [
+              "Betreuung im Gemeindehaus",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lage",
+          "typ": "text",
+          "titel": "Lagemeldung",
+          "frage": "Formulieren Sie Ihre Lagemeldung an die Leitstelle.",
+          "kriterien": [
+            [
+              "Übernahme der Einsatzleitung durch den C-Dienst mit Uhrzeit",
+              1
+            ],
+            [
+              "Lage: Brand EG, Treppenhaus verraucht, Gäste an Fenstern",
+              1
+            ],
+            [
+              "Personen: 38 Gäste, etwa 23 unklar, fünf Patienten",
+              1
+            ],
+            [
+              "Maßnahmen: Menschenrettung über Leitern, Innenangriff",
+              1
+            ],
+            [
+              "Konkrete Nachforderungen benannt",
+              2
+            ],
+            [
+              "Nächste Lagemeldung terminiert",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "nachf",
+          "typ": "nachforderung",
+          "titel": "Nachalarmierung",
+          "frage": "Alarmieren Sie über Karte, Leiste und Stichworte alle erforderlichen Kräfte nach und informieren Sie die erforderlichen Stellen.",
+          "soll": [
+            {
+              "t": "typ",
+              "typ": "DLA (K) 23/12",
+              "min": 4,
+              "pts": 2,
+              "label": "Weiteres Hubrettungsfahrzeug",
+              "warum": "Rettung an der Hofseite und an den Nachbargebäuden."
+            },
+            {
+              "t": "lz",
+              "min": 4,
+              "pts": 2,
+              "label": "Erhöhung auf F 5",
+              "warum": "Atemschutzintensive Rettung und Kontrolle von 22 Zimmern."
+            },
+            {
+              "t": "key",
+              "any": [
+                "MANV20"
+              ],
+              "pts": 2,
+              "label": "Erhöhung auf MANV 20",
+              "warum": "Viele Gäste mit möglicher Rauchgasexposition."
+            },
+            {
+              "t": "key",
+              "any": [
+                "SEGBT"
+              ],
+              "pts": 2,
+              "label": "Betreuung",
+              "warum": "Über 30 Gäste in Nachtkleidung bei minus vier Grad."
+            },
+            {
+              "t": "key",
+              "any": [
+                "GWA"
+              ],
+              "pts": 1,
+              "label": "GW-Atemschutz",
+              "warum": "Hoher Atemschutzbedarf."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ELW2"
+              ],
+              "pts": 1,
+              "label": "ELW 2 mit Führungsunterstützung",
+              "warum": "Mehrere Einsatzabschnitte."
+            },
+            {
+              "t": "key",
+              "any": [
+                "BUS"
+              ],
+              "pts": 1,
+              "label": "Busse der Verkehrsbetriebe",
+              "warum": "Wärmeraum und Transport."
+            },
+            {
+              "t": "key",
+              "any": [
+                "UNTER"
+              ],
+              "pts": 1,
+              "label": "Ersatzunterbringung",
+              "warum": "Die Gäste können nicht zurück in das Hotel."
+            },
+            {
+              "t": "key",
+              "any": [
+                "PSNV"
+              ],
+              "pts": 1,
+              "label": "PSNV",
+              "warum": "Ausländische Reisegruppe, Angehörige."
+            },
+            {
+              "t": "key",
+              "any": [
+                "WB1",
+                "WACHE1"
+              ],
+              "pts": 1,
+              "label": "Wachbesetzung FRW 1",
+              "warum": "Löschzug 1 ist langfristig gebunden."
+            }
+          ],
+          "kann": [
+            "Dolmetscher über Polizei",
+            "KH Vorwarnung",
+            "Pressesprecher",
+            "D-Dienst informieren"
+          ]
+        }
+      ],
+      "kommission": [
+        {
+          "id": "gefahren",
+          "typ": "matrix",
+          "titel": "Gefahren",
+          "frage": "Die Kommission fragt: Welche Gefahren sehen Sie an dieser Einsatzstelle und für wen?",
+          "soll": [
+            "Atemgifte:Menschen",
+            "Atemgifte:Mannschaft",
+            "Angstreaktion:Menschen",
+            "Ausbreitung:Menschen",
+            "Ausbreitung:Sachwerte",
+            "Einsturz:Mannschaft",
+            "Erkrankung/Verletzung:Menschen"
+          ],
+          "hinweis": "Die Angstreaktion zeigt sich durch Springen aus Fenstern. Die Einsturzgefahr ergibt sich aus dem brennenden Holztreppenhaus und den Holzbalkendecken."
+        },
+        {
+          "id": "begruendung",
+          "typ": "text",
+          "titel": "Begründung",
+          "frage": "Die Kommission fragt: Begründen Sie Ihre Abschnittsbildung und die räumliche Lage der Abschnitte.",
+          "kriterien": [
+            [
+              "Menschenrettung nach Gebäudeseiten gegliedert",
+              2
+            ],
+            [
+              "Brandbekämpfung getrennt von der Rettung über Leitern",
+              1
+            ],
+            [
+              "Betreuung im Gemeindehaus getrennt von der Patientenablage",
+              1
+            ],
+            [
+              "Bereitstellungsraum außerhalb der engen Altstadt",
+              1
+            ],
+            [
+              "Führungsspanne eingehalten",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "befehl",
+          "typ": "text",
+          "titel": "Befehl",
+          "frage": "Die Kommission fordert: Erteilen Sie dem Abschnittsleiter Menschenrettung Hofseite Ihren Befehl.",
+          "kriterien": [
+            [
+              "Lage: Gäste an Dachfenstern zur Hofseite, Zufahrt nur über Toreinfahrt Nr. 13",
+              1
+            ],
+            [
+              "Auftrag: Rettung der Gäste aus dem Dachgeschoss und den Zimmern zur Hofseite",
+              2
+            ],
+            [
+              "Mittel: tragbare Leitern, Hubrettungsfahrzeug mit geringer Höhe, Fluchthauben",
+              1
+            ],
+            [
+              "Abgleich der Geretteten mit der Reiseleiterin",
+              1
+            ],
+            [
+              "Verbindung über MUS_20, Rückmeldung nach jeder Rettung",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lageaenderung",
+          "typ": "text",
+          "titel": "Lageänderung",
+          "frage": "03:55 Uhr: Das Holztreppenhaus stürzt zwischen 1. und 2. OG ein. Zwei Trupps im 2. OG melden, dass sie den Rückweg verloren haben. Wie reagieren Sie?",
+          "kriterien": [
+            [
+              "Mayday-Verfahren, Funkdisziplin",
+              2
+            ],
+            [
+              "Rettung der Trupps über Leitern von außen",
+              2
+            ],
+            [
+              "Sicherheitstrupps einsetzen, Atemschutzüberwachung prüfen",
+              1
+            ],
+            [
+              "Innenangriff im Altbau einstellen, Außenangriff",
+              1
+            ],
+            [
+              "Rückmeldung an die Leitstelle",
+              1
+            ]
+          ]
+        }
+      ],
+      "presse": {
+        "id": "presse",
+        "typ": "text",
+        "titel": "O-Ton Pressekonferenz",
+        "anlass": "05:30 Uhr, ein Radiosender und eine Nachrichtenagentur sind am Domplatz.",
+        "frage": "Geben Sie einen O-Ton von etwa 60 Sekunden ab.",
+        "sekunden": 60,
+        "kriterien": [
+          [
+            "Vorstellung mit Name und Funktion",
+            1
+          ],
+          [
+            "Gesicherte Fakten zu Brand und Gästen",
+            1
+          ],
+          [
+            "Keine Nationalitäten oder Namen einzelner Gäste",
+            2
+          ],
+          [
+            "Keine Angaben zu Brandursache und Brandschutzmängeln",
+            1
+          ],
+          [
+            "Hinweis auf Kontakt für Angehörige über den Reiseveranstalter",
+            1
+          ],
+          [
+            "Hinweis auf die nächste Information",
+            1
+          ]
+        ]
+      }
+    }
+  ]
+}

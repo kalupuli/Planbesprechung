@@ -1,0 +1,15 @@
+{
+  "format": "planbesprechung-musterstadt/ordner",
+  "dateien": [
+    "01-baumarkt.json",
+    "02-explosion-altstadt.json",
+    "03-busunfall-autobahn.json",
+    "04-tornado-sued.json",
+    "05-biogas-h2s.json",
+    "06-erdgas-sued.json",
+    "07-tankschiff-hafen.json",
+    "08-hotelbrand.json",
+    "09-bus-rollstuhl.json",
+    "10-silobrand-kanalhafen.json"
+  ]
+}

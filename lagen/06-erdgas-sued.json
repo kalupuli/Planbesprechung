@@ -1,0 +1,681 @@
+{
+  "format": "planbesprechung-musterstadt/lagen",
+  "version": 1,
+  "erstellt": "2026-11-09T09:00:00Z",
+  "lagen": [
+    {
+      "id": "eigen-bs-erdgas-sued",
+      "titel": "Explosion Erdgasstation Süd",
+      "typ": "brand",
+      "x": 36.4,
+      "y": 81.6,
+      "ort": {
+        "adresse": "Gasdruckregel- und Verdichterstation, Am Feldrain 3",
+        "detail": "Außenbereich Süd, Zufahrt über Wirtschaftsweg",
+        "wb": "Wachbezirk 3, Ausrückebereich LG 33"
+      },
+      "datum": "2026-04-23",
+      "t0": "13:05",
+      "meldender": "Netzleitstelle des Energieversorgers und Anwohner",
+      "wetter": "16 °C, sonnig, Wind aus West mit 4 m/s",
+      "stichwort": "F Gas · erhöht auf F 3",
+      "meldung": "Leitstelle Musterstadt für C-Dienst. Einsatz F 3, Explosion und Brand an der Gasdruckregel- und Verdichterstation Am Feldrain 3, Außenbereich Süd. Bei Wartungsarbeiten ist Erdgas ausgetreten und hat sich entzündet. Eine Stichflamme brennt aus einer Leitung, mehrere Arbeiter sind verletzt. Der B-Dienst 2 hat um 13:14 Uhr auf F 3 erhöht. Alarmiert sind Löschgruppe 33, Löschgruppe 32, Gruppe FRW 3 und TLF 4000 der FRW 2. Sie werden zur Übernahme der Einsatzleitung angefordert.",
+      "alarmiert": [
+        "FF33",
+        "FF32",
+        "GR3",
+        "TLF2"
+      ],
+      "cAlarm": 9,
+      "uebergabe": {
+        "von": "B-Dienst 2, Gruppenführer LG 33",
+        "text": [
+          "Herr Verbandsführer, B-Dienst 2. Wir sind um 13:13 Uhr eingetroffen.",
+          "An der Verdichterstation wurde an einer Hochdruckleitung gearbeitet. Dabei ist Erdgas ausgetreten und hat sich nach Angabe der Arbeiter an einem Stromaggregat entzündet. Es kam zu einer Explosion, seitdem brennt eine etwa 20 Meter hohe Stichflamme aus der offenen Leitung.",
+          "Das Betriebsgebäude der Station ist durch die Druckwelle stark beschädigt, das Dach ist teilweise eingestürzt. Ein Bauwagen und zwei Firmenfahrzeuge brennen. Das angrenzende Getreidefeld hat Feuer gefangen, der Brand breitet sich mit dem Westwind in Richtung Osten aus.",
+          "Von sieben Arbeitern sind fünf aus dem Gefahrenbereich gelaufen, zwei mit schweren Verbrennungen. Ein Arbeiter liegt etwa 40 Meter von der Flamme entfernt neben dem Betriebsgebäude und bewegt sich. Ein weiterer Arbeiter war im Betriebsgebäude, sein Verbleib ist unklar.",
+          "Die LG 33 hat eine Riegelstellung zum Feld aufgebaut. Ein Löschangriff auf die Gasflamme wurde bewusst nicht vorgenommen. Die Netzleitstelle teilt mit, dass die Schieber vor und hinter der Station ferngesteuert geschlossen werden, die Leitung aber noch längere Zeit nachspeist.",
+          "In 400 Metern Entfernung in Windrichtung liegt der Reiterhof Lindenhof mit Wohnhaus und etwa 40 Pferden. Die LG 32 ist eingetroffen, die Gruppe FRW 3 und das TLF 4000 sind auf Anfahrt.",
+          "Offen sind die Rettung der zwei Arbeiter, die Wärmestrahlung, der Flächenbrand und die Wasserversorgung im Außenbereich. Ich bitte um Übernahme."
+        ]
+      },
+      "info": [
+        {
+          "titel": "Anlage",
+          "zeilen": [
+            [
+              "Betreiber",
+              "Netzbetreiber Erdgas, Netzleitstelle rund um die Uhr besetzt"
+            ],
+            [
+              "Anlage",
+              "Gasdruckregel- und Verdichterstation mit Betriebsgebäude, eingezäunt"
+            ],
+            [
+              "Leitung",
+              "Hochdruckleitung DN 300, Betriebsdruck bis 16 bar"
+            ],
+            [
+              "Absperrung",
+              "Fernbediente Schieber 1,2 km vor und 0,8 km hinter der Station"
+            ]
+          ]
+        },
+        {
+          "titel": "Gefahrstoff",
+          "zeilen": [
+            [
+              "Stoff",
+              "Erdgas, überwiegend Methan, UN 1971"
+            ],
+            [
+              "Eigenschaften",
+              "Leichter als Luft, Explosionsbereich etwa 4 bis 17 Vol.-%"
+            ],
+            [
+              "Brennende Gasflamme",
+              "Nicht löschen, solange die Gaszufuhr nicht unterbrochen ist, Gefahr einer erneuten Gaswolke"
+            ],
+            [
+              "Wärmestrahlung",
+              "Starke Strahlungswärme im Umkreis von etwa 50 Metern"
+            ]
+          ]
+        },
+        {
+          "titel": "Vorlage",
+          "zeilen": [
+            [
+              "Quelle",
+              "BRANDSchutz 2004, Heft 12, S. 867"
+            ],
+            [
+              "Ereignis",
+              "Explosion am Berliner Erdgasspeicher am 23. April 2004"
+            ],
+            [
+              "Übertragung",
+              "Anlage und Schadensbild wurden auf eine Gasdruckregelstation im Außenbereich Süd von Musterstadt übertragen und frei ausgestaltet."
+            ]
+          ]
+        }
+      ],
+      "lagekarte": [
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              0,
+              350
+            ],
+            [
+              640,
+              350
+            ],
+            [
+              640,
+              385
+            ],
+            [
+              0,
+              385
+            ]
+          ],
+          "f": "strasse",
+          "txt": "Wirtschaftsweg"
+        },
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              320,
+              0
+            ],
+            [
+              640,
+              0
+            ],
+            [
+              640,
+              300
+            ],
+            [
+              320,
+              300
+            ]
+          ],
+          "f": "flaeche",
+          "txt": "Getreidefeld"
+        },
+        {
+          "t": "linie",
+          "pts": [
+            [
+              60,
+              80
+            ],
+            [
+              300,
+              80
+            ],
+            [
+              300,
+              300
+            ],
+            [
+              60,
+              300
+            ],
+            [
+              60,
+              80
+            ]
+          ],
+          "s": "mittel",
+          "txt": "Zaun"
+        },
+        {
+          "t": "gebaeude",
+          "x": 90,
+          "y": 200,
+          "w": 100,
+          "h": 70,
+          "txt": "Betriebsgebäude"
+        },
+        {
+          "t": "brand",
+          "x": 220,
+          "y": 140,
+          "txt": "Gasflamme"
+        },
+        {
+          "t": "zone",
+          "kind": "gefahr",
+          "cx": 220,
+          "cy": 140,
+          "r": 70,
+          "txt": "Wärmestrahlung"
+        },
+        {
+          "t": "brand",
+          "x": 260,
+          "y": 250,
+          "txt": "Bauwagen"
+        },
+        {
+          "t": "brand",
+          "x": 420,
+          "y": 150,
+          "txt": "Feldbrand"
+        },
+        {
+          "t": "pfeil",
+          "x1": 420,
+          "y1": 150,
+          "x2": 560,
+          "y2": 150,
+          "txt": "Ausbreitung"
+        },
+        {
+          "t": "personen",
+          "x": 140,
+          "y": 180,
+          "txt": "1 Verletzter"
+        },
+        {
+          "t": "fz",
+          "x": 360,
+          "y": 325,
+          "txt": "LF 20",
+          "org": "fw"
+        },
+        {
+          "t": "schlauch",
+          "pts": [
+            [
+              360,
+              315
+            ],
+            [
+              340,
+              230
+            ],
+            [
+              340,
+              160
+            ]
+          ]
+        },
+        {
+          "t": "fz",
+          "x": 440,
+          "y": 370,
+          "txt": "LG 32",
+          "org": "fw"
+        },
+        {
+          "t": "el",
+          "x": 520,
+          "y": 370,
+          "txt": "B 2"
+        },
+        {
+          "t": "fz",
+          "x": 200,
+          "y": 370,
+          "txt": "RTW",
+          "org": "rd"
+        },
+        {
+          "t": "ablage",
+          "x": 120,
+          "y": 370,
+          "txt": "5 Arbeiter"
+        },
+        {
+          "t": "tz",
+          "z": "Gefahren/Akute_Gefahr_durch_Gas",
+          "x": 180,
+          "y": 110,
+          "s": 30,
+          "txt": "Erdgas"
+        },
+        {
+          "t": "wind",
+          "x": 580,
+          "y": 330,
+          "dir": 90,
+          "txt": "W 4 m/s"
+        },
+        {
+          "t": "offen",
+          "x": 600,
+          "y": 100,
+          "txt": "Reiterhof 400 m"
+        },
+        {
+          "t": "offen",
+          "x": 40,
+          "y": 40,
+          "txt": "Wasserversorgung"
+        },
+        {
+          "t": "offen",
+          "x": 600,
+          "y": 370,
+          "txt": "Bereitstellungsraum"
+        },
+        {
+          "t": "offen",
+          "x": 120,
+          "y": 250,
+          "txt": "Vermisster?"
+        }
+      ],
+      "nachfragen": [
+        {
+          "f": "Wann ist die Gaszufuhr unterbrochen?",
+          "a": "Die Schieber sind seit 13:12 Uhr geschlossen. Laut Netzleitstelle brennt das Gas aus dem Leitungsabschnitt noch etwa 30 bis 60 Minuten nach.",
+          "wichtig": true
+        },
+        {
+          "f": "Kann der Verletzte neben dem Betriebsgebäude erreicht werden?",
+          "a": "Er liegt etwa 40 Meter von der Flamme entfernt im Bereich starker Strahlungswärme. Zwischen Flamme und Verletztem steht das beschädigte Betriebsgebäude als Teilschutz.",
+          "wichtig": true
+        },
+        {
+          "f": "Wo war der vermisste Arbeiter zuletzt?",
+          "a": "Im Messraum des Betriebsgebäudes. Das Dach über dem Messraum ist eingestürzt.",
+          "wichtig": true
+        },
+        {
+          "f": "Wie schnell breitet sich der Feldbrand aus?",
+          "a": "Mit dem Westwind in Richtung Reiterhof, die Feuerfront ist etwa 150 Meter breit.",
+          "wichtig": true
+        },
+        {
+          "f": "Ist der Reiterhof informiert?",
+          "a": "Nein. Auf dem Hof halten sich nach Angaben der Arbeiter mittags Kinder einer Reitgruppe auf.",
+          "wichtig": true
+        },
+        {
+          "f": "Wie ist die Wasserversorgung?",
+          "a": "Im Außenbereich gibt es keine Hydranten. Der nächste Hydrant liegt in der Ortslage etwa 1,5 Kilometer entfernt, ein Bach mit geringer Wasserführung liegt 600 Meter westlich.",
+          "wichtig": true
+        },
+        {
+          "f": "Gibt es weitere Gasleitungen in der Nähe?",
+          "a": "Die Hochdruckleitung verläuft in Ost-West-Richtung unter dem Feld. Weitere Leitungen sind nicht bekannt."
+        },
+        {
+          "f": "Ist ein Vertreter des Netzbetreibers vor Ort?",
+          "a": "Der Bauleiter der Fremdfirma ist vor Ort, ein Vertreter des Netzbetreibers ist auf dem Weg."
+        },
+        {
+          "f": "Wie viele Patienten gibt es?",
+          "a": "Fünf Arbeiter an der Ablage am Wirtschaftsweg, davon zwei mit schweren Verbrennungen. Hinzu kommt der Verletzte am Betriebsgebäude."
+        },
+        {
+          "f": "Sind Einsatzkräfte verletzt?",
+          "a": "Nein."
+        }
+      ],
+      "ausarbeitung": [
+        {
+          "id": "orga",
+          "typ": "abschnitte",
+          "titel": "Führungsorganisation und Abschnittsbildung",
+          "frage": "Skizzieren Sie die Führungsorganisation mit Abschnitten, Abschnittsleitern und Rufgruppen.",
+          "soll": [
+            "Brandbekämpfung",
+            "Menschenrettung und Evakuierung",
+            "Medizinische Rettung",
+            "Wasserversorgung",
+            "Bereitstellungsraum"
+          ],
+          "kann": [
+            "Technische Rettung",
+            "Absperrung und Verkehr",
+            "Betreuung"
+          ],
+          "hinweis": "Die Brandbekämpfung kann in Station und Flächenbrand geteilt werden. Die Wasserversorgung im Außenbereich erfordert einen Pendelverkehr oder eine lange Wegstrecke."
+        },
+        {
+          "id": "massnahmen",
+          "typ": "text",
+          "titel": "Weitere Maßnahmen",
+          "frage": "Legen Sie die weiteren Maßnahmen und Einsatzschwerpunkte in der Reihenfolge fest.",
+          "kriterien": [
+            [
+              "Rettung des Verletzten unter Schutz eines Wasserschirms",
+              2
+            ],
+            [
+              "Gasflamme kontrolliert abbrennen lassen, Umgebung kühlen",
+              2
+            ],
+            [
+              "Räumung des Reiterhofs und Riegelstellung zum Feldbrand",
+              2
+            ],
+            [
+              "Suche nach dem vermissten Arbeiter im Betriebsgebäude nach Bewertung der Statik",
+              1
+            ],
+            [
+              "Wasserversorgung über Pendelverkehr mit Tanklöschfahrzeugen",
+              1
+            ],
+            [
+              "Abstimmung mit dem Netzbetreiber über die Restgasmenge",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lage",
+          "typ": "text",
+          "titel": "Lagemeldung",
+          "frage": "Formulieren Sie Ihre Lagemeldung an die Leitstelle.",
+          "kriterien": [
+            [
+              "Übernahme der Einsatzleitung durch den C-Dienst mit Uhrzeit",
+              1
+            ],
+            [
+              "Lage: brennende Erdgasleitung nach Explosion, Feldbrand Richtung Reiterhof",
+              1
+            ],
+            [
+              "Personen: sechs Verletzte, ein Vermisster",
+              1
+            ],
+            [
+              "Maßnahmen: Menschenrettung, Riegelstellung, Räumung",
+              1
+            ],
+            [
+              "Konkrete Nachforderungen benannt",
+              2
+            ],
+            [
+              "Nächste Lagemeldung terminiert",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "nachf",
+          "typ": "nachforderung",
+          "titel": "Nachalarmierung",
+          "frage": "Alarmieren Sie über Karte, Leiste und Stichworte alle erforderlichen Kräfte nach und informieren Sie die erforderlichen Stellen.",
+          "soll": [
+            {
+              "t": "lz",
+              "min": 3,
+              "pts": 2,
+              "label": "Weiterer Löschzug",
+              "warum": "Flächenbrand, Riegelstellung und Kühlung."
+            },
+            {
+              "t": "key",
+              "any": [
+                "TLF1"
+              ],
+              "pts": 1,
+              "label": "Zweites TLF 4000",
+              "warum": "Wasserpendel im Außenbereich."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ABTANK",
+                "WASSER"
+              ],
+              "pts": 2,
+              "label": "Wasserversorgung",
+              "warum": "Keine Hydranten im Außenbereich."
+            },
+            {
+              "t": "key",
+              "any": [
+                "MANV10"
+              ],
+              "pts": 2,
+              "label": "MANV 10",
+              "warum": "Sechs Verletzte, davon mehrere mit schweren Verbrennungen."
+            },
+            {
+              "t": "key",
+              "any": [
+                "RTH"
+              ],
+              "pts": 1,
+              "label": "RTH",
+              "warum": "Schwerbrandverletzte für ein Brandverletztenzentrum."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ENERG"
+              ],
+              "pts": 2,
+              "label": "Energieversorger",
+              "warum": "Restgasmenge, Freigabe der Leitung und Fachberatung."
+            },
+            {
+              "t": "key",
+              "any": [
+                "POL"
+              ],
+              "pts": 1,
+              "label": "Polizei",
+              "warum": "Absperrung und Ermittlungen."
+            },
+            {
+              "t": "key",
+              "any": [
+                "THWFB"
+              ],
+              "pts": 1,
+              "label": "Fachberater THW",
+              "warum": "Statik des Betriebsgebäudes."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ELW2"
+              ],
+              "pts": 1,
+              "label": "ELW 2 mit Führungsunterstützung",
+              "warum": "Mehrere Abschnitte im Außenbereich."
+            }
+          ],
+          "kann": [
+            "Landwirte mit Güllefässern über Ordnungsamt",
+            "SEG-Betreuung für den Reiterhof",
+            "Pressesprecher",
+            "D-Dienst informieren"
+          ]
+        }
+      ],
+      "kommission": [
+        {
+          "id": "gefahren",
+          "typ": "matrix",
+          "titel": "Gefahren",
+          "frage": "Die Kommission fragt: Welche Gefahren sehen Sie an dieser Einsatzstelle und für wen?",
+          "soll": [
+            "Explosion:Menschen",
+            "Explosion:Mannschaft",
+            "Ausbreitung:Menschen",
+            "Ausbreitung:Tiere",
+            "Ausbreitung:Sachwerte",
+            "Einsturz:Menschen",
+            "Einsturz:Mannschaft",
+            "Erkrankung/Verletzung:Menschen"
+          ],
+          "hinweis": "Das Löschen der Gasflamme vor Unterbrechung der Gaszufuhr würde zu einer erneuten Gaswolke mit Explosionsgefahr führen."
+        },
+        {
+          "id": "begruendung",
+          "typ": "text",
+          "titel": "Begründung",
+          "frage": "Die Kommission fragt: Begründen Sie Ihre Abschnittsbildung und die räumliche Lage der Abschnitte.",
+          "kriterien": [
+            [
+              "Station und Flächenbrand getrennt geführt",
+              2
+            ],
+            [
+              "Räumung Reiterhof als eigener Auftrag",
+              1
+            ],
+            [
+              "Medizinische Rettung außerhalb der Strahlungswärme am Wirtschaftsweg",
+              1
+            ],
+            [
+              "Bereitstellungsraum windseitig auf dem Wirtschaftsweg",
+              1
+            ],
+            [
+              "Führungsspanne eingehalten",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "befehl",
+          "typ": "text",
+          "titel": "Befehl",
+          "frage": "Die Kommission fordert: Erteilen Sie dem Abschnittsleiter Brandbekämpfung Feld Ihren Befehl.",
+          "kriterien": [
+            [
+              "Lage: Feldbrand mit 150 Meter Front in Richtung Reiterhof",
+              1
+            ],
+            [
+              "Auftrag: Riegelstellung vor dem Reiterhof, Brand von den Flanken eindämmen",
+              2
+            ],
+            [
+              "Räumung des Reiterhofs mit Pferden und Reitgruppe",
+              1
+            ],
+            [
+              "Wasserversorgung über Pendel",
+              1
+            ],
+            [
+              "Verbindung über MUS_30, Rückmeldung bei Erreichen des Hofs",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lageaenderung",
+          "typ": "text",
+          "titel": "Lageänderung",
+          "frage": "13:50 Uhr: Die Gasflamme erlischt plötzlich. Aus der Leitung tritt weiter hörbar Gas aus. Wie reagieren Sie?",
+          "kriterien": [
+            [
+              "Sofortiger Rückzug aus dem Gefahrenbereich",
+              2
+            ],
+            [
+              "Zündquellen ausschalten, Fahrzeuge außerhalb abstellen",
+              1
+            ],
+            [
+              "Messungen von außen, Gefahrenbereich erweitern",
+              1
+            ],
+            [
+              "Abstimmung mit dem Netzbetreiber zur Restgasmenge",
+              1
+            ],
+            [
+              "Rückmeldung an die Leitstelle",
+              1
+            ]
+          ]
+        }
+      ],
+      "presse": {
+        "id": "presse",
+        "typ": "text",
+        "titel": "O-Ton Pressekonferenz",
+        "anlass": "14:30 Uhr, ein Fernsehteam filmt die Rauchsäule vom Ortsrand aus.",
+        "frage": "Geben Sie einen O-Ton von etwa 60 Sekunden ab.",
+        "sekunden": 60,
+        "kriterien": [
+          [
+            "Vorstellung mit Name und Funktion",
+            1
+          ],
+          [
+            "Gesicherte Fakten zu Explosion und Verletzten",
+            1
+          ],
+          [
+            "Keine Angaben zur Ursache oder zum Verschulden der Firma",
+            2
+          ],
+          [
+            "Aussage zur Gasversorgung der Haushalte nur nach Abstimmung mit dem Netzbetreiber",
+            1
+          ],
+          [
+            "Bitte um Meiden des Bereichs",
+            1
+          ],
+          [
+            "Hinweis auf die nächste Information",
+            1
+          ]
+        ]
+      }
+    }
+  ]
+}

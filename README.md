@@ -22,12 +22,15 @@ Browserbasiertes Planspiel für Planbesprechungen im Sinne der Abschlussprüfung
 | `js/login.js` | Anmeldeschwelle mit Passwortprüfung |
 | `js/lagezeichnen.js` | Zeichenwerkzeug im Lagebild der Arbeitstafel: Freihand, Linien, Pfeile, Kreise, Text und taktische Zeichen |
 | `js/editor.js` | Lagen-Editor: eigene Lagen anlegen, bearbeiten, speichern, exportieren und importieren |
+| `js/ordner.js` | Lädt beim Start alle Lagen aus dem Ablageordner `lagen/` |
+| `lagen/` | Ablageordner: jede JSON-Datei im Austauschformat wird automatisch als Lage geladen, `index.json` ist das Inhaltsverzeichnis |
+| `tools/lagen_index.py` | Erzeugt `lagen/index.json` aus allen JSON-Dateien des Ablageordners |
 | `js/unterlagen.js` | Anzeige der Originalunterlagen mit Kapitelsprung, Seitenwechsel, Zoom und Speichern |
 | `vendor/pdf*.js` | pdf.js 3.11.174 (Mozilla, Apache 2.0) für die PDF-Anzeige |
 | `tools/karte_vektor.py` | Erzeugt `assets/karte.svg`, `js/kartesvg.js` und `assets/stadtkarte.svg` aus der PDF-Seite |
-| `tools/build.py` | Erzeugt `dist/planspiel-musterstadt.html` als eine eigenständige Datei |
+| `tools/build.py` | Erzeugt `dist/planspiel-musterstadt.html` als eine eigenständige Datei, bettet die Lagen des Ablageordners ein und aktualisiert `lagen/index.json` |
 
-Starten: `index.html` direkt im Browser öffnen oder über einen lokalen Server (`python3 -m http.server`). Für die Weitergabe `python3 tools/build.py` ausführen und die Datei aus `dist/` verwenden.
+Starten: `index.html` direkt im Browser öffnen oder über einen lokalen Server (`python3 -m http.server`). Für die Weitergabe `python3 tools/build.py` ausführen und die Datei aus `dist/` verwenden. Lagen aus dem Ablageordner `lagen/` werden nur über einen Webserver oder im Build geladen.
 
 ## Bedienung
 
@@ -48,7 +51,7 @@ Starten: `index.html` direkt im Browser öffnen oder über einen lokalen Server 
 - **Nachalarmierung:** In der Ausarbeitung werden alle Stichworte und Einheiten nach Gruppen angezeigt und per Klick alarmiert, ebenso in der Leiste rechts. Alarmierte Kräfte werden als »alarmiert« geführt und treffen nie ein. Beim Antippen einer Wache oder einer überörtlichen Einheit wird die Anfahrtszeit zur Einsatzstelle in Minuten angezeigt, ebenso in der Meldung nach der Alarmierung und im Hinweis der Kacheln.
 - **Unterlagen:** Der Knopf »Unterlagen« in der Kopfleiste öffnet die Original-PDF der Lernunterlage und der Taktischen Arbeitstafel. Für die Lernunterlage steht ein Kapitelverzeichnis zur Verfügung. In der Übergabe führen Direktsprünge zur Karte, zur Fahrzeugübersicht und zur AAO. »PDF speichern« legt das Original als Datei ab.
 - **Einsatzdepesche:** Die Initialalarmierung erscheint als Alarmausdruck der Leitstelle mit Einsatznummer, DTG, Stichwort, Einsatzort, Planquadrat, Meldendem, Wetter, Sachverhalt, alarmierten Einsatzmitteln mit Standort und Alarmzeit sowie einem Lageplan aus der Vektorkarte.
-- **Taktische Arbeitstafel als Arbeitsfläche:** Ab der Übernahme der Einsatzleitung zeigt die Bühne die Taktische Arbeitstafel. Über »Arbeitstafel · 3D-Karte · Stadtkarte« oben rechts wird umgeschaltet, »Vollbild« vergrößert die Tafel. Gezoomt wird über − und + in der Kopfleiste, Strg + Mausrad, zwei Finger oder die Tasten + und −. Ein Klick auf die Prozentanzeige oder die Taste 0 passt die Tafel wieder auf die Breite ein, »Ganze Tafel« zeigt sie vollständig. Im Lagebild der Tafel wird die Lagekarte direkt ergänzt (Auswählen, taktisches Zeichen, Stift, Linie, Pfeil, Kreis, Text, Radierer; Löschen über die Kontextleiste, Entf, Rechtsklick, Radierer oder Liste). Die Führungsorganisation nach FwDV 100 wird ebenfalls direkt in der Tafel eingetragen, die Abschnittsfelder A I bis A V und das Organigramm werden dabei mitgeführt. Die Eingabe der Führungsorganisation ist ab dem Start der Ausarbeitung bis zur Abgabe möglich.
+- **Taktische Arbeitstafel als Arbeitsfläche:** Ab der Übernahme der Einsatzleitung zeigt die Bühne die Taktische Arbeitstafel. Über »Arbeitstafel · 3D-Karte · Stadtkarte« oben rechts wird umgeschaltet, »Vollbild« vergrößert die Tafel. Gezoomt wird über − und + in der Kopfleiste, Strg + Mausrad, zwei Finger oder die Tasten + und −. Ein Klick auf die Prozentanzeige oder die Taste 0 passt die Tafel wieder auf die Breite ein, »Ganze Tafel« zeigt sie vollständig. Im Lagebild der Tafel wird die Lagekarte direkt ergänzt (Auswählen, taktisches Zeichen, Stift, Linie, Pfeil, Kreis, Text, Radierer, Löschen über die Kontextleiste, Entf, Rechtsklick, Radierer oder Liste). Die Führungsorganisation nach FwDV 100 wird ebenfalls direkt in der Tafel eingetragen, die Abschnittsfelder A I bis A V und das Organigramm werden dabei mitgeführt. Die Eingabe der Führungsorganisation ist ab dem Start der Ausarbeitung bis zur Abgabe möglich.
 - **Arbeitstafel:** Wird mit Kräften, Nachforderungen, Benachrichtigungen und der Führungsorganisation fortgeschrieben.
 
 ## Anmeldung
@@ -78,6 +81,31 @@ Austauschformat:
 ```
 
 Eine Lage im Export hat denselben Aufbau wie die Szenarien in `js/szenarien.js`.
+
+## Ablageordner für Lagen
+
+Alle JSON-Dateien im Ordner `lagen/` werden beim Start automatisch geladen. Eine Datei kann eine oder mehrere Lagen im Austauschformat enthalten, somit kann jede Exportdatei des Lagen-Editors unverändert abgelegt werden. In der Szenarienliste werden diese Lagen mit »Ablageordner« gekennzeichnet. Sie sind schreibgeschützt und können über »Als Vorlage kopieren« als eigene Lage weiterbearbeitet werden. Unter den Schaltflächen der Szenarienliste wird angezeigt, wie viele Lagen geladen wurden und welche Dateien fehlerhaft sind.
+
+- **GitHub Pages:** Datei in den Ordner `lagen/` hochladen. Der Ordner wird über die GitHub-API gelesen, ein Inhaltsverzeichnis ist nicht erforderlich.
+- **Lokaler Webserver:** `python3 -m http.server` im Projektordner starten. Die Verzeichnisliste des Servers wird ausgewertet.
+- **Anderer Webserver ohne Verzeichnisliste:** Nach dem Ablegen `python3 tools/lagen_index.py` ausführen, hierdurch wird `lagen/index.json` aktualisiert.
+- **Weitergabe als eine Datei:** `python3 tools/build.py` bettet alle Lagen des Ordners in `dist/planspiel-musterstadt.html` ein.
+- **Direkt geöffnete `index.html`:** Der Browser verbietet das Lesen von Ordnern über `file://`. In diesem Fall wird die Datei aus `dist/` verwendet oder die Lage über »Importieren« geladen.
+
+Im Ordner liegen zehn Verbandslagen nach Einsatzberichten aus BRANDSchutz, welche auf Musterstadt übertragen wurden. Jede Lage enthält einen Informationsblock »Vorlage« mit Heft, Seite und realem Ereignis.
+
+| Datei | Lage | Vorlage |
+|---|---|---|
+| `01-baumarkt.json` | Großbrand Baumarkt, Gewerbegebiet West | BRANDSchutz 2006, Heft 6, S. 397, Baumarkt Oberhausen |
+| `02-explosion-altstadt.json` | Explosion Wohn- und Geschäftshaus, Altstadt | BRANDSchutz 2006, Heft 10, S. 725, Explosion Höxter |
+| `03-busunfall-autobahn.json` | Busunfall Autobahn West | BRANDSchutz 2006, Heft 7, S. 492, Busunfall A 4 Kerpen |
+| `04-tornado-sued.json` | Tornado Ortsteil Süd | BRANDSchutz 2006, Heft 11, S. 801, Tornado Hamburg |
+| `05-biogas-h2s.json` | Schwefelwasserstoff Biogasanlage | BRANDSchutz 2006, Heft 1, S. 43, Biogasanlage Rhadereistedt |
+| `06-erdgas-sued.json` | Explosion Erdgasstation Süd | BRANDSchutz 2004, Heft 12, S. 867, Berliner Erdgasspeicher |
+| `07-tankschiff-hafen.json` | Tankschiff Schwefelsäure, Stadthafen | BRANDSchutz 2004, Heft 11, S. 788, TMS ENA 2 Hamburg |
+| `08-hotelbrand.json` | Hotelbrand Altstadt | BRANDSchutz 2004, Heft 4, S. 265, Hotel »Sonne« Bad Wimpfen |
+| `09-bus-rollstuhl.json` | Busbrand mit gehbehinderten Fahrgästen | BRANDSchutz 2006, Heft 12, S. 876, Busunfall A 99 |
+| `10-silobrand-kanalhafen.json` | Silobrand Kanalhafen mit Inertisierung | BRANDSchutz 2004, Heft 10, S. 714, Getreidesilo |
 
 ## Neues Szenario anlegen
 

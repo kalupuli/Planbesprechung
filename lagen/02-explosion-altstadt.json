@@ -1,0 +1,693 @@
+{
+  "format": "planbesprechung-musterstadt/lagen",
+  "version": 1,
+  "erstellt": "2026-11-09T09:00:00Z",
+  "lagen": [
+    {
+      "id": "eigen-bs-explosion-altstadt",
+      "titel": "Explosion Wohn- und Geschäftshaus",
+      "typ": "th",
+      "x": 50.6,
+      "y": 45.6,
+      "ort": {
+        "adresse": "Wohn- und Geschäftshaus, Marktgasse 7",
+        "detail": "Altstadt innerhalb des Rings, enge Bebauung",
+        "wb": "Wachbezirk 1, Ausrückebereich FRW 1"
+      },
+      "datum": "2026-09-19",
+      "t0": "07:18",
+      "meldender": "Mehrere Notrufe von Anwohnern und Passanten",
+      "wetter": "12 °C, bewölkt, Wind aus West mit 2 m/s",
+      "stichwort": "TH Explosion · erhöht auf TH 3 und MANV 10",
+      "meldung": "Leitstelle Musterstadt für C-Dienst. Einsatz TH 3 mit Menschenleben in Gefahr, zusätzlich MANV 10, Explosion in einem Wohn- und Geschäftshaus, Marktgasse 7, Altstadt. Teile des Gebäudes sind eingestürzt, mehrere Personen werden vermisst. Gasgeruch in der Marktgasse. Der B-Dienst 1 hat um 07:26 Uhr auf TH 3 und MANV 10 erhöht. Alarmiert sind Löschzug 1, Rüstwagen, Löschzug 2 und die Einsatzmittelkette MANV 10. Sie werden zur Übernahme der Einsatzleitung angefordert.",
+      "alarmiert": [
+        "LZ1",
+        "RW1",
+        "LZ2",
+        "MANV10"
+      ],
+      "cAlarm": 8,
+      "uebergabe": {
+        "von": "B-Dienst 1, Zugführer Löschzug 1",
+        "text": [
+          "Herr Verbandsführer, B-Dienst 1. Wir sind um 07:24 Uhr eingetroffen.",
+          "In der Marktgasse 7 hat sich eine Explosion ereignet. Das Gebäude ist ein viergeschossiges Wohn- und Geschäftshaus mit einer Bäckerei im Erdgeschoss und sechs Wohnungen darüber. Die Rückseite des Gebäudes ist bis zum Erdgeschoss eingestürzt, die Straßenfront steht noch, ist aber stark geschädigt.",
+          "Die Nachbargebäude Marktgasse 5 und 9 haben Risse in den Giebelwänden, Fensterscheiben in der gesamten Gasse sind zerborsten. Im Trümmerkegel auf der Hofseite brennt es an zwei Stellen. In der Marktgasse ist deutlicher Gasgeruch wahrnehmbar.",
+          "Die Bäckerei war bereits geöffnet. Laut Nachbarn wohnen im Haus etwa 14 Personen. Bisher sind acht Personen aus dem Gebäude gekommen oder von Passanten herausgeholt worden, vier davon schwer verletzt. Von mindestens fünf Personen fehlt jede Spur, darunter eine Familie aus dem 2. OG und eine Verkäuferin.",
+          "Der Angriffstrupp des HLF 20-1 bekämpft die Brände im Trümmerkegel mit einem C-Rohr. Der Rüstwagen sichert die Straßenfront, eine Ortung hat noch nicht begonnen. Die Patienten werden an der Einmündung zum Markt von Rettungsdienst und Notarzt versorgt.",
+          "Der Energieversorger ist durch die Leitstelle informiert, die Gaszufuhr ist noch nicht unterbrochen. Der Löschzug 2 ist eingetroffen und steht am Markt.",
+          "Offen sind die Unterbrechung der Gaszufuhr, die Ortung und Rettung der Vermissten, die Kontrolle der Nachbargebäude und die Räumung der Gasse. Ich bitte um Übernahme."
+        ]
+      },
+      "info": [
+        {
+          "titel": "Objekt",
+          "zeilen": [
+            [
+              "Nutzung",
+              "Erdgeschoss Bäckerei mit Backstube, 1. bis 3. OG sechs Wohnungen"
+            ],
+            [
+              "Bauweise",
+              "Mauerwerksbau um 1900, Holzbalkendecken, Gebäudebreite 9 m"
+            ],
+            [
+              "Nachbarbebauung",
+              "Geschlossene Altstadtbebauung, Nachbargebäude mit gemeinsamen Giebelwänden"
+            ],
+            [
+              "Zugänglichkeit",
+              "Marktgasse 6 m breit, Anfahrt für Großfahrzeuge nur vom Markt aus"
+            ],
+            [
+              "Versorgung",
+              "Erdgas Mitteldruck in der Marktgasse, Hausanschluss im Keller Backstube"
+            ]
+          ]
+        },
+        {
+          "titel": "Gefahrstoff",
+          "zeilen": [
+            [
+              "Stoff",
+              "Erdgas, überwiegend Methan, UN 1971"
+            ],
+            [
+              "Eigenschaften",
+              "Leichter als Luft, Explosionsbereich etwa 4 bis 17 Vol.-%"
+            ],
+            [
+              "Gefahr",
+              "Gasansammlung in Kellern und Hohlräumen der Trümmer und Nachbargebäude"
+            ]
+          ]
+        },
+        {
+          "titel": "Vorlage",
+          "zeilen": [
+            [
+              "Quelle",
+              "BRANDSchutz 2006, Heft 10, S. 725"
+            ],
+            [
+              "Ereignis",
+              "Explosion mit Gebäudeeinsturz in Höxter am 19. September 2005"
+            ],
+            [
+              "Übertragung",
+              "Das Schadensbild wurde in die Altstadt von Musterstadt übertragen, Personenzahlen und Ablauf sind frei ausgestaltet."
+            ]
+          ]
+        }
+      ],
+      "lagekarte": [
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              0,
+              250
+            ],
+            [
+              520,
+              250
+            ],
+            [
+              520,
+              290
+            ],
+            [
+              0,
+              290
+            ]
+          ],
+          "f": "strasse",
+          "txt": "Marktgasse"
+        },
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              520,
+              180
+            ],
+            [
+              640,
+              180
+            ],
+            [
+              640,
+              400
+            ],
+            [
+              520,
+              400
+            ]
+          ],
+          "f": "flaeche",
+          "txt": "Markt"
+        },
+        {
+          "t": "gebaeude",
+          "x": 100,
+          "y": 130,
+          "w": 110,
+          "h": 120,
+          "txt": "Nr. 5"
+        },
+        {
+          "t": "gebaeude",
+          "x": 210,
+          "y": 130,
+          "w": 100,
+          "h": 120,
+          "txt": "Nr. 7"
+        },
+        {
+          "t": "gebaeude",
+          "x": 310,
+          "y": 130,
+          "w": 110,
+          "h": 120,
+          "txt": "Nr. 9"
+        },
+        {
+          "t": "zone",
+          "kind": "gefahr",
+          "cx": 260,
+          "cy": 130,
+          "r": 80,
+          "txt": "Trümmerkegel"
+        },
+        {
+          "t": "brand",
+          "x": 230,
+          "y": 80,
+          "txt": "Hof"
+        },
+        {
+          "t": "brand",
+          "x": 290,
+          "y": 95
+        },
+        {
+          "t": "tz",
+          "z": "Gefahren/Akute_Gefahr_durch_Gas",
+          "x": 260,
+          "y": 270,
+          "s": 30,
+          "txt": "Gasgeruch"
+        },
+        {
+          "t": "fz",
+          "x": 440,
+          "y": 270,
+          "txt": "HLF 20-1",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 490,
+          "y": 270,
+          "txt": "RW",
+          "org": "fw"
+        },
+        {
+          "t": "schlauch",
+          "pts": [
+            [
+              440,
+              260
+            ],
+            [
+              430,
+              60
+            ],
+            [
+              300,
+              60
+            ]
+          ]
+        },
+        {
+          "t": "fz",
+          "x": 560,
+          "y": 220,
+          "txt": "DLK",
+          "org": "fw"
+        },
+        {
+          "t": "el",
+          "x": 600,
+          "y": 260,
+          "txt": "B 1"
+        },
+        {
+          "t": "fz",
+          "x": 560,
+          "y": 320,
+          "txt": "LZ 2",
+          "org": "fw",
+          "w": 56
+        },
+        {
+          "t": "ablage",
+          "x": 600,
+          "y": 370,
+          "txt": "Patienten Markt"
+        },
+        {
+          "t": "fz",
+          "x": 540,
+          "y": 370,
+          "txt": "NEF",
+          "org": "rd"
+        },
+        {
+          "t": "personen",
+          "x": 80,
+          "y": 330,
+          "txt": "Anwohner"
+        },
+        {
+          "t": "wind",
+          "x": 580,
+          "y": 50,
+          "dir": 90,
+          "txt": "W 2 m/s"
+        },
+        {
+          "t": "offen",
+          "x": 140,
+          "y": 40,
+          "txt": "Ortung"
+        },
+        {
+          "t": "offen",
+          "x": 40,
+          "y": 200,
+          "txt": "Gaszufuhr"
+        },
+        {
+          "t": "offen",
+          "x": 360,
+          "y": 360,
+          "txt": "Bereitstellungsraum"
+        },
+        {
+          "t": "offen",
+          "x": 40,
+          "y": 370,
+          "txt": "Betreuung"
+        }
+      ],
+      "nachfragen": [
+        {
+          "f": "Wo werden die Vermissten vermutet?",
+          "a": "Die Familie mit zwei Kindern wohnte im 2. OG auf der Hofseite, dieser Bereich ist eingestürzt. Die Verkäuferin war vermutlich in der Backstube im hinteren Erdgeschoss. Eine weitere Mieterin aus dem 3. OG ist laut Nachbarn eventuell bei der Arbeit.",
+          "wichtig": true
+        },
+        {
+          "f": "Gibt es Klopfzeichen oder Rufe?",
+          "a": "Ein Passant hat kurz nach der Explosion Rufe aus dem Trümmerkegel gehört. Seitdem ist wegen des Lärms an der Einsatzstelle nichts mehr wahrgenommen worden.",
+          "wichtig": true
+        },
+        {
+          "f": "Wurde die Gaskonzentration gemessen?",
+          "a": "Das HLF misst in der Marktgasse 10 bis 20 Prozent der UEG, im Kellerabgang der Nummer 9 über 40 Prozent der UEG.",
+          "wichtig": true
+        },
+        {
+          "f": "Wann kommt der Energieversorger?",
+          "a": "Der Bereitschaftsdienst ist alarmiert, die Ankunft wird in etwa 20 Minuten erwartet. Der Absperrschieber liegt laut Plan an der Einmündung zum Markt.",
+          "wichtig": true
+        },
+        {
+          "f": "Wie stabil sind die Nachbargebäude?",
+          "a": "Die Giebelwände von Nummer 5 und 9 zeigen Risse über alle Geschosse. In Nummer 9 befinden sich noch Bewohner, welche ihre Wohnungen nicht verlassen wollen.",
+          "wichtig": true
+        },
+        {
+          "f": "Wie viele Patienten gibt es?",
+          "a": "Acht Personen, davon vier schwer verletzt mit Verbrennungen und Frakturen. Zwei Kinder aus der Nummer 9 werden mit Schnittverletzungen durch Glas versorgt.",
+          "wichtig": true
+        },
+        {
+          "f": "Ist die Straßenfront noch tragfähig?",
+          "a": "Der Rüstwagen hat die Fassade mit Abstützsystemen provisorisch gesichert. Eine fachliche Bewertung durch einen Baufachberater liegt nicht vor."
+        },
+        {
+          "f": "Wie ist die Zufahrt für Großfahrzeuge?",
+          "a": "Nur über den Markt. Die Marktgasse ist durch Trümmer und Glas teilweise blockiert."
+        },
+        {
+          "f": "Ist die Polizei vor Ort?",
+          "a": "Zwei Streifen sperren den Markt ab. Die Kriminalpolizei ist informiert."
+        },
+        {
+          "f": "Gibt es verletzte Einsatzkräfte?",
+          "a": "Nein."
+        }
+      ],
+      "ausarbeitung": [
+        {
+          "id": "orga",
+          "typ": "abschnitte",
+          "titel": "Führungsorganisation und Abschnittsbildung",
+          "frage": "Skizzieren Sie die Führungsorganisation mit Abschnitten, Abschnittsleitern und Rufgruppen.",
+          "soll": [
+            "Technische Rettung",
+            "Brandbekämpfung",
+            "Medizinische Rettung",
+            "Menschenrettung und Evakuierung",
+            "Bereitstellungsraum"
+          ],
+          "kann": [
+            "Betreuung",
+            "Gefahrenabwehr ABC",
+            "Absperrung und Verkehr"
+          ],
+          "hinweis": "Die Ortung und Rettung im Trümmerkegel ist als Schwerpunkt mit eigenem Abschnitt zu führen. Die Räumung der Nachbargebäude und die Gasgefahr können in einem Abschnitt zusammengefasst werden."
+        },
+        {
+          "id": "massnahmen",
+          "typ": "text",
+          "titel": "Weitere Maßnahmen",
+          "frage": "Legen Sie die weiteren Maßnahmen und Einsatzschwerpunkte in der Reihenfolge fest.",
+          "kriterien": [
+            [
+              "Zündquellen vermeiden, Gaszufuhr über den Energieversorger unterbrechen, Messungen fortlaufend",
+              2
+            ],
+            [
+              "Räumung der Nachbargebäude und der Gasse",
+              2
+            ],
+            [
+              "Ortung der Vermissten mit Ruhephasen, gezielte Rettung aus dem Trümmerkegel",
+              2
+            ],
+            [
+              "Sicherung von Fassade und Giebelwänden, Baufachberatung",
+              1
+            ],
+            [
+              "Brandbekämpfung im Trümmerkegel zum Schutz der Verschütteten",
+              1
+            ],
+            [
+              "Geordnete Patientenablage am Markt",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lage",
+          "typ": "text",
+          "titel": "Lagemeldung",
+          "frage": "Formulieren Sie Ihre Lagemeldung an die Leitstelle.",
+          "kriterien": [
+            [
+              "Übernahme der Einsatzleitung durch den C-Dienst mit Uhrzeit",
+              1
+            ],
+            [
+              "Lage: Explosion mit Teileinsturz, Brände im Trümmerkegel, Gasaustritt",
+              1
+            ],
+            [
+              "Personen: mindestens fünf Vermisste, acht Patienten",
+              1
+            ],
+            [
+              "Maßnahmen: Ortung, Räumung, Brandbekämpfung",
+              1
+            ],
+            [
+              "Konkrete Nachforderungen benannt (THW, Ortung, Baufachberatung)",
+              2
+            ],
+            [
+              "Nächste Lagemeldung terminiert",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "nachf",
+          "typ": "nachforderung",
+          "titel": "Nachalarmierung",
+          "frage": "Alarmieren Sie über Karte, Leiste und Stichworte alle erforderlichen Kräfte nach und informieren Sie die erforderlichen Stellen.",
+          "soll": [
+            {
+              "t": "key",
+              "any": [
+                "THWO"
+              ],
+              "pts": 2,
+              "label": "THW FGr Ortung",
+              "warum": "Biologische und technische Ortung der Verschütteten."
+            },
+            {
+              "t": "key",
+              "any": [
+                "THWFB"
+              ],
+              "pts": 1,
+              "label": "Fachberater THW",
+              "warum": "Bewertung der Statik und Koordination der THW-Einheiten."
+            },
+            {
+              "t": "key",
+              "any": [
+                "THWSB",
+                "THWTZ1"
+              ],
+              "pts": 2,
+              "label": "THW Bergung",
+              "warum": "Abstützen und Räumen im Trümmerkegel."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ABBAU"
+              ],
+              "pts": 1,
+              "label": "AB-Bau",
+              "warum": "Abstützmaterial für Fassade und Giebelwände."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ENERG"
+              ],
+              "pts": 2,
+              "label": "Energieversorger",
+              "warum": "Unterbrechung der Gaszufuhr."
+            },
+            {
+              "t": "key",
+              "any": [
+                "MANV20"
+              ],
+              "pts": 1,
+              "label": "Erhöhung auf MANV 20",
+              "warum": "Weitere Patienten aus den Trümmern zu erwarten."
+            },
+            {
+              "t": "key",
+              "any": [
+                "SEGBT"
+              ],
+              "pts": 1,
+              "label": "Betreuung",
+              "warum": "Bewohner der geräumten Nachbargebäude."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ELW2"
+              ],
+              "pts": 1,
+              "label": "ELW 2 mit Führungsunterstützung",
+              "warum": "Mehrere Einsatzabschnitte und Organisationen."
+            },
+            {
+              "t": "key",
+              "any": [
+                "PSNV"
+              ],
+              "pts": 1,
+              "label": "PSNV",
+              "warum": "Angehörige der Vermissten und Betroffene."
+            },
+            {
+              "t": "key",
+              "any": [
+                "WB1",
+                "WACHE1"
+              ],
+              "pts": 1,
+              "label": "Wachbesetzung FRW 1",
+              "warum": "Löschzug 1 ist langfristig gebunden."
+            },
+            {
+              "t": "lz",
+              "min": 3,
+              "pts": 1,
+              "label": "Weiterer Löschzug",
+              "warum": "Räumung, Messungen und Ablösung im Trümmerkegel."
+            }
+          ],
+          "kann": [
+            "RTH",
+            "Ordnungsamt",
+            "Ersatzunterbringung",
+            "D-Dienst informieren"
+          ]
+        }
+      ],
+      "kommission": [
+        {
+          "id": "gefahren",
+          "typ": "matrix",
+          "titel": "Gefahren",
+          "frage": "Die Kommission fragt: Welche Gefahren sehen Sie an dieser Einsatzstelle und für wen?",
+          "soll": [
+            "Einsturz:Menschen",
+            "Einsturz:Mannschaft",
+            "Explosion:Menschen",
+            "Explosion:Mannschaft",
+            "Ausbreitung:Menschen",
+            "Atemgifte:Menschen",
+            "Erkrankung/Verletzung:Menschen",
+            "Angstreaktion:Menschen"
+          ],
+          "hinweis": "Die erneute Explosionsgefahr ergibt sich aus dem anhaltenden Gasaustritt in Keller und Hohlräume."
+        },
+        {
+          "id": "begruendung",
+          "typ": "text",
+          "titel": "Begründung",
+          "frage": "Die Kommission fragt: Begründen Sie Ihre Abschnittsbildung und die räumliche Lage der Abschnitte.",
+          "kriterien": [
+            [
+              "Technische Rettung als Schwerpunkt im Trümmerkegel",
+              2
+            ],
+            [
+              "Räumung und Gasgefahr außerhalb des Trümmerkegels gebündelt",
+              1
+            ],
+            [
+              "Medizinische Rettung am Markt mit freier Zu- und Abfahrt",
+              1
+            ],
+            [
+              "Bereitstellungsraum außerhalb der engen Altstadt",
+              1
+            ],
+            [
+              "Führungsspanne eingehalten",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "befehl",
+          "typ": "text",
+          "titel": "Befehl",
+          "frage": "Die Kommission fordert: Erteilen Sie dem Abschnittsleiter Technische Rettung Ihren Befehl.",
+          "kriterien": [
+            [
+              "Lage: Teileinsturz Hofseite, mindestens fünf Vermisste, Gasaustritt",
+              1
+            ],
+            [
+              "Auftrag: Ortung der Vermissten und Rettung aus dem Trümmerkegel",
+              2
+            ],
+            [
+              "Sicherheit: Messungen, Ex-Schutz, Sicherung vor Nachsturz, Ruhephasen",
+              2
+            ],
+            [
+              "Zusammenarbeit mit THW und Baufachberatung",
+              1
+            ],
+            [
+              "Übergabe der Geretteten an die Patientenablage Markt",
+              1
+            ],
+            [
+              "Verbindung über MUS_20, Rückmeldung bei jeder Ortung",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lageaenderung",
+          "typ": "text",
+          "titel": "Lageänderung",
+          "frage": "08:05 Uhr: Im Keller der Marktgasse 9 werden 80 Prozent der UEG gemessen. Gleichzeitig orten die Rettungskräfte Klopfzeichen im Trümmerkegel. Wie reagieren Sie?",
+          "kriterien": [
+            [
+              "Sofortiger Rückzug aus Marktgasse 9 und Umgebung, Zündquellen ausschalten",
+              2
+            ],
+            [
+              "Abwägung Rettung gegen Eigengefährdung, Rettung nur außerhalb des Ex-Bereichs",
+              2
+            ],
+            [
+              "Belüftung mit Ex-geschützten Lüftern, Energieversorger drängen",
+              1
+            ],
+            [
+              "Sicherheitsabstand und Absperrung erweitern",
+              1
+            ],
+            [
+              "Rückmeldung an die Leitstelle",
+              1
+            ]
+          ]
+        }
+      ],
+      "presse": {
+        "id": "presse",
+        "typ": "text",
+        "titel": "O-Ton Pressekonferenz",
+        "anlass": "09:00 Uhr, Rundfunk und Fernsehen stehen am Markt. Gerüchte über mehrere Tote verbreiten sich in sozialen Medien.",
+        "frage": "Geben Sie einen O-Ton von etwa 60 Sekunden ab.",
+        "sekunden": 60,
+        "kriterien": [
+          [
+            "Vorstellung mit Name und Funktion",
+            1
+          ],
+          [
+            "Gesicherte Fakten ohne Spekulation",
+            1
+          ],
+          [
+            "Keine Angaben zu Ursache oder Todesopfern vor Bestätigung",
+            2
+          ],
+          [
+            "Hinweis auf Anlaufstelle für Angehörige",
+            2
+          ],
+          [
+            "Bitte um Meiden der Altstadt",
+            1
+          ],
+          [
+            "Hinweis auf die nächste Information",
+            1
+          ]
+        ]
+      }
+    }
+  ]
+}

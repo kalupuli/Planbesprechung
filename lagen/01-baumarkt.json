@@ -1,0 +1,694 @@
+{
+  "format": "planbesprechung-musterstadt/lagen",
+  "version": 1,
+  "erstellt": "2026-11-09T09:00:00Z",
+  "lagen": [
+    {
+      "id": "eigen-bs-baumarkt",
+      "titel": "Großbrand Baumarkt",
+      "typ": "brand",
+      "x": 31.6,
+      "y": 60.4,
+      "ort": {
+        "adresse": "Bau- und Gartenmarkt, Westring 112",
+        "detail": "Gewerbegebiet West, Zufahrt über Westring und Lagerstraße",
+        "wb": "Wachbezirk 3, Ausrückebereich LZ 22"
+      },
+      "datum": "2026-03-14",
+      "t0": "15:42",
+      "meldender": "BMA, anschließend Marktleiter",
+      "wetter": "9 °C, trocken, Wind aus Südwest mit 5 m/s",
+      "stichwort": "F BMA · erhöht auf F 3",
+      "meldung": "Leitstelle Musterstadt für C-Dienst. Einsatz F 3, Großbrand Bau- und Gartenmarkt, Westring 112, Gewerbegebiet West. Auslösung der Brandmeldeanlage, Brand im Bereich Farben und Lacke mit Durchzündung in die Verkaufshalle. Etwa 150 Kunden und Mitarbeiter haben das Gebäude verlassen, Vermisste werden nicht ausgeschlossen. Starke Rauchentwicklung in Richtung Nordost. Der B-Dienst 2 hat um 15:51 Uhr auf F 3 erhöht. Alarmiert sind Gruppe FRW 3, Löschzug 22, Löschgruppe 33 und TLF 4000 der FRW 2. Sie werden zur Übernahme der Einsatzleitung angefordert.",
+      "alarmiert": [
+        "GR3",
+        "FF22",
+        "FF33",
+        "TLF2"
+      ],
+      "cAlarm": 10,
+      "uebergabe": {
+        "von": "B-Dienst 2, Zugführer Gruppe FRW 3",
+        "text": [
+          "Herr Verbandsführer, B-Dienst 2. Wir sind um 15:49 Uhr eingetroffen.",
+          "Der Baumarkt besteht aus einer eingeschossigen Verkaufshalle in Stahlbauweise mit etwa 8.000 m², einem angebauten Gartencenter mit Foliendach und einem Freilager an der Lagerstraße. Die Halle ist nicht gesprinklert, die Brandmeldeanlage hat ausgelöst.",
+          "Der Brand ist im Bereich Farben, Lacke und Kunststoffe ausgebrochen und hat sich unter der Dachhaut schnell ausgebreitet. Etwa ein Drittel der Halle steht im Vollbrand, die Dachkonstruktion hängt im Bereich der Gänge 10 bis 14 bereits sichtbar durch. Ein Innenangriff wurde nach dem ersten Erkunden abgebrochen.",
+          "Laut Marktleiter wurden die Kunden über Lautsprecher zum Verlassen aufgefordert. Am Sammelplatz Parkplatz Nord fehlen zwei Mitarbeiter aus dem Lager, ob diese das Gebäude über einen anderen Ausgang verlassen haben, ist ungeklärt. Drei Personen mit Rauchgasverdacht werden vom Rettungsdienst versorgt.",
+          "Die DLK der FRW 3 baut an der Nordostseite einen Wenderohreinsatz auf. Das HLF 20 der FRW 3 hält mit zwei B-Rohren eine Riegelstellung zum Gartencenter. Die Wasserversorgung läuft bislang über zwei Hydranten am Westring, die Leistung reicht nicht aus.",
+          "Die Rauchwolke zieht in Richtung Wohnbebauung Nordost und die Bundesautobahn. Der Löschzug 22 ist eingetroffen und steht am Westring, die Löschgruppe 33 und das TLF 4000 sind auf Anfahrt.",
+          "Offen sind die Klärung der zwei vermissten Mitarbeiter, eine leistungsfähige Wasserversorgung, der Schutz des Gartencenters und die Warnung der Bevölkerung. Ich bitte um Übernahme."
+        ]
+      },
+      "info": [
+        {
+          "titel": "Objekt",
+          "zeilen": [
+            [
+              "Nutzung",
+              "Bau- und Gartenmarkt mit Freilager, Öffnungszeit bis 20 Uhr"
+            ],
+            [
+              "Bauweise",
+              "Stahlhalle 1994, Trapezblechdach mit Bitumenabdichtung, keine Brandabschnitte innerhalb der Verkaufsfläche"
+            ],
+            [
+              "Fläche",
+              "Verkaufshalle 8.000 m², Gartencenter 2.500 m², Freilager 1.800 m²"
+            ],
+            [
+              "Technik",
+              "BMA mit Aufschaltung, RWA im Dach, keine Sprinkleranlage, FIBS am Haupteingang"
+            ],
+            [
+              "Löschwasser",
+              "Hydranten DN 150 am Westring, Löschwasserteich 300 m³ an der Lagerstraße"
+            ]
+          ]
+        },
+        {
+          "titel": "Gefahrstoffe im Markt",
+          "zeilen": [
+            [
+              "Farben und Lacke",
+              "Lösemittelhaltig, etwa 12 t im Brandbereich"
+            ],
+            [
+              "Flüssiggas",
+              "Etwa 60 Propanflaschen 5 kg und 11 kg im Außenkäfig an der Ostseite"
+            ],
+            [
+              "Dünger und Pflanzenschutz",
+              "Etwa 8 t im Gartencenter, darunter ammoniumnitrathaltiger Dünger"
+            ],
+            [
+              "Brandrauch",
+              "Reizende und toxische Bestandteile, Rußniederschlag möglich"
+            ]
+          ]
+        },
+        {
+          "titel": "Vorlage",
+          "zeilen": [
+            [
+              "Quelle",
+              "BRANDSchutz 2006, Heft 6, S. 397"
+            ],
+            [
+              "Ereignis",
+              "Großbrand eines Baumarkts in Oberhausen am 14. März 2006"
+            ],
+            [
+              "Übertragung",
+              "Ablauf, Objekt und Kräfte wurden auf das Gewerbegebiet West von Musterstadt übertragen und frei ausgestaltet."
+            ]
+          ]
+        }
+      ],
+      "lagekarte": [
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              0,
+              340
+            ],
+            [
+              640,
+              340
+            ],
+            [
+              640,
+              385
+            ],
+            [
+              0,
+              385
+            ]
+          ],
+          "f": "strasse",
+          "txt": "Westring"
+        },
+        {
+          "t": "flaeche",
+          "pts": [
+            [
+              590,
+              0
+            ],
+            [
+              630,
+              0
+            ],
+            [
+              630,
+              340
+            ],
+            [
+              590,
+              340
+            ]
+          ],
+          "f": "strasse",
+          "txt": "Lagerstraße"
+        },
+        {
+          "t": "gebaeude",
+          "x": 140,
+          "y": 90,
+          "w": 260,
+          "h": 170,
+          "txt": "Verkaufshalle"
+        },
+        {
+          "t": "gebaeude",
+          "x": 400,
+          "y": 120,
+          "w": 120,
+          "h": 140,
+          "txt": "Gartencenter"
+        },
+        {
+          "t": "gebaeude",
+          "x": 140,
+          "y": 30,
+          "w": 200,
+          "h": 55,
+          "txt": "Freilager"
+        },
+        {
+          "t": "brand",
+          "x": 220,
+          "y": 160,
+          "txt": "Farben / Lacke"
+        },
+        {
+          "t": "rauch",
+          "x": 330,
+          "y": 60
+        },
+        {
+          "t": "fz",
+          "x": 420,
+          "y": 290,
+          "txt": "DLK",
+          "org": "fw"
+        },
+        {
+          "t": "fz",
+          "x": 470,
+          "y": 290,
+          "txt": "HLF 20",
+          "org": "fw"
+        },
+        {
+          "t": "schlauch",
+          "pts": [
+            [
+              470,
+              300
+            ],
+            [
+              470,
+              330
+            ],
+            [
+              60,
+              360
+            ]
+          ]
+        },
+        {
+          "t": "hydrant",
+          "x": 60,
+          "y": 360
+        },
+        {
+          "t": "pfeil",
+          "x1": 470,
+          "y1": 280,
+          "x2": 405,
+          "y2": 230,
+          "txt": "Riegel"
+        },
+        {
+          "t": "fz",
+          "x": 120,
+          "y": 362,
+          "txt": "LZ 22",
+          "org": "fw",
+          "w": 56
+        },
+        {
+          "t": "el",
+          "x": 280,
+          "y": 362,
+          "txt": "B 2"
+        },
+        {
+          "t": "fz",
+          "x": 350,
+          "y": 362,
+          "txt": "RTW",
+          "org": "rd"
+        },
+        {
+          "t": "personen",
+          "x": 60,
+          "y": 300,
+          "txt": "Sammelplatz ca. 150"
+        },
+        {
+          "t": "tz",
+          "z": "Gefahren/Gefahr_durch_Explosion",
+          "x": 535,
+          "y": 200,
+          "s": 30,
+          "txt": "Propan"
+        },
+        {
+          "t": "wind",
+          "x": 560,
+          "y": 40,
+          "dir": 45,
+          "txt": "SW 5 m/s"
+        },
+        {
+          "t": "offen",
+          "x": 520,
+          "y": 50,
+          "txt": "Löschwasserteich"
+        },
+        {
+          "t": "offen",
+          "x": 40,
+          "y": 160,
+          "txt": "2 Vermisste"
+        },
+        {
+          "t": "offen",
+          "x": 240,
+          "y": 300,
+          "txt": "Bereitstellungsraum"
+        },
+        {
+          "t": "offen",
+          "x": 600,
+          "y": 380,
+          "txt": "Warnung NO"
+        }
+      ],
+      "nachfragen": [
+        {
+          "f": "Wo wurden die zwei vermissten Mitarbeiter zuletzt gesehen?",
+          "a": "Laut Marktleiter im Lager hinter dem Bereich Farben, etwa zehn Minuten vor der Alarmierung. Das Lager hat einen eigenen Ausgang zur Lagerstraße. Beide sind telefonisch nicht erreichbar.",
+          "wichtig": true
+        },
+        {
+          "f": "Ist das Dach noch begehbar oder einsturzgefährdet?",
+          "a": "Nein. Die Dachkonstruktion hängt über den Gängen 10 bis 14 durch, in diesem Bereich ist mit einem Teileinsturz zu rechnen. Ein Innenangriff ist dort nicht mehr vertretbar.",
+          "wichtig": true
+        },
+        {
+          "f": "Wo genau stehen die Propanflaschen?",
+          "a": "In einem Gitterkäfig an der Ostseite zwischen Verkaufshalle und Gartencenter, etwa 25 Meter vom Brandbereich entfernt. Der Käfig ist bislang nicht beaufschlagt.",
+          "wichtig": true
+        },
+        {
+          "f": "Ist das Gartencenter baulich abgetrennt?",
+          "a": "Zwischen Halle und Gartencenter liegt eine Wand ohne Feuerwiderstand mit zwei offenen Rolltoren. Das Foliendach des Gartencenters schließt direkt an das Hallendach an.",
+          "wichtig": true
+        },
+        {
+          "f": "Wohin zieht die Rauchwolke?",
+          "a": "Bei Südwestwind nach Nordost über die Siedlung Am Kamp mit etwa 1.200 Einwohnern und anschließend über die Autobahn.",
+          "wichtig": true
+        },
+        {
+          "f": "Wie viel Löschwasser steht zur Verfügung?",
+          "a": "Zwei Hydranten DN 150 am Westring mit zusammen etwa 2.400 l/min. Ein Löschwasserteich mit 300 m³ liegt an der Lagerstraße, der nächste offene Gewässerzugang ist der Kanal in etwa 900 Metern.",
+          "wichtig": true
+        },
+        {
+          "f": "Gibt es weitere Personen im Gebäude?",
+          "a": "Die Kassenbereiche und der Kundenbereich wurden laut Marktleiter beim Verlassen kontrolliert. Eine Kontrolle durch die Feuerwehr hat noch nicht stattgefunden."
+        },
+        {
+          "f": "Läuft die Rauchabzugsanlage?",
+          "a": "Die RWA hat automatisch ausgelöst, ein Teil der Klappen ist geöffnet. Durch die Dachöffnungen tritt starker Rauch aus."
+        },
+        {
+          "f": "Sind Einsatzkräfte verletzt?",
+          "a": "Nein."
+        },
+        {
+          "f": "Ist die Polizei vor Ort?",
+          "a": "Eine Streife sperrt den Westring an der Einmündung Lagerstraße. Schaulustige sammeln sich auf dem Parkplatz Süd."
+        }
+      ],
+      "ausarbeitung": [
+        {
+          "id": "orga",
+          "typ": "abschnitte",
+          "titel": "Führungsorganisation und Abschnittsbildung",
+          "frage": "Skizzieren Sie die Führungsorganisation mit Abschnitten, Abschnittsleitern und Rufgruppen.",
+          "soll": [
+            "Brandbekämpfung",
+            "Menschenrettung und Evakuierung",
+            "Wasserversorgung",
+            "Bereitstellungsraum"
+          ],
+          "kann": [
+            "Medizinische Rettung",
+            "Absperrung und Verkehr",
+            "Logistik und Atemschutz",
+            "Messen und Warnen"
+          ],
+          "hinweis": "Die Brandbekämpfung kann räumlich nach Hallenseiten in zwei Abschnitte geteilt werden. Für die Wasserversorgung über lange Wegstrecke bietet sich ein eigener Abschnitt an."
+        },
+        {
+          "id": "massnahmen",
+          "typ": "text",
+          "titel": "Weitere Maßnahmen",
+          "frage": "Legen Sie die weiteren Maßnahmen und Einsatzschwerpunkte in der Reihenfolge fest.",
+          "kriterien": [
+            [
+              "Suche nach den zwei vermissten Mitarbeitern über den Lagerausgang Lagerstraße, nur außerhalb des einsturzgefährdeten Bereichs",
+              2
+            ],
+            [
+              "Kein Innenangriff unter dem durchhängenden Dach, Außenangriff mit Wenderohren und Riegelstellung",
+              2
+            ],
+            [
+              "Schutz des Gartencenters und Kühlung des Propankäfigs",
+              2
+            ],
+            [
+              "Leistungsfähige Wasserversorgung über Löschwasserteich und lange Wegstrecke",
+              1
+            ],
+            [
+              "Warnung der Bevölkerung im Rauchausbreitungsgebiet",
+              1
+            ],
+            [
+              "Messungen im Rauchausbreitungsgebiet",
+              1
+            ],
+            [
+              "Rückhaltung von Löschwasser",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lage",
+          "typ": "text",
+          "titel": "Lagemeldung",
+          "frage": "Formulieren Sie Ihre Lagemeldung an die Leitstelle.",
+          "kriterien": [
+            [
+              "Übernahme der Einsatzleitung durch den C-Dienst mit Uhrzeit",
+              1
+            ],
+            [
+              "Lage: Vollbrand von etwa einem Drittel der Verkaufshalle, Einsturzgefahr des Daches",
+              1
+            ],
+            [
+              "Personen: zwei Mitarbeiter vermisst, drei Verletzte",
+              1
+            ],
+            [
+              "Maßnahmen: Außenangriff, Riegelstellung, Personensuche",
+              1
+            ],
+            [
+              "Konkrete Nachforderungen benannt",
+              2
+            ],
+            [
+              "Hinweis auf Rauchausbreitung nach Nordost und Warnung",
+              1
+            ],
+            [
+              "Nächste Lagemeldung terminiert",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "nachf",
+          "typ": "nachforderung",
+          "titel": "Nachalarmierung",
+          "frage": "Alarmieren Sie über Karte, Leiste und Stichworte alle erforderlichen Kräfte nach und informieren Sie die erforderlichen Stellen.",
+          "soll": [
+            {
+              "t": "lz",
+              "min": 4,
+              "pts": 3,
+              "label": "Erhöhung auf F 4",
+              "warum": "Großflächiger Außenangriff auf drei Seiten, Riegelstellung und Personensuche binden mehrere Züge."
+            },
+            {
+              "t": "typ",
+              "typ": "DLA (K) 23/12",
+              "min": 3,
+              "pts": 1,
+              "label": "Drittes Hubrettungsfahrzeug",
+              "warum": "Wenderohreinsatz an der dritten Hallenseite und am Gartencenter."
+            },
+            {
+              "t": "key",
+              "any": [
+                "WASSER"
+              ],
+              "pts": 2,
+              "label": "EA Wasserversorgung",
+              "warum": "Der Löschwasserbedarf übersteigt die Hydrantenleistung deutlich."
+            },
+            {
+              "t": "key",
+              "any": [
+                "MESS"
+              ],
+              "pts": 2,
+              "label": "Messzug",
+              "warum": "Rauchausbreitung über die Siedlung Am Kamp."
+            },
+            {
+              "t": "key",
+              "any": [
+                "WARN"
+              ],
+              "pts": 2,
+              "label": "Warnung der Bevölkerung",
+              "warum": "Fenster und Türen schließen, Lüftungsanlagen abschalten."
+            },
+            {
+              "t": "key",
+              "any": [
+                "ELW2"
+              ],
+              "pts": 1,
+              "label": "ELW 2 mit Führungsunterstützung",
+              "warum": "Mehrere Einsatzabschnitte und Außenwirkung."
+            },
+            {
+              "t": "key",
+              "any": [
+                "GWA"
+              ],
+              "pts": 1,
+              "label": "GW-Atemschutz",
+              "warum": "Hoher Atemschutzbedarf bei Personensuche und Riegelstellung."
+            },
+            {
+              "t": "key",
+              "any": [
+                "POL"
+              ],
+              "pts": 1,
+              "label": "Polizei",
+              "warum": "Absperrung, Verkehrslenkung und Ermittlungen zur Brandursache."
+            },
+            {
+              "t": "key",
+              "any": [
+                "UWB"
+              ],
+              "pts": 1,
+              "label": "Untere Wasserbehörde",
+              "warum": "Kontaminiertes Löschwasser aus dem Farbenbereich."
+            },
+            {
+              "t": "key",
+              "any": [
+                "AUTOB"
+              ],
+              "pts": 1,
+              "label": "Autobahn GmbH",
+              "warum": "Sichtbehinderung durch Rauch auf der Autobahn."
+            },
+            {
+              "t": "key",
+              "any": [
+                "DDIENST"
+              ],
+              "pts": 1,
+              "label": "D-Dienst informieren",
+              "warum": "Großbrand mit Außenwirkung."
+            }
+          ],
+          "kann": [
+            "AB-Sonderlöschmittel",
+            "Pressesprecher",
+            "Energieversorger",
+            "Wachbesetzung FRW 2"
+          ]
+        }
+      ],
+      "kommission": [
+        {
+          "id": "gefahren",
+          "typ": "matrix",
+          "titel": "Gefahren",
+          "frage": "Die Kommission fragt: Welche Gefahren sehen Sie an dieser Einsatzstelle und für wen?",
+          "soll": [
+            "Atemgifte:Menschen",
+            "Atemgifte:Mannschaft",
+            "Ausbreitung:Menschen",
+            "Ausbreitung:Sachwerte",
+            "Ausbreitung:Umwelt",
+            "Explosion:Mannschaft",
+            "Einsturz:Mannschaft",
+            "Chemische Stoffe:Umwelt"
+          ],
+          "hinweis": "Die Explosionsgefahr ergibt sich aus den Propanflaschen. Die Einsturzgefahr betrifft insbesondere Trupps im Bereich der durchhängenden Dachkonstruktion."
+        },
+        {
+          "id": "begruendung",
+          "typ": "text",
+          "titel": "Begründung",
+          "frage": "Die Kommission fragt: Begründen Sie Ihre Abschnittsbildung und die räumliche Lage der Abschnitte.",
+          "kriterien": [
+            [
+              "Gliederung der Brandbekämpfung nach Gebäudeseiten",
+              2
+            ],
+            [
+              "Eigener Abschnitt Wasserversorgung wegen langer Wegstrecke",
+              1
+            ],
+            [
+              "Personensuche als eigener Auftrag mit klarer Begrenzung",
+              1
+            ],
+            [
+              "Bereitstellungsraum außerhalb der Rauchausbreitung",
+              1
+            ],
+            [
+              "Führungsspanne eingehalten",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "befehl",
+          "typ": "text",
+          "titel": "Befehl",
+          "frage": "Die Kommission fordert: Erteilen Sie dem Abschnittsleiter Brandbekämpfung Ost Ihren Befehl.",
+          "kriterien": [
+            [
+              "Lage: Vollbrand Verkaufshalle, Gartencenter noch nicht betroffen, Propankäfig an der Ostseite",
+              1
+            ],
+            [
+              "Auftrag: Riegelstellung zum Gartencenter halten und Propankäfig kühlen",
+              2
+            ],
+            [
+              "Mittel: DLK mit Wenderohr, zwei B-Rohre, Einheit zugewiesen",
+              1
+            ],
+            [
+              "Grenzen: kein Betreten des Gebäudes, Abstand zum Dach",
+              2
+            ],
+            [
+              "Verbindung über MUS_20, Rückmeldung bei Lageänderung",
+              1
+            ]
+          ]
+        },
+        {
+          "id": "lageaenderung",
+          "typ": "text",
+          "titel": "Lageänderung",
+          "frage": "16:25 Uhr: Das Dach stürzt über den Gängen 10 bis 14 ein. Ein Trupp meldet über Funk, dass er sich im Lager hinter dem Bereich Farben befindet und den Rückweg nicht mehr findet. Wie reagieren Sie?",
+          "kriterien": [
+            [
+              "Mayday-Verfahren einleiten, Funkdisziplin herstellen",
+              2
+            ],
+            [
+              "Sicherheitstrupp über den Lagerausgang Lagerstraße einsetzen",
+              2
+            ],
+            [
+              "Atemschutzüberwachung prüfen, Standort und Restdruck abfragen",
+              1
+            ],
+            [
+              "Löschangriff zum Schutz des Rettungswegs",
+              1
+            ],
+            [
+              "Weitere Sicherheitstrupps bereitstellen, Rettungsdienst vorhalten",
+              1
+            ],
+            [
+              "Rückmeldung an die Leitstelle",
+              1
+            ]
+          ]
+        }
+      ],
+      "presse": {
+        "id": "presse",
+        "typ": "text",
+        "titel": "O-Ton Pressekonferenz",
+        "anlass": "17:00 Uhr, ein Fernsehteam und die Lokalzeitung stehen am Parkplatz Süd und bitten um ein Statement.",
+        "frage": "Geben Sie einen O-Ton von etwa 60 Sekunden ab.",
+        "sekunden": 60,
+        "kriterien": [
+          [
+            "Vorstellung mit Name und Funktion",
+            1
+          ],
+          [
+            "Gesicherte Fakten zum Brand und zu Verletzten",
+            1
+          ],
+          [
+            "Keine Angaben zur Brandursache und zur Schadenshöhe",
+            1
+          ],
+          [
+            "Verhaltenshinweise für Anwohner im Rauchgebiet",
+            2
+          ],
+          [
+            "Hinweis auf Verkehrsbehinderungen",
+            1
+          ],
+          [
+            "Hinweis auf die nächste Information",
+            1
+          ]
+        ]
+      }
+    }
+  ]
+}
