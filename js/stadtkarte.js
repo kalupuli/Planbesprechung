@@ -112,5 +112,13 @@ function syncAnsicht() {
 }
 gruppe.addEventListener("click", e => { const b = e.target.closest("[data-ansicht]"); if (b) setzeAnsicht(b.dataset.ansicht); });
 $("#lsVoll").addEventListener("click", () => { const an = !lageStage.classList.contains("voll"); lageStage.classList.toggle("voll", an); stage.classList.toggle("voll-an", an); $("#lsVoll").setAttribute("aria-pressed", an ? "true" : "false"); $("#lsVoll").textContent = an ? "Vollbild beenden" : "Vollbild"; window.__pms.tafelZoom(); });
+$("#lsWk").addEventListener("click", () => { const w = $("#lsWerkzeuge"), an = w.hidden; w.hidden = !an; $("#lsWk").setAttribute("aria-pressed", an ? "true" : "false"); try { localStorage.setItem("pms_werkzeuge", an ? "1" : "0"); } catch (e) {} setTimeout(() => window.__pms.tafelZoom(), 0); });
+try { if (localStorage.getItem("pms_werkzeuge") === "0") { $("#lsWerkzeuge").hidden = true; $("#lsWk").setAttribute("aria-pressed", "false"); } } catch (e) {}
+/* Einführung */
+const introOv = $("#introOv");
+const introZu = () => { introOv.hidden = true; };
+$("#btnIntro").addEventListener("click", () => { introOv.hidden = false; introOv.querySelector(".ov-scroll").scrollTop = 0; });
+$("#introClose").addEventListener("click", introZu); $("#introLos").addEventListener("click", introZu);
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !introOv.hidden) { e.stopImmediatePropagation(); introZu(); } }, true);
 window.Ansicht = { setze: setzeAnsicht, modus: () => modus, sync: syncAnsicht, voll: () => lageStage.classList.contains("voll") };
 })();

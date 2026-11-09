@@ -7,34 +7,34 @@
       "id": "eigen-bs-tankschiff-hafen",
       "titel": "Tankschiff Schwefelsäure Stadthafen",
       "typ": "abc",
-      "x": 43.8,
+      "x": 56.3,
       "y": 49.6,
       "ort": {
         "adresse": "Stadthafen, Kai 3, Hafenweg 20",
-        "detail": "Hafenbecken südwestlich der Innenstadt",
-        "wb": "Wachbezirk 1, Ausrückebereich FRW 1"
+        "detail": "Hafenbecken am Kanal westlich der FRW 2",
+        "wb": "Wachbezirk 2, Ausrückebereich LZ 21"
       },
       "datum": "2026-06-28",
       "t0": "05:52",
       "meldender": "Hafenmeister",
       "wetter": "17 °C, trocken, Wind aus Nordwest mit 3 m/s",
       "stichwort": "ABC 2 Wasser · erhöht auf ABC 3",
-      "meldung": "Leitstelle Musterstadt für C-Dienst. Einsatz ABC 3, Tankschiff mit Schwefelsäure im Stadthafen, Kai 3, Hafenweg 20. Das Schiff hat beim Löschen der Ladung starke Schlagseite bekommen und liegt mit der Bordwand auf dem Kai. Ladung tritt aus. Zwei Besatzungsmitglieder sind verletzt. Der B-Dienst 1 hat um 06:01 Uhr auf ABC 3 erhöht. Alarmiert sind Löschzug 1, Löschzug 22, ABC-Zug und GW-Öl. Sie werden zur Übernahme der Einsatzleitung angefordert.",
+      "meldung": "Leitstelle Musterstadt für C-Dienst. Einsatz ABC 3, Tankschiff mit Schwefelsäure im Stadthafen, Kai 3, Hafenweg 20. Das Schiff hat beim Löschen der Ladung starke Schlagseite bekommen und liegt mit der Bordwand auf dem Kai. Ladung tritt aus. Zwei Besatzungsmitglieder sind verletzt. Der B-Dienst 2 hat um 06:01 Uhr auf ABC 3 erhöht. Alarmiert sind Löschzug 2, Löschzug 21, ABC-Zug und GW-Öl. Sie werden zur Übernahme der Einsatzleitung angefordert.",
       "alarmiert": [
-        "LZ1",
-        "FF22",
+        "LZ2",
+        "FF21",
         "ABCZ",
         "GWOEL"
       ],
       "cAlarm": 9,
       "uebergabe": {
-        "von": "B-Dienst 1, Zugführer Löschzug 1",
+        "von": "B-Dienst 2, Zugführer Löschzug 2",
         "text": [
-          "Herr Verbandsführer, B-Dienst 1. Wir sind um 05:59 Uhr eingetroffen.",
+          "Herr Verbandsführer, B-Dienst 2. Wir sind um 05:59 Uhr eingetroffen.",
           "Das Tankmotorschiff hat etwa 950 Tonnen Schwefelsäure geladen. Beim Löschen der Ladung ist das Schiff nach Angaben des Kapitäns durch einen Fehler beim Ballasten auf die Seite gekippt und liegt mit etwa 50 Grad Schlagseite an der Kaimauer.",
           "Aus einer Entlüftung und einem gerissenen Schlauch der Löschleitung tritt Schwefelsäure auf den Kai und in das Hafenbecken aus. Über dem Kai bildet sich ein weißer Nebel. Im Hafenbecken wird eine Verfärbung des Wassers festgestellt.",
           "Von fünf Besatzungsmitgliedern sind vier an Land. Zwei davon haben Verätzungen an Armen und Beinen und werden in einer Halle am Kai 2 notdürftig gespült. Der Maschinist befindet sich noch an Bord im Maschinenraum und gibt über Funk an, dass Wasser eindringt.",
-          "Der Löschzug 1 hat einen Gefahrenbereich von 50 Metern festgelegt und den Kai abgesperrt. Ein Trupp in Chemikalienschutzanzügen bereitet den Weg an Bord vor. Der LZ 22 ist eingetroffen und steht am Hafenweg, der ABC-Zug und der GW-Öl sind auf Anfahrt.",
+          "Der Löschzug 2 hat einen Gefahrenbereich von 50 Metern festgelegt und den Kai abgesperrt. Ein Trupp in Chemikalienschutzanzügen bereitet den Weg an Bord vor. Der LZ 21 ist eingetroffen und steht am Hafenweg, der ABC-Zug und der GW-Öl sind auf Anfahrt.",
           "Am Kai 4 liegt ein Fahrgastschiff mit etwa 30 Personen an Bord, welche in einer Hotelnutzung übernachten. Offen sind die Rettung des Maschinisten, die Dekontamination, die Messungen und die Gewässerbelastung. Ich bitte um Übernahme."
         ]
       },
@@ -233,7 +233,7 @@
           "t": "fz",
           "x": 300,
           "y": 350,
-          "txt": "LZ 22",
+          "txt": "LZ 21",
           "org": "fw",
           "w": 56
         },
@@ -241,7 +241,7 @@
           "t": "el",
           "x": 560,
           "y": 350,
-          "txt": "B 1"
+          "txt": "B 2"
         },
         {
           "t": "fz",
@@ -519,14 +519,11 @@
               "warum": "Langwieriger ABC-Einsatz mit mehreren Stellen."
             },
             {
-              "t": "key",
-              "any": [
-                "WB1",
-                "WACHE1"
-              ],
+              "t": "lz",
+              "min": 3,
               "pts": 1,
-              "label": "Wachbesetzung FRW 1",
-              "warum": "Löschzug 1 ist langfristig gebunden."
+              "label": "Weiterer Löschzug",
+              "warum": "Ablösung der Trupps unter Chemikalienschutz, Arbeiten von der Wasserseite und Absperrung."
             }
           ],
           "kann": [

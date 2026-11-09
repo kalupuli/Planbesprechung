@@ -42,7 +42,13 @@ ed.innerHTML = `<div class="lzx-bar"><div class="lz-werkzeuge" id="lzWerkzeuge" 
   <div class="lz-pop" id="lzPop" hidden><button type="button" data-pop="del" class="rot">Löschen</button><button type="button" data-pop="dup">Duplizieren</button><button type="button" data-pop="txt">Beschriften</button></div>
   <input class="lz-inline" id="lzInline" hidden maxlength="60" placeholder="Text eingeben, Enter"></div></div><aside class="lz-seite" id="lzSeite"></aside></div>`;
 park.appendChild(ed);
-const flaeche = ed.querySelector("#lzFlaeche"), seite = ed.querySelector("#lzSeite");
+const flaeche = ed.querySelector("#lzFlaeche"), seite = ed.querySelector("#lzSeite"), bar = ed.querySelector(".lzx-bar"), main = ed.querySelector(".lzx-main");
+// Werkzeugleiste und Seitenleiste können aus dem Editor in eine äußere Leiste verlegt werden (Arbeitstafel: linker Rand)
+let extern = null, panelExtern = false;
+function leisteSetzen(ziel, panelZiel) {
+  if (ziel) { if (bar.parentNode !== ziel) ziel.appendChild(bar); if (seite.parentNode !== (panelZiel || ziel)) (panelZiel || ziel).appendChild(seite); ed.classList.add("extern"); extern = ziel.closest(".ls-werkzeuge") || ziel; }
+  else { if (bar.parentNode !== ed) { ed.prepend(bar); main.appendChild(seite); } ed.classList.remove("extern"); if (extern) extern.classList.remove("panel-auf"); extern = null; }
+}
 const buehne = $("#lzBuehne"), svgBox = $("#lzSvg"), pop = $("#lzPop"), inline = $("#lzInline");
 let werkzeug = "wahl", farbe = FARBEN[0][0], breite = BREITEN[1][0], zeichen = "Feuerwehr_Einheiten/Löschzug", gruppe = "Feuerwehr", suche = "", groesse = 40;
 let wahl = -1, aktiv = null, zieh = null, radiert = false, start = null, verlauf = [], inlineZiel = null;
@@ -290,7 +296,7 @@ $("#lzSpeichern").addEventListener("click", async () => {
 const sichtbar = () => ed.isConnected && ed.parentNode !== park && ed.offsetParent !== null;
 document.addEventListener("keydown", e => {
   if (!sichtbar()) return;
-  const tipp = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+  const tipp = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || document.activeElement.isContentEditable;
   if (e.key === "Escape" && wahl >= 0 && !tipp) { e.stopImmediatePropagation(); wahl = -1; alles(); return; }
   if (tipp) return;
   if ((e.key === "Delete" || e.key === "Backspace") && wahl >= 0) { e.preventDefault(); loesche(wahl); }
@@ -306,18 +312,23 @@ function einpassen() {
 }
 if (window.ResizeObserver) new ResizeObserver(einpassen).observe(flaeche);
 window.addEventListener("resize", () => { if (sichtbar()) einpassen(); });
-function panel(an) { ed.classList.toggle("panel-zu", !an); $("#lzPanel").setAttribute("aria-pressed", an ? "true" : "false"); setTimeout(einpassen, 0); }
-$("#lzPanel").addEventListener("click", () => panel(ed.classList.contains("panel-zu")));
+function panel(an) {
+  if (extern) { panelExtern = an; extern.classList.toggle("panel-auf", an); $("#lzPanel").setAttribute("aria-pressed", an ? "true" : "false"); return; }
+  ed.classList.toggle("panel-zu", !an); $("#lzPanel").setAttribute("aria-pressed", an ? "true" : "false"); setTimeout(einpassen, 0);
+}
+$("#lzPanel").addEventListener("click", () => panel(extern ? !panelExtern : ed.classList.contains("panel-zu")));
+document.addEventListener("click", e => { if (e.target.closest("[data-lzpanelzu]")) panel(false); });
 document.addEventListener("click", e => { if (e.target.closest("[data-lzopen]") && window.Ansicht) window.Ansicht.setze("tafel"); });
 
 function montiere(host, o) {
   if (!P.G || !host) return;
   inlineFertig(); wahl = -1; aktiv = null; zieh = null; start = null;
   host.appendChild(ed); ed.classList.toggle("kompakt", !!(o && o.kompakt));
-  panel(!(o && o.kompakt) && host.clientWidth > 900);
+  leisteSetzen(o && o.leiste, o && o.panel);
+  panel(extern ? panelExtern : !(o && o.kompakt) && host.clientWidth > 900);
   grundkarte(); stand = JSON.stringify(items()); alles(); einpassen();
 }
-function parke() { inlineFertig(); start = null; aktiv = null; zieh = null; if (ed.parentNode !== park) park.appendChild(ed); }
+function parke() { inlineFertig(); start = null; aktiv = null; zieh = null; leisteSetzen(null); if (ed.parentNode !== park) park.appendChild(ed); }
 function neu() { verlauf = []; wahl = -1; if (ed.parentNode !== park && P.G) { grundkarte(); alles(); } }
 window.Lagezeichnen = { svg, montiere, parke, neu, host: () => ed.parentNode === park ? null : ed.parentNode };
 })();

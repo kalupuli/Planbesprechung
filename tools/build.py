@@ -26,6 +26,9 @@ html = html.replace('<script src="js/ordner.js"></script>',
                     "<script>window.ORDNER_LAGEN = " + json.dumps(ordner, ensure_ascii=False).replace("</", "<\\/") + ";</script>\n" + '<script src="js/ordner.js"></script>')
 print("Ablageordner:", len(ordner), "Dateien eingebettet")
 
+logo = "data:image/png;base64," + base64.b64encode((root / "assets/logo.png").read_bytes()).decode()
+html = html.replace('src="assets/logo.png"', 'src="' + logo + '"').replace('href="assets/logo.png"', 'href="' + logo + '"')
+
 img2 = base64.b64encode((root / "assets/stadtkarte.svg").read_bytes()).decode()
 html = html.replace('src="assets/stadtkarte.svg"', 'src="data:image/svg+xml;base64,' + img2 + '"')
 

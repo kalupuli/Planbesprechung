@@ -7,7 +7,7 @@ const BW = 90, BD = BW * 3048 / 2560; // Seitenverhältnis der Kartentextur
 const RAND = 5.5; // Breite des Holzrands, auf welchem die überörtlichen Einheiten stehen
 const K = {};
 let scene, camera, renderer, labels, controls, stage, hemi, sun, clock;
-let stationen = {}, szObjekte = [], einsatzObj = null, sel = null, hoverObj = null;
+let platteMesh = null, stationen = {}, szObjekte = [], einsatzObj = null, sel = null, hoverObj = null;
 const pickables = [], tweens = [], pulses = [];
 let cb = {};
 
@@ -61,7 +61,7 @@ K.init = function (el, opts) {
   const cv = document.createElement("canvas"); cv.width = TW; cv.height = Math.round(TW * 3048 / 2560);
   const tex = new T.CanvasTexture(cv); tex.encoding = T.sRGBEncoding; tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
   const top = new T.Mesh(new T.PlaneGeometry(BW, BD), new T.MeshStandardMaterial({ map: tex, color: 0xd2d6c8, roughness: 0.95, metalness: 0 }));
-  top.rotation.x = -Math.PI / 2; top.position.y = 0.01; top.receiveShadow = true; top.name = "platte"; scene.add(top);
+  top.rotation.x = -Math.PI / 2; top.position.y = 0.01; top.receiveShadow = true; top.name = "platte"; scene.add(top); platteMesh = top;
   const g = cv.getContext("2d");
   const grd = g.createLinearGradient(0, 0, cv.width, cv.height); grd.addColorStop(0, "#768f63"); grd.addColorStop(1, "#4d6845");
   g.fillStyle = grd; g.fillRect(0, 0, cv.width, cv.height);
@@ -93,7 +93,19 @@ K.init = function (el, opts) {
     if (o && o.userData.pick.wache && cb.onWache) cb.onWache(o.userData.pick.wache);
     else if (o && o.userData.pick.sz && cb.onSzenario) cb.onSzenario(o.userData.pick.sz);
     else if (o && o.userData.pick.ue && cb.onUeber) cb.onUeber(o.userData.pick.ue);
-    else if (cb.onLeer) cb.onLeer();
+    else {
+      if (cb.onLeer) cb.onLeer();
+      // Klick auf die Karte: Kartenkoordinaten in Prozent an die Spiellogik (Infrastruktur und Bereiche)
+      if (cb.onKarte && platteMesh) {
+        const h = ray.intersectObject(platteMesh)[0];
+        if (h) {
+          // Trefferradius: Kartenstrecke, welche etwa 9 Bildschirmpixeln entspricht
+          pick({ clientX: e.clientX + 9, clientY: e.clientY }); const h2 = ray.intersectObject(platteMesh)[0];
+          const tol = h2 ? Math.hypot(h2.point.x - h.point.x, h2.point.z - h.point.z) / BW * 100 : 0.4;
+          cb.onKarte((h.point.x / BW + 0.5) * 100, (h.point.z / BD + 0.5) * 100, e.clientX, e.clientY, tol);
+        }
+      }
+    }
   });
   let hv = 0;
   renderer.domElement.addEventListener("pointermove", e => { if (e.buttons || performance.now() - hv < 60) return; hv = performance.now(); const o = pick(e); if (o !== hoverObj) { setGlow(hoverObj, false); hoverObj = o; setGlow(o, true); renderer.domElement.style.cursor = o ? "pointer" : ""; } });

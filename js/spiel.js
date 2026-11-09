@@ -59,7 +59,7 @@ function dtg(t) {
 let G = null;
 function neuerZustand(sz) {
   return { sz, t: 0, speed: 0, items: [], keys: new Set(), log: [], step: 0, maxStep: 0, ans: {}, krit: {}, mx: new Set(), orga: [0, 1, 2, 3, 4].map(() => ({ ea: "", eal: "", rg: "", frn: "", auftrag: "", uea: [] })), fo: { gel: "", adm: "", el: "", fue: "", lts: "", tel: "" }, uid: 0, cItem: null, eingetroffen: false, orgaZeit: null,
-    fragen: [], cd: { start: null, dauer: 240, strikt: true }, abgabe: null, ki: {}, presseStart: null, zufall: false };
+    fragen: [], cd: { start: null, dauer: 240, strikt: true }, abgabe: null, ki: {}, presseStart: null, zufall: false, tf: {} };
 }
 
 /* ───────── Entfernung und Anfahrt ───────── */
@@ -149,7 +149,8 @@ const TZ_QUELLE = 'Taktische Zeichen: Jonas Köritz, <a href="https://github.com
 const stage = $("#stage");
 const TYPEN = { abc: "Gefahrgut / ABC", brand: "Brand", tunnel: "Tunnel / Bahn", th: "Technische Hilfe" };
 const ICONS = {
-  th: '<svg viewBox="0 0 34 34" width="28" height="28"><rect x="2" y="2" width="30" height="30" rx="4" fill="#1f3f99"/><path d="M9 25l9-9m-2-5l7 7-3 3-7-7zM10 9h6v3h-6z" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>',
+  // Technische Hilfe: angelehnt an das Fachsymbol des taktischen Zeichens Rüstwagen (Hebezeug mit Zugseil)
+  th: '<svg viewBox="0 0 34 34" width="28" height="28"><rect x="2" y="2" width="30" height="30" rx="4" fill="#d81b1b"/><g transform="translate(-0.6 .5)"><path d="M16.5 16.5h2c1.9-4.4 9-4.4 7.1 0s4.6 4.4 5.2 0" stroke="#fff" stroke-width="4.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 16.5h2c1.9-4.4 9-4.4 7.1 0s4.6 4.4 5.2 0" stroke="#d81b1b" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="8.6" y="13.2" width="8" height="6.6" fill="#d81b1b" stroke="#fff" stroke-width="1.6"/><path d="M8.6 14.4L3.6 12.2M8.6 18.6L3.6 20.8" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></g></svg>',
   abc: '<svg viewBox="0 0 34 34" width="28" height="28"><rect x="2" y="5" width="30" height="24" rx="2" fill="#ff8a00" stroke="#111" stroke-width="2"/><line x1="2" y1="17" x2="32" y2="17" stroke="#111" stroke-width="2"/><text x="17" y="15" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-weight="700" font-size="9" fill="#111">268</text><text x="17" y="26.5" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-weight="700" font-size="9" fill="#111">1005</text></svg>',
   brand: '<svg viewBox="0 0 34 34" width="28" height="28"><path d="M17 3c2 6 9 9 9 17a9 9 0 0 1-18 0c0-5 3-7 4-11 1 3 2 4 4 5 0-4 0-7 1-11z" fill="#ff4a1f"/><path d="M17 15c1 3 5 5 5 9a5 5 0 0 1-10 0c0-3 2-4 3-6 0 2 1 2 2 3 0-2 0-4 0-6z" fill="#ffd54a"/></svg>',
   tunnel: '<svg viewBox="0 0 34 34" width="28" height="28"><rect x="2" y="2" width="30" height="30" rx="4" fill="#1d4ed8"/><path d="M10 9v10a7 7 0 0 0 14 0V9" fill="none" stroke="#fff" stroke-width="4"/><path d="M25 3c1 3 4 4 4 8a4 4 0 0 1-8 0c0-2 2-3 2-5 1 1 1 1 2 2z" fill="#ff4a1f"/></svg>'
@@ -161,15 +162,14 @@ const has3D = !!(window.THREE && K3 && K3.init(stage, {
   onWache: id => oeffneWache(id),
   onSzenario: id => { if (!G) vorschau(id); },
   onLeer: () => schliesseDrawer(),
+  onKarte: (x, y, cx, cy, tol) => { if (window.Infrastruktur) window.Infrastruktur.zeige(x, y, cx, cy, tol); },
   onUeber: id => oeffneUeber(id),
-  onFrame: dt => update(dt),
   onReset: () => { if (G) K3.fokus(G.sz.x, G.sz.y, { dist: 40, phi: 0.88 }); else K3.uebersicht(); }
 }));
 if (!has3D) {
   stage.classList.add("flach");
   const box = h("div", "flachkarte"); box.innerHTML = `<img src="${$("#maptex").getAttribute("src")}" alt="Karte Musterstadt">`;
   stage.prepend(box);
-  let lastT = performance.now(); (function fl(now) { update(Math.min(0.25, (now - lastT) / 1000)); lastT = now; requestAnimationFrame(fl); })(lastT);
 }
 const flach = {
   marken: [],
@@ -420,6 +420,8 @@ function update(dt) {
   uiAcc += dt;
   if (changed || uiAcc > 0.5) { uiAcc = 0; uhrUI(); if (changed) refreshLight(); }
 }
+// Eigener Takt unabhängig von der 3D-Darstellung, deren Renderschleife bei Arbeitstafel, Stadtkarte und Overlays pausiert
+setInterval(() => update(0.25), 250);
 // Lage zum Zeitpunkt der Übergabe: Kräfte mit Eintreffzeit bis zur Übergabe stehen vor Ort, alle anderen bleiben auf Anfahrt.
 function lageFestlegen(t) {
   G.t = t; let k = 0;
@@ -725,8 +727,6 @@ function stepKommission() {
     else x += `<textarea id="ta-${a.id}" placeholder="Ihre Antwort">${esc(G.ans[a.id] || "")}</textarea>`;
     x += "</section>";
   });
-  if (SAMPLE) x += `<section class="block kiblock"><div class="eyebrow">Zusätzliche Rückfrage</div><h4 style="margin-top:4px">Individuelle Rückfrage der Kommission</h4><p class="hint">Die Kommission fragt gezielt zu Ihrer Ausarbeitung nach.</p>
-    <p class="task-q" id="kiFrage">${esc(G.ki.frage || "")}</p>${G.ki.frage ? `<textarea id="ta-kiAntwort" placeholder="Ihre Antwort">${esc(G.ans.kiAntwort || "")}</textarea><div class="actions"><button class="alt" type="button" id="kiBewerten">Antwort einschätzen lassen</button></div><div class="kifb" id="kiFb">${esc(G.ki.fb || "")}</div>` : `<div class="actions"><button class="alt" type="button" id="kiFrageBtn">Rückfrage stellen lassen</button></div>`}</section>`;
   x += `<div class="actions"><button class="go" type="button" data-go="5">Zur Pressekonferenz</button></div>`;
   return x;
 }
@@ -881,16 +881,6 @@ function bindAkte() {
   B.querySelectorAll("[data-anf]").forEach(b => b.addEventListener("click", () => { anfordern(b.dataset.anf); renderAkte(); }));
   B.querySelectorAll("[data-lz]").forEach(b => b.addEventListener("click", plusLZ));
   const ps = B.querySelector("#pStart"); if (ps) ps.addEventListener("click", () => { G.presseStart = performance.now(); });
-  const kf = B.querySelector("#kiFrageBtn"); if (kf) kf.addEventListener("click", async () => {
-    kf.disabled = true; const out = $("#kiFrage");
-    const q = await ki(`Du bist Mitglied der Prüfungskommission in der Planbesprechung zur Verbandsführerprüfung nach VAP 2.2 in Nordrhein-Westfalen. Der Prüfling hat als C-Dienst die Einsatzleitung übernommen und in vier Minuten folgende Lösung erarbeitet. Formuliere genau eine kritische Rückfrage, welche auf eine Lücke, einen Widerspruch oder eine fehlende Begründung in der Lösung zielt. Nur die Frage, höchstens zwei Sätze. ${STIL}\n\nLage:\n${lageDaten()}\n\nLösung des Prüflings:\n${loesungText()}`, out, "default");
-    if (q) { G.ki.frage = q; renderAkte(); } else kf.disabled = false;
-  });
-  const kb = B.querySelector("#kiBewerten"); if (kb) kb.addEventListener("click", async () => {
-    kb.disabled = true; const out = $("#kiFb");
-    const fbt = await ki(`Du bist Mitglied der Prüfungskommission (Verbandsführer, VAP 2.2 NRW). Schätze die Antwort des Prüflings auf deine Rückfrage knapp ein: zuerst Stärken, dann Lücken, dann ein konkreter Hinweis. Höchstens 90 Wörter. ${STIL}\n\nLage:\n${lageDaten()}\n\nRückfrage: ${G.ki.frage}\n\nAntwort: ${G.ans.kiAntwort || "keine Antwort"}`, out, "default");
-    if (fbt) G.ki.fb = fbt; kb.disabled = false;
-  });
   const pf = B.querySelector("#pFb"); if (pf) pf.addEventListener("click", async () => {
     pf.disabled = true; const out = $("#pFbOut");
     const fbt = await ki(`Du bist Pressesprecher einer Berufsfeuerwehr und gibst dem Einsatzleiter Rückmeldung zu seinem O-Ton für eine Pressekonferenz. Bewerte knapp: was gelungen ist, was fehlt oder riskant ist (Spekulation, Namen, unbestätigte Zahlen), und einen Formulierungsvorschlag für einen Satz. Höchstens 100 Wörter. ${STIL}\n\nAnlass: ${G.sz.presse.anlass}\nGesicherte Lage: ${G.sz.meldung}\n\nO-Ton: ${G.ans.presse || "kein O-Ton"}`, out, "default");
@@ -994,40 +984,73 @@ function tafelBaum() {
 }
 function tafelAbs() {
   const { ea } = tafelOrgaDaten();
-  return [0, 1, 2, 3, 4].map(k => { const r = ea[k]; return `<div class="tf-abs"><div class="h"><div class="rom"><span>A ${RUFRANG[k]}</span></div><dl><dt>Befehlsstelle</dt><dd></dd><dt>Leiter/Führer</dt><dd>${esc(r ? r.eal : "")}</dd><dt>Kommunikation</dt><dd>${esc(r ? r.rg : "")}</dd><dt>Auftrag</dt><dd>${esc(r ? r.ea : "")}</dd><dt>Einsatzbeginn</dt><dd>${r && G.orgaZeit != null ? dtg(G.orgaZeit) : ""}</dd></dl></div><div class="k">${r ? "Kräfteübersicht: __/__/__/__" : ""}</div></div>`; }).join("");
+  return [0, 1, 2, 3, 4].map(k => { const r = ea[k]; const a = "ab-" + k + "-";
+    return `<div class="tf-abs"><div class="h"><div class="rom"><span>A ${RUFRANG[k]}</span></div><dl><dt>Befehlsstelle</dt><dd>${fe(a + "bst", "")}</dd><dt>Leiter/Führer</dt><dd>${fe(a + "eal", r ? r.eal : "")}</dd><dt>Kommunikation</dt><dd>${fe(a + "rg", r ? r.rg : "")}</dd><dt>Auftrag</dt><dd>${fe(a + "ea", r ? r.ea : "")}</dd><dt>Einsatzbeginn</dt><dd>${fe(a + "beginn", r && G.orgaZeit != null ? dtg(G.orgaZeit) : "")}</dd></dl></div><div class="k">${fe(a + "k", r ? "Kräfteübersicht: __/__/__/__" : "", "block")}</div></div>`; }).join("");
+}
+/* Frei beschreibbare Felder der Arbeitstafel: Ein Eintrag überschreibt den vorbelegten Text und wird blau dargestellt.
+   Rechtsklick auf ein beschriebenes Feld setzt es auf die Vorbelegung zurück. */
+function fe(k, std, cls) {
+  const eig = G.tf && Object.prototype.hasOwnProperty.call(G.tf, k), v = eig ? G.tf[k] : (std == null ? "" : String(std));
+  return `<span class="tfe${eig ? " ed" : ""}${cls ? " " + cls : ""}" data-tf="${esc(k)}" data-std="${esc(std == null ? "" : String(std))}" contenteditable="true" spellcheck="false" title="Feld beschreiben">${esc(v)}</span>`;
 }
 function renderTafel() {
   const sz = G.sz, T = $("#tafel");
+  const fa = document.activeElement, fokus = fa && T.contains(fa) && fa.dataset ? fa.dataset.tf : null;
   const units = G.items.filter(i => !i.def.ziel);
   const cards = units.slice(0, 34);
   const order = []; for (let c = 1; c <= 11; c++) order.push([1, c]); for (let r = 2; r <= 7; r++) order.push([r, 11]); for (let c = 11; c >= 1; c--) order.push([8, c]); for (let r = 7; r >= 2; r--) order.push([r, 1]);
   const kk = order.map((pos, idx) => {
     const it = cards[idx]; const style = `grid-row:${pos[0]};grid-column:${pos[1]}`;
-    if (!it) return `<div class="kk" style="${style}"><div></div><div></div><div></div><div></div></div>`;
+    const kk = "kk-" + idx + "-";
+    if (!it) return `<div class="kk frei" style="${style}"><div class="n">${fe(kk + "n", "")}</div><div>${fe(kk + "z", "", "gross")}</div><div class="z">${fe(kk + "s", "")}</div><div class="z">${fe(kk + "st", "")}</div></div>`;
     const s = staerke(it.def);
-    return `<div class="kk ${it.da ? "" : "anf"}" style="${style}"><div class="n" title="${esc(it.def.name)}">${esc(it.def.name.split(" (")[0].replace(" komplett", ""))}</div><div>${kkZeichen(it.def)}</div><div class="z">${esc(s.st || (s.g ? s.g + " Funktionen" : s.fz + " Fz"))}</div><div class="z">${statusText(it)}</div></div>`;
+    return `<div class="kk ${it.da ? "" : "anf"}" style="${style}"><div class="n" title="${esc(it.def.name)}">${fe(kk + "n", it.def.name.split(" (")[0].replace(" komplett", ""))}</div><div>${kkZeichen(it.def)}</div><div class="z">${fe(kk + "s", s.st || (s.g ? s.g + " Funktionen" : s.fz + " Fz"))}</div><div class="z">${fe(kk + "st", statusText(it))}</div></div>`;
   }).join("");
   const ks = kraefteSumme();
   const nachf = G.log.filter(l => /^Nachforderung/.test(l.txt));
   const stellen = [["ORDN", "Ordnungsamt"], ["UWB", "Untere Wasserbehörde"], ["STADTW", "Stadtwerke"], ["ENERG", "Energieversorger"], ["POL", "Polizei"]].concat(MS.extern.filter(e => !["ORDN", "UWB", "STADTW", "ENERG", "POL"].includes(e.id) && G.keys.has(e.id)).map(e => [e.id, e.name])).slice(0, 9);
-  const rm = G.log.slice().reverse().slice(0, 14);
-  while (rm.length < 9) rm.push(null);
+  const rm = G.log.slice().reverse().slice(0, 10);
   T.innerHTML = `<div class="tf-head"><div class="t"><span>Taktische Arbeitstafel für die Führungsstufen B + C</span><small>nach Vorlage IdF NRW · Planbesprechung Musterstadt · ${TZ_QUELLE}</small></div>
-   <div class="tf-fields"><label>Einsatzstichwort:<span>${esc(sz.stichwort)}</span></label><label>Einsatzort:<span>${esc(sz.ort.adresse)}</span></label><label>Meldender:<span>${esc(sz.meldender || "")}</span></label><label>Objektnr.:<span></span></label><label>Datum-Uhrzeitgruppe:<span>${dtg(G.t)}</span></label></div></div>
+   <div class="tf-fields"><label>Einsatzstichwort:${fe("kopf-stichwort", sz.stichwort)}</label><label>Einsatzort:${fe("kopf-ort", sz.ort.adresse)}</label><label>Meldender:${fe("kopf-meldender", sz.meldender || "")}</label><label>Objektnr.:${fe("kopf-objekt", "")}</label><label>Datum-Uhrzeitgruppe:${fe("kopf-dtg", dtg(G.t))}</label></div></div>
    <div class="tf-main"><section class="tf-sec tf-lage"><h5>Lagebild (Ordnung des Raumes / Einsatzkräfte)</h5><div class="tf-ring">${kk}<div class="tf-sketch" id="tfSketch"></div></div>${units.length > 34 ? `<p style="padding:0 40px 10px;font-size:11px">+ ${units.length - 34} weitere Einsatzmittel</p>` : ""}</section>
    <div class="tf-right">
     <section class="tf-sec tf-own"><h5>Eigene Lage/Nachforderung</h5><div class="row"><div class="zz">${tz("Führungsstellen/EL", { w: 62, h: 62 })}</div>
-     <dl><dt>Befehlsstelle:</dt><dd>ELW 1 C-Dienst</dd><dt>Kommunikation:</dt><dd>MUS_90</dd><dt>Auftrag:</dt><dd>Einsatzleitung</dd></dl>
-     <dl><dt>Einsatzbeginn:</dt><dd>${dtg(0)}</dd><dt>Kräfteübersicht:</dt><dd>${ks.f}/${ks.u}/${ks.m}/<b>${ks.g}</b>${ks.offen ? " + " + ks.offen : ""}</dd><dt>Fahrzeuge:</dt><dd>${ks.fz}</dd></dl></div>
-     <div class="tf-nachf">${nachf.length ? nachf.map(l => `<div><span>${esc(l.txt.replace("Nachforderung: ", ""))}</span><span>${dtg(l.t)}${l.done ? " ✓" : ""}</span></div>`).join("") : '<div><span>Keine Nachforderungen</span></div>'}</div></section>
-    <section class="tf-sec tf-org"><h5>Organisation / Kommunikation</h5><div class="tf-orggrid"><div class="tf-stellen">${stellen.map(s => `<div><span>${esc(s[1])}</span><i>${G.keys.has(s[0]) ? "✓" : ""}</i></div>`).join("")}</div><div class="tf-tree">${tafelBaum()}</div></div></section>
-    <section class="tf-sec tf-rm"><h5>Rückmeldung / Benachrichtigungen / Notizen</h5>${rm.map(l => l ? `<div class="r"><span class="c ${l.prio ? "h" : ""}"></span><span class="b">${l.done ? "✓" : ""}</span><span>${esc(l.txt)}</span><span class="d">${dtg(l.t)}</span></div>` : '<div class="r"><span class="c"></span><span class="b"></span><span></span><span class="d"></span></div>').join("")}</section>
+     <dl><dt>Befehlsstelle:</dt><dd>${fe("el-bst", "ELW 1 C-Dienst")}</dd><dt>Kommunikation:</dt><dd>${fe("el-kom", "MUS_90")}</dd><dt>Auftrag:</dt><dd>${fe("el-auftrag", "Einsatzleitung")}</dd></dl>
+     <dl><dt>Einsatzbeginn:</dt><dd>${fe("el-beginn", dtg(0))}</dd><dt>Kräfteübersicht:</dt><dd>${fe("el-kraefte", `${ks.f}/${ks.u}/${ks.m}/${ks.g}${ks.offen ? " + " + ks.offen : ""}`)}</dd><dt>Fahrzeuge:</dt><dd>${fe("el-fz", ks.fz)}</dd></dl></div>
+     <div class="tf-nachf">${nachf.map(l => `<div><span>${esc(l.txt.replace("Nachforderung: ", ""))}</span><span>${dtg(l.t)}${l.done ? " ✓" : ""}</span></div>`).join("")}${[0, 1, 2, 3, 4, 5].map(k => `<div class="frei">${fe("nf-" + k, "")}${fe("nf-" + k + "-z", "", "zeit")}</div>`).join("")}</div></section>
+    <section class="tf-sec tf-org"><h5>Organisation / Kommunikation</h5><div class="tf-orggrid"><div class="tf-stellen">${stellen.map((s, k) => `<div>${fe("st-" + k, s[1])}${fe("st-" + k + "-v", G.keys.has(s[0]) ? "✓" : "", "hak")}</div>`).join("")}${Array.from({ length: Math.max(2, 9 - stellen.length) }, (_, k) => `<div>${fe("st-frei-" + k, "")}${fe("st-frei-" + k + "-v", "", "hak")}</div>`).join("")}</div><div class="tf-tree">${tafelBaum()}</div></div></section>
+    <section class="tf-sec tf-rm"><h5>Rückmeldung / Benachrichtigungen / Notizen</h5>${rm.map(l => `<div class="r"><span class="c ${l.prio ? "h" : ""}"></span><span class="b">${l.done ? "✓" : ""}</span><span>${esc(l.txt)}</span><span class="d">${dtg(l.t)}</span></div>`).join("")}${[0, 1, 2, 3, 4, 5].map(k => `<div class="r frei"><span class="c"></span>${fe("rm-" + k + "-b", "", "b")}${fe("rm-" + k, "")}${fe("rm-" + k + "-d", "", "d")}</div>`).join("")}</section>
    </div></div>
    <section class="tf-sec tf-fo"><h5>Führungsorganisation nach FwDV 100${orgaGesperrt() ? (G.abgabe ? " · abgegeben" : " · Eingabe ab Start der Ausarbeitung") : ""}</h5>${orgaHTML(orgaGesperrt())}</section>
    <div class="tf-ab">${tafelAbs()}</div>`;
   if (!orgaGesperrt()) bindOrga(T);
-  if (window.Lagezeichnen) window.Lagezeichnen.montiere($("#tfSketch"), { kompakt: true });
+  if (window.Lagezeichnen) window.Lagezeichnen.montiere($("#tfSketch"), { kompakt: true, leiste: $("#lsWerkzeugeInhalt"), panel: $("#lsWkSeite") });
+  if (fokus) { const el = T.querySelector(`[data-tf="${CSS.escape(fokus)}"]`); if (el) { el.focus(); const r = document.createRange(); r.selectNodeContents(el); r.collapse(false); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); } }
 }
+(function tafelFelder() {
+  const T = $("#tafel");
+  const feld = e => e.target.closest && e.target.closest("[data-tf]");
+  T.addEventListener("input", e => {
+    const el = feld(e); if (!el || !G) return;
+    const v = el.innerText.replace(/\n/g, " ");
+    if (v === el.dataset.std) { delete G.tf[el.dataset.tf]; el.classList.remove("ed"); } else { G.tf[el.dataset.tf] = v; el.classList.add("ed"); }
+  });
+  T.addEventListener("keydown", e => {
+    const el = feld(e); if (!el) return;
+    e.stopPropagation();
+    if (e.key === "Enter" || e.key === "Escape") { e.preventDefault(); el.blur(); }
+  });
+  T.addEventListener("paste", e => {
+    if (!feld(e)) return; e.preventDefault();
+    const t = (e.clipboardData || window.clipboardData).getData("text").replace(/\s+/g, " ").slice(0, 300);
+    document.execCommand("insertText", false, t);
+  });
+  T.addEventListener("drop", e => { if (feld(e)) e.preventDefault(); });
+  T.addEventListener("contextmenu", e => {
+    const el = feld(e); if (!el || !G || !Object.prototype.hasOwnProperty.call(G.tf, el.dataset.tf)) return;
+    e.preventDefault(); delete G.tf[el.dataset.tf]; el.textContent = el.dataset.std; el.classList.remove("ed"); toast("Feld auf Vorbelegung zurückgesetzt");
+  });
+})();
 function tafelOffen() { return !!G && !!window.Ansicht && window.Ansicht.modus() === "tafel"; }
 /* Zoom der Arbeitstafel: automatisch auf Breite eingepasst, bis der Nutzer selbst zoomt
    (Knöpfe, Strg + Mausrad, zwei Finger, Tasten + − 0) */
@@ -1065,7 +1088,7 @@ $("#lsHost").addEventListener("touchmove", e => {
 }, { passive: false });
 $("#lsHost").addEventListener("touchend", e => { if (e.touches.length < 2) pinch = null; });
 document.addEventListener("keydown", e => {
-  if (!tafelOffen() || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || e.ctrlKey || e.metaKey || e.altKey) return;
+  if (!tafelOffen() || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || document.activeElement.isContentEditable || e.ctrlKey || e.metaKey || e.altKey) return;
   if (e.key === "+" || e.key === "=") { e.preventDefault(); tafelZoomUm(1.25); }
   else if (e.key === "-") { e.preventDefault(); tafelZoomUm(1 / 1.25); }
   else if (e.key === "0") { e.preventDefault(); tafelZ = null; tafelZoom(); }

@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Planbesprechung Musterstadt</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Roboto+Slab:wght@700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="css/spiel.css">
@@ -11,7 +12,7 @@
 <body>
 <div class="login" id="login" lang="de">
   <form class="login-karte" id="loginForm" autocomplete="off">
-    <div class="brand"><span class="brand-mark" aria-hidden="true"></span><div><b>Planbesprechung Musterstadt</b><small>Verbandsführer · VAP 2.2</small></div></div>
+    <div class="brand"><img class="brand-mark" src="assets/logo.png" alt="" aria-hidden="true"><div><b>Planbesprechung Musterstadt</b><small>Verbandsführer · VAP 2.2</small></div></div>
     <p class="login-text">Bitte melden Sie sich mit dem Passwort an.</p>
     <label class="login-f"><span>Passwort</span><input id="loginPw" type="password" autocomplete="current-password" required autofocus></label>
     <label class="login-c"><input type="checkbox" id="loginMerken"> Auf diesem Gerät angemeldet bleiben</label>
@@ -23,11 +24,12 @@
 <div class="app" id="app" data-mode="frei" lang="de">
   <header class="bar">
     <div class="brand">
-      <span class="brand-mark" aria-hidden="true"></span>
+      <img class="brand-mark" src="assets/logo.png" alt="" aria-hidden="true">
       <div><b>Planbesprechung Musterstadt</b><small>Verbandsführer · VAP 2.2</small></div>
     </div>
     <div class="bar-mid" id="barMid"></div>
     <div class="bar-right">
+      <button class="ghost" type="button" id="btnIntro" title="Funktionsweise der Planbesprechung">Einführung</button>
       <button class="ghost" type="button" id="btnDocs" title="Originalunterlagen als PDF">Unterlagen</button>
       <button class="ghost" type="button" id="btnListe">Alle Szenarien</button>
       <button class="go" type="button" id="btnZufall">Zufallsszenario</button>
@@ -48,6 +50,12 @@
     <img id="maptex" alt="" hidden>
     <div class="hud hud-tl" id="hudTl">
       <div class="legend"><span class="lg bf"></span>Feuer- und Rettungswache <span class="lg ff"></span>Freiwillige Feuerwehr <span class="lg rd"></span>Rettungswache <span class="lg thw"></span>THW</div>
+      <details class="legend infra-leg"><summary>Infrastruktur und Bereiche</summary><ul>
+        <li><i class="ip-farbe k-ab"></i>Autobahn</li><li><i class="ip-farbe k-hs"></i>Hauptverkehrsstraße</li><li><i class="ip-farbe k-ns"></i>Straße</li>
+        <li><i class="ip-farbe k-bahn"></i>Bahnstrecke</li><li><i class="ip-farbe k-kanal"></i>Wasserstraße und Hafenbecken</li><li><i class="ip-farbe k-fluss"></i>Erholungssee, Fließ- und Stillgewässer</li>
+        <li><i class="ip-farbe k-sied"></i>Wohn- und Siedlungsgebiet</li><li><i class="ip-farbe k-wbg"></i>Wachbezirksgrenze</li><li><i class="ip-farbe k-abg"></i>Grenze Ausrückebereich</li>
+        <li><i class="ip-farbe k-wb1"></i>Wachbezirk 1 (FRW 1)</li><li><i class="ip-farbe k-wb2"></i>Wachbezirk 2 (FRW 2)</li><li><i class="ip-farbe k-wb3"></i>Wachbezirk 3 (FRW 3)</li>
+      </ul><p>Ein Klick auf die Karte zeigt, was dort liegt.</p></details>
       <div class="legend hilfe">Ziehen verschiebt · rechte Maustaste oder zwei Finger drehen · Mausrad oder Spreizen zoomt</div>
     </div>
     <div class="hud hud-br" role="group" aria-label="Kartensteuerung">
@@ -69,7 +77,7 @@
       </div>
       <div class="stadt-q">Karte Musterstadt mit Übersicht der Wachen · IdF NRW, LU B2-211, Anhang I · <button type="button" class="link" data-doc="lernunterlage" data-seite="25">Original-PDF</button></div>
     </div>
-    <div class="lagestage" id="lageStage" hidden><div class="ls-kopf"><b>Taktische Arbeitstafel</b><span id="lsTitel"></span><button type="button" class="ghost" data-doc="tafel">Original-Vorlage (PDF)</button><span class="ls-zoom" role="group" aria-label="Zoom der Arbeitstafel"><button type="button" id="lsMinus" title="Verkleinern (−)" aria-label="Verkleinern">−</button><button type="button" id="lsZoomTxt" title="Auf Breite einpassen (0)">100 %</button><button type="button" id="lsPlus" title="Vergrößern (+)" aria-label="Vergrößern">+</button><button type="button" id="lsGanz" title="Ganze Tafel anzeigen">Ganze Tafel</button></span><button type="button" class="ghost" id="lsVoll" aria-pressed="false">Vollbild</button></div><div class="ls-host" id="lsHost"><div class="tafel" id="tafel"></div></div></div>
+    <div class="lagestage" id="lageStage" hidden><div class="ls-kopf"><b>Taktische Arbeitstafel</b><span id="lsTitel"></span><button type="button" class="ghost" data-doc="tafel">Original-Vorlage (PDF)</button><span class="ls-zoom" role="group" aria-label="Zoom der Arbeitstafel"><button type="button" id="lsMinus" title="Verkleinern (−)" aria-label="Verkleinern">−</button><button type="button" id="lsZoomTxt" title="Auf Breite einpassen (0)">100 %</button><button type="button" id="lsPlus" title="Vergrößern (+)" aria-label="Vergrößern">+</button><button type="button" id="lsGanz" title="Ganze Tafel anzeigen">Ganze Tafel</button></span><button type="button" class="ghost" id="lsWk" aria-pressed="true" aria-controls="lsWerkzeuge">Werkzeuge</button><button type="button" class="ghost" id="lsVoll" aria-pressed="false">Vollbild</button></div><div class="ls-body"><aside class="ls-werkzeuge" id="lsWerkzeuge" aria-label="Werkzeuge der Lagekarte"><div id="lsWerkzeugeInhalt" class="ls-wk-inhalt"></div><div class="ls-wk-panel" id="lsWkPanel"><div class="ls-wk-kopf"><b>Zeichen und Farben</b><button type="button" class="ghost" data-lzpanelzu aria-label="Schließen">✕</button></div><p class="ls-wk-hinweis">Werkzeug links wählen und in die Lagekarte der Tafel tippen. Alle weißen Felder der Tafel werden direkt angeklickt und beschrieben, Rechtsklick setzt ein Feld auf die Vorbelegung zurück.</p><div id="lsWkSeite"></div></div></aside><div class="ls-host" id="lsHost"><div class="tafel" id="tafel"></div></div></div></div>
     <div class="hud hud-tr ansicht" id="ansicht" role="group" aria-label="Ansicht">
       <button type="button" data-ansicht="tafel" hidden>Arbeitstafel</button><button type="button" data-ansicht="3d" aria-pressed="true">3D-Karte</button><button type="button" data-ansicht="stadt">Stadtkarte</button>
     </div>
@@ -90,6 +98,36 @@
   </div></div>
 </div>
 
+<div class="overlay intro-ov" id="introOv" hidden lang="de">
+  <div class="ov-bar"><b>Einführung</b><span class="ov-hint">Funktionsweise der Planbesprechung Musterstadt</span><button type="button" class="ghost" id="introClose">Schließen</button></div>
+  <div class="ov-scroll"><div class="intro">
+    <section class="intro-lead">
+      <img src="assets/logo.png" alt="" aria-hidden="true">
+      <div><h2>Planbesprechung im Sinne der VAP 2.2</h2>
+      <p>Im Rahmen der Abschlussprüfung des höheren feuerwehrtechnischen Dienstes übernimmt der Prüfling als Verbandsführer (C-Dienst) die Einsatzleitung an einer laufenden Einsatzstelle. Die Planbesprechung bildet diesen Ablauf in der Musterstadt der Lernunterlage B2-211 nach. Hierbei werden Übergabe, Erkundung, Ausarbeitung und Vortrag vor der Kommission in einer festen Reihenfolge durchlaufen. Die Lage ist zum Zeitpunkt der Übergabe eingefroren. Nachalarmierte Kräfte treffen nicht ein.</p></div>
+    </section>
+    <section><h3>Ablauf in sieben Schritten</h3>
+      <ol class="intro-schritte">
+        <li><b>Alarm:</b> Die Leitstelle alarmiert den C-Dienst mit einer Einsatzdepesche. Stichwort, Einsatzort, Planquadrat und bereits alarmierte Kräfte werden dort ausgewiesen.</li>
+        <li><b>Übergabe:</b> Der Zugführer oder B-Dienst vor Ort übergibt die Lage mündlich. Zugleich werden Unterlagen wie Objektdaten und Gefahrstoffangaben übergeben. Ab diesem Schritt wird die Taktische Arbeitstafel angezeigt.</li>
+        <li><b>Erkundung:</b> Nachfragen an den Zugführer werden per Klick gestellt. Wichtige Nachfragen gehen in die Bewertung ein.</li>
+        <li><b>Ausarbeitung:</b> Nach dem Start laufen vier Minuten. In dieser Zeit werden Führungsorganisation, weitere Maßnahmen, Lagemeldung und Nachalarmierung erarbeitet. Mit Ablauf der Zeit wird bei aktivem Prüfungsmodus automatisch abgegeben.</li>
+        <li><b>Kommission:</b> Die Kommission stellt Rückfragen zu Gefahren, Begründung der Abschnittsbildung, Befehl und Lageänderung.</li>
+        <li><b>Pressekonferenz:</b> Ein O-Ton von etwa 60 Sekunden wird mit Zeitanzeige abgegeben.</li>
+        <li><b>Auswertung:</b> Die Lösung wird dem Erwartungshorizont gegenübergestellt. Freitexte werden anhand der Kriterien selbst abgehakt.</li>
+      </ol>
+    </section>
+    <section class="intro-raster">
+      <div><h3>Taktische Arbeitstafel</h3><p>Die Tafel ist ab der Übergabe die zentrale Arbeitsfläche. Im Lagebild wird die übergebene Lagekarte mit den Werkzeugen am linken Rand ergänzt, etwa durch taktische Zeichen, Linien, Pfeile und Text. Alle weißen Felder außerhalb der Lagekarte werden direkt angeklickt und beschrieben. Eigene Einträge erscheinen blau, ein Rechtsklick setzt ein Feld zurück. Die Führungsorganisation nach FwDV 100 wird ab dem Start der Ausarbeitung ebenfalls in der Tafel eingetragen.</p></div>
+      <div><h3>Ansichten</h3><p>Oben rechts wird zwischen Arbeitstafel, 3D-Karte und Stadtkarte umgeschaltet. »Vollbild« vergrößert die Tafel. Gezoomt wird über die Schaltflächen, Strg und Mausrad, zwei Finger oder die Tasten + und −. Die 3D-Karte zeigt Wachen, Einsatzstelle und Kräfte. Autobahn, Straßen, Bahnstrecken, Gewässer, Siedlungsflächen sowie Wachbezirke sind farbig hervorgehoben. Ein Klick auf die Karte zeigt kurz, was dort liegt.</p></div>
+      <div><h3>Nachalarmierung</h3><p>Einheiten werden über die Leiste rechts, über die Wachen auf der Karte oder über Stichworte wie »+1 Löschzug« und MANV-Stufen alarmiert. Externe Stellen wie Polizei, Wasserbehörde oder Energieversorger werden dort ebenfalls informiert. Beim Anklicken einer Einheit wird die Anfahrtszeit in Minuten angezeigt. Bewertet wird, ob die erforderlichen Kräfte und Stellen angefordert wurden.</p></div>
+      <div><h3>Lagen</h3><p>Unter »Alle Szenarien« werden Beispielszenarien, eigene Lagen und Lagen aus dem Ablageordner angeboten. »Zufallsszenario« startet eine beliebige Lage. Eigene Lagen werden im Lagen-Editor angelegt, gespeichert, exportiert und importiert. Jede JSON-Datei im Ordner lagen/ wird beim Start automatisch geladen.</p></div>
+      <div><h3>Unterlagen</h3><p>Die Lernunterlage B2-211 »Musterstadt« und die Taktische Arbeitstafel stehen als Originaldokumente zur Verfügung. Kapitel werden direkt angesprungen, die Dokumente können gespeichert werden.</p></div>
+      <div><h3>Tipps für die Prüfung</h3><p>Betrachtet man die Bewertung, so zählen eine klare Abschnittsbildung mit eingehaltener Führungsspanne, eine vollständige Lagemeldung und konkrete Nachforderungen. Demnach sollte die Lage in der Erkundung gezielt hinterfragt werden. Die Zeit läuft ab dem Start der Ausarbeitung.</p></div>
+    </section>
+    <div class="actions"><button class="go" type="button" id="introLos">Verstanden</button></div>
+  </div></div>
+</div>
 <div class="overlay doc-ov" id="docOv" hidden lang="de">
   <div class="ov-bar doc-bar">
     <b>Unterlagen</b>
@@ -127,6 +165,7 @@
 <script src="js/karte3d.js"></script>
 <script src="js/spiel.js"></script>
 <script src="js/stadtkarte.js"></script>
+<script src="js/infrastruktur.js"></script>
 <script src="js/editor.js"></script>
 <script src="js/ordner.js"></script>
 <script src="js/lagezeichnen.js"></script>
